@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 026 — Prepare the local development machine |
-| **Next** | 027 — Create the private Git repository |
+| **Next** | 028 — Define source control rules |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
