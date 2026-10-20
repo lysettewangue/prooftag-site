@@ -48,7 +48,7 @@
 | A-12 | Media | MIME whitelist; bilingual alt |
 | A-13 | Contact inbox | New → In Progress → Responded → Closed → Spam |
 | A-14 | SEO / redirects | Canonical, meta, legacy map |
-| A-15 | Users / roles / audit | Eight roles at step 035; publish ≠ translate ≠ update |
+| A-15 | Users / roles / audit | Eight roles in [roles.md](../admin/roles.md); publish ≠ translate ≠ update |
 
 Scheduled publish: Laravel scheduler + LWS cron, short job.
 

@@ -55,7 +55,7 @@ In V1 the CMS must let authorised roles manage:
 - SEO metadata and legacy redirects
 - Users, roles, permissions, audit of administrative actions
 
-Eight roles are in scope (names recorded at step 035): Super Administrator, Administrator, Content Manager, Technical Editor, Communications Editor, Translator, Reviewer/Publisher, Support Agent. **Publish** and **translate** are separate from **update**.
+Eight roles are in scope ([roles.md](../admin/roles.md)): Super Administrator, Administrator, Content Manager, Technical Editor, Communications Editor, Translator, Reviewer/Publisher, Support Agent. **Publish** and **translate** are separate from **update**.
 
 ## 4. In scope — content rules
 

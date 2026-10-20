@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 034 — Establish localisation |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 035 — Define administrative roles |
+| **Next** | 036 — Implement the permission foundation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | French default, English secondary |
 
-Public French has **no** `/fr` prefix. English lives under `/en`. `/admin` stays outside locale groups. Content translation tables are ADR-001 (gate 055). Roles are step 035.
+Public French has **no** `/fr` prefix. English lives under `/en`. `/admin` stays outside locale groups. Content translation tables are ADR-001 (gate 055). Roles are [roles.md](../admin/roles.md).
 
 ## 1. URL rules
 

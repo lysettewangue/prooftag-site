@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 035 — Define administrative roles — **NOT STARTED**
+**Active step:** 036 — Implement the permission foundation — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -47,8 +47,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 032 | Configure local email testing | Mail cannot reach real recipients | COMPLETED |
 | 033 | Install the Filament foundation | Admin login only | COMPLETED |
 | 034 | Establish localisation | French default, English secondary | COMPLETED |
-| 035 | Define administrative roles | Eight roles recorded | NOT STARTED |
-| 036 | Implement the permission foundation | Enforced on the server | LOCKED |
+| 035 | Define administrative roles | Eight roles recorded | COMPLETED |
+| 036 | Implement the permission foundation | Enforced on the server | NOT STARTED |
 | 037 | Establish audit logging | Administrative actions recorded | LOCKED |
 | 038 | Establish quality tooling | Pint, Larastan, Pest, frontend lint pass | LOCKED |
 
