@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 027 — Create the private Git repository |
-| **Next** | 028 — Define source control rules |
+| **Next** | 029 — Create the Laravel 13 project |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -18,7 +18,7 @@
 | Visibility | Local only until a private remote is attached |
 | Laravel app | Not in this repo yet (step 029) |
 
-Ignore rules and commit-message conventions are step **028**. Quality hooks are step **038**.
+Ignore rules and commit-message conventions: [source-control.md](source-control.md) (step 028). Quality hooks are step **038**.
 
 ## 2. Private remote (not attached)
 

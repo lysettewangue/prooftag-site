@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 026 — Prepare the local development machine |
-| **Next** | 028 — Define source control rules |
+| **Next** | 029 — Create the Laravel 13 project |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -56,7 +56,7 @@ Open a **new** terminal if `php` is not found (PATH was updated).
 | Item | Step |
 |------|------|
 | Private Git remote / `main` | 027 |
-| `.gitignore` conventions | 028 |
+| `.gitignore` conventions | 028 (done) |
 | `composer create-project` Laravel 13 | 029 |
 | `.env`, locales, cache | 030 |
 | Create `prooftag_catis_local` | 031 |

@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 028 — Define source control rules — **NOT STARTED**
+**Active step:** 029 — Create the Laravel 13 project — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -40,8 +40,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 |-----:|------|-------------|--------|
 | 026 | Prepare the local development machine | PHP 8.4, MySQL, Node, Git verified | COMPLETED |
 | 027 | Create the private Git repository | Repository with `main` | COMPLETED |
-| 028 | Define source control rules | Ignore rules and commit conventions | NOT STARTED |
-| 029 | Create the Laravel 13 project | Clean app starts locally | LOCKED |
+| 028 | Define source control rules | Ignore rules and commit conventions | COMPLETED |
+| 029 | Create the Laravel 13 project | Clean app starts locally | NOT STARTED |
 | 030 | Configure core local settings | Name, timezone, locales, storage, cache, logs | LOCKED |
 | 031 | Configure the local MySQL database | Connectivity verified | LOCKED |
 | 032 | Configure local email testing | Mail cannot reach real recipients | LOCKED |
