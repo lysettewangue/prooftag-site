@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 036 — Implement the permission foundation |
 | **Parent** | [roles.md](../admin/roles.md) · [local-filament.md](local-filament.md) |
-| **Next** | 037 — Establish audit logging |
+| **Next** | 038 — Establish quality tooling |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Enforced on the server |
 
-Spatie + Filament Shield enforce the eight roles from [roles.md](../admin/roles.md). CMS module policies wait for **088–106**. Activity log is **037**. Pint / Larastan / Pest are **038**.
+Spatie + Filament Shield enforce the eight roles from [roles.md](../admin/roles.md). CMS module policies wait for **088–106**. Activity log is [local-audit.md](local-audit.md). Pint / Larastan / Pest are **038**.
 
 ## 1. Packages
 
@@ -55,7 +55,7 @@ php artisan test --filter=PermissionFoundationTest
 
 | Item | Step |
 |------|------|
-| Activity log | 037 |
+| Activity log | 037 (done — [local-audit.md](local-audit.md)) |
 | Pint, Larastan, Pest | 038 |
 | User CRUD in Filament | 103 |
 | Per-module policies and smoke tests | 088–106 |

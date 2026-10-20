@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 031 — Configure the local MySQL database |
 | **Parent** | [local-setup.md](local-setup.md) |
-| **Next** | 037 — Establish audit logging |
+| **Next** | 038 — Establish quality tooling |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

@@ -6,9 +6,9 @@ namespace Database\Seeders;
 
 use App\Enums\StaffPermission;
 use App\Enums\StaffRole;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class RoleSeeder extends Seeder
@@ -31,29 +31,35 @@ class RoleSeeder extends Seeder
 
     public function run(): void
     {
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
+        activity()->disableLogging();
 
-        foreach (StaffPermission::codes() as $name) {
-            Permission::findOrCreate($name, self::GUARD);
-        }
+        try {
+            app(PermissionRegistrar::class)->forgetCachedPermissions();
 
-        foreach (self::ROLE_RESOURCE_PERMISSIONS as $name) {
-            Permission::findOrCreate($name, self::GUARD);
-        }
-
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
-
-        foreach (StaffRole::cases() as $staffRole) {
-            $role = Role::findOrCreate($staffRole->value, self::GUARD);
-            $permissions = $staffRole->permissionNames();
-
-            if ($staffRole === StaffRole::SuperAdmin) {
-                $permissions = array_merge($permissions, self::ROLE_RESOURCE_PERMISSIONS);
+            foreach (StaffPermission::codes() as $name) {
+                Permission::findOrCreate($name, self::GUARD);
             }
 
-            $role->syncPermissions($permissions);
-        }
+            foreach (self::ROLE_RESOURCE_PERMISSIONS as $name) {
+                Permission::findOrCreate($name, self::GUARD);
+            }
 
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
+            app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+            foreach (StaffRole::cases() as $staffRole) {
+                $role = Role::findOrCreate($staffRole->value, self::GUARD);
+                $permissions = $staffRole->permissionNames();
+
+                if ($staffRole === StaffRole::SuperAdmin) {
+                    $permissions = array_merge($permissions, self::ROLE_RESOURCE_PERMISSIONS);
+                }
+
+                $role->syncPermissions($permissions);
+            }
+
+            app(PermissionRegistrar::class)->forgetCachedPermissions();
+        } finally {
+            activity()->enableLogging();
+        }
     }
 }

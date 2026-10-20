@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 035 — Define administrative roles |
 | **Parent** | [functional-spec.md](../requirements/functional-spec.md) A-15 · [scope-and-exclusions.md](../charter/scope-and-exclusions.md) §3 |
-| **Next** | 037 — Establish audit logging |
+| **Next** | 038 — Establish quality tooling |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -71,7 +71,7 @@ Last remaining `super_admin` cannot be deleted or demoted.
 |------|------|
 | `spatie/laravel-permission` + Filament Shield | 036 (done — [local-permissions.md](../development/local-permissions.md)) |
 | Permission seeder and panel gates | 036 (done) |
-| Activity log | 037 |
+| Activity log | 037 (done — [local-audit.md](../development/local-audit.md)) |
 | Filament module CRUD | 088+ |
 | Per-role smoke test | 106 |
 
