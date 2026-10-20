@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 030 — Configure core local settings — **NOT STARTED**
+**Active step:** 031 — Configure the local MySQL database — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -42,8 +42,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 027 | Create the private Git repository | Repository with `main` | COMPLETED |
 | 028 | Define source control rules | Ignore rules and commit conventions | COMPLETED |
 | 029 | Create the Laravel 13 project | Clean app starts locally | COMPLETED |
-| 030 | Configure core local settings | Name, timezone, locales, storage, cache, logs | NOT STARTED |
-| 031 | Configure the local MySQL database | Connectivity verified | LOCKED |
+| 030 | Configure core local settings | Name, timezone, locales, storage, cache, logs | COMPLETED |
+| 031 | Configure the local MySQL database | Connectivity verified | NOT STARTED |
 | 032 | Configure local email testing | Mail cannot reach real recipients | LOCKED |
 | 033 | Install the Filament foundation | Admin login only | LOCKED |
 | 034 | Establish localisation | French default, English secondary | LOCKED |

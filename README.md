@@ -2,7 +2,7 @@
 
 Greenfield bilingual site (French default) on Laravel 13 and Filament 5, hosted on LWS Starter.
 
-**Work order:** [docs/STEP-BY-STEP.md](docs/STEP-BY-STEP.md) — steps 001–029 complete; step 030 is unlocked.  
+**Work order:** [docs/STEP-BY-STEP.md](docs/STEP-BY-STEP.md) — steps 001–030 complete; step 031 is unlocked.  
 **Start:** [docs/00-START-HERE.md](docs/00-START-HERE.md)  
 **Rules:** [docs/engineering-roadmap.md](docs/engineering-roadmap.md)
 

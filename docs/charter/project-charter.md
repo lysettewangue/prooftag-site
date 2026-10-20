@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 001 — Project charter |
-| **Next** | 030 — Configure core local settings |
+| **Next** | 031 — Configure the local MySQL database |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

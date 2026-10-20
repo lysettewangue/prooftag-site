@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 029 — Create the Laravel 13 project |
-| **Next** | 030 — Configure core local settings |
+| **Next** | 031 — Configure the local MySQL database |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -22,21 +22,23 @@ Skeleton `laravel/laravel` **v13.0.0** merged into `d:\websiteprooftag` (docs an
 
 Verified: `php artisan --version`, `php artisan about`, `GET http://127.0.0.1:8000/` → **200**.
 
-## 2. Local runtime (until 030–032)
+## 2. Local runtime (030 applied; 031–032 still pending)
+
+See [local-settings.md](local-settings.md) for the 030 values.
 
 | Setting | Now | Owned by |
 |---------|-----|----------|
-| `APP_NAME` | Laravel | 030 |
-| Timezone | UTC | 030 |
-| Locale | `en` | 030 / 034 |
-| Session / cache | `file` | boots without sqlite |
+| `APP_NAME` | `PROOFTAG-CATIS` | 030 |
+| Timezone | `Africa/Douala` | 030 |
+| Locale | `fr` (fallback `en`) | 030; routes in 034 |
+| Session / cache | `file` | 030 |
 | Queue | `sync` | charter |
 | Database | sqlite in `.env` default, **pdo_sqlite not loaded** | 031 switches to MySQL 8.4 `:3307` |
 | Mail | `log` | 032 |
 
 Do not use MySQL 5.7 `:3306`. Start project MySQL with `docs/development/start-mysql84.ps1`.
 
-`.env` is gitignored. `.env.example` records the file/sync drivers.
+`.env` is gitignored. `.env.example` records the 030 settings plus file/sync drivers.
 
 ## 3. How to start
 
