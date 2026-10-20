@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 031 — Configure the local MySQL database |
 | **Parent** | [local-setup.md](local-setup.md) |
-| **Next** | 032 — Configure local email testing |
+| **Next** | 033 — Install the Filament foundation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Connectivity verified |
 
-No application schema is created here. Migrations wait for gate **055**. Mail trapping is step 032. Filament is step 033.
+No application schema is created here. Migrations wait for gate **055**. Mail trapping is [local-mail.md](local-mail.md). Filament is step 033.
 
 ## 1. Instance (do not use 3306)
 

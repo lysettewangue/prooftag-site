@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 027 — Create the private Git repository |
-| **Next** | 032 — Configure local email testing |
+| **Next** | 033 — Install the Filament foundation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

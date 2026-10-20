@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 030 — Configure core local settings |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 032 — Configure local email testing |
+| **Next** | 033 — Install the Filament foundation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Applied locally |
 
-`.env` is gitignored. Copy values from [`.env.example`](../../.env.example). Database is [local-database.md](local-database.md) (031). Mail trapping is step 032.
+`.env` is gitignored. Copy values from [`.env.example`](../../.env.example). Database is [local-database.md](local-database.md) (031). Mail is [local-mail.md](local-mail.md) (032).
 
 ## 1. Identity and clock
 

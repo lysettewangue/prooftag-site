@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 026 — Prepare the local development machine |
-| **Next** | 032 — Configure local email testing |
+| **Next** | 033 — Install the Filament foundation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -60,7 +60,7 @@ Open a **new** terminal if `php` is not found (PATH was updated).
 | `composer create-project` Laravel 13 | 029 |
 | `.env`, locales, cache | 030 |
 | Create `prooftag_catis_local` | 031 (done) |
-| Mailpit / Mailhog | 032 |
+| Mailpit / Mailhog | 032 (done — [local-mail.md](local-mail.md)) |
 
 Never send development mail to real recipients.
 
