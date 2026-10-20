@@ -1,0 +1,24 @@
+legacy_host,legacy_path,page_title,topic,strategic,proposed_new_path_fr,proposed_new_path_en,http_status,decision,notes
+site.prooftagcatis.com,/,Accueil,homepage,yes,/,/en/,200,301 host to www,Counters 0/0 reject; UN 74/299 copy verify
+site.prooftagcatis.com,/catis/,CATIS,about,yes,/a-propos,/en/about,200,301,Team VER-02; vision/mission
+site.prooftagcatis.com,/catis/carriere/,Carrière,careers,yes,/a-propos/carrieres,/en/about/careers,200,301,Empty body in 2026-10-20 capture
+site.prooftagcatis.com,/expertise/,Expertise,expertise,yes,/expertises,/en/expertise,200,301,Five domains
+site.prooftagcatis.com,/expertise/recherche-et-developpement/,Recherche et développement,expertise,yes,/expertises/recherche-et-developpement,/en/expertise/research-and-development,200,301,
+site.prooftagcatis.com,/expertise/support-technique/,Support technique,expertise,yes,/expertises/support-technique,/en/expertise/technical-support,200,301,
+site.prooftagcatis.com,/expertise/data-analysis-reporting/,Analyse de données et reporting,expertise,yes,/expertises/analyse-donnees-reporting,/en/expertise/data-analysis-reporting,200,301,
+site.prooftagcatis.com,/expertise/securite-documentaire/,Sécurité documentaire,expertise,yes,/expertises/securite-documentaire,/en/expertise/document-security,200,301,Index has body; dedicated page was thin — use index text
+site.prooftagcatis.com,/expertise/securite-prevention-routiere/,Sécurité et prévention routière,expertise,yes,/expertises/securite-prevention-routiere,/en/expertise/road-safety-prevention,200,301,
+site.prooftagcatis.com,/solutions/,Solutions,product,yes,/produits,/en/products,200,301,Do not keep DITROS card
+site.prooftagcatis.com,/solutions/ditros-ct/,DITROS-CT,product,yes,/produits/certidocs-ct,/en/products/certidocs-ct,200,301 merge,Not a product slug
+site.prooftagcatis.com,/solutions/ct-verif/,CT-VERIF,product,yes,/produits/ct-verif,/en/products/ct-verif,200,301,VER-04
+site.prooftagcatis.com,/solutions/doser/,DOSER,product,yes,/produits/doser,/en/products/doser,200,301,VER-05
+site.prooftagcatis.com,/contact/,Contact,contact,yes,/contact,/en/contact,200,301,
+site.prooftagcatis.com,/partenaires/,Partenaires,partners,yes,/a-propos/partenaires,/en/about/partners,200,301,VER-09
+site.prooftagcatis.com,/blog/,Actualité,news,yes,/actualites,/en/news,200,301,Zero posts
+site.prooftagcatis.com,/en/,English switch,ui,yes,/en,/en,200,reject as content,Was French — do not migrate body
+www.prooftagcatis.com,/,Accueil,homepage,yes,/,/en/,200,301,12 points → CT hub; vignette claim → VER-01
+www.prooftagcatis.com,/organisation/,Organisation,about,yes,/a-propos/organisation,/en/about/organisation,200,301,Organigramme conflicts with site team titles
+www.prooftagcatis.com,/solutions/controle-technique/,Contrôle technique,technical,yes,/controle-technique,/en/technical-inspection,200,301,Authoritative CT workflow
+www.prooftagcatis.com,/partenaires/centres-de-controle/,Centres de contrôle,directory,yes,/centres-de-controle,/en/inspection-centres,200,301,Import Unverified; HTML list incomplete vs ~35 claim
+www.prooftagcatis.com,/services/,Services,services,yes,/produits/certidocs-ct,/en/products/certidocs-ct,200,301,Thin capture; split leftover to CT + resources
+net.prooftagcatis.com,/,Mirror homepage,homepage,yes,/,/en/,200,301 retire host,Do not publish info@net.prooftagcatis.com

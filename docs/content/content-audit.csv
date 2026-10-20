@@ -1,0 +1,29 @@
+audit_id,title,source_url,source_site,category,original_lang,relevance,accuracy_status,migration_destination,translation_status,media_available,verification_status,notes
+AUD-001,Homepage 12 security points,https://www.prooftagcatis.com/,www,technical,fr,high,rewrite,/controle-technique/points-de-securisation,pending,yes,pending,Rewrite all-caps list as numbered components
+AUD-002,Corporate CATIS narrative,https://site.prooftagcatis.com/catis/,site,about,fr,high,current,/a-propos,pending,yes,pending,UN 74/299 — verify with comms before homepage
+AUD-003,DITROS-CT product page,https://site.prooftagcatis.com/solutions/ditros-ct/,site,product,fr,medium,rewrite,/produits/certidocs-ct,pending,yes,pending,Drop product name DITROS-CT
+AUD-004,CT-VERIF summary,https://site.prooftagcatis.com/solutions/ct-verif/,site,product,fr,high,verification,/produits/ct-verif,pending,yes,pending,VER-04 MINT/DTR wording
+AUD-005,DOSER summary,https://site.prooftagcatis.com/solutions/doser/,site,product,fr,high,current,/produits/doser,pending,yes,pending,VER-05 link
+AUD-006,CT workflow,https://www.prooftagcatis.com/solutions/controle-technique/,www,technical,fr,high,rewrite,/controle-technique,pending,yes,pending,Authoritative process text
+AUD-007,Inspection centres list,https://www.prooftagcatis.com/partenaires/centres-de-controle/,www,directory,fr,high,verification,/centres-de-controle,n/a,partial,pending,Import Unverified; list incomplete vs ~35
+AUD-008,Named team,https://site.prooftagcatis.com/catis/,site,team,fr,high,verification,/a-propos/equipe,pending,yes,pending,TCHANGA NGAE NJIEMELI TAMPOLLA — VER-02
+AUD-009,Operator vignette positioning,https://www.prooftagcatis.com/,www,corporate,fr,medium,historical,/a-propos/historique,pending,yes,pending,2020-era; VER-01
+AUD-010,Sécurité documentaire,https://site.prooftagcatis.com/expertise/,site,expertise,fr,high,rewrite,/expertises/securite-documentaire,pending,yes,pending,Use expertise index body (dedicated page was thin)
+AUD-011,Video Enforcement,—,internal,product,fr,high,verification,/produits/video-enforcement,pending,no,pending,No legacy page — VER-07
+AUD-012,Reporting Platform,—,internal,product,fr,high,verification,/produits/certidocs-ct-reporting,pending,no,pending,No legacy page — VER-06
+AUD-013,Homepage stats 0/0,https://site.prooftagcatis.com/,site,homepage,fr,high,reject,—,n/a,n/a,closed,Do not migrate
+AUD-014,English locale switch,https://site.prooftagcatis.com/en/,site,ui,en,high,reject,—,n/a,n/a,closed,French body — real EN later
+AUD-015,Expertise R&D,https://site.prooftagcatis.com/expertise/recherche-et-developpement/,site,expertise,fr,medium,rewrite,/expertises/recherche-et-developpement,pending,yes,pending,
+AUD-016,Expertise support,https://site.prooftagcatis.com/expertise/support-technique/,site,expertise,fr,medium,rewrite,/expertises/support-technique,pending,yes,pending,
+AUD-017,Expertise data,https://site.prooftagcatis.com/expertise/data-analysis-reporting/,site,expertise,fr,medium,rewrite,/expertises/analyse-donnees-reporting,pending,yes,pending,
+AUD-018,Expertise road safety,https://site.prooftagcatis.com/expertise/securite-prevention-routiere/,site,expertise,fr,medium,rewrite,/expertises/securite-prevention-routiere,pending,yes,pending,
+AUD-019,www organisation chart,https://www.prooftagcatis.com/organisation/,www,about,fr,medium,verification,/a-propos/organisation,pending,no,pending,Conflicts with named team — REC-01
+AUD-020,www services,https://www.prooftagcatis.com/services/,www,product,fr,low,rewrite,/produits/certidocs-ct,pending,no,pending,Empty capture
+AUD-021,site careers,https://site.prooftagcatis.com/catis/carriere/,site,careers,fr,low,current,/a-propos/carrieres,pending,no,pending,Empty listing OK
+AUD-022,site partners,https://site.prooftagcatis.com/partenaires/,site,partners,fr,medium,verification,/a-propos/partenaires,pending,yes,pending,VER-09
+AUD-023,site contact,https://site.prooftagcatis.com/contact/,site,contact,fr,high,current,/contact,n/a,n/a,closed,Use frozen contact record not page scrape
+AUD-024,net homepage,https://net.prooftagcatis.com/,net,corporate,fr,low,reject,—,n/a,n/a,closed,Retire host; 301 to www
+AUD-025,site solutions index,https://site.prooftagcatis.com/solutions/,site,product,fr,medium,rewrite,/produits,pending,yes,pending,Remove DITROS card
+AUD-026,site expertise index,https://site.prooftagcatis.com/expertise/,site,expertise,fr,high,rewrite,/expertises,pending,yes,pending,Best combined expertise copy
+AUD-027,site blog,https://site.prooftagcatis.com/blog/,site,news,fr,low,archive,/actualites,n/a,n/a,closed,Structure only; zero posts
+AUD-028,Official logos,https://site.prooftagcatis.com/wp-content/uploads/2024/07/Logo_Prooftag_CATIS_SA_Redesigne_Ok-removebg.png,site,brand,n/a,high,current,—,n/a,yes,closed,Archived under docs/legacy/archive/2026-10-20/media/
