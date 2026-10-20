@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 027 — Create the private Git repository |
-| **Next** | 038 — Establish quality tooling |
+| **Next** | 039 — Begin conceptual database design |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -18,7 +18,7 @@
 | Visibility | Local only until a private remote is attached |
 | Laravel app | Not in this repo yet (step 029) |
 
-Ignore rules and commit-message conventions: [source-control.md](source-control.md) (step 028). Quality hooks are step **038**.
+Ignore rules and commit-message conventions: [source-control.md](source-control.md) (step 028). Quality commands: [local-quality.md](local-quality.md) (step 038). No remote CI until a private remote exists.
 
 ## 2. Private remote (not attached)
 

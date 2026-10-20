@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 038 — Establish quality tooling — **NOT STARTED**
+**Active step:** 039 — Begin conceptual database design — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -50,13 +50,13 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 035 | Define administrative roles | Eight roles recorded | COMPLETED |
 | 036 | Implement the permission foundation | Enforced on the server | COMPLETED |
 | 037 | Establish audit logging | Administrative actions recorded | COMPLETED |
-| 038 | Establish quality tooling | Pint, Larastan, Pest, frontend lint pass | NOT STARTED |
+| 038 | Establish quality tooling | Pint, Larastan, Pest, frontend lint pass | COMPLETED |
 
 ## 039–069 — Database
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 039 | Begin conceptual database design | Principal entities listed | LOCKED |
+| 039 | Begin conceptual database design | Principal entities listed | NOT STARTED |
 | 040 | Define corporate entities | Settings, pages, team, partners | LOCKED |
 | 041 | Define solution entities | Solutions, translations, relationships | LOCKED |
 | 042 | Define expertise entities | Expertise and translations | LOCKED |

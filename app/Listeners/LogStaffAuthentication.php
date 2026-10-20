@@ -7,6 +7,8 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 
 final class LogStaffAuthentication
@@ -14,7 +16,7 @@ final class LogStaffAuthentication
     public function handleLogin(Login $event): void
     {
         activity('auth')
-            ->causedBy($event->user)
+            ->causedBy($this->causer($event->user))
             ->event('login')
             ->withProperties($this->context($event->guard))
             ->log('logged_in');
@@ -27,7 +29,7 @@ final class LogStaffAuthentication
         }
 
         activity('auth')
-            ->causedBy($event->user)
+            ->causedBy($this->causer($event->user))
             ->event('logout')
             ->withProperties($this->context($event->guard))
             ->log('logged_out');
@@ -39,12 +41,23 @@ final class LogStaffAuthentication
         unset($credentials['password']);
 
         activity('auth')
-            ->causedBy($event->user)
+            ->causedBy($this->causer($event->user))
             ->event('login_failed')
             ->withProperties($this->context($event->guard) + [
                 'credentials' => $credentials,
             ])
             ->log('login_failed');
+    }
+
+    private function causer(?Authenticatable $user): Model|int|string|null
+    {
+        if ($user instanceof Model) {
+            return $user;
+        }
+
+        $id = $user?->getAuthIdentifier();
+
+        return is_int($id) || is_string($id) ? $id : null;
     }
 
     /**

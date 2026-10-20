@@ -71,7 +71,7 @@ No connection from this CMS to CERTIDOCS, DOSER, CT-VERIF, Video Enforcement, or
 
 ## 7. CI (from local foundation onward)
 
-`composer install` · Pint `--test` · `php artisan test` · `npm ci && npm run build`.
+`composer install` · Pint `--test` · Larastan · `php artisan test` · `npm ci && npm run build` · `npm run lint`. Local runbook: [local-quality.md](../development/local-quality.md).
 
 ## 8. Acceptance
 

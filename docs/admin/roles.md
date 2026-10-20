@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 035 — Define administrative roles |
 | **Parent** | [functional-spec.md](../requirements/functional-spec.md) A-15 · [scope-and-exclusions.md](../charter/scope-and-exclusions.md) §3 |
-| **Next** | 038 — Establish quality tooling |
+| **Next** | 039 — Begin conceptual database design |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 037 — Establish audit logging |
 | **Parent** | [local-permissions.md](local-permissions.md) · [system-architecture.md](../architecture/system-architecture.md) |
-| **Next** | 038 — Establish quality tooling |
+| **Next** | 039 — Begin conceptual database design |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Administrative actions recorded |
 
-`spatie/laravel-activitylog` writes staff actions to `activity_log`. The Filament audit screen is step **104**. CMS model logging waits for domain models (070+). Pint / Larastan / Pest are **038**.
+`spatie/laravel-activitylog` writes staff actions to `activity_log`. The Filament audit screen is step **104**. CMS model logging waits for domain models (070+). Quality tools: [local-quality.md](local-quality.md).
 
 ## 1. Package
 
@@ -39,7 +39,7 @@ Passwords and `remember_token` are never stored. Failed logins keep the email, n
 |------|------|
 | Filament audit interface | 104 |
 | Logging CMS content models | 070+ / 088+ |
-| Pint, Larastan, Pest | 038 |
+| Pint, Larastan, Pest | 038 (done — [local-quality.md](local-quality.md)) |
 
 ## 4. Verification (2026-10-20)
 
