@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 030 — Configure core local settings |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 031 — Configure the local MySQL database |
+| **Next** | 032 — Configure local email testing |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Applied locally |
 
-`.env` is gitignored. Copy values from [`.env.example`](../../.env.example). Do not change database (031) or mail (032) here.
+`.env` is gitignored. Copy values from [`.env.example`](../../.env.example). Database is [local-database.md](local-database.md) (031). Mail trapping is step 032.
 
 ## 1. Identity and clock
 
@@ -53,7 +53,7 @@ French remains the default at `/`. Prefixed English routes (`/en/`) belong to st
 | Queue | `sync` (unchanged; charter) |
 | Logs | `stack` → `daily`, 14 days, `LOG_LEVEL=debug` |
 
-Cache and session defaults in config now fall back to `file` so the app boots without sqlite. MySQL cache/session tables are out of scope until 031.
+Cache and session stay on `file`. MySQL cache/session tables are not created in 031 (no migrations before gate 055).
 
 ## 5. Verification (2026-10-20)
 

@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 026 — Prepare the local development machine |
-| **Next** | 031 — Configure the local MySQL database |
+| **Next** | 032 — Configure local email testing |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -42,7 +42,7 @@ powershell -File docs/development/start-mysql84.ps1
 
 Installing it as a Windows service was denied without elevation (`MySQL84`). Optional later: run that service install as Administrator.
 
-Do not point Laravel at 3306. Database `prooftag_catis_local` is created at step 031.
+Do not point Laravel at 3306. Database `prooftag_catis_local` is created at step 031 — see [local-database.md](local-database.md).
 
 ## 3. PHP
 
@@ -59,7 +59,7 @@ Open a **new** terminal if `php` is not found (PATH was updated).
 | `.gitignore` conventions | 028 (done) |
 | `composer create-project` Laravel 13 | 029 |
 | `.env`, locales, cache | 030 |
-| Create `prooftag_catis_local` | 031 |
+| Create `prooftag_catis_local` | 031 (done) |
 | Mailpit / Mailhog | 032 |
 
 Never send development mail to real recipients.

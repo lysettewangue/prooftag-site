@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 028 — Define source control rules |
 | **Parent** | [git-repository.md](git-repository.md) |
-| **Next** | 031 — Configure the local MySQL database |
+| **Next** | 032 — Configure local email testing |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
