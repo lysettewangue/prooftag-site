@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\StaffRole;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -41,5 +42,12 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function staff(StaffRole $role = StaffRole::SupportAgent): static
+    {
+        return $this->afterCreating(function (User $user) use ($role): void {
+            $user->assignStaffRole($role);
+        });
     }
 }

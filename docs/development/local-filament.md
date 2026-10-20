@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 033 — Install the Filament foundation |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 036 — Implement the permission foundation |
+| **Next** | 037 — Establish audit logging |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Admin login only |
 
-Panel at `/admin`. No public registration. No CMS resources. Roles are [roles.md](../admin/roles.md). Permissions are step 036. Public locales are [local-localisation.md](local-localisation.md).
+Panel at `/admin`. No public registration. No CMS resources. Roles are [roles.md](../admin/roles.md). Permissions are [local-permissions.md](local-permissions.md). Public locales are [local-localisation.md](local-localisation.md).
 
 ## 1. Packages
 
@@ -36,7 +36,7 @@ Routes present: `admin/login`, `admin/logout`, `admin` (dashboard). `GET /admin/
 
 Laravel's `users`, `password_reset_tokens`, and `sessions` tables were migrated so Filament can authenticate. Cache/jobs tables and content schema wait for later steps (gate **055**).
 
-Staff users implement `FilamentUser`. `canAccessPanel()` returns `true` until steps 035–036.
+Staff users implement `FilamentUser`. `canAccessPanel()` requires one of the eight roles ([local-permissions.md](local-permissions.md)).
 
 Create a local user (not committed):
 

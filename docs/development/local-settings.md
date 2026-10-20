@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 030 — Configure core local settings |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 036 — Implement the permission foundation |
+| **Next** | 037 — Establish audit logging |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

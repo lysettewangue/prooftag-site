@@ -86,6 +86,8 @@ return [
 
     'available_locales' => ['fr', 'en'],
 
+    'filament_admin_email' => env('FILAMENT_ADMIN_EMAIL'),
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
