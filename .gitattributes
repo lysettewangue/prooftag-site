@@ -1,6 +1,12 @@
 # Checkout as committed; store LF in the repo (Laravel default).
 * text=auto eol=lf
 
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
 *.bat text eol=crlf
 *.cmd text eol=crlf
 *.ps1 text eol=lf

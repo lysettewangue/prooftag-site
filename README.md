@@ -2,9 +2,11 @@
 
 Greenfield bilingual site (French default) on Laravel 13 and Filament 5, hosted on LWS Starter.
 
-**Work order:** [docs/STEP-BY-STEP.md](docs/STEP-BY-STEP.md) — steps 001–028 complete; step 029 is unlocked.  
+**Work order:** [docs/STEP-BY-STEP.md](docs/STEP-BY-STEP.md) — steps 001–029 complete; step 030 is unlocked.  
 **Start:** [docs/00-START-HERE.md](docs/00-START-HERE.md)  
 **Rules:** [docs/engineering-roadmap.md](docs/engineering-roadmap.md)
+
+Local app (step 029): `php artisan serve` → http://127.0.0.1:8000
 
 Canonical URL: https://www.prooftagcatis.com
 

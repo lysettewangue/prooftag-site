@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 027 — Create the private Git repository |
-| **Next** | 029 — Create the Laravel 13 project |
+| **Next** | 030 — Configure core local settings |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
