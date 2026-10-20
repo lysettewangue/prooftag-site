@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 033 — Install the Filament foundation |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 034 — Establish localisation |
+| **Next** | 035 — Define administrative roles |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Admin login only |
 
-Panel at `/admin`. No public registration. No CMS resources. Roles are step 035. Permissions are 036. Public `/en/` routes are 034.
+Panel at `/admin`. No public registration. No CMS resources. Roles are step 035. Permissions are 036. Public locales are [local-localisation.md](local-localisation.md).
 
 ## 1. Packages
 

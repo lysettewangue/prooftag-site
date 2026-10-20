@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 029 — Create the Laravel 13 project |
-| **Next** | 034 — Establish localisation |
+| **Next** | 035 — Define administrative roles |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -30,7 +30,7 @@ See [local-settings.md](local-settings.md), [local-database.md](local-database.m
 |---------|-----|----------|
 | `APP_NAME` | `PROOFTAG-CATIS` | 030 |
 | Timezone | `Africa/Douala` | 030 |
-| Locale | `fr` (fallback `en`) | 030; routes in 034 |
+| Locale | `fr` at `/`, `en` at `/en` | 034 — [local-localisation.md](local-localisation.md) |
 | Session / cache | `file` | 030 |
 | Queue | `sync` | charter |
 | Database | MySQL 8.4.9 `127.0.0.1:3307` / `prooftag_catis_local` | 031 |

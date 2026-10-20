@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 030 — Configure core local settings |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 034 — Establish localisation |
+| **Next** | 035 — Define administrative roles |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -32,7 +32,7 @@ PHP `date.timezone` on this machine is already `Africa/Douala` (step 026).
 | Faker | `fr_FR` |
 | `available_locales` | `fr`, `en` |
 
-French remains the default at `/`. Prefixed English routes (`/en/`) belong to step 034. Do not add translation files in this step.
+French remains the default at `/`. Prefixed English routes (`/en/`) are [local-localisation.md](local-localisation.md).
 
 ## 3. Storage
 
