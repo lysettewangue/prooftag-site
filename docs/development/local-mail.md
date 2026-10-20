@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 032 — Configure local email testing |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 033 — Install the Filament foundation |
+| **Next** | 034 — Establish localisation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Mail cannot reach real recipients |
 
-Local mail goes only to **Mailpit** on localhost. Do not point `MAIL_HOST` at LWS or any public SMTP. Filament is step 033.
+Local mail goes only to **Mailpit** on localhost. Do not point `MAIL_HOST` at LWS or any public SMTP. Filament is [local-filament.md](local-filament.md).
 
 ## 1. Mailpit (localhost only)
 

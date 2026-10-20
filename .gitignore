@@ -27,7 +27,10 @@ pnpm-debug.log*
 # Laravel (created from step 029)
 /bootstrap/cache/*.php
 /public/build
+/public/css/filament
+/public/fonts/filament
 /public/hot
+/public/js/filament
 /public/storage
 /storage/*.key
 /storage/pail

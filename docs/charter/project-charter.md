@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 001 — Project charter |
-| **Next** | 033 — Install the Filament foundation |
+| **Next** | 034 — Establish localisation |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
