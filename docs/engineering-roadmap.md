@@ -42,7 +42,7 @@ Products: CERTIDOCS CT, CERTIDOCS CT Reporting Platform, CT-VERIF, DOSER, Video 
 | 026–038 | Local machine, Git, Laravel, Filament shell, roles, quality tools | [development/](development/) |
 | 039–055 | Database design. No migrations before 055 | [database/erd.md](database/erd.md), [database/data-dictionary.md](database/data-dictionary.md) |
 | 056–069 | Migrations, verified seeds, database tests | [development/local-schema.md](development/local-schema.md) |
-| 070–087 | Models, actions, policies, media, mail, search, cache, scheduler, SEO | [backend/](backend/) |
+| 070–087 | Models, actions, policies, media, mail, search, cache, scheduler, SEO | [backend/use-cases.md](backend/use-cases.md) |
 | 088–106 | Filament modules and permission test | [admin/content-blocks.md](admin/content-blocks.md) |
 | 107–113 | Representative content, then freeze the V1 data model | |
 | 114–122 | Wireframes, then visual design. No frontend code before 122 | [design/design-brief.md](design/design-brief.md) |

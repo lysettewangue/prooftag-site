@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 055 — Review and approve the database design |
 | **Parent** | [erd.md](erd.md) · [data-dictionary.md](data-dictionary.md) · [constraints.md](constraints.md) · [indexes.md](indexes.md) |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

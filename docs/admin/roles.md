@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 035 — Define administrative roles |
 | **Parent** | [functional-spec.md](../requirements/functional-spec.md) A-15 · [scope-and-exclusions.md](../charter/scope-and-exclusions.md) §3 |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

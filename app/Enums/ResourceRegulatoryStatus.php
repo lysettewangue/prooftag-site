@@ -17,4 +17,12 @@ enum ResourceRegulatoryStatus: string
     {
         return array_column(self::cases(), 'value');
     }
+
+    /**
+     * Archive is a public label, not Eloquent soft-delete.
+     */
+    public function isBusinessArchive(): bool
+    {
+        return $this === self::Archive;
+    }
 }

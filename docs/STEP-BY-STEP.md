@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 070 — Implement domain models — **NOT STARTED**
+**Active step:** 074 — Implement solution actions — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -92,11 +92,11 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 070 | Implement domain models | Eloquent models | NOT STARTED |
-| 071 | Implement domain enums | Publication, centre, solution, enquiry | LOCKED |
-| 072 | Implement domain rules | Public visibility and status rules | LOCKED |
-| 073 | Define application use cases | Named operations | LOCKED |
-| 074 | Implement solution actions | Create and update solution | LOCKED |
+| 070 | Implement domain models | Eloquent models | COMPLETED |
+| 071 | Implement domain enums | Publication, centre, solution, enquiry | COMPLETED |
+| 072 | Implement domain rules | Public visibility and status rules | COMPLETED |
+| 073 | Define application use cases | Named operations | COMPLETED |
+| 074 | Implement solution actions | Create and update solution | NOT STARTED |
 | 075 | Implement editorial actions | Draft through archive | LOCKED |
 | 076 | Implement centre actions | Add, verify, unavailable, archive | LOCKED |
 | 077 | Implement resource actions | Resource operations | LOCKED |

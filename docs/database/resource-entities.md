@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 046 — Define resource entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [functional-spec.md](../requirements/functional-spec.md) P-06 / A-10 |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

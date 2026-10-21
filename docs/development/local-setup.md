@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 026 — Prepare the local development machine |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

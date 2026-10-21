@@ -52,4 +52,9 @@ enum ProductCode: string
             self::VideoEnforcement => 5,
         };
     }
+
+    public function requiresExternalUrlBeforePublish(): bool
+    {
+        return $this === self::CtVerif || $this === self::Doser;
+    }
 }

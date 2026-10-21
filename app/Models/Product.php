@@ -4,15 +4,23 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Domain\Contracts\Publishable as PublishableContract;
+use App\Domain\Contracts\Translatable;
+use App\Domain\Products\ProductPublishRules;
 use App\Enums\ProductCode;
+use App\Models\Concerns\HasTranslations;
 use App\Models\Concerns\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Product extends Model
+/**
+ * @property ProductCode $code
+ * @property string|null $external_url
+ */
+class Product extends Model implements PublishableContract, Translatable
 {
-    use Publishable;
+    use HasTranslations, Publishable;
 
     protected $fillable = [
         'code',
@@ -26,7 +34,7 @@ class Product extends Model
     ];
 
     /**
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     protected function casts(): array
     {
@@ -50,5 +58,10 @@ class Product extends Model
     public function expertises(): BelongsToMany
     {
         return $this->belongsToMany(Expertise::class, 'product_expertise');
+    }
+
+    public function mayEnterPublished(): bool
+    {
+        return ProductPublishRules::mayEnterPublished($this->code, $this->external_url);
     }
 }

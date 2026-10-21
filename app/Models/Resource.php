@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Domain\Contracts\Publishable as PublishableContract;
+use App\Domain\Contracts\Translatable;
 use App\Enums\ResourceRegulatoryStatus;
+use App\Models\Concerns\HasTranslations;
 use App\Models\Concerns\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Resource extends Model
+class Resource extends Model implements PublishableContract, Translatable
 {
-    use Publishable;
+    use HasTranslations, Publishable;
 
     protected $fillable = [
         'regulatory_status',

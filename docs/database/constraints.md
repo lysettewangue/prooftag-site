@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 053 — Define database constraints |
 | **Parent** | [data-dictionary.md](data-dictionary.md) (052) · [erd.md](erd.md) (051) |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

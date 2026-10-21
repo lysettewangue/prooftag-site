@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 042 — Define expertise entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [solution-entities.md](solution-entities.md) (041) |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

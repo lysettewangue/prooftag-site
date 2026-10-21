@@ -7,6 +7,9 @@ namespace App\Models;
 use App\Enums\ContactRequestStatus;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property ContactRequestStatus $status
+ */
 class ContactRequest extends Model
 {
     protected $fillable = [
@@ -23,7 +26,14 @@ class ContactRequest extends Model
     ];
 
     /**
-     * @return array<string, string>
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'status' => ContactRequestStatus::New->value,
+    ];
+
+    /**
+     * @return array<string, mixed>
      */
     protected function casts(): array
     {
@@ -31,5 +41,15 @@ class ContactRequest extends Model
             'status' => ContactRequestStatus::class,
             'notified_at' => 'datetime',
         ];
+    }
+
+    public function canTransitionTo(ContactRequestStatus $to): bool
+    {
+        return $this->status->canTransitionTo($to);
+    }
+
+    public function dispatchesInboundMail(): bool
+    {
+        return $this->status->dispatchesInboundMail();
     }
 }

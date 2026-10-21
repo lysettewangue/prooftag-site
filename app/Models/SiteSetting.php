@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Domain\Contracts\Translatable;
+use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class SiteSetting extends Model
+class SiteSetting extends Model implements Translatable
 {
+    use HasTranslations;
+
     public $incrementing = false;
 
     protected $fillable = [

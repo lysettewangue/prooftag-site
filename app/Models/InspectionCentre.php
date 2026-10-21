@@ -4,15 +4,29 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Domain\Centres\CentreVisibility;
+use App\Domain\Contracts\Translatable;
 use App\Enums\CentreVerificationStatus;
+use App\Models\Concerns\HasTranslations;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InspectionCentre extends Model
+/**
+ * @property CentreVerificationStatus $verification_status
+ */
+class InspectionCentre extends Model implements Translatable
 {
-    use SoftDeletes;
+    use HasTranslations, SoftDeletes;
+
+    /**
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'verification_status' => CentreVerificationStatus::Unverified->value,
+    ];
 
     protected $fillable = [
         'region_id',
@@ -29,7 +43,7 @@ class InspectionCentre extends Model
     ];
 
     /**
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     protected function casts(): array
     {
@@ -64,5 +78,28 @@ class InspectionCentre extends Model
     public function translations(): HasMany
     {
         return $this->hasMany(InspectionCentreTranslation::class);
+    }
+
+    public function isPubliclyListed(): bool
+    {
+        return CentreVisibility::isPubliclyListed($this->verification_status);
+    }
+
+    public function isPubliclyVisibleIn(string $locale): bool
+    {
+        return $this->isPubliclyListed() && $this->hasLocale($locale);
+    }
+
+    public function canTransitionTo(CentreVerificationStatus $to): bool
+    {
+        return $this->verification_status->canTransitionTo($to);
+    }
+
+    /**
+     * @param  Builder<covariant Model>  $query
+     */
+    public function scopePubliclyListed(Builder $query): void
+    {
+        $query->where('verification_status', CentreVerificationStatus::Active);
     }
 }

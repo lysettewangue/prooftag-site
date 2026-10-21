@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 028 — Define source control rules |
 | **Parent** | [git-repository.md](git-repository.md) |
-| **Next** | 070 — Implement domain models |
+| **Next** | 074 — Implement solution actions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
