@@ -1,6 +1,6 @@
 # Start here
 
-1. [STEP-BY-STEP.md](STEP-BY-STEP.md) — steps 001–250. Steps **001–090 COMPLETED**. Step **091** is unlocked (technical inspection admin). Do not skip public templates (123+) or later Filament modules before 091.  
+1. [STEP-BY-STEP.md](STEP-BY-STEP.md) — steps 001–250. Steps **001–091 COMPLETED**. Step **092** is unlocked (security points admin). Do not skip public templates (123+) or later Filament modules before 092.  
 2. [charter/project-charter.md](charter/project-charter.md) — V1 engineering baseline.  
 3. [engineering-roadmap.md](engineering-roadmap.md) — status rules and gates.
 

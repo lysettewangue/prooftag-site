@@ -10,6 +10,8 @@ trait AuthorizesCmsResource
 {
     public static function canEdit(Model $record): bool
     {
-        return static::can('update', $record) || static::can('translate', $record);
+        return static::can('update', $record)
+            || static::can('translate', $record)
+            || static::can('publish', $record);
     }
 }

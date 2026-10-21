@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 091 — Technical inspection admin — **NOT STARTED**
+**Active step:** 092 — Security points admin — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -118,8 +118,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 088 | Global settings admin | Company, contact, logo, external URLs | COMPLETED |
 | 089 | Solutions admin | Five confirmed solutions | COMPLETED |
 | 090 | Expertise admin | Expertise module | COMPLETED |
-| 091 | Technical inspection admin | Inspection module | NOT STARTED |
-| 092 | Security points admin | Twelve points, reorderable | LOCKED |
+| 091 | Technical inspection admin | Inspection module | COMPLETED |
+| 092 | Security points admin | Twelve points, reorderable | NOT STARTED |
 | 093 | Equipment admin | Current and legacy equipment | LOCKED |
 | 094 | Centre directory admin | Centres module | LOCKED |
 | 095 | Team admin | Team module | LOCKED |

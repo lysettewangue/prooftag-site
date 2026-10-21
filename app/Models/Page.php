@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 
+/**
+ * @property PageCode $code
+ */
 class Page extends Model implements HasMedia, PublishableContract, Translatable
 {
     use HasCmsMedia, HasTranslations, Publishable;
