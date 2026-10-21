@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 036 — Implement the permission foundation |
 | **Parent** | [roles.md](../admin/roles.md) · [local-filament.md](local-filament.md) |
-| **Next** | 041 — Define solution entities |
+| **Next** | 042 — Define expertise entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

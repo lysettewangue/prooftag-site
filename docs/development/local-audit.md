@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 037 — Establish audit logging |
 | **Parent** | [local-permissions.md](local-permissions.md) · [system-architecture.md](../architecture/system-architecture.md) |
-| **Next** | 041 — Define solution entities |
+| **Next** | 042 — Define expertise entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

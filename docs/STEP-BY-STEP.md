@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 041 — Define solution entities — **NOT STARTED**
+**Active step:** 042 — Define expertise entities — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -58,8 +58,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 |-----:|------|-------------|--------|
 | 039 | Begin conceptual database design | Principal entities listed | COMPLETED |
 | 040 | Define corporate entities | Settings, pages, team, partners | COMPLETED |
-| 041 | Define solution entities | Solutions, translations, relationships | NOT STARTED |
-| 042 | Define expertise entities | Expertise and translations | LOCKED |
+| 041 | Define solution entities | Solutions, translations, relationships | COMPLETED |
+| 042 | Define expertise entities | Expertise and translations | NOT STARTED |
 | 043 | Define technical inspection entities | Content, 12 points, equipment | LOCKED |
 | 044 | Define centre directory entities | Regions, centres, verification | LOCKED |
 | 045 | Define editorial entities | Articles, categories, publication states | LOCKED |

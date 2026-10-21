@@ -84,4 +84,4 @@ erDiagram
 
 ## Gate
 
-IA frozen. Architecture is steps 023–025. Principal entities: [principal-entities.md](../database/principal-entities.md) (039). Corporate attributes: [corporate-entities.md](../database/corporate-entities.md) (040). Solution attributes are step **041**.
+IA frozen. Architecture is steps 023–025. Principal entities: [principal-entities.md](../database/principal-entities.md) (039). Corporate: [corporate-entities.md](../database/corporate-entities.md) (040). Solutions: [solution-entities.md](../database/solution-entities.md) (041). Expertise attributes are step **042**.

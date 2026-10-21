@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 040 — Define corporate entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [contact-master-record.md](../charter/contact-master-record.md) (004) · [sitemap-and-content-types.md](../ia/sitemap-and-content-types.md) (021) |
-| **Next** | 041 — Define solution entities |
+| **Next** | 042 — Define expertise entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |
@@ -164,7 +164,7 @@ Cardinalities for the ERD: **051**.
 
 | Item | Step |
 |------|------|
-| Product codes, translations, `external_url` | 041 |
+| Product codes, translations, `external_url` | 041 (done — [solution-entities.md](solution-entities.md)) |
 | Expertise | 042 |
 | Twelve points, equipment | 043 |
 | Media path / MIME / alt | 047 |
