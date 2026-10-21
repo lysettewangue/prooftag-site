@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 038 — Establish quality tooling |
 | **Parent** | [standards.md](standards.md) · [system-architecture.md](../architecture/system-architecture.md) |
-| **Next** | 042 — Define expertise entities |
+| **Next** | 056 — Implement reference table migrations |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

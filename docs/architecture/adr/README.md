@@ -4,7 +4,7 @@ Decision → Reason → Alternatives → Consequences. One file per decision.
 
 | ID | Decision | Status |
 |----|----------|--------|
-| [ADR-001](../adr-001-translation-tables.md) | Relational translation tables | Proposed (confirm at step 050) |
+| [ADR-001](../adr-001-translation-tables.md) | Relational translation tables | Accepted 2026-10-21 (step 050 / 055) |
 | [ADR-002](../adr-002-modular-monolith.md) | Laravel modular monolith | Accepted 2026-10-20 |
 | [ADR-003](../adr-003-blade-not-spa.md) | Blade, not a public SPA | Accepted 2026-10-20 |
 | [ADR-004](../adr-004-mysql-no-redis.md) | MySQL; no Redis or specialist search in V1 | Accepted 2026-10-20 |

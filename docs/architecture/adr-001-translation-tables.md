@@ -1,8 +1,8 @@
 # ADR-001: Translation data model
 
-**Status:** Proposed  
-**Date:** 2026-03-29  
-**Context:** Bilingual FR/EN with independent slugs and SEO per locale.
+**Status:** Accepted  
+**Date:** 2026-10-21 (confirmed at step 050; approved at 055)  
+**Context:** Bilingual FR/EN with independent slugs and SEO per locale (product slugs are the exception: same fragment in both locales).
 
 ## Decision
 
@@ -28,4 +28,4 @@ Use **dedicated translation tables** per translatable entity (e.g. `products` + 
 
 ## Gate
 
-Confirmed at step 050 and approved with the schema at step 055.
+Confirmed at step 050 ([translation-strategy.md](../database/translation-strategy.md)). Approved with the schema at step 055 ([design-review.md](../database/design-review.md)). Media alt text is the documented Spatie `custom_properties` exception.

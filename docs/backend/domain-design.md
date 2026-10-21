@@ -8,14 +8,14 @@ Steps 070–087. Rules live in the domain layer. Actions live in the application
 |--------|-----------|------------------|
 | Corporate | `App\Domain\Corporate` | Settings, pages, team, partners, careers ([corporate-entities.md](../database/corporate-entities.md)) |
 | Products | `App\Domain\Products` | Five seeded solutions, slugs, external links ([solution-entities.md](../database/solution-entities.md)) |
-| Expertise | `App\Domain\Expertise` | Expertise CRUD rules, relations |
-| TechnicalInspection | `App\Domain\TechnicalInspection` | CT pages, 12 points, equipment ordering |
-| Centres | `App\Domain\Centres` | Directory, verification, search |
-| Editorial | `App\Domain\Editorial` | Posts, categories, workflow |
-| Resources | `App\Domain\Resources` | Documents, regulatory status, download |
-| Communication | `App\Domain\Communication` | Contact pipeline |
-| Seo | `App\Domain\Seo` | Meta, canonical, hreflang helpers |
-| Media | `App\Domain\Media` | Upload rules, conversions, delete guards |
+| Expertise | `App\Domain\Expertise` | Five seeded domains ([expertise-entities.md](../database/expertise-entities.md)) |
+| TechnicalInspection | `App\Domain\TechnicalInspection` | 12 points, equipment ([technical-inspection-entities.md](../database/technical-inspection-entities.md)) |
+| Centres | `App\Domain\Centres` | Regions, verification ([centre-entities.md](../database/centre-entities.md)) |
+| Editorial | `App\Domain\Editorial` | Posts, categories, A-09 states ([editorial-entities.md](../database/editorial-entities.md)) |
+| Resources | `App\Domain\Resources` | Files, current/historical/archive ([resource-entities.md](../database/resource-entities.md)) |
+| Communication | `App\Domain\Communication` | Contact pipeline ([contact-entities.md](../database/contact-entities.md)) |
+| Seo | `App\Domain\Seo` | Meta, redirects ([seo-entities.md](../database/seo-entities.md)) |
+| Media | `App\Domain\Media` | Path, MIME, alt ([media-entities.md](../database/media-entities.md)) |
 
 ## PublicationService
 

@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 042 — Define expertise entities — **NOT STARTED**
+**Active step:** 056 — Implement reference table migrations — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -59,21 +59,21 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 039 | Begin conceptual database design | Principal entities listed | COMPLETED |
 | 040 | Define corporate entities | Settings, pages, team, partners | COMPLETED |
 | 041 | Define solution entities | Solutions, translations, relationships | COMPLETED |
-| 042 | Define expertise entities | Expertise and translations | NOT STARTED |
-| 043 | Define technical inspection entities | Content, 12 points, equipment | LOCKED |
-| 044 | Define centre directory entities | Regions, centres, verification | LOCKED |
-| 045 | Define editorial entities | Articles, categories, publication states | LOCKED |
-| 046 | Define resource entities | Resources and current/historical status | LOCKED |
-| 047 | Define media entities | Path, MIME, rights, alt text | LOCKED |
-| 048 | Define contact entities | Requests and processing statuses | LOCKED |
-| 049 | Define SEO and redirect entities | Metadata and redirects | LOCKED |
-| 050 | Define the translation strategy | Parent records plus FR/EN translations | LOCKED |
-| 051 | Produce the entity relationship diagram | ERD with cardinalities | LOCKED |
-| 052 | Produce the data dictionary | Field, type, purpose, validation | LOCKED |
-| 053 | Define database constraints | Keys, uniqueness, nullability | LOCKED |
-| 054 | Define database indexes | Indexes for real queries | LOCKED |
-| 055 | Review and approve the database design | **Gate.** No migrations before approval | LOCKED |
-| 056 | Implement reference table migrations | Regions and controlled statuses | LOCKED |
+| 042 | Define expertise entities | Expertise and translations | COMPLETED |
+| 043 | Define technical inspection entities | Content, 12 points, equipment | COMPLETED |
+| 044 | Define centre directory entities | Regions, centres, verification | COMPLETED |
+| 045 | Define editorial entities | Articles, categories, publication states | COMPLETED |
+| 046 | Define resource entities | Resources and current/historical status | COMPLETED |
+| 047 | Define media entities | Path, MIME, rights, alt text | COMPLETED |
+| 048 | Define contact entities | Requests and processing statuses | COMPLETED |
+| 049 | Define SEO and redirect entities | Metadata and redirects | COMPLETED |
+| 050 | Define the translation strategy | Parent records plus FR/EN translations | COMPLETED |
+| 051 | Produce the entity relationship diagram | ERD with cardinalities | COMPLETED |
+| 052 | Produce the data dictionary | Field, type, purpose, validation | COMPLETED |
+| 053 | Define database constraints | Keys, uniqueness, nullability | COMPLETED |
+| 054 | Define database indexes | Indexes for real queries | COMPLETED |
+| 055 | Review and approve the database design | **Gate.** No migrations before approval | COMPLETED |
+| 056 | Implement reference table migrations | Regions and controlled statuses | NOT STARTED |
 | 057 | Implement system and identity tables | Users, permissions, settings | LOCKED |
 | 058 | Implement corporate tables | Corporate schema | LOCKED |
 | 059 | Implement solution tables | Solution schema | LOCKED |
