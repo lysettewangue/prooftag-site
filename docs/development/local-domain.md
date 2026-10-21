@@ -4,7 +4,7 @@
 |--|--|
 | **Steps** | 070–072 — Domain models, enums, visibility rules |
 | **Parent** | [domain-design.md](../backend/domain-design.md) · [layers.md](../architecture/layers.md) (024) |
-| **Next** | 089 — Solutions admin |
+| **Next** | 090 — Expertise admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

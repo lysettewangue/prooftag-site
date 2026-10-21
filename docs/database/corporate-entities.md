@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 040 — Define corporate entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [contact-master-record.md](../charter/contact-master-record.md) (004) · [sitemap-and-content-types.md](../ia/sitemap-and-content-types.md) (021) |
-| **Next** | 089 — Solutions admin |
+| **Next** | 090 — Expertise admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

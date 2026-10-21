@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 056 — Implement reference table migrations |
 | **Parent** | [design-review.md](../database/design-review.md) (055) · [centre-entities.md](../database/centre-entities.md) (044) · [constraints.md](../database/constraints.md) (053) |
-| **Next** | 089 — Solutions admin |
+| **Next** | 090 — Expertise admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

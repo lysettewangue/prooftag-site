@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 045 — Define editorial entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [functional-spec.md](../requirements/functional-spec.md) P-07 / A-09 |
-| **Next** | 089 — Solutions admin |
+| **Next** | 090 — Expertise admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

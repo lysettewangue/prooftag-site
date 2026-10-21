@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 047 — Define media entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [system-architecture.md](../architecture/system-architecture.md) §5 |
-| **Next** | 089 — Solutions admin |
+| **Next** | 090 — Expertise admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |
