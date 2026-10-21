@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 031 — Configure the local MySQL database |
 | **Parent** | [local-setup.md](local-setup.md) |
-| **Next** | 057 — Implement system and identity tables |
+| **Next** | 070 — Implement domain models |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

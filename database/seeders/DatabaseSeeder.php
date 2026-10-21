@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RegionSeeder::class,
             ControlledStatusSeeder::class,
+            SiteSettingSeeder::class,
+            PageSeeder::class,
+            ProductSeeder::class,
+            ExpertiseSeeder::class,
+            SecurityPointSeeder::class,
         ]);
 
         $email = config('app.filament_admin_email');

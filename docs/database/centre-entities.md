@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 044 — Define centre directory entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [functional-spec.md](../requirements/functional-spec.md) P-05 / A-07 |
-| **Next** | 057 — Implement system and identity tables |
+| **Next** | 070 — Implement domain models |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 033 — Install the Filament foundation |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 057 — Implement system and identity tables |
+| **Next** | 070 — Implement domain models |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

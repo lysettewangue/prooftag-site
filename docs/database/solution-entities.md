@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 041 — Define solution entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [products.md](../charter/products.md) (003) · [product-baselines.md](../content/product-baselines.md) (015) |
-| **Next** | 057 — Implement system and identity tables |
+| **Next** | 070 — Implement domain models |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 050 — Define the translation strategy |
 | **Parent** | [ADR-001](../architecture/adr-001-translation-tables.md) · [principal-entities.md](principal-entities.md) |
-| **Next** | 057 — Implement system and identity tables |
+| **Next** | 070 — Implement domain models |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

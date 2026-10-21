@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 057 — Implement system and identity tables — **NOT STARTED**
+**Active step:** 070 — Implement domain models — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -74,25 +74,25 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 054 | Define database indexes | Indexes for real queries | COMPLETED |
 | 055 | Review and approve the database design | **Gate.** No migrations before approval | COMPLETED |
 | 056 | Implement reference table migrations | Regions and controlled statuses | COMPLETED |
-| 057 | Implement system and identity tables | Users, permissions, settings | NOT STARTED |
-| 058 | Implement corporate tables | Corporate schema | LOCKED |
-| 059 | Implement solution tables | Solution schema | LOCKED |
-| 060 | Implement expertise tables | Expertise schema | LOCKED |
-| 061 | Implement technical inspection tables | Inspection schema | LOCKED |
-| 062 | Implement directory tables | Directory schema | LOCKED |
-| 063 | Implement editorial tables | Editorial schema | LOCKED |
-| 064 | Implement resource tables | Resource schema | LOCKED |
-| 065 | Implement media tables | Media schema | LOCKED |
-| 066 | Implement contact tables | Contact schema | LOCKED |
-| 067 | Implement SEO and redirect tables | SEO schema | LOCKED |
-| 068 | Seed controlled reference data | Verified data only | LOCKED |
-| 069 | Test the database structure | **Gate.** Business logic waits on these tests | LOCKED |
+| 057 | Implement system and identity tables | Users, permissions, settings | COMPLETED |
+| 058 | Implement corporate tables | Corporate schema | COMPLETED |
+| 059 | Implement solution tables | Solution schema | COMPLETED |
+| 060 | Implement expertise tables | Expertise schema | COMPLETED |
+| 061 | Implement technical inspection tables | Inspection schema | COMPLETED |
+| 062 | Implement directory tables | Directory schema | COMPLETED |
+| 063 | Implement editorial tables | Editorial schema | COMPLETED |
+| 064 | Implement resource tables | Resource schema | COMPLETED |
+| 065 | Implement media tables | Media schema | COMPLETED |
+| 066 | Implement contact tables | Contact schema | COMPLETED |
+| 067 | Implement SEO and redirect tables | SEO schema | COMPLETED |
+| 068 | Seed controlled reference data | Verified data only | COMPLETED |
+| 069 | Test the database structure | **Gate.** Business logic waits on these tests | COMPLETED |
 
 ## 070–087 — Backend
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 070 | Implement domain models | Eloquent models | LOCKED |
+| 070 | Implement domain models | Eloquent models | NOT STARTED |
 | 071 | Implement domain enums | Publication, centre, solution, enquiry | LOCKED |
 | 072 | Implement domain rules | Public visibility and status rules | LOCKED |
 | 073 | Define application use cases | Named operations | LOCKED |
