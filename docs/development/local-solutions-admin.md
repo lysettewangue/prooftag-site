@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 089 — Solutions admin |
 | **Parent** | [local-admin.md](local-admin.md) · [solution-entities.md](../database/solution-entities.md) · [products.md](../charter/products.md) |
-| **Next** | 090 — Expertise admin |
+| **Next** | 091 — Technical inspection admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |
