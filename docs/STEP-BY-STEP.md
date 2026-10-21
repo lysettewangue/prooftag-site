@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 088 — Global settings admin — **NOT STARTED**
+**Active step:** 089 — Solutions admin — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -115,8 +115,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 088 | Global settings admin | Company, contact, logo, external URLs | NOT STARTED |
-| 089 | Solutions admin | Five confirmed solutions | LOCKED |
+| 088 | Global settings admin | Company, contact, logo, external URLs | COMPLETED |
+| 089 | Solutions admin | Five confirmed solutions | NOT STARTED |
 | 090 | Expertise admin | Expertise module | LOCKED |
 | 091 | Technical inspection admin | Inspection module | LOCKED |
 | 092 | Security points admin | Twelve points, reorderable | LOCKED |

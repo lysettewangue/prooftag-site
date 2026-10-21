@@ -4,7 +4,7 @@
 |--|--|
 | **Steps** | 057–069 — System tables through the database structure gate |
 | **Parent** | [design-review.md](../database/design-review.md) (055) · [local-reference-data.md](local-reference-data.md) (056) |
-| **Next** | 088 — Global settings admin |
+| **Next** | 089 — Solutions admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

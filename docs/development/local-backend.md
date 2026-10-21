@@ -4,7 +4,7 @@
 |--|--|
 | **Steps** | 074–087 — Actions, policies, queries, media, mail, search, cache, scheduler, SEO |
 | **Parent** | [use-cases.md](../backend/use-cases.md) · [services-catalog.md](../backend/services-catalog.md) · [local-domain.md](local-domain.md) |
-| **Next** | 088 — Global settings admin |
+| **Next** | 089 — Solutions admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

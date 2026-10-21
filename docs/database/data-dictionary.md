@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 052 — Produce the data dictionary |
 | **Parent** | [erd.md](erd.md) (051) · [translation-strategy.md](translation-strategy.md) (050) |
-| **Next** | 088 — Global settings admin |
+| **Next** | 089 — Solutions admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

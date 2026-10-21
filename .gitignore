@@ -65,6 +65,9 @@ Desktop.ini
 /.zed/
 *.code-workspace
 
+# WIP parked outside app/ until the matching STEP-BY-STEP row
+/.wip/
+
 # Local dumps and backups
 *.sql
 *.sqlite
