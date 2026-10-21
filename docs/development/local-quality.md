@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 038 — Establish quality tooling |
 | **Parent** | [standards.md](standards.md) · [system-architecture.md](../architecture/system-architecture.md) |
-| **Next** | 039 — Begin conceptual database design |
+| **Next** | 040 — Define corporate entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
@@ -52,7 +52,7 @@ Do not commit a `file://` dist URL. Do not add `replace` for `phpstan/phpstan`.
 
 | Item | Step |
 |------|------|
-| Conceptual database design | 039 |
+| Conceptual database design | 039 (done — [principal-entities.md](../database/principal-entities.md)) |
 | Remote CI / GitHub Actions | After a private remote exists |
 | Larastan above level 5 | Later quality steps (175+) |
 | Browser tests on critical journeys | Later |

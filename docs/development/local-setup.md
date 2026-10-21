@@ -3,7 +3,7 @@
 | | |
 |--|--|
 | **Step** | 026 — Prepare the local development machine |
-| **Next** | 039 — Begin conceptual database design |
+| **Next** | 040 — Define corporate entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

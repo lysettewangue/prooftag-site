@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 031 — Configure the local MySQL database |
 | **Parent** | [local-setup.md](local-setup.md) |
-| **Next** | 039 — Begin conceptual database design |
+| **Next** | 040 — Define corporate entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
 | **Status** | Connectivity verified |
 
-No content schema is created here. Step 033 added Laravel identity tables (`users`) for Filament login. Content migrations wait for gate **055**. Mail trapping is [local-mail.md](local-mail.md). Filament is [local-filament.md](local-filament.md).
+No content schema is created here. Step 033 added Laravel identity tables (`users`) for Filament login. Principal entities: [principal-entities.md](../database/principal-entities.md) (039). Content migrations wait for gate **055**. Mail trapping is [local-mail.md](local-mail.md). Filament is [local-filament.md](local-filament.md).
 
 ## 1. Instance (do not use 3306)
 

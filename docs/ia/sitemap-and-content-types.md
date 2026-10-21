@@ -84,4 +84,4 @@ erDiagram
 
 ## Gate
 
-IA frozen. Architecture is steps 023–025. Database design starts at 039, not before.
+IA frozen. Architecture is steps 023–025. Principal entities: [principal-entities.md](../database/principal-entities.md) (039). Corporate attributes are step **040**.

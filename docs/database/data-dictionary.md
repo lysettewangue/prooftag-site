@@ -4,7 +4,7 @@ Filled at step 052, before the design review at step 055.
 
 For each table record: column, type, nullability, purpose, validation, relationships.
 
-Parent design: [erd.md](erd.md). Translation pattern: [ADR-001](../architecture/adr-001-translation-tables.md).
+Principal entities: [principal-entities.md](principal-entities.md) (039). Parent design: [erd.md](erd.md) (051). Translation pattern: [ADR-001](../architecture/adr-001-translation-tables.md).
 
 ## Rules already fixed
 
