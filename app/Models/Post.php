@@ -7,16 +7,21 @@ namespace App\Models;
 use App\Domain\Contracts\Publishable as PublishableContract;
 use App\Domain\Contracts\Translatable;
 use App\Enums\PostKind;
+use App\Models\Concerns\HasCmsMedia;
 use App\Models\Concerns\HasTranslations;
 use App\Models\Concerns\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
 
-class Post extends Model implements PublishableContract, Translatable
+/**
+ * @property PostKind $kind
+ */
+class Post extends Model implements HasMedia, PublishableContract, Translatable
 {
-    use HasTranslations, Publishable;
+    use HasCmsMedia, HasTranslations, Publishable;
 
     protected $fillable = [
         'kind',
@@ -27,7 +32,7 @@ class Post extends Model implements PublishableContract, Translatable
     ];
 
     /**
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     protected function casts(): array
     {

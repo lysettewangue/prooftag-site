@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 074 — Implement solution actions — **NOT STARTED**
+**Active step:** 088 — Global settings admin — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -96,26 +96,26 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 071 | Implement domain enums | Publication, centre, solution, enquiry | COMPLETED |
 | 072 | Implement domain rules | Public visibility and status rules | COMPLETED |
 | 073 | Define application use cases | Named operations | COMPLETED |
-| 074 | Implement solution actions | Create and update solution | NOT STARTED |
-| 075 | Implement editorial actions | Draft through archive | LOCKED |
-| 076 | Implement centre actions | Add, verify, unavailable, archive | LOCKED |
-| 077 | Implement resource actions | Resource operations | LOCKED |
-| 078 | Implement contact processing | Enquiry workflow | LOCKED |
-| 079 | Implement authorization policies | Privileged operations checked server-side | LOCKED |
-| 080 | Implement request validation | Validation per use case | LOCKED |
-| 081 | Implement query services | Articles, centres, resources, related content | LOCKED |
-| 082 | Implement the media backend | Validate, derivatives, safe removal | LOCKED |
-| 083 | Implement the email service | Contact and account mail | LOCKED |
-| 084 | Implement search | MySQL search | LOCKED |
-| 085 | Implement cache | Stable content and invalidation | LOCKED |
-| 086 | Implement scheduling | Short tasks only | LOCKED |
-| 087 | Implement SEO services | Metadata, canonical, hreflang, sitemap, redirects | LOCKED |
+| 074 | Implement solution actions | Create and update solution | COMPLETED |
+| 075 | Implement editorial actions | Draft through archive | COMPLETED |
+| 076 | Implement centre actions | Add, verify, unavailable, archive | COMPLETED |
+| 077 | Implement resource actions | Resource operations | COMPLETED |
+| 078 | Implement contact processing | Enquiry workflow | COMPLETED |
+| 079 | Implement authorization policies | Privileged operations checked server-side | COMPLETED |
+| 080 | Implement request validation | Validation per use case | COMPLETED |
+| 081 | Implement query services | Articles, centres, resources, related content | COMPLETED |
+| 082 | Implement the media backend | Validate, derivatives, safe removal | COMPLETED |
+| 083 | Implement the email service | Contact and account mail | COMPLETED |
+| 084 | Implement search | MySQL search | COMPLETED |
+| 085 | Implement cache | Stable content and invalidation | COMPLETED |
+| 086 | Implement scheduling | Short tasks only | COMPLETED |
+| 087 | Implement SEO services | Metadata, canonical, hreflang, sitemap, redirects | COMPLETED |
 
 ## 088–113 — Administration and model freeze
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 088 | Global settings admin | Company, contact, logo, external URLs | LOCKED |
+| 088 | Global settings admin | Company, contact, logo, external URLs | NOT STARTED |
 | 089 | Solutions admin | Five confirmed solutions | LOCKED |
 | 090 | Expertise admin | Expertise module | LOCKED |
 | 091 | Technical inspection admin | Inspection module | LOCKED |

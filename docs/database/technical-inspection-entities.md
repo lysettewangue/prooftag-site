@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 043 — Define technical inspection entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [corporate-entities.md](corporate-entities.md) (040) |
-| **Next** | 074 — Implement solution actions |
+| **Next** | 088 — Global settings admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

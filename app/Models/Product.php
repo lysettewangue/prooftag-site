@@ -8,19 +8,21 @@ use App\Domain\Contracts\Publishable as PublishableContract;
 use App\Domain\Contracts\Translatable;
 use App\Domain\Products\ProductPublishRules;
 use App\Enums\ProductCode;
+use App\Models\Concerns\HasCmsMedia;
 use App\Models\Concerns\HasTranslations;
 use App\Models\Concerns\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
 
 /**
  * @property ProductCode $code
  * @property string|null $external_url
  */
-class Product extends Model implements PublishableContract, Translatable
+class Product extends Model implements HasMedia, PublishableContract, Translatable
 {
-    use HasTranslations, Publishable;
+    use HasCmsMedia, HasTranslations, Publishable;
 
     protected $fillable = [
         'code',

@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 050 — Define the translation strategy |
 | **Parent** | [ADR-001](../architecture/adr-001-translation-tables.md) · [principal-entities.md](principal-entities.md) |
-| **Next** | 074 — Implement solution actions |
+| **Next** | 088 — Global settings admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

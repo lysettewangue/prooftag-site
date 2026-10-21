@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Domain\Contracts\Translatable;
+use App\Models\Concerns\HasCmsMedia;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
 
-class SiteSetting extends Model implements Translatable
+class SiteSetting extends Model implements HasMedia, Translatable
 {
-    use HasTranslations;
+    use HasCmsMedia, HasTranslations;
 
     public $incrementing = false;
 

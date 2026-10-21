@@ -4,7 +4,7 @@
 |--|--|
 | **Steps** | 070–072 — Domain models, enums, visibility rules |
 | **Parent** | [domain-design.md](../backend/domain-design.md) · [layers.md](../architecture/layers.md) (024) |
-| **Next** | 074 — Implement solution actions |
+| **Next** | 088 — Global settings admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |
@@ -54,8 +54,7 @@ php artisan test --filter=VisibilityRulesTest
 | Item | Step |
 |------|------|
 | Named use cases | 073 (done — [use-cases.md](../backend/use-cases.md)) |
-| Product actions | 074 |
-| Policies | 079 |
+| Backend actions through SEO | 074–087 (done — [local-backend.md](local-backend.md)) |
 | Filament | 088+ |
 
 ## 6. Verification (2026-10-21)

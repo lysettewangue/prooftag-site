@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 054 — Define database indexes |
 | **Parent** | [constraints.md](constraints.md) (053) · [functional-spec.md](../requirements/functional-spec.md) |
-| **Next** | 074 — Implement solution actions |
+| **Next** | 088 — Global settings admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

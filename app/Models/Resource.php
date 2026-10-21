@@ -7,15 +7,20 @@ namespace App\Models;
 use App\Domain\Contracts\Publishable as PublishableContract;
 use App\Domain\Contracts\Translatable;
 use App\Enums\ResourceRegulatoryStatus;
+use App\Models\Concerns\HasCmsMedia;
 use App\Models\Concerns\HasTranslations;
 use App\Models\Concerns\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
 
-class Resource extends Model implements PublishableContract, Translatable
+/**
+ * @property ResourceRegulatoryStatus $regulatory_status
+ */
+class Resource extends Model implements HasMedia, PublishableContract, Translatable
 {
-    use HasTranslations, Publishable;
+    use HasCmsMedia, HasTranslations, Publishable;
 
     protected $fillable = [
         'regulatory_status',
@@ -28,7 +33,7 @@ class Resource extends Model implements PublishableContract, Translatable
     ];
 
     /**
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     protected function casts(): array
     {
@@ -53,5 +58,11 @@ class Resource extends Model implements PublishableContract, Translatable
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'resource_product');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('images');
+        $this->addMediaCollection('documents')->useDisk('documents')->singleFile();
     }
 }

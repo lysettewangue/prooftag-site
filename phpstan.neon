@@ -6,3 +6,5 @@ parameters:
     paths:
         - app/
     level: 5
+    typeAliases:
+        CmsResourceModel: App\Models\Resource

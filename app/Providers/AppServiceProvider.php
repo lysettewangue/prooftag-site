@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Events\CentreVerified;
+use App\Events\ContactReceived;
+use App\Events\ContentPublished;
+use App\Listeners\LogContentLifecycle;
 use App\Listeners\LogStaffAuthentication;
 use App\Listeners\LogStaffAuthorization;
+use App\Listeners\SendContactReceivedMail;
 use App\Models\Role;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
@@ -42,5 +47,8 @@ class AppServiceProvider extends ServiceProvider
         Event::listen(RoleDetachedEvent::class, [LogStaffAuthorization::class, 'roleDetached']);
         Event::listen(PermissionAttachedEvent::class, [LogStaffAuthorization::class, 'permissionAttached']);
         Event::listen(PermissionDetachedEvent::class, [LogStaffAuthorization::class, 'permissionDetached']);
+        Event::listen(ContentPublished::class, [LogContentLifecycle::class, 'published']);
+        Event::listen(CentreVerified::class, [LogContentLifecycle::class, 'centreVerified']);
+        Event::listen(ContactReceived::class, SendContactReceivedMail::class);
     }
 }

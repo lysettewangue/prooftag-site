@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 073 — Define application use cases |
 | **Parent** | [domain-design.md](domain-design.md) · [services-catalog.md](services-catalog.md) |
-| **Next** | 074 — Implement solution actions |
+| **Next** | 088 — Global settings admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

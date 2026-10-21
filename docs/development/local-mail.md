@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 032 — Configure local email testing |
 | **Parent** | [laravel-app.md](laravel-app.md) |
-| **Next** | 074 — Implement solution actions |
+| **Next** | 088 — Global settings admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |
