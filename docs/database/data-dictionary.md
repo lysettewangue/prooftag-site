@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 052 — Produce the data dictionary |
 | **Parent** | [erd.md](erd.md) (051) · [translation-strategy.md](translation-strategy.md) (050) |
-| **Next** | 056 — Implement reference table migrations |
+| **Next** | 057 — Implement system and identity tables |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

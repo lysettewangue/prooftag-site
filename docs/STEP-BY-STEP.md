@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 056 — Implement reference table migrations — **NOT STARTED**
+**Active step:** 057 — Implement system and identity tables — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -73,8 +73,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 053 | Define database constraints | Keys, uniqueness, nullability | COMPLETED |
 | 054 | Define database indexes | Indexes for real queries | COMPLETED |
 | 055 | Review and approve the database design | **Gate.** No migrations before approval | COMPLETED |
-| 056 | Implement reference table migrations | Regions and controlled statuses | NOT STARTED |
-| 057 | Implement system and identity tables | Users, permissions, settings | LOCKED |
+| 056 | Implement reference table migrations | Regions and controlled statuses | COMPLETED |
+| 057 | Implement system and identity tables | Users, permissions, settings | NOT STARTED |
 | 058 | Implement corporate tables | Corporate schema | LOCKED |
 | 059 | Implement solution tables | Solution schema | LOCKED |
 | 060 | Implement expertise tables | Expertise schema | LOCKED |

@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 048 — Define contact entities |
 | **Parent** | [principal-entities.md](principal-entities.md) (039) · [contact-master-record.md](../charter/contact-master-record.md) (004) |
-| **Next** | 056 — Implement reference table migrations |
+| **Next** | 057 — Implement system and identity tables |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |
