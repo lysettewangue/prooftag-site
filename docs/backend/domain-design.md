@@ -6,7 +6,7 @@ Steps 070–087. Rules live in the domain layer. Actions live in the application
 
 | Module | Namespace | Responsibilities |
 |--------|-----------|------------------|
-| Corporate | `App\Domain\Corporate` | Settings, pages, team, partners |
+| Corporate | `App\Domain\Corporate` | Settings, pages, team, partners, careers ([corporate-entities.md](../database/corporate-entities.md)) |
 | Products | `App\Domain\Products` | Catalogue, slugs, external links |
 | Expertise | `App\Domain\Expertise` | Expertise CRUD rules, relations |
 | TechnicalInspection | `App\Domain\TechnicalInspection` | CT pages, 12 points, equipment ordering |

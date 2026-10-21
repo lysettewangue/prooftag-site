@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 038 — Establish quality tooling |
 | **Parent** | [standards.md](standards.md) · [system-architecture.md](../architecture/system-architecture.md) |
-| **Next** | 040 — Define corporate entities |
+| **Next** | 041 — Define solution entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-20 |

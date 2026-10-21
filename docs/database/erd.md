@@ -14,7 +14,8 @@ No migrations until step **055** is COMPLETED.
 | Step | Work | Where |
 |-----:|------|-------|
 | 039 | Principal entities listed | [principal-entities.md](principal-entities.md) |
-| 040–049 | Per-area attributes | Not started |
+| 040 | Corporate attributes | [corporate-entities.md](corporate-entities.md) |
+| 041–049 | Remaining per-area attributes | Not started |
 | 050 | Parent + FR/EN translation tables | ADR-001 |
 | 051 | ERD with cardinalities | This file |
 | 052–054 | Dictionary, constraints, indexes | [data-dictionary.md](data-dictionary.md) |

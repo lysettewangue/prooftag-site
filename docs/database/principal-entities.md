@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 039 — Begin conceptual database design |
 | **Parent** | [sitemap-and-content-types.md](../ia/sitemap-and-content-types.md) (021–022) · [layers.md](../architecture/layers.md) (024) |
-| **Next** | 040 — Define corporate entities |
+| **Next** | 041 — Define solution entities |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |
@@ -83,7 +83,7 @@ Already frozen at 022. Cardinalities and join tables are step **051**.
 
 | Item | Step |
 |------|------|
-| Corporate fields (settings, pages, team, partners, careers) | 040 |
+| Corporate fields (settings, pages, team, partners, careers) | 040 (done — [corporate-entities.md](corporate-entities.md)) |
 | Product / expertise / CT / centre / editorial / resource / media / contact / SEO fields | 041–049 |
 | Translation table strategy | 050 |
 | ERD with cardinalities | 051 |
