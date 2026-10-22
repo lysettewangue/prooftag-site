@@ -13,6 +13,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 
+/**
+ * @property string $name
+ * @property int $sort_order
+ * @property string|null $url
+ */
 class Partner extends Model implements HasMedia, PublishableContract, Translatable
 {
     use HasCmsMedia, HasTranslations, Publishable;

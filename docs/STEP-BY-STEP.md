@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 096 — Partners admin — **NOT STARTED**
+**Active step:** 097 — News and articles admin — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -123,8 +123,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 093 | Equipment admin | Current and legacy equipment | COMPLETED |
 | 094 | Centre directory admin | Centres module | COMPLETED |
 | 095 | Team admin | Team module | COMPLETED |
-| 096 | Partners admin | Partners module | NOT STARTED |
-| 097 | News and articles admin | Full editorial workflow | LOCKED |
+| 096 | Partners admin | Partners module | COMPLETED |
+| 097 | News and articles admin | Full editorial workflow | NOT STARTED |
 | 098 | Resource library admin | Documents module | LOCKED |
 | 099 | Careers admin | Careers module | LOCKED |
 | 100 | Media library admin | Media module | LOCKED |
