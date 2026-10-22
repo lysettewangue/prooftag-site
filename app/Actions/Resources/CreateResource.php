@@ -20,10 +20,13 @@ final class CreateResource
     {
         Gate::forUser($actor)->authorize('create', Resource::class);
 
+        $authority = trim((string) ($data['authority'] ?? ''));
+        $issuedOn = $data['issued_on'] ?? null;
+
         $resource = Resource::query()->create([
             'regulatory_status' => ResourceRegulatoryStatus::from((string) $data['regulatory_status']),
-            'authority' => $data['authority'] ?? null,
-            'issued_on' => $data['issued_on'] ?? null,
+            'authority' => $authority === '' ? null : $authority,
+            'issued_on' => filled($issuedOn) ? $issuedOn : null,
             'relates_to_ct' => (bool) ($data['relates_to_ct'] ?? false),
             'publication_status' => PublicationStatus::Draft,
         ]);

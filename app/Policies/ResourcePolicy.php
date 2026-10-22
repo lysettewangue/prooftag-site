@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Policies;
 
 use App\Enums\StaffPermission;
+use App\Enums\StaffRole;
 use App\Models\Resource;
 use App\Models\User;
 use App\Support\StaffAccess;
@@ -13,12 +14,14 @@ final class ResourcePolicy
 {
     public function viewAny(User $user): bool
     {
-        return StaffAccess::isStaff($user);
+        return StaffAccess::canUpdateTechnical($user)
+            || StaffAccess::can($user, StaffPermission::Translate)
+            || $user->hasRole(StaffRole::ReviewerPublisher->value);
     }
 
     public function view(User $user, Resource $resource): bool
     {
-        return StaffAccess::isStaff($user);
+        return $this->viewAny($user);
     }
 
     public function create(User $user): bool
@@ -31,6 +34,16 @@ final class ResourcePolicy
         return StaffAccess::canUpdateTechnical($user);
     }
 
+    public function delete(User $user, Resource $resource): bool
+    {
+        return false;
+    }
+
+    public function forceDelete(User $user, Resource $resource): bool
+    {
+        return false;
+    }
+
     public function translate(User $user, Resource $resource): bool
     {
         return StaffAccess::can($user, StaffPermission::Translate);
@@ -38,6 +51,7 @@ final class ResourcePolicy
 
     public function publish(User $user, Resource $resource): bool
     {
-        return StaffAccess::can($user, StaffPermission::Publish);
+        return StaffAccess::isAdmin($user)
+            || $user->hasRole(StaffRole::ReviewerPublisher->value);
     }
 }

@@ -8,6 +8,7 @@ use App\Domain\Exceptions\DomainRuleViolation;
 use App\Enums\PublicationStatus;
 use App\Events\ContentPublished;
 use App\Models\Product;
+use App\Models\Resource;
 use App\Models\User;
 use App\Support\ContentCache;
 use DateTimeInterface;
@@ -34,6 +35,10 @@ final class TransitionPublication
 
         if ($to === PublicationStatus::Published && $model instanceof Product && ! $model->mayEnterPublished()) {
             throw new DomainRuleViolation('CT-VERIF and DOSER require an external URL before publish.');
+        }
+
+        if ($to === PublicationStatus::Published && $model instanceof Resource && ! $model->mayEnterPublished()) {
+            throw new DomainRuleViolation('A document file is required before publish.');
         }
 
         $now = now();

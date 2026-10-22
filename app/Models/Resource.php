@@ -17,6 +17,8 @@ use Spatie\MediaLibrary\HasMedia;
 
 /**
  * @property ResourceRegulatoryStatus $regulatory_status
+ * @property string|null $authority
+ * @property bool $relates_to_ct
  */
 class Resource extends Model implements HasMedia, PublishableContract, Translatable
 {
@@ -64,5 +66,10 @@ class Resource extends Model implements HasMedia, PublishableContract, Translata
     {
         $this->addMediaCollection('images');
         $this->addMediaCollection('documents')->useDisk('documents')->singleFile();
+    }
+
+    public function mayEnterPublished(): bool
+    {
+        return $this->getFirstMedia('documents') !== null;
     }
 }

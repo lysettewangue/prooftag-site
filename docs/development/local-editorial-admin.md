@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 097 — News and articles admin |
 | **Parent** | [local-partners-admin.md](local-partners-admin.md) · [editorial-entities.md](../database/editorial-entities.md) |
-| **Next** | 098 — Resource library admin |
+| **Next** | 099 — Careers admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |

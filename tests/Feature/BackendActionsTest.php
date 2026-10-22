@@ -221,6 +221,14 @@ class BackendActionsTest extends TestCase
             'title' => 'Guide CT',
             'summary' => 'Document CERTIDOCS',
         ]);
+        Storage::fake('documents');
+        (new AttachMedia)->handle(
+            $resource,
+            $admin,
+            UploadedFile::fake()->create('guide.pdf', 120, 'application/pdf'),
+            'documents',
+            ['rights' => 'PROOFTAG-CATIS'],
+        );
         (new SubmitResourceForReview)->handle($resource, $admin);
         (new ApproveResource)->handle($resource, $admin);
         (new PublishResource)->handle($resource->fresh(), $admin);
