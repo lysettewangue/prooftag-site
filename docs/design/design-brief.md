@@ -33,7 +33,7 @@ WCAG 2.2 AA: contrast on blue backgrounds, focus rings, 44px touch targets, form
 
 ## Tokens
 
-Extract the hex from the official logo at step 115.
+Hex values: [brand-tokens.md](brand-tokens.md) (step **115**). Royal Blue is `#0E6697`. Tailwind mapping waits for 123.
 
 ## Gate
 

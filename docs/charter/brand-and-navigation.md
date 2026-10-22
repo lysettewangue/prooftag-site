@@ -10,7 +10,7 @@
 | **Date** | 2026-10-20 |
 | **Status** | Frozen |
 
-This is the step 005 deliverable. It constrains identity on the public site and in the CMS. Exact colour tokens are extracted at step 115. Typefaces are chosen at step 120. The sitemap is step 006.
+This is the step 005 deliverable. It constrains identity on the public site and in the CMS. Exact colour tokens are in [brand-tokens.md](../design/brand-tokens.md) (step 115). Typefaces are chosen at step 120. The sitemap is step 006.
 
 ## 1. Palette
 

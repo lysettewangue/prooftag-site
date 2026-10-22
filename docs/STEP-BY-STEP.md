@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 115 — Extract official brand tokens — **NOT STARTED**
+**Active step:** 116 — Create low-fidelity wireframes — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -147,8 +147,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
 | 114 | Prepare the UI/UX brief | Audiences, templates, accessibility | COMPLETED |
-| 115 | Extract official brand tokens | Royal Blue and supporting shades | NOT STARTED |
-| 116 | Create low-fidelity wireframes | Key templates | LOCKED |
+| 115 | Extract official brand tokens | Royal Blue and supporting shades | COMPLETED |
+| 116 | Create low-fidelity wireframes | Key templates | NOT STARTED |
 | 117 | Review information hierarchy | Hierarchy supports real content | LOCKED |
 | 118 | Create high-fidelity designs | Visual designs | LOCKED |
 | 119 | Create responsive designs | Desktop, tablet, mobile | LOCKED |

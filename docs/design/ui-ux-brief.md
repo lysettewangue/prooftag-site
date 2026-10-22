@@ -89,7 +89,7 @@ Public icons will be Lucide (128). Wireframes use generic placeholders, not Hero
 
 ## 5. Accessibility (WCAG 2.2 AA)
 
-Design and later code target **WCAG 2.2 AA**. Contrast on Royal Blue is measured after hex extraction (115) and reviewed at 121.
+Design and later code target **WCAG 2.2 AA**. Contrast on Royal Blue `#0E6697` is in [brand-tokens.md](brand-tokens.md) (115) and reviewed on composed screens at 121.
 
 | Requirement | Design implication |
 |-------------|--------------------|
