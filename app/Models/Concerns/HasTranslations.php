@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Concerns;
 
+use App\Enums\Locale;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,6 +28,22 @@ trait HasTranslations
     public function hasLocale(string $locale): bool
     {
         return $this->translationFor($locale) !== null;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function missingLocales(): array
+    {
+        $missing = [];
+
+        foreach (Locale::codes() as $locale) {
+            if (! $this->hasLocale($locale)) {
+                $missing[] = $locale;
+            }
+        }
+
+        return $missing;
     }
 
     /**

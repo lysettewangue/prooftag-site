@@ -9,4 +9,9 @@ interface Translatable
     public function hasLocale(string $locale): bool;
 
     public function translationFor(string $locale): mixed;
+
+    /**
+     * @return list<string>
+     */
+    public function missingLocales(): array;
 }
