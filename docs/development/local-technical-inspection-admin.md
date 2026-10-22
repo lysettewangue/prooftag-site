@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 091 — Technical inspection admin |
 | **Parent** | [local-expertise-admin.md](local-expertise-admin.md) · [technical-inspection-entities.md](../database/technical-inspection-entities.md) · [corporate-entities.md](../database/corporate-entities.md) |
-| **Next** | 095 — Team admin |
+| **Next** | 096 — Partners admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

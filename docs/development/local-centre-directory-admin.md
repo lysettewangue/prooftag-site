@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 094 — Centre directory admin |
 | **Parent** | [local-equipment-admin.md](local-equipment-admin.md) · [centre-entities.md](../database/centre-entities.md) |
-| **Next** | 095 — Team admin |
+| **Next** | 096 — Partners admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |
