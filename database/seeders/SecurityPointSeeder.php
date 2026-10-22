@@ -24,7 +24,9 @@ class SecurityPointSeeder extends Seeder
                     ['locale' => $locale],
                     [
                         'title' => $point->titles()[$locale],
-                        'body' => '',
+                        'body' => $locale === 'fr'
+                            ? 'Composant du workflow CT (AUD-006). Réécriture requise (AUD-001). Ne pas publier comme description 2020 à jour.'
+                            : 'CT workflow component (AUD-006). Rewrite required (AUD-001). Do not publish as current 2020 copy.',
                     ],
                 );
             }

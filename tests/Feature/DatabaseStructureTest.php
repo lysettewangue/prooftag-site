@@ -9,12 +9,14 @@ use App\Enums\PageCode;
 use App\Enums\ProductCode;
 use App\Enums\PublicationStatus;
 use App\Enums\RegionCode;
+use App\Models\Equipment;
 use App\Models\Expertise;
 use App\Models\InspectionCentre;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Product;
 use App\Models\Region;
+use App\Models\Resource;
 use App\Models\SecurityPoint;
 use App\Models\SiteSetting;
 use App\Models\TeamMember;
@@ -53,6 +55,8 @@ class DatabaseStructureTest extends TestCase
 
         $this->assertSame(0, TeamMember::query()->count());
         $this->assertSame(0, Partner::query()->count());
+        $this->assertSame(4, Equipment::query()->count());
+        $this->assertSame(1, Resource::query()->count());
         $this->assertSame(0, InspectionCentre::query()->count());
 
         $this->assertTrue(Page::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());

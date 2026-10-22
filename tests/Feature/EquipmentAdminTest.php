@@ -9,6 +9,7 @@ use App\Actions\Inspection\TranslateEquipment;
 use App\Actions\Inspection\UpdateEquipment;
 use App\Domain\Exceptions\DomainRuleViolation;
 use App\Enums\EquipmentLifecycle;
+use App\Enums\PublicationStatus;
 use App\Enums\StaffRole;
 use App\Filament\Resources\Equipment\EquipmentResource;
 use App\Models\Equipment;
@@ -31,7 +32,7 @@ class EquipmentAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_empty_equipment_list_is_valid(): void
+    public function test_representative_equipment_drafts_are_seeded(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -39,7 +40,10 @@ class EquipmentAdminTest extends TestCase
             ->get(EquipmentResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(0, Equipment::query()->count());
+        $this->assertSame(4, Equipment::query()->count());
+        $this->assertSame(3, Equipment::query()->where('lifecycle', EquipmentLifecycle::Current)->count());
+        $this->assertSame(1, Equipment::query()->where('lifecycle', EquipmentLifecycle::Legacy)->count());
+        $this->assertTrue(Equipment::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
         $this->assertTrue(EquipmentResource::canCreate());
         $this->assertFalse(EquipmentResource::canDeleteAny());
     }

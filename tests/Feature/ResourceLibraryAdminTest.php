@@ -39,7 +39,7 @@ class ResourceLibraryAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_empty_resource_list_is_valid(): void
+    public function test_representative_historical_resource_is_seeded_without_pdf(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -47,7 +47,11 @@ class ResourceLibraryAdminTest extends TestCase
             ->get(LibraryDocumentResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(0, Resource::query()->count());
+        $this->assertSame(1, Resource::query()->count());
+        $resource = Resource::query()->firstOrFail();
+        $this->assertSame(ResourceRegulatoryStatus::Historical, $resource->regulatory_status);
+        $this->assertSame(PublicationStatus::Draft, $resource->publication_status);
+        $this->assertFalse($resource->mayEnterPublished());
         $this->assertTrue(LibraryDocumentResource::canCreate());
         $this->assertFalse(LibraryDocumentResource::canDeleteAny());
     }

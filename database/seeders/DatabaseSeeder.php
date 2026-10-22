@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ExpertiseSeeder::class,
             SecurityPointSeeder::class,
+            EquipmentSeeder::class,
+            LibraryDocumentSeeder::class,
         ]);
 
         $email = config('app.filament_admin_email');
