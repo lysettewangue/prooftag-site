@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 112 — Review the model against real data — **NOT STARTED**
+**Active step:** 113 — Freeze the V1 data model — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -139,8 +139,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 109 | Enter representative centres | Small verified subset | COMPLETED |
 | 110 | Create sample news and articles | Realistic records | COMPLETED |
 | 111 | Test French and English management | Slugs, publication, missing translations | COMPLETED |
-| 112 | Review the model against real data | Gaps recorded | NOT STARTED |
-| 113 | Freeze the V1 data model | **Gate.** Further schema change is exceptional | LOCKED |
+| 112 | Review the model against real data | Gaps recorded | COMPLETED |
+| 113 | Freeze the V1 data model | **Gate.** Further schema change is exceptional | NOT STARTED |
 
 ## 114–150 — Design and public site
 
