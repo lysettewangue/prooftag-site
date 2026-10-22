@@ -70,7 +70,7 @@ Actions for steps 073–081. Each action is one class. Authorization is a policy
 | `attach(HasMedia $model, UploadedFile $file, string $collection)` | Validates |
 | `safeDelete(Media $media): void` | Blocks if in use |
 
-## Policy matrix (draft)
+## Policy matrix (confirmed at 106)
 
 | Permission | Super Admin | Admin | Content Mgr | Tech Editor | Comms | Translator | Reviewer | Support |
 |------------|-------------|-------|-------------|-------------|-------|------------|----------|---------|
@@ -80,4 +80,4 @@ Actions for steps 073–081. Each action is one class. Authorization is a policy
 | manage_redirects | ✓ | ✓ | | | | | | |
 | contact_inbox | ✓ | ✓ | | | ✓ | | | ✓ |
 
-Enforced in Filament from step 088. Confirmed for every role at step 106.
+Module GET 200/403 matrix: [local-admin-permissions-gate.md](../development/local-admin-permissions-gate.md). Super Admin `Gate::before` still cannot create extra frozen catalogue rows or hard-delete no-delete entities.

@@ -39,9 +39,9 @@ Codes are Shield / Spatie names (snake_case). Display names are English (canonic
 | 7 | `reviewer_publisher` | Reviewer/Publisher | Relecteur / Publieur | Four-eyes: approve and **publish**. Distinct from the drafter. |
 | 8 | `support_agent` | Support Agent | Agent support | Contact inbox and centre operational follow-up. No marketing publish. |
 
-## 3. Intended abilities (not yet enforced)
+## 3. Abilities (confirmed at 106)
 
-Draft matrix in [services-catalog.md](../backend/services-catalog.md). Confirmed per role at step **106**. Summary for this register:
+Module GET 200/403: [local-admin-permissions-gate.md](../development/local-admin-permissions-gate.md). Verb matrix in [services-catalog.md](../backend/services-catalog.md). Summary for this register:
 
 | Role | update (own domain) | translate | publish | verify_centre | manage_redirects | contact_inbox | manage_users |
 |------|---------------------|-----------|---------|---------------|------------------|---------------|--------------|
@@ -73,7 +73,7 @@ Last remaining `super_admin` cannot be deleted or demoted.
 | Permission seeder and panel gates | 036 (done) |
 | Activity log | 037 (done — [local-audit.md](../development/local-audit.md)) |
 | Filament module CRUD | 088+ |
-| Per-role smoke test | 106 |
+| Per-role smoke test | 106 (done — [local-admin-permissions-gate.md](../development/local-admin-permissions-gate.md)) |
 
 ## 6. Acceptance
 
