@@ -37,7 +37,7 @@ class EditorialAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_empty_editorial_lists_are_valid(): void
+    public function test_representative_editorial_drafts_are_seeded(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -49,8 +49,10 @@ class EditorialAdminTest extends TestCase
             ->get(CategoryResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(0, Post::query()->count());
-        $this->assertSame(0, Category::query()->count());
+        $this->assertSame(2, Post::query()->count());
+        $this->assertSame(2, Category::query()->count());
+        $this->assertTrue(Post::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
+        $this->assertTrue(Category::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
         $this->assertTrue(PostResource::canCreate());
         $this->assertTrue(CategoryResource::canCreate());
         $this->assertFalse(PostResource::canDeleteAny());

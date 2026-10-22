@@ -4,13 +4,13 @@
 |--|--|
 | **Step** | 097 — News and articles admin |
 | **Parent** | [local-partners-admin.md](local-partners-admin.md) · [editorial-entities.md](../database/editorial-entities.md) |
-| **Next** | 105 — Controlled content blocks |
+| **Next** | 111 — Test French and English management |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |
 | **Status** | Posts and categories editable as drafts; A-09 on both |
 
-Filament modules under **Éditorial**: publications at `/admin/posts`, categories at `/admin/categories`. Staff **may create** a row. Staff **must not** hard-delete one: archive via A-09. Empty lists are valid; there is no editorial seeder. Drafts are never public. Independent FR/EN slugs are allowed. Custom content blocks wait for **105** — body is a single rich-text payload.
+Filament modules under **Éditorial**: publications at `/admin/posts`, categories at `/admin/categories`. Staff **may create** a row. Staff **must not** hard-delete one: archive via A-09. Drafts are never public. Independent FR/EN slugs are allowed. Body is a single rich-text payload. Sample rows: [local-sample-news.md](local-sample-news.md).
 
 The resources are thin: `CreatePost` / `UpdatePost` / `TranslatePost` / `AttachMedia` (optional hero) / `TransitionPublication`; `CreateCategory` / `UpdateCategory` / `TranslateCategory` / `TransitionPublication`. Career is not a Post.
 
@@ -51,7 +51,7 @@ php artisan test
 |------|------|
 | Resource library admin | 098 |
 | Careers | 099 |
-| Sample news records | 110 |
+| Sample news records | 110 (done — [local-sample-news.md](local-sample-news.md)) |
 | Approved content blocks | 105 |
 | Public listing / article page | 141–142 |
 

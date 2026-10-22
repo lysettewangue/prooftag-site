@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 109 — Enter representative centres |
 | **Parent** | [verification-register.md](../content/verification-register.md) · [extracts.md](../legacy/archive/2026-10-20/extracts.md) |
-| **Next** | 110 — Create sample news and articles |
+| **Next** | 111 — Test French and English management |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |
@@ -34,7 +34,7 @@ php artisan test --filter=DatabaseStructureTest
 | Item | Step |
 |------|------|
 | Close VER-03 / import the full list | Later editorial work |
-| Sample news | 110 |
+| Sample news | 110 (done — [local-sample-news.md](local-sample-news.md)) |
 
 ## 3. Acceptance
 

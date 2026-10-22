@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 110 — Create sample news and articles — **NOT STARTED**
+**Active step:** 111 — Test French and English management — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -137,8 +137,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 107 | Enter representative products | Five solutions in the CMS | COMPLETED |
 | 108 | Enter representative technical content | Points, equipment, document security | COMPLETED |
 | 109 | Enter representative centres | Small verified subset | COMPLETED |
-| 110 | Create sample news and articles | Realistic records | NOT STARTED |
-| 111 | Test French and English management | Slugs, publication, missing translations | LOCKED |
+| 110 | Create sample news and articles | Realistic records | COMPLETED |
+| 111 | Test French and English management | Slugs, publication, missing translations | NOT STARTED |
 | 112 | Review the model against real data | Gaps recorded | LOCKED |
 | 113 | Freeze the V1 data model | **Gate.** Further schema change is exceptional | LOCKED |
 
