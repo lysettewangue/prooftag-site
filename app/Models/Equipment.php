@@ -14,6 +14,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 
+/**
+ * @property EquipmentLifecycle $lifecycle
+ * @property int $sort_order
+ */
 class Equipment extends Model implements HasMedia, PublishableContract, Translatable
 {
     use HasCmsMedia, HasTranslations, Publishable;

@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 093 — Equipment admin — **NOT STARTED**
+**Active step:** 094 — Centre directory admin — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -120,8 +120,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 090 | Expertise admin | Expertise module | COMPLETED |
 | 091 | Technical inspection admin | Inspection module | COMPLETED |
 | 092 | Security points admin | Twelve points, reorderable | COMPLETED |
-| 093 | Equipment admin | Current and legacy equipment | NOT STARTED |
-| 094 | Centre directory admin | Centres module | LOCKED |
+| 093 | Equipment admin | Current and legacy equipment | COMPLETED |
+| 094 | Centre directory admin | Centres module | NOT STARTED |
 | 095 | Team admin | Team module | LOCKED |
 | 096 | Partners admin | Partners module | LOCKED |
 | 097 | News and articles admin | Full editorial workflow | LOCKED |
