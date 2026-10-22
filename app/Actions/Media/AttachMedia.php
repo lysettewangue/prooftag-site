@@ -7,12 +7,12 @@ namespace App\Actions\Media;
 use App\Domain\Exceptions\DomainRuleViolation;
 use App\Domain\Media\MediaRules;
 use App\Enums\Locale;
+use App\Models\Media;
 use App\Models\User;
 use App\Support\StaffAccess;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 final class AttachMedia
 {
@@ -50,9 +50,15 @@ final class AttachMedia
             'rights' => (string) ($properties['rights'] ?? ''),
         ];
 
-        return $owner
+        $media = $owner
             ->addMedia($file)
             ->withCustomProperties($custom)
             ->toMediaCollection($collection);
+
+        if (! $media instanceof Media) {
+            throw new DomainRuleViolation('Attached media must use the CMS media model.');
+        }
+
+        return $media;
     }
 }

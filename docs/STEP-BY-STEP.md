@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 100 — Media library admin — **NOT STARTED**
+**Active step:** 101 — Contact request admin — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -127,8 +127,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 097 | News and articles admin | Full editorial workflow | COMPLETED |
 | 098 | Resource library admin | Documents module | COMPLETED |
 | 099 | Careers admin | Careers module | COMPLETED |
-| 100 | Media library admin | Media module | NOT STARTED |
-| 101 | Contact request admin | Enquiry module | LOCKED |
+| 100 | Media library admin | Media module | COMPLETED |
+| 101 | Contact request admin | Enquiry module | NOT STARTED |
 | 102 | SEO and redirect admin | SEO module | LOCKED |
 | 103 | Admin user management | Users and roles | LOCKED |
 | 104 | Admin audit interface | Audit view | LOCKED |

@@ -11,6 +11,7 @@ use App\Listeners\LogContentLifecycle;
 use App\Listeners\LogStaffAuthentication;
 use App\Listeners\LogStaffAuthorization;
 use App\Listeners\SendContactReceivedMail;
+use App\Models\Media;
 use App\Models\Role;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
@@ -38,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        config(['media-library.media_model' => Media::class]);
+
         app(PermissionRegistrar::class)->setRoleClass(Role::class);
 
         Event::listen(Login::class, [LogStaffAuthentication::class, 'handleLogin']);

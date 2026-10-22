@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 099 — Careers admin |
 | **Parent** | [local-resource-library-admin.md](local-resource-library-admin.md) · [corporate-entities.md](../database/corporate-entities.md) |
-| **Next** | 100 — Media library admin |
+| **Next** | 101 — Contact request admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |

@@ -7,14 +7,17 @@ namespace App\Actions\Media;
 use App\Domain\Contracts\Publishable;
 use App\Domain\Exceptions\DomainRuleViolation;
 use App\Models\InspectionCentre;
+use App\Models\Media;
 use App\Models\User;
 use App\Support\StaffAccess;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Support\Facades\Gate;
 
 final class SafeDeleteMedia
 {
     public function handle(Media $media, User $actor): void
     {
+        Gate::forUser($actor)->authorize('delete', $media);
+
         if (! StaffAccess::isStaff($actor)) {
             throw new DomainRuleViolation('Only staff may delete media.');
         }
