@@ -12,6 +12,10 @@ use App\Models\Concerns\Publishable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property CareerKind $kind
+ * @property string|null $application_url
+ */
 class Career extends Model implements PublishableContract, Translatable
 {
     use HasTranslations, Publishable;
