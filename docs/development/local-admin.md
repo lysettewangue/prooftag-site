@@ -52,7 +52,7 @@ php artisan test
 | Partners | 096 |
 | News and articles | 097 |
 | Resource library | 098 |
-| Pages as their own CMS module | with later corporate/content-block steps |
+| Pages as their own CMS module | 105 (done — [local-content-blocks.md](local-content-blocks.md)) |
 | Public Blade footer reading these values | 126 |
 
 ## 5. Verification (2026-10-21)

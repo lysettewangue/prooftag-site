@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Corporate;
 
+use App\Domain\Content\ContentBlocks;
 use App\Domain\Exceptions\DomainRuleViolation;
 use App\Enums\Locale;
 use App\Models\Page;
@@ -40,10 +41,7 @@ final class TranslatePage
         }
 
         $blocks = $data['blocks'] ?? PageOverview::fromForm($data['overview'] ?? null);
-
-        if (! is_array($blocks)) {
-            throw new DomainRuleViolation('Page blocks must be an array.');
-        }
+        $blocks = ContentBlocks::normalize($blocks);
 
         $translation = $page->translations()->updateOrCreate(
             ['locale' => $locale->value],

@@ -12,7 +12,7 @@
 
 Filament module at `/admin/technical-inspection/overview/{id}/edit`, under cluster **Contrôle technique**. Exactly **one** Page row (`technical_inspection`). Staff cannot create or delete it, and cannot open the other ten pages from this module. Not a product. No live CT processing.
 
-The resource is thin: `UpdatePage`, `TranslatePage`, and `TransitionPublication` (submit / approve / publish / schedule / archive). Overview copy is stored as a single `rich_text` block. Approved block types beyond that wait for **105**.
+The resource is thin: `UpdatePage`, `TranslatePage`, and `TransitionPublication` (submit / approve / publish / schedule / archive). Overview copy is stored as a single `rich_text` block. Approved block types: [local-content-blocks.md](local-content-blocks.md).
 
 ## 1. What staff can edit
 

@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 104 — Admin audit interface |
 | **Parent** | [local-staff-users-admin.md](local-staff-users-admin.md) · [local-audit.md](local-audit.md) |
-| **Next** | 105 — Controlled content blocks |
+| **Next** | 106 — Test admin permissions |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |
