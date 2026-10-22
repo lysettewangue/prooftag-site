@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Actions\Centres;
 
+use App\Domain\Exceptions\DomainRuleViolation;
 use App\Enums\CentreVerificationStatus;
 use App\Enums\Locale;
 use App\Models\InspectionCentre;
+use App\Models\Region;
 use App\Models\User;
 use App\Support\ContentCache;
 use Illuminate\Support\Facades\Gate;
@@ -20,32 +22,54 @@ final class ImportCentre
     {
         Gate::forUser($actor)->authorize('create', InspectionCentre::class);
 
+        $regionId = (int) ($data['region_id'] ?? 0);
+        $operator = trim((string) ($data['operator_name'] ?? ''));
+        $city = trim((string) ($data['city'] ?? ''));
+
+        if ($regionId < 1 || Region::query()->whereKey($regionId)->doesntExist()) {
+            throw new DomainRuleViolation('A seeded Cameroon region is required.');
+        }
+
+        if ($operator === '' || $city === '') {
+            throw new DomainRuleViolation('Operator name and city are required.');
+        }
+
         $centre = InspectionCentre::query()->create([
-            'region_id' => (int) $data['region_id'],
-            'operator_name' => (string) $data['operator_name'],
-            'city' => (string) $data['city'],
-            'phone' => $data['phone'] ?? null,
-            'email' => $data['email'] ?? null,
-            'latitude' => $data['latitude'] ?? null,
-            'longitude' => $data['longitude'] ?? null,
+            'region_id' => $regionId,
+            'operator_name' => $operator,
+            'city' => $city,
+            'phone' => $this->nullableString($data['phone'] ?? null),
+            'email' => $this->nullableString($data['email'] ?? null),
+            'latitude' => $this->nullableString($data['latitude'] ?? null),
+            'longitude' => $this->nullableString($data['longitude'] ?? null),
+            'sort_order' => isset($data['sort_order']) ? (int) $data['sort_order'] : null,
             'verification_status' => CentreVerificationStatus::Unverified,
         ]);
 
-        $name = (string) ($data['name'] ?? $data['operator_name']);
-        $slug = (string) ($data['slug'] ?? str()->slug($name));
-
-        foreach (Locale::cases() as $locale) {
-            $centre->translations()->create([
-                'locale' => $locale->value,
-                'slug' => $slug,
-                'name' => $name,
-                'address_line' => $data['address_line'] ?? null,
-                'body' => $data['body'] ?? null,
-            ]);
-        }
+        (new TranslateCentre)->handle($centre, $actor, [
+            'locale' => Locale::French->value,
+            'name' => (string) ($data['name'] ?? $operator),
+            'slug' => (string) ($data['slug'] ?? ''),
+            'address_line' => $data['address_line'] ?? null,
+            'body' => $data['body'] ?? null,
+            'meta_title' => $data['meta_title'] ?? null,
+            'meta_description' => $data['meta_description'] ?? null,
+            'canonical_path' => $data['canonical_path'] ?? null,
+        ]);
 
         ContentCache::flush();
 
         return $centre->refresh();
+    }
+
+    private function nullableString(mixed $value): ?string
+    {
+        if (! is_string($value) && ! is_numeric($value)) {
+            return null;
+        }
+
+        $trimmed = trim((string) $value);
+
+        return $trimmed === '' ? null : $trimmed;
     }
 }
