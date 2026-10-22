@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 116 — Create low-fidelity wireframes — **NOT STARTED**
+**Active step:** 117 — Review information hierarchy — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -148,8 +148,8 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 |-----:|------|-------------|--------|
 | 114 | Prepare the UI/UX brief | Audiences, templates, accessibility | COMPLETED |
 | 115 | Extract official brand tokens | Royal Blue and supporting shades | COMPLETED |
-| 116 | Create low-fidelity wireframes | Key templates | NOT STARTED |
-| 117 | Review information hierarchy | Hierarchy supports real content | LOCKED |
+| 116 | Create low-fidelity wireframes | Key templates | COMPLETED |
+| 117 | Review information hierarchy | Hierarchy supports real content | NOT STARTED |
 | 118 | Create high-fidelity designs | Visual designs | LOCKED |
 | 119 | Create responsive designs | Desktop, tablet, mobile | LOCKED |
 | 120 | Define the design system | Type, colour, components, states | LOCKED |

@@ -16,7 +16,7 @@ See [ui-ux-brief.md](ui-ux-brief.md) §1. Primary: government, inspection centre
 
 ## Templates to design (Figma or equivalent)
 
-Key set and empty/unpublished states: [ui-ux-brief.md](ui-ux-brief.md) §3.  
+Key set: [ui-ux-brief.md](ui-ux-brief.md) §3. Desktop lo-fi: [wireframes.md](wireframes.md) (step **116**).  
 
 ## Components
 
