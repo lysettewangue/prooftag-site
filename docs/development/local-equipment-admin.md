@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 093 — Equipment admin |
 | **Parent** | [local-security-points-admin.md](local-security-points-admin.md) · [technical-inspection-entities.md](../database/technical-inspection-entities.md) |
-| **Next** | 097 — News and articles admin |
+| **Next** | 098 — Resource library admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |

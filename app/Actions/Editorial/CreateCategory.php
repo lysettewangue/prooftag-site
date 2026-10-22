@@ -12,11 +12,15 @@ use Illuminate\Support\Facades\Gate;
 
 final class CreateCategory
 {
-    public function handle(User $actor): Category
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    public function handle(User $actor, array $data = []): Category
     {
         Gate::forUser($actor)->authorize('create', Category::class);
 
         $category = Category::query()->create([
+            'sort_order' => (int) ($data['sort_order'] ?? 0),
             'publication_status' => PublicationStatus::Draft,
         ]);
 

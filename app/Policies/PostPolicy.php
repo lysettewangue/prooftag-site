@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Policies;
 
 use App\Enums\StaffPermission;
+use App\Enums\StaffRole;
 use App\Models\Post;
 use App\Models\User;
 use App\Support\StaffAccess;
@@ -13,12 +14,14 @@ final class PostPolicy
 {
     public function viewAny(User $user): bool
     {
-        return StaffAccess::isStaff($user);
+        return StaffAccess::canUpdateCommunications($user)
+            || StaffAccess::can($user, StaffPermission::Translate)
+            || $user->hasRole(StaffRole::ReviewerPublisher->value);
     }
 
     public function view(User $user, Post $post): bool
     {
-        return StaffAccess::isStaff($user);
+        return $this->viewAny($user);
     }
 
     public function create(User $user): bool
@@ -33,7 +36,12 @@ final class PostPolicy
 
     public function delete(User $user, Post $post): bool
     {
-        return StaffAccess::canUpdateCommunications($user);
+        return false;
+    }
+
+    public function forceDelete(User $user, Post $post): bool
+    {
+        return false;
     }
 
     public function translate(User $user, Post $post): bool
@@ -43,6 +51,8 @@ final class PostPolicy
 
     public function publish(User $user, Post $post): bool
     {
-        return StaffAccess::can($user, StaffPermission::Publish);
+        return StaffAccess::isAdmin($user)
+            || $user->hasRole(StaffRole::ReviewerPublisher->value)
+            || StaffAccess::can($user, StaffPermission::Publish);
     }
 }

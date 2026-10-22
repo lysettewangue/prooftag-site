@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 095 — Team admin |
 | **Parent** | [local-centre-directory-admin.md](local-centre-directory-admin.md) · [corporate-entities.md](../database/corporate-entities.md) · [verification-register.md](../content/verification-register.md) |
-| **Next** | 097 — News and articles admin |
+| **Next** | 098 — Resource library admin |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |

@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $sort_order
+ */
 class Category extends Model implements PublishableContract, Translatable
 {
     use HasTranslations, Publishable;
