@@ -30,4 +30,14 @@ final class RedirectPolicy
     {
         return StaffAccess::can($user, StaffPermission::ManageRedirects);
     }
+
+    public function delete(User $user, Redirect $redirect): bool
+    {
+        return false;
+    }
+
+    public function forceDelete(User $user, Redirect $redirect): bool
+    {
+        return false;
+    }
 }
