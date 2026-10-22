@@ -102,6 +102,7 @@ class VisibilityRulesTest extends TestCase
 
     public function test_unverified_centres_are_excluded_from_the_public_directory(): void
     {
+        $listedBefore = InspectionCentre::query()->publiclyListed()->count();
         $region = Region::query()->where('code', RegionCode::Littoral)->firstOrFail();
 
         $unverified = InspectionCentre::query()->create([
@@ -131,6 +132,6 @@ class VisibilityRulesTest extends TestCase
         $this->assertTrue($active->isPubliclyListed());
         $this->assertTrue($active->isPubliclyVisibleIn('fr'));
         $this->assertFalse($active->isPubliclyVisibleIn('en'));
-        $this->assertSame(1, InspectionCentre::query()->publiclyListed()->count());
+        $this->assertSame($listedBefore + 1, InspectionCentre::query()->publiclyListed()->count());
     }
 }

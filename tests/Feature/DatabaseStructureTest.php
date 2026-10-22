@@ -57,7 +57,7 @@ class DatabaseStructureTest extends TestCase
         $this->assertSame(0, Partner::query()->count());
         $this->assertSame(4, Equipment::query()->count());
         $this->assertSame(1, Resource::query()->count());
-        $this->assertSame(0, InspectionCentre::query()->count());
+        $this->assertSame(4, InspectionCentre::query()->count());
 
         $this->assertTrue(Page::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
         $this->assertTrue(Product::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());

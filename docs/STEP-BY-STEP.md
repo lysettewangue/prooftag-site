@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 105 — Controlled content blocks — **NOT STARTED**
+**Active step:** 110 — Create sample news and articles — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -132,12 +132,12 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 102 | SEO and redirect admin | SEO module | COMPLETED |
 | 103 | Admin user management | Users and roles | COMPLETED |
 | 104 | Admin audit interface | Audit view | COMPLETED |
-| 105 | Controlled content blocks | Approved blocks; no brand editing | NOT STARTED |
-| 106 | Test admin permissions | **Gate.** Each role tested | LOCKED |
-| 107 | Enter representative products | Five solutions in the CMS | LOCKED |
-| 108 | Enter representative technical content | Points, equipment, document security | LOCKED |
-| 109 | Enter representative centres | Small verified subset | LOCKED |
-| 110 | Create sample news and articles | Realistic records | LOCKED |
+| 105 | Controlled content blocks | Approved blocks; no brand editing | COMPLETED |
+| 106 | Test admin permissions | **Gate.** Each role tested | COMPLETED |
+| 107 | Enter representative products | Five solutions in the CMS | COMPLETED |
+| 108 | Enter representative technical content | Points, equipment, document security | COMPLETED |
+| 109 | Enter representative centres | Small verified subset | COMPLETED |
+| 110 | Create sample news and articles | Realistic records | NOT STARTED |
 | 111 | Test French and English management | Slugs, publication, missing translations | LOCKED |
 | 112 | Review the model against real data | Gaps recorded | LOCKED |
 | 113 | Freeze the V1 data model | **Gate.** Further schema change is exceptional | LOCKED |

@@ -36,7 +36,7 @@ class CentresAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_empty_centre_list_is_valid_and_regions_stay_ten(): void
+    public function test_representative_centre_subset_is_seeded_and_regions_stay_ten(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -44,7 +44,9 @@ class CentresAdminTest extends TestCase
             ->get(InspectionCentreResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(0, InspectionCentre::query()->count());
+        $this->assertSame(4, InspectionCentre::query()->count());
+        $this->assertSame(3, InspectionCentre::query()->where('verification_status', CentreVerificationStatus::Active)->count());
+        $this->assertSame(1, InspectionCentre::query()->where('verification_status', CentreVerificationStatus::Unverified)->count());
         $this->assertSame(10, Region::query()->count());
         $this->assertTrue(InspectionCentreResource::canCreate());
         $this->assertFalse(InspectionCentreResource::canDeleteAny());
