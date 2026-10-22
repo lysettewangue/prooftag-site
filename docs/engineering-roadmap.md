@@ -44,7 +44,7 @@ Products: CERTIDOCS CT, CERTIDOCS CT Reporting Platform, CT-VERIF, DOSER, Video 
 | 056–069 | Migrations, verified seeds, database tests | [development/local-schema.md](development/local-schema.md) |
 | 070–087 | Models, actions, policies, media, mail, search, cache, scheduler, SEO | [backend/use-cases.md](backend/use-cases.md) |
 | 088–106 | Filament modules and permission test | [admin/content-blocks.md](admin/content-blocks.md) |
-| 107–113 | Representative content, then freeze the V1 data model | |
+| 107–113 | Representative content, then freeze the V1 data model | [database/v1-model-freeze.md](database/v1-model-freeze.md) |
 | 114–122 | Wireframes, then visual design. No frontend code before 122 | [design/design-brief.md](design/design-brief.md) |
 | 123–150 | Public templates on CMS data | |
 | 151–167 | Migration, FR/EN, redirects, DITROS decision | |

@@ -1,6 +1,6 @@
 # Start here
 
-1. [STEP-BY-STEP.md](STEP-BY-STEP.md) — steps 001–250. Steps **001–112 COMPLETED**. Step **113** is unlocked (V1 data-model freeze). Do not skip public templates (123+) or later steps before 113.  
+1. [STEP-BY-STEP.md](STEP-BY-STEP.md) — steps 001–250. Steps **001–113 COMPLETED**. Step **114** is unlocked (UI/UX brief). Do not skip public templates (123+) or later steps before 114.  
 2. [charter/project-charter.md](charter/project-charter.md) — V1 engineering baseline.  
 3. [engineering-roadmap.md](engineering-roadmap.md) — status rules and gates.
 

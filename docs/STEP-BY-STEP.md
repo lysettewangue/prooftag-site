@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 113 — Freeze the V1 data model — **NOT STARTED**
+**Active step:** 114 — Prepare the UI/UX brief — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -140,13 +140,13 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 110 | Create sample news and articles | Realistic records | COMPLETED |
 | 111 | Test French and English management | Slugs, publication, missing translations | COMPLETED |
 | 112 | Review the model against real data | Gaps recorded | COMPLETED |
-| 113 | Freeze the V1 data model | **Gate.** Further schema change is exceptional | NOT STARTED |
+| 113 | Freeze the V1 data model | **Gate.** Further schema change is exceptional | COMPLETED |
 
 ## 114–150 — Design and public site
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 114 | Prepare the UI/UX brief | Audiences, templates, accessibility | LOCKED |
+| 114 | Prepare the UI/UX brief | Audiences, templates, accessibility | NOT STARTED |
 | 115 | Extract official brand tokens | Royal Blue and supporting shades | LOCKED |
 | 116 | Create low-fidelity wireframes | Key templates | LOCKED |
 | 117 | Review information hierarchy | Hierarchy supports real content | LOCKED |
