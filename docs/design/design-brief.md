@@ -2,6 +2,8 @@
 
 Steps 114–122, after the data model is frozen at step 113. Wireframes before high-fidelity. Frontend code starts at step 123.
 
+The prepared brief (audiences, templates, accessibility) is [ui-ux-brief.md](ui-ux-brief.md) — step **114**.
+
 ## Personality
 
 - Institutional, technology-forward, trustworthy  
@@ -10,20 +12,11 @@ Steps 114–122, after the data model is frozen at step 113. Wireframes before h
 
 ## Audiences
 
-Primary: government, inspection centres, institutional partners.  
-Secondary: motorists (CT-VERIF path), job seekers, media.
+See [ui-ux-brief.md](ui-ux-brief.md) §1. Primary: government, inspection centres, institutional partners. Secondary: motorists (CT-VERIF path), job seekers, media. Audiences are **not** extra nav items.
 
 ## Templates to design (Figma or equivalent)
 
-1. Homepage  
-2. Product detail (×5 layout pattern)  
-3. Contrôle technique hub + 12-point component  
-4. Centre directory + centre detail  
-5. Resource library  
-6. Article/news  
-7. Contact  
-8. Legal (mentions, privacy)  
-9. System: 404, 500  
+Key set and empty/unpublished states: [ui-ux-brief.md](ui-ux-brief.md) §3.  
 
 ## Components
 
