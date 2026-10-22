@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 092 — Security points admin |
 | **Parent** | [local-technical-inspection-admin.md](local-technical-inspection-admin.md) · [technical-inspection-entities.md](../database/technical-inspection-entities.md) |
-| **Next** | 101 — Contact request admin |
+| **Next** | 105 — Controlled content blocks |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-21 |

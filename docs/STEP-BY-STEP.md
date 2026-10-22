@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 101 — Contact request admin — **NOT STARTED**
+**Active step:** 105 — Controlled content blocks — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -128,11 +128,11 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 098 | Resource library admin | Documents module | COMPLETED |
 | 099 | Careers admin | Careers module | COMPLETED |
 | 100 | Media library admin | Media module | COMPLETED |
-| 101 | Contact request admin | Enquiry module | NOT STARTED |
-| 102 | SEO and redirect admin | SEO module | LOCKED |
-| 103 | Admin user management | Users and roles | LOCKED |
-| 104 | Admin audit interface | Audit view | LOCKED |
-| 105 | Controlled content blocks | Approved blocks; no brand editing | LOCKED |
+| 101 | Contact request admin | Enquiry module | COMPLETED |
+| 102 | SEO and redirect admin | SEO module | COMPLETED |
+| 103 | Admin user management | Users and roles | COMPLETED |
+| 104 | Admin audit interface | Audit view | COMPLETED |
+| 105 | Controlled content blocks | Approved blocks; no brand editing | NOT STARTED |
 | 106 | Test admin permissions | **Gate.** Each role tested | LOCKED |
 | 107 | Enter representative products | Five solutions in the CMS | LOCKED |
 | 108 | Enter representative technical content | Points, equipment, document security | LOCKED |
