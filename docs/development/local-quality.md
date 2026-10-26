@@ -32,9 +32,11 @@ Existing feature tests remain PHPUnit classes; Pest runs them. `tests/Pest.php` 
 | Format (write) | `composer format` or `vendor/bin/pint` |
 | Format (CI) | `composer lint` or `vendor/bin/pint --test` |
 | Static analysis | `composer analyse` or `vendor/bin/phpstan analyse --memory-limit=1G` |
-| Tests | `composer test` or `php artisan test` |
+| Tests | `composer test` or `php -d memory_limit=512M artisan test` |
 | Frontend lint | `npm run lint` |
 | All PHP gates | `composer quality` |
+
+The complete suite currently needs a 512 MB CLI memory limit on Windows. The `composer test` and `composer quality` scripts apply it automatically.
 
 Local command set from this step onward:
 

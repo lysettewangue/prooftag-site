@@ -1,0 +1,240 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+html.fi {
+    --catis-azure: #008fc7;
+    --catis-cyan: #00b8e6;
+    --catis-azure-deep: #00658c;
+    --catis-azure-dark: #07546d;
+    --catis-soft: #cdeff8;
+    --catis-pale: #eaf9fd;
+    --catis-mist: #f3fbfd;
+    --catis-ink: #12222b;
+    --catis-muted: #55646d;
+    --catis-line: #d6dde1;
+    --catis-paper: #ffffff;
+}
+
+html.fi .fi-body {
+    background-color: var(--catis-mist);
+    color: var(--catis-ink);
+}
+
+html.fi.dark .fi-body {
+    background-color: #073b4c;
+    color: var(--catis-pale);
+}
+
+html.fi .fi-topbar {
+    background: color-mix(in srgb, var(--catis-paper) 88%, transparent);
+    box-shadow: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--catis-line) 80%, transparent);
+    backdrop-filter: blur(18px);
+}
+
+html.fi .fi-topbar::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    content: '';
+    background: linear-gradient(90deg, var(--catis-azure), var(--catis-cyan), transparent 78%);
+}
+
+html.fi .fi-main {
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
+}
+
+html.fi .fi-header-heading {
+    letter-spacing: -0.03em;
+    font-weight: 600;
+}
+
+html.fi .fi-sidebar {
+    background:
+        radial-gradient(900px 420px at 0% 0%, color-mix(in srgb, var(--catis-cyan) 22%, transparent), transparent 62%),
+        linear-gradient(165deg, var(--catis-azure-deep) 0%, var(--catis-azure-dark) 100%);
+}
+
+html.fi .fi-sidebar-header {
+    background: transparent;
+    box-shadow: none;
+}
+
+html.fi .fi-sidebar .fi-logo {
+    display: flex;
+    align-items: center;
+}
+
+html.fi .fi-sidebar .fi-logo img {
+    height: 1.85rem;
+    width: auto;
+    max-width: 11.5rem;
+    filter: brightness(0) invert(1);
+}
+
+html.fi .fi-sidebar-nav {
+    padding-top: 1.25rem;
+}
+
+html.fi .fi-sidebar-group-label {
+    color: color-mix(in srgb, var(--catis-pale) 55%, transparent);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+html.fi .fi-sidebar-item-btn {
+    border-radius: 0.8rem;
+}
+
+html.fi .fi-sidebar-item-label,
+html.fi .fi-sidebar-item-btn > .fi-icon {
+    color: color-mix(in srgb, var(--catis-pale) 78%, transparent);
+}
+
+html.fi .fi-sidebar-item-has-url > .fi-sidebar-item-btn:hover,
+html.fi .fi-sidebar-item-has-url > .fi-sidebar-item-btn:focus-visible {
+    background-color: color-mix(in srgb, var(--catis-paper) 8%, transparent);
+}
+
+html.fi .fi-sidebar-item.fi-active > .fi-sidebar-item-btn {
+    background-color: color-mix(in srgb, var(--catis-paper) 12%, transparent);
+}
+
+html.fi .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-icon,
+html.fi .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-label {
+    color: var(--catis-paper);
+}
+
+html.fi .fi-sidebar-footer {
+    border-color: color-mix(in srgb, var(--catis-paper) 10%, transparent);
+}
+
+html.fi .fi-section,
+html.fi .fi-wi-widget,
+html.fi .fi-ta-ctn,
+html.fi .fi-simple-main {
+    background-color: var(--catis-paper);
+    border-radius: 1.15rem;
+    box-shadow: 0 18px 40px -28px color-mix(in srgb, var(--catis-azure-dark) 28%, transparent);
+}
+
+html.fi .fi-ta-ctn,
+html.fi .fi-section,
+html.fi .fi-wi-widget {
+    border: 1px solid color-mix(in srgb, var(--catis-line) 90%, transparent);
+}
+
+html.fi .fi-btn {
+    border-radius: 0.8rem;
+    font-weight: 600;
+}
+
+html.fi .fi-input-wrp {
+    border-radius: 0.8rem;
+}
+
+html.fi .fi-badge {
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+html.fi .fi-avatar {
+    background-color: var(--catis-azure-dark);
+    color: var(--catis-paper);
+}
+
+html.fi .fi-simple-layout {
+    background-color: var(--catis-pale);
+}
+
+html.fi .catis-auth-panel {
+    display: none;
+}
+
+html.fi .catis-auth-kicker {
+    margin: 2.5rem 0 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--catis-pale) 70%, transparent);
+}
+
+html.fi .catis-auth-title {
+    margin: 0;
+    font-size: 1.85rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--catis-paper);
+}
+
+html.fi .catis-auth-copy {
+    margin: 1rem 0 0;
+    max-width: 22rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: color-mix(in srgb, var(--catis-pale) 78%, transparent);
+}
+
+html.fi .fi-simple-header-heading {
+    letter-spacing: -0.03em;
+    font-weight: 600;
+}
+
+html.fi .fi-simple-main {
+    box-shadow: none;
+    border: 1px solid color-mix(in srgb, var(--catis-line) 85%, transparent);
+}
+
+@media (min-width: 1024px) {
+    html.fi .fi-simple-layout:has(.catis-auth-panel) {
+        display: grid;
+        grid-template-columns: minmax(22rem, 40%) 1fr;
+        align-items: stretch;
+        min-height: 100dvh;
+        background-color: var(--catis-paper);
+    }
+
+    html.fi .catis-auth-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        padding: 3.5rem;
+        background:
+            radial-gradient(1100px 520px at 0% 0%, color-mix(in srgb, var(--catis-cyan) 28%, transparent), transparent 62%),
+            linear-gradient(160deg, var(--catis-azure-deep) 0%, var(--catis-azure-dark) 100%);
+        color: var(--catis-paper);
+    }
+
+    html.fi .catis-auth-panel img {
+        width: 13.5rem;
+        height: auto;
+    }
+
+    html.fi .fi-simple-layout:has(.catis-auth-panel) .fi-simple-main-ctn {
+        grid-column: 2;
+        background-color: var(--catis-mist);
+    }
+
+    html.fi .fi-simple-layout:has(.catis-auth-panel) .fi-simple-header .fi-logo {
+        display: none;
+    }
+
+    html.fi .fi-simple-layout:has(.catis-auth-panel) .fi-simple-main {
+        max-width: 28rem;
+        margin-block: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        padding-inline: 2.5rem;
+    }
+}
