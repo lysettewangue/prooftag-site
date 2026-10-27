@@ -13,10 +13,12 @@ use App\Listeners\LogStaffAuthorization;
 use App\Listeners\SendContactReceivedMail;
 use App\Models\Media;
 use App\Models\Role;
+use App\Support\PublicFooter;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Permission\Events\PermissionAttachedEvent;
 use Spatie\Permission\Events\PermissionDetachedEvent;
@@ -40,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         config(['media-library.media_model' => Media::class]);
+
+        View::composer('components.public.site-footer', function (\Illuminate\View\View $view): void {
+            $view->with('footer', app(PublicFooter::class)->forLocale(app()->getLocale()));
+        });
 
         app(PermissionRegistrar::class)->setRoleClass(Role::class);
 

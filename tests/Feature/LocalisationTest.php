@@ -13,8 +13,8 @@ class LocalisationTest extends TestCase
         $this->get('/')
             ->assertOk()
             ->assertSee('lang="fr"', false)
-            ->assertSee('Le français est la langue par défaut', false)
-            ->assertDontSee('This page is not a French copy', false);
+            ->assertSee('Des solutions numériques au service de routes plus sûres.', false)
+            ->assertDontSee('Digital solutions for safer roads.', false);
     }
 
     public function test_english_home_uses_en_prefix_and_english_copy(): void
@@ -22,8 +22,8 @@ class LocalisationTest extends TestCase
         $this->get('/en')
             ->assertOk()
             ->assertSee('lang="en"', false)
-            ->assertSee('English is the secondary locale', false)
-            ->assertDontSee('Cette page n’est pas une copie anglaise', false);
+            ->assertSee('Digital solutions for safer roads.', false)
+            ->assertDontSee('Des solutions numériques au service de routes plus sûres.', false);
     }
 
     public function test_fr_prefix_redirects_to_unprefixed_french(): void

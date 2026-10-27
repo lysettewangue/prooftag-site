@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 117 — Review information hierarchy — **NOT STARTED**
+**Active step:** 128 — Integrate Lucide — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -149,18 +149,18 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 114 | Prepare the UI/UX brief | Audiences, templates, accessibility | COMPLETED |
 | 115 | Extract official brand tokens | Royal Blue and supporting shades | COMPLETED |
 | 116 | Create low-fidelity wireframes | Key templates | COMPLETED |
-| 117 | Review information hierarchy | Hierarchy supports real content | NOT STARTED |
-| 118 | Create high-fidelity designs | Visual designs | LOCKED |
-| 119 | Create responsive designs | Desktop, tablet, mobile | LOCKED |
-| 120 | Define the design system | Type, colour, components, states | LOCKED |
-| 121 | Review design accessibility | Contrast, focus, labels | LOCKED |
-| 122 | Approve UI/UX | **Gate.** Frontend code starts after this | LOCKED |
-| 123 | Configure Tailwind tokens | Tokens in code | LOCKED |
-| 124 | Implement the public layout | Global shell | LOCKED |
-| 125 | Implement navigation | No Home item; logo opens the current language | LOCKED |
-| 126 | Implement the footer | Values from global settings | LOCKED |
-| 127 | Implement shared components | Buttons, cards, forms, navigation pieces | LOCKED |
-| 128 | Integrate Lucide | Public icon set | LOCKED |
+| 117 | Review information hierarchy | [Hierarchy supports real content](design/information-hierarchy-review.md) | COMPLETED |
+| 118 | Create high-fidelity designs | [Desktop visual designs](design/high-fidelity.md) | COMPLETED |
+| 119 | Create responsive designs | [Desktop, tablet, and mobile](design/responsive-designs.md) | COMPLETED |
+| 120 | Define the design system | [Type, colour, components, and states](design/design-system.md) | COMPLETED |
+| 121 | Review design accessibility | [Contrast, focus, labels](design/accessibility-review.md) | COMPLETED |
+| 122 | Approve UI/UX | [**Gate passed.** UI/UX approval](design/ui-ux-approval.md) | COMPLETED |
+| 123 | Configure Tailwind tokens | [Tokens in code](design/tailwind-tokens.md) | COMPLETED |
+| 124 | Implement the public layout | [Global shell](development/public-layout.md) | COMPLETED |
+| 125 | Implement navigation | [No Home item; logo opens the current language](development/public-navigation.md) | COMPLETED |
+| 126 | Implement the footer | [Values from global settings](development/public-footer.md) | COMPLETED |
+| 127 | Implement shared components | [Buttons, cards, forms, navigation pieces](development/public-components.md) | COMPLETED |
+| 128 | Integrate Lucide | Public icon set | NOT STARTED |
 | 129 | Implement the JavaScript foundation | Vanilla JS, then Alpine | LOCKED |
 | 130 | Implement the homepage | Bound to CMS data | LOCKED |
 | 131 | Implement About Us | About templates | LOCKED |

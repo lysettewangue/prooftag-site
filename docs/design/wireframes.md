@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 116 — Create low-fidelity wireframes |
 | **Parent** | [ui-ux-brief.md](ui-ux-brief.md) (114) · [brand-tokens.md](brand-tokens.md) (115) |
-| **Next** | 117 — Review information hierarchy |
+| **Next** | [117 — Review information hierarchy](information-hierarchy-review.md) |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Version** | 1.0 |
 | **Date** | 2026-10-22 |
@@ -45,6 +45,7 @@ Representative CMS rows are **structure only**. Do not treat sample news, draft 
 - Browser: `docs/design/wireframes/index.html` — W01–W11 present.
 - TOC jump to W05 (directory: CADCIA, HYDRAC, AUTO VISION; SATELLITE NGONO omitted).
 - Contact honeypot not exposed. Eight-section nav without Accueil.
+- Heading levels corrected by the step 117 hierarchy review; visual treatment remains low fidelity.
 
 ## 4. Out of this step
 

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROOFTAG-CATIS — Responsive designs, étape 119</title>
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <div class="viewer"><strong>Étape 119 · responsive</strong><span>Desktop, tablette et mobile</span><a href="../responsive-designs.md">Notes de conception</a></div>
+  <header class="intro"><h1>Une hiérarchie, trois largeurs</h1><p>Les trois cadres chargent exactement le même prototype. Les différences proviennent uniquement de la mise en page responsive, sans suppression du contenu essentiel.</p></header>
+
+  <section class="viewport"><div class="viewport-head"><h2>Desktop</h2><span>1440 × 950 · navigation complète · grilles étendues</span></div><div class="device desktop"><iframe src="prototype.html" title="Prototype desktop 1440 pixels"></iframe></div></section>
+  <p class="note">Le desktop conserve les huit entrées de navigation, le hero en deux colonnes et la carte à côté de la liste.</p>
+
+  <section class="viewport"><div class="viewport-head" style="max-width:834px"><h2>Tablette</h2><span>834 × 950 · menu condensé · grilles 2 colonnes</span></div><div class="device tablet"><iframe src="prototype.html" title="Prototype tablette 834 pixels"></iframe></div></section>
+  <p class="note">La tablette condense la navigation, empile l’annuaire et garde des cartes en deux colonnes lorsque la lecture le permet.</p>
+
+  <section class="viewport"><div class="viewport-head" style="max-width:390px"><h2>Mobile</h2><span>390 × 844 · une colonne · actions pleine largeur</span></div><div class="device mobile"><iframe src="prototype.html" title="Prototype mobile 390 pixels"></iframe></div></section>
+  <p class="note">Le mobile conserve les titres complets, place la liste avant la carte, affiche les coordonnées avant le formulaire et garde le pied de page complet.</p>
+</body>
+</html>

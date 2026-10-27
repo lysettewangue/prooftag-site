@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROOFTAG-CATIS — Design system, étape 120</title>
+  <link rel="stylesheet" href="design-system.css">
+</head>
+<body>
+  <div class="topbar"><strong>Étape 120 · Design system</strong><span>Fondations et composants publics PROOFTAG-CATIS</span><a href="../design-system.md">Spécifications</a></div>
+  <div class="layout">
+    <nav class="side-nav" aria-label="Sommaire du design system">
+      <img src="../../../public/images/brand/logo.png" alt="PROOFTAG-CATIS">
+      <strong>Fondations</strong>
+      <a href="#principles">Principes</a><a href="#colors">Couleurs</a><a href="#type">Typographie</a><a href="#space">Espacement</a><a href="#shape">Formes et ombres</a>
+      <strong>Composants</strong>
+      <a href="#buttons">Boutons</a><a href="#forms">Formulaires</a><a href="#statuses">Statuts</a><a href="#cards">Cartes</a><a href="#navigation">Navigation</a><a href="#disclosure">Accordéon</a><a href="#pagination">Pagination</a>
+      <strong>Comportements</strong>
+      <a href="#states">États</a><a href="#icons">Icônes</a><a href="#motion">Mouvement</a>
+    </nav>
+
+    <main class="content">
+      <header class="hero"><span class="eyebrow">PROOFTAG-CATIS · Interface publique</span><h1>Clair, institutionnel, technologique</h1><p>Un système visuel azur et cyan conçu pour rendre les informations complexes lisibles, crédibles et accessibles — sans jaune ni bleu marine dominant.</p></header>
+
+      <section class="section" id="principles">
+        <h2>Principes</h2><p class="section-intro">Chaque décision visuelle doit servir la confiance, la compréhension et l’action.</p>
+        <div class="spec-grid">
+          <article class="spec-card"><h3>Clarté d’abord</h3><p>Hiérarchie explicite, titres complets, libellés visibles et une action principale identifiable.</p></article>
+          <article class="spec-card"><h3>Institutionnel vivant</h3><p>La crédibilité du bleu officiel est éclaircie par l’azur, le cyan et des surfaces généreuses.</p></article>
+          <article class="spec-card"><h3>Preuve, pas promesse</h3><p>Aucun chiffre, partenaire, statut ou service non vérifié n’est transformé en élément promotionnel.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="colors">
+        <h2>Couleurs</h2><p class="section-intro">Le bleu officiel reste l’ancre. Les grandes surfaces utilisent l’azur éclairci. Le cyan est un accent avec texte foncé, jamais un fond de petit texte blanc.</p>
+        <div class="token-grid">
+          <article class="swatch"><div class="swatch-color" style="background:#0369a1">Azure 700</div><div class="swatch-meta"><strong>Bandes et texte blanc</strong><code>#0369A1</code></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#0277b5">Azure 600</div><div class="swatch-meta"><strong>Bouton secondaire</strong><code>#0277B5</code></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#0e6697">Royal 500</div><div class="swatch-meta"><strong>Bleu officiel du logo</strong><code>#0E6697</code></div></article>
+          <article class="swatch"><div class="swatch-color swatch-light" style="background:#0284c7">Azure 400</div><div class="swatch-meta"><strong>Gradient et chrome</strong><code>#0284C7</code></div></article>
+          <article class="swatch"><div class="swatch-color swatch-light" style="background:#22d3ee">Cyan 500</div><div class="swatch-meta"><strong>Action et accent</strong><code>#22D3EE</code></div></article>
+          <article class="swatch"><div class="swatch-color swatch-light" style="background:#cffafe">Cyan 100</div><div class="swatch-meta"><strong>Focus doux et badge</strong><code>#CFFAFE</code></div></article>
+          <article class="swatch"><div class="swatch-color swatch-light" style="background:#e0f7ff">Surface 100</div><div class="swatch-meta"><strong>Section alternée</strong><code>#E0F7FF</code></div></article>
+          <article class="swatch"><div class="swatch-color swatch-light" style="background:#f0fbff">Surface 50</div><div class="swatch-meta"><strong>Canvas</strong><code>#F0FBFF</code></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#12222b">Ink</div><div class="swatch-meta"><strong>Texte principal</strong><code>#12222B</code></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#55646d">Muted</div><div class="swatch-meta"><strong>Texte secondaire</strong><code>#55646D</code></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#146c43">Success</div><div class="swatch-meta"><strong>Confirmation</strong><code>#146C43</code></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#b5473c">Warning coral</div><div class="swatch-meta"><strong>Avertissement sans jaune</strong><code>#B5473C</code></div></article>
+        </div>
+      </section>
+
+      <section class="section" id="type">
+        <h2>Typographie</h2><p class="section-intro">DM Sans structure les interfaces. Source Serif 4 est réservée aux textes juridiques ou réglementaires longs.</p>
+        <div class="type-sample"><div class="type-meta">Display XL<br>64/65 · 700</div><div class="display-xl">Mobilité plus sûre</div></div>
+        <div class="type-sample"><div class="type-meta">Heading 1<br>48/52 · 700</div><div class="heading-1">Contrôle technique</div></div>
+        <div class="type-sample"><div class="type-meta">Heading 2<br>38/44 · 700</div><div class="heading-2">Centres de contrôle</div></div>
+        <div class="type-sample"><div class="type-meta">Heading 3<br>24/30 · 700</div><div class="heading-3">Sécurité et prévention routière</div></div>
+        <div class="type-sample"><div class="type-meta">Body large<br>18/31 · 400</div><div class="body-lg">Une information institutionnelle précise, lisible et fondée sur des données vérifiées.</div></div>
+        <div class="type-sample"><div class="type-meta">Body<br>16/26 · 400</div><div class="body-md">Les titres officiels ne sont jamais abrégés pour entrer dans une carte ou un menu.</div></div>
+        <div class="type-sample"><div class="type-meta">Label<br>12/17 · 700</div><div class="label-sm">Ressource historique</div></div>
+        <div class="type-sample"><div class="type-meta">Reading<br>18/33 · 400</div><div class="reading">Les contenus réglementaires utilisent une mesure plus étroite et une police avec empattements afin de soutenir la lecture continue, sans transformer chaque section en carte.</div></div>
+      </section>
+
+      <section class="section" id="space">
+        <h2>Espacement</h2><p class="section-intro">Échelle fondée sur 4 px. Les composants utilisent principalement 8, 12, 16, 24, 32, 48, 64 et 80 px.</p>
+        <div class="scale-row">
+          <span class="space-token"><i style="--size:4px"></i>4</span><span class="space-token"><i style="--size:8px"></i>8</span><span class="space-token"><i style="--size:12px"></i>12</span><span class="space-token"><i style="--size:16px"></i>16</span><span class="space-token"><i style="--size:20px"></i>20</span><span class="space-token"><i style="--size:24px"></i>24</span><span class="space-token"><i style="--size:32px"></i>32</span><span class="space-token"><i style="--size:48px"></i>48</span><span class="space-token"><i style="--size:64px"></i>64</span><span class="space-token"><i style="--size:80px"></i>80</span>
+        </div>
+      </section>
+
+      <section class="section" id="shape">
+        <h2>Formes et ombres</h2><p class="section-intro">Les rayons différencient contrôles, panneaux et actions. Les ombres servent uniquement la profondeur fonctionnelle.</p>
+        <div class="spec-grid"><article class="spec-card"><h3>Contrôle · 10 px</h3><div class="radius-demo" style="--radius:10px"></div></article><article class="spec-card"><h3>Carte · 22 px</h3><div class="radius-demo" style="--radius:22px"></div></article><article class="spec-card"><h3>Pilule · 999 px</h3><div class="radius-demo" style="--radius:999px"></div></article><article class="spec-card"><h3>Élévation 1</h3><div class="shadow-demo" style="--shadow:var(--shadow-1)"></div></article><article class="spec-card"><h3>Élévation 2</h3><div class="shadow-demo" style="--shadow:var(--shadow-2)"></div></article><article class="spec-card"><h3>Élévation 3</h3><div class="shadow-demo" style="--shadow:var(--shadow-3)"></div></article></div>
+      </section>
+
+      <section class="section" id="buttons">
+        <h2>Boutons</h2><p class="section-intro">Une page privilégie une seule action cyan principale par groupe. Les libellés décrivent l’action.</p>
+        <div class="component-board"><h3>Variantes</h3><div class="component-row"><button class="button button-primary">Action principale →</button><button class="button button-secondary">Action secondaire</button><button class="button button-outline">Action tertiaire</button><button class="button button-danger">Supprimer</button><button class="button" disabled>Indisponible</button></div><p class="component-caption">Hauteur minimale 48 px dans les formulaires et héros ; cible interactive jamais inférieure à 44 × 44 px.</p></div>
+      </section>
+
+      <section class="section" id="forms">
+        <h2>Formulaires</h2><p class="section-intro">Le label reste visible. Aide, erreur et succès sont du texte associé au champ — jamais une couleur seule.</p>
+        <div class="component-board"><div class="field-grid"><div class="field"><label for="normal">État normal</label><input id="normal" placeholder="Votre nom"><small>Aide facultative et concise.</small></div><div class="field"><label for="focus">État actif</label><input id="focus" value="Champ sélectionné"></div><div class="field field-error"><label for="error">E-mail</label><input id="error" value="adresse-invalide" aria-invalid="true" aria-describedby="error-message"><small id="error-message">Indiquez une adresse e-mail valide.</small></div><div class="field field-success"><label for="success">Référence</label><input id="success" value="CT-2026-001"><small>Référence reconnue.</small></div><div class="field"><label for="disabled">Champ indisponible</label><input id="disabled" value="Valeur gelée" disabled></div><div class="field"><label for="select">Région</label><select id="select"><option>Toutes les régions</option><option>Littoral</option></select></div></div></div>
+      </section>
+
+      <section class="section" id="statuses">
+        <h2>Statuts et messages</h2><p class="section-intro">Le corail remplace entièrement le jaune pour les avertissements. Chaque état combine texte, forme et couleur.</p>
+        <div class="component-board"><h3>Badges</h3><div class="component-row"><span class="badge badge-info">ℹ Information</span><span class="badge badge-success">✓ Publié</span><span class="badge badge-warning">! Historique</span><span class="badge badge-danger">× Erreur</span><span class="badge badge-neutral">Indisponible</span></div></div>
+        <div class="component-board"><h3>Messages</h3><div class="alert alert-info"><span>ℹ</span><div><strong>Information</strong><p>Cette ressource est disponible en français uniquement.</p></div></div><div class="alert alert-success"><span>✓</span><div><strong>Message envoyé</strong><p>Votre demande a bien été transmise.</p></div></div><div class="alert alert-warning"><span>!</span><div><strong>Document historique</strong><p>Vérifiez sa portée actuelle avant utilisation.</p></div></div><div class="alert alert-danger"><span>×</span><div><strong>Erreur de validation</strong><p>Corrigez les champs signalés avant de continuer.</p></div></div></div>
+      </section>
+
+      <section class="section" id="cards">
+        <h2>Cartes</h2><p class="section-intro">Une carte entière peut être un lien, mais elle ne contient pas plusieurs actions concurrentes.</p>
+        <div class="component-board"><div class="component-row"><article class="demo-card"><span class="kicker">Solution · 01</span><h4>CERTIDOCS CT</h4><p>Écosystème logiciel et équipements pour le contrôle technique sécurisé au Cameroun.</p></article><article class="demo-card"><span class="kicker">Expertise · 05</span><h4>Sécurité et prévention routière</h4><p>Le titre complet peut occuper plusieurs lignes sans ellipsis.</p></article></div></div>
+      </section>
+
+      <section class="section" id="navigation">
+        <h2>Navigation</h2><p class="section-intro">Le cyan indique la page active. Les huit sections restent présentes ; le logo représente l’accueil.</p>
+        <div class="component-board"><div class="nav-demo"><nav aria-label="Exemple de navigation"><a href="#">À propos</a><a href="#">Produits &amp; Solutions</a><a href="#" aria-current="page">Expertises</a><a href="#">Contrôle technique</a><a href="#">Contact</a></nav></div></div>
+      </section>
+
+      <section class="section" id="disclosure">
+        <h2>Accordéon</h2><p class="section-intro">Le numéro et le titre complet constituent le déclencheur. Le contrôle utilise un élément natif lorsque possible.</p>
+        <div class="component-board"><details class="accordion" open><summary><span>01</span><span>Vérification des informations de la carte grise sur la base du MINT</span></summary><p>Le contenu détaillé reste dans le flux de lecture et le titre n’est jamais tronqué.</p></details></div>
+      </section>
+
+      <section class="section" id="pagination">
+        <h2>Pagination</h2><p class="section-intro">L’état courant est annoncé sémantiquement et visuellement. Chaque cible mesure au moins 44 px.</p>
+        <div class="component-board"><nav class="pagination" aria-label="Pagination"><a href="#" aria-label="Page précédente">←</a><a href="#" aria-current="page">1</a><a href="#">2</a><a href="#">3</a><a href="#" aria-label="Page suivante">→</a></nav></div>
+      </section>
+
+      <section class="section" id="states">
+        <h2>États interactifs</h2><p class="section-intro">Chaque composant interactif prévoit les mêmes états fondamentaux.</p>
+        <table class="state-table"><thead><tr><th>État</th><th>Traitement</th><th>Règle</th></tr></thead><tbody><tr><td>Default</td><td>Contraste stable</td><td>Libellé explicite et cible ≥ 44 px</td></tr><tr><td>Hover</td><td>Surface ou bordure renforcée</td><td>Ne déplace pas la mise en page</td></tr><tr><td>Focus visible</td><td><code>3 px #0E6697</code> + décalage</td><td>Jamais supprimé ; distinct du hover</td></tr><tr><td>Active</td><td>Translation maximale 1 px</td><td>Aucun effet indispensable à la compréhension</td></tr><tr><td>Disabled</td><td>Gris + attribut natif</td><td>Ne pas simuler avec l’opacité seule</td></tr><tr><td>Loading</td><td>Libellé conservé + progression</td><td>Empêche une double soumission</td></tr><tr><td>Error</td><td>Texte + icône + corail/rouge</td><td>Annonce accessible près de la source</td></tr></tbody></table>
+      </section>
+
+      <section class="section" id="icons">
+        <h2>Icônes</h2><p class="section-intro">Lucide est la famille publique prévue. Taille standard 20 ou 24 px, trait 1,75, avec libellé lorsque le sens n’est pas universel.</p>
+        <div class="do-dont"><article class="rule-card"><h3>À faire</h3><p>Associer l’icône au texte pour les actions, statuts et destinations externes.</p></article><article class="rule-card dont"><h3>À éviter</h3><p>Utiliser une icône seule pour une action critique, mélanger Heroicons et Lucide, ou employer la couleur comme seul sens.</p></article></div>
+      </section>
+
+      <section class="section" id="motion">
+        <h2>Mouvement</h2><p class="section-intro">Le mouvement confirme une relation ; il ne décore pas une page institutionnelle.</p>
+        <table class="state-table"><thead><tr><th>Usage</th><th>Durée</th><th>Courbe</th></tr></thead><tbody><tr><td>Hover/focus</td><td>120 ms</td><td><code>ease-out</code></td></tr><tr><td>Disclosure/menu</td><td>180 ms</td><td><code>ease-out</code></td></tr><tr><td>Changement de panneau</td><td>240 ms max.</td><td><code>cubic-bezier(.2,.8,.2,1)</code></td></tr><tr><td>Reduced motion</td><td>Quasi instantané</td><td>Aucun déplacement décoratif</td></tr></tbody></table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
