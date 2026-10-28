@@ -14,7 +14,12 @@ use Illuminate\Database\Eloquent\Collection;
 final class SiteSearch
 {
     /**
-     * @return array{products: Collection<int, Product>, posts: Collection<int, Post>, centres: Collection<int, InspectionCentre>, resources: Collection<int, CmsResourceModel>}
+     * @return array{
+     *     products: Collection<int, Product>,
+     *     posts: Collection<int, Post>,
+     *     centres: Collection<int, InspectionCentre>,
+     *     resources: Collection<int, Resource>
+     * }
      */
     public function search(string $locale, string $term): array
     {
@@ -30,6 +35,7 @@ final class SiteSearch
         }
 
         $like = '%'.addcslashes($term, '%_\\').'%';
+        $localeTranslations = fn ($query) => $query->where('locale', $locale);
 
         return [
             'products' => Product::query()
@@ -45,6 +51,7 @@ final class SiteSearch
                                 });
                         });
                 })
+                ->with(['translations' => $localeTranslations])
                 ->orderBy('sort_order')
                 ->limit(10)
                 ->get(),
@@ -59,6 +66,7 @@ final class SiteSearch
                                 ->orWhere('slug', 'like', $like);
                         });
                 })
+                ->with(['translations' => $localeTranslations])
                 ->latest('published_at')
                 ->limit(10)
                 ->get(),
@@ -73,6 +81,7 @@ final class SiteSearch
                             $translations->where('locale', $locale)->where('name', 'like', $like);
                         });
                 })
+                ->with(['translations' => $localeTranslations])
                 ->orderBy('city')
                 ->limit(10)
                 ->get(),
@@ -87,6 +96,7 @@ final class SiteSearch
                                 ->orWhere('slug', 'like', $like);
                         });
                 })
+                ->with(['translations' => $localeTranslations])
                 ->latest('published_at')
                 ->limit(10)
                 ->get(),

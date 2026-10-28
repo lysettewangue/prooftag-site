@@ -6,23 +6,40 @@ namespace App\Services\Seo;
 
 use App\Domain\Contracts\Translatable;
 use App\Enums\Locale;
+use App\Models\Post;
 use App\Models\SiteSetting;
+use App\Support\OpenGraph;
 use App\Support\PublicPath;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
 
 final class SeoMetaResolver
 {
-    public function forPage(string $locale, string $path): SeoMeta
+    public function forPage(string $locale, string $path, ?string $alternatePath = null): SeoMeta
     {
         $defaults = $this->defaults($locale);
         $normalized = PublicPath::localized($locale, $path);
+        $frPath = $locale === Locale::French->value ? $path : ($alternatePath ?? $path);
+        $enPath = $locale === Locale::English->value ? $path : ($alternatePath ?? $path);
 
         return new SeoMeta(
             title: $defaults['title'],
             description: $defaults['description'],
             canonical: PublicPath::canonical($normalized),
-            hreflang: $this->pairForPath($path),
+            hreflang: $this->pairForPaths($frPath, $enPath),
+            image: $this->defaultImageUrl(),
+            type: 'website',
         );
+    }
+
+    /**
+     * Index / utility pages with distinct FR and EN path segments.
+     */
+    public function forLocalizedIndex(string $locale, string $frPath, string $enPath): SeoMeta
+    {
+        $path = $locale === Locale::English->value ? $enPath : $frPath;
+
+        return $this->forPage($locale, $path, $locale === Locale::English->value ? $frPath : $enPath);
     }
 
     public function forModel(Translatable&Model $model, string $locale): SeoMeta
@@ -43,6 +60,8 @@ final class SeoMetaResolver
             description: $description !== null ? (string) $description : null,
             canonical: $canonicalPath,
             hreflang: $this->hreflangFor($model),
+            image: $this->imageForModel($model),
+            type: $model instanceof Post ? 'article' : 'website',
         );
     }
 
@@ -72,6 +91,24 @@ final class SeoMetaResolver
         return $default;
     }
 
+    private function imageForModel(Model $model): ?string
+    {
+        if ($model instanceof HasMedia) {
+            $media = $model->getFirstMedia('images');
+
+            if ($media !== null) {
+                return OpenGraph::absoluteUrl($media->getUrl());
+            }
+        }
+
+        return $this->defaultImageUrl();
+    }
+
+    private function defaultImageUrl(): ?string
+    {
+        return OpenGraph::fallbackImageUrl();
+    }
+
     /**
      * @return array<string, string>
      */
@@ -99,13 +136,11 @@ final class SeoMetaResolver
     /**
      * @return array<string, string>
      */
-    private function pairForPath(string $path): array
+    private function pairForPaths(string $frPath, string $enPath): array
     {
-        $path = ltrim($path, '/');
-
         return [
-            Locale::French->value => PublicPath::canonical(PublicPath::localized(Locale::French->value, $path)),
-            Locale::English->value => PublicPath::canonical(PublicPath::localized(Locale::English->value, $path)),
+            Locale::French->value => PublicPath::canonical(PublicPath::localized(Locale::French->value, $frPath)),
+            Locale::English->value => PublicPath::canonical(PublicPath::localized(Locale::English->value, $enPath)),
         ];
     }
 }

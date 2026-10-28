@@ -4,7 +4,7 @@
 | --- | --- |
 | **Step** | 127 — Implement shared components |
 | **Parent** | [126 — Implement the footer](public-footer.md) |
-| **Next** | 128 — Integrate Lucide |
+| **Next** | 128 — Integrate Lucide → [public-lucide.md](public-lucide.md) (COMPLETED) · 129 JS foundation |
 | **Status** | COMPLETED |
 
 ## Component catalogue
@@ -35,7 +35,7 @@ The shared anonymous Blade components live in `resources/views/components/public
 - Status meaning always includes text. No component uses yellow.
 - All controls meet the 44 px minimum target; principal controls use the 48 px control token.
 - Components wrap naturally and do not truncate long French or English labels.
-- Icons are intentionally not embedded here; the approved public icon family is integrated at step 128.
+- Icons use the Lucide public set via `<x-public.icon>` — see [public-lucide.md](public-lucide.md).
 
 ## Examples
 

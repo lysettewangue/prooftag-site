@@ -9,6 +9,7 @@ use App\Domain\Contracts\Translatable;
 use App\Enums\CareerKind;
 use App\Models\Concerns\HasTranslations;
 use App\Models\Concerns\Publishable;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -46,5 +47,10 @@ class Career extends Model implements PublishableContract, Translatable
     public function translations(): HasMany
     {
         return $this->hasMany(CareerTranslation::class);
+    }
+
+    public function isClosed(?DateTimeInterface $now = null): bool
+    {
+        return $this->closes_at !== null && $this->closes_at->lte($now ?? now());
     }
 }

@@ -46,7 +46,7 @@ The homepage now follows a complete visitor journey:
 - No yellow or orange was introduced.
 - No G3 asset, source code, wording, statistic, or distinctive branded element was copied.
 - No unverified PROOFTAG-CATIS statistic, testimonial, partner, centre count, or exclusive claim was added.
-- The homepage copy remains translatable and is ready for CMS binding at step 130.
+- The homepage copy remains translatable; CMS binding for published products / expertises / SEO is in [public-homepage.md](../development/public-homepage.md) (step 130).
 
 ## Verification
 

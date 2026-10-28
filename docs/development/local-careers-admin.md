@@ -48,7 +48,7 @@ php artisan test
 | Item | Step |
 |------|------|
 | Media library admin | 100 |
-| Public careers listing | 143 |
+| Public careers listing | 143 → [public-careers.md](public-careers.md) |
 | Approved content blocks | 105 |
 
 ## 5. Verification (2026-10-22)

@@ -9,9 +9,9 @@
 
 @php
     $variants = [
-        'primary' => 'border-brand-cyan-500 bg-brand-cyan-500 text-ink hover:border-brand-cyan-100 hover:bg-brand-cyan-100',
-        'secondary' => 'border-brand-azure-600 bg-brand-azure-600 text-white hover:border-brand-azure-700 hover:bg-brand-azure-700',
-        'outline' => 'border-brand-azure-600 bg-white text-brand-azure-700 hover:bg-surface-subtle',
+        'primary' => 'border-brand-royal bg-brand-royal text-white hover:border-brand-azure-600 hover:bg-brand-azure-600',
+        'secondary' => 'border-brand-azure-600 bg-brand-azure-600 text-white hover:border-brand-royal hover:bg-brand-royal',
+        'outline' => 'border-brand-royal bg-white text-brand-royal hover:bg-surface-subtle',
         'danger' => 'border-status-danger bg-status-danger text-white hover:border-status-warning hover:bg-status-warning',
     ];
     $isDisabled = (bool) $disabled || (bool) $loading;

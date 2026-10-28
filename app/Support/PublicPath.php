@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Support;
 
 use App\Enums\Locale;
+use App\Models\Career;
+use App\Models\Equipment;
+use App\Models\Expertise;
 use App\Models\InspectionCentre;
 use App\Models\Page;
 use App\Models\Post;
@@ -54,6 +57,14 @@ final class PublicPath
             return self::prefixed($locale, 'product', $slug);
         }
 
+        if ($model instanceof Expertise) {
+            return self::prefixed($locale, 'expertise', $slug);
+        }
+
+        if ($model instanceof Equipment) {
+            return self::prefixed($locale, 'equipment', $slug);
+        }
+
         if ($model instanceof InspectionCentre) {
             return self::prefixed($locale, 'centre', $slug);
         }
@@ -64,6 +75,10 @@ final class PublicPath
 
         if ($model instanceof Resource) {
             return self::prefixed($locale, 'resource', $slug);
+        }
+
+        if ($model instanceof Career) {
+            return self::prefixed($locale, 'career', $slug);
         }
 
         return null;

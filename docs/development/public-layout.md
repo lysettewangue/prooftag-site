@@ -43,7 +43,7 @@ The homepage now consumes this API in both French and English. Later controllers
 
 - `site-header.blade.php` supplies the official logo, always-visible FR/EN controls, and the [frozen eight-section navigation](public-navigation.md).
 - `site-footer.blade.php` supplies the complete corporate, contact, exploration, and legal content from global settings, as documented in [step 126](public-footer.md).
-- The homepage now provides the complete bilingual visual narrative recorded in the [public visual refresh](../design/visual-refresh.md). Its final published-content queries and CMS binding still belong to step 130.
+- The homepage provides the complete bilingual visual narrative recorded in the [public visual refresh](../design/visual-refresh.md). Published-content queries are in [public-homepage.md](public-homepage.md) (step 130).
 
 This separation makes header and footer improvements global without requiring edits to each public page.
 

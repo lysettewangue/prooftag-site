@@ -69,7 +69,7 @@ final class SubmitContactRequest
 
         if (RateLimiter::tooManyAttempts($key, $max)) {
             throw ValidationException::withMessages([
-                'email' => __('Too many contact attempts. Please try again later.'),
+                'email' => (string) __('ui.contact.throttle'),
             ]);
         }
 

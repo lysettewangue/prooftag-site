@@ -9,41 +9,50 @@ use App\Models\Resource;
 use App\Support\ContentCache;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Cache;
 
 final class ResourceLibrary
 {
     /**
-     * @return Collection<int, CmsResourceModel>
+     * @return Collection<int, Resource>
      */
     public function publishedForLocale(string $locale): Collection
     {
-        /** @var Collection<int, CmsResourceModel> $resources */
-        $resources = Cache::remember(
+        $ids = ContentCache::rememberIds(
             ContentCache::resources($locale),
-            (int) config('cms.cache_ttl', 3600),
-            function () use ($locale): Collection {
-                return Resource::query()
-                    ->publiclyVisible(now())
-                    ->forLocale($locale)
-                    ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
-                    ->latest('published_at')
-                    ->get();
-            },
+            fn (): array => Resource::query()
+                ->publiclyVisible(now())
+                ->forLocale($locale)
+                ->latest('published_at')
+                ->pluck('id')
+                ->all(),
         );
 
-        return $resources;
+        if ($ids === []) {
+            return new Collection;
+        }
+
+        return Resource::query()
+            ->whereIn('id', $ids)
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
+            ->latest('published_at')
+            ->get();
     }
 
     /**
-     * @return LengthAwarePaginator<int, CmsResourceModel>
+     * @return LengthAwarePaginator<int, Resource>
      */
     public function paginatePublic(string $locale, ?ResourceRegulatoryStatus $status = null, int $perPage = 15): LengthAwarePaginator
     {
         $query = Resource::query()
             ->publiclyVisible(now())
             ->forLocale($locale)
-            ->with(['translations' => fn ($q) => $q->where('locale', $locale)]);
+            ->with([
+                'translations' => fn ($q) => $q->where('locale', $locale),
+                'media',
+            ]);
 
         if ($status !== null) {
             $query->where('regulatory_status', $status);
@@ -57,7 +66,10 @@ final class ResourceLibrary
         return Resource::query()
             ->publiclyVisible(now())
             ->withLocaleSlug($locale, $slug)
-            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
             ->firstOrFail();
     }
 }

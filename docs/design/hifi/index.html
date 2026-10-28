@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROOFTAG-CATIS — high-fidelity designs (118)</title>
+  <link rel="stylesheet" href="hifi.css">
+</head>
+<body>
+  <div class="viewer-bar">
+    <strong>Step 118 · desktop hi-fi</strong>
+    <span>Not Blade. Not app Tailwind. Royal Blue + type.</span>
+    <a href="../hifi.md">Brief notes</a>
+    <a href="../wireframes/index.html">Lo-fi 116</a>
+  </div>
+  <nav class="toc" aria-label="Artboards">
+    <a href="#hf01">HF01 shell</a>
+    <a href="#hf02">HF02 home</a>
+    <a href="#hf02b">HF02b empty</a>
+    <a href="#hf03">HF03 product</a>
+    <a href="#hf04">HF04 CT</a>
+    <a href="#hf05">HF05 directory</a>
+    <a href="#hf05b">HF05b centre</a>
+    <a href="#hf05c">HF05c no matches</a>
+    <a href="#hf06">HF06 resources</a>
+    <a href="#hf07">HF07 news</a>
+    <a href="#hf07b">HF07b article</a>
+    <a href="#hf07c">HF07c empty news</a>
+    <a href="#hf08">HF08 contact</a>
+    <a href="#hf08b">HF08b form states</a>
+    <a href="#hf09">HF09 legal</a>
+    <a href="#hf10">HF10 system</a>
+    <a href="#hf11">HF11 careers</a>
+  </nav>
+
+  <!-- HF01 -->
+  <article class="board" id="hf01">
+    <h2>HF01 — Global shell (FR, no Accueil)</h2>
+    <div class="page">
+      <a class="skip" href="#content-hf01">Aller au contenu</a>
+      <header class="site-header">
+        <div class="brand-row">
+          <a class="logo" href="/" aria-label="PROOFTAG-CATIS, accueil français">
+            <img src="../../../public/images/brand/logo.png" alt="" width="160" height="40">
+            <span class="logo-word">PROOFTAG-CATIS</span>
+          </a>
+          <form class="search" role="search">
+            <label for="q-hf01">Recherche</label>
+            <input id="q-hf01" type="search" name="q" placeholder="Rechercher…">
+          </form>
+          <div class="lang" aria-label="Langue">
+            <a href="/" aria-current="true" hreflang="fr">FR</a>
+            <a href="/en" hreflang="en">EN</a>
+          </div>
+        </div>
+        <nav class="nav-primary" aria-label="Principale">
+          <a href="/a-propos">À propos</a>
+          <a href="/produits">Produits &amp; Solutions</a>
+          <a href="/expertises">Expertises</a>
+          <a href="/controle-technique">Contrôle technique</a>
+          <a href="/centres-de-controle">Centres de contrôle</a>
+          <a href="/ressources">Ressources</a>
+          <a href="/actualites">Actualités &amp; Articles</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </header>
+      <main id="content-hf01">
+        <p class="meta-quiet">Slot de page. Nav sur deux lignes si besoin (H-01). Logo = accueil locale. Pas d’item Accueil / Home.</p>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <p>PROOFTAG-CATIS S.A.<br>Immeuble Résidence Le Carat, Hôtel de l'Air, Bonapriso<br>BP 4601 Douala, Cameroun<br>Tél. : +237 699 19 29 19<br>info@prooftagcatis.com</p>
+          <nav class="footer-nav" aria-label="Pied">
+            <a href="/mentions-legales">Mentions légales</a>
+            <a href="/politique-de-confidentialite">Politique de confidentialité</a>
+          </nav>
+        </div>
+        <p class="footer-note">Pas d’icônes sociales (VER-10 ouvert). Pas de bandeau cookies.</p>
+      </footer>
+    </div>
+    <ul class="notes">
+      <li>Cibles ≥ 44 px ; focus ring accent (pas de texte blanc sur accent).</li>
+      <li>EN sans équivalent d’entité → <code>/en</code> (H-10).</li>
+    </ul>
+  </article>
+
+  <!-- HF02 -->
+  <article class="board" id="hf02">
+    <h2>HF02 — Homepage</h2>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-row">
+          <a class="logo" href="/"><img src="../../../public/images/brand/logo.png" alt="" width="160" height="40"><span class="logo-word">PROOFTAG-CATIS</span></a>
+          <div class="lang"><a href="/" aria-current="true">FR</a><a href="/en">EN</a></div>
+        </div>
+        <nav class="nav-primary" aria-label="Principale">
+          <a href="/a-propos">À propos</a>
+          <a href="/produits">Produits &amp; Solutions</a>
+          <a href="/expertises">Expertises</a>
+          <a href="/controle-technique">Contrôle technique</a>
+          <a href="/centres-de-controle">Centres de contrôle</a>
+          <a href="/ressources">Ressources</a>
+          <a href="/actualites">Actualités &amp; Articles</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </header>
+      <main>
+        <section class="hero">
+          <p class="hero-brand">PROOFTAG-CATIS</p>
+          <h1>Technologie pour le transport et la sécurité routière au Cameroun</h1>
+          <p class="lede">Récit institutionnel vérifié. Pas de formule « opérateur exclusif de sécurisation des vignettes » (VER-01 ouvert).</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/produits">Produits</a>
+            <a class="btn btn-ghost" href="/controle-technique">Contrôle technique</a>
+            <a class="btn btn-ghost" href="/contact">Contact</a>
+          </div>
+        </section>
+
+        <div class="section-head">
+          <h2>Solutions publiées</h2>
+          <p>0 à 5 cartes — brouillons masqués</p>
+        </div>
+        <div class="grid-products">
+          <a class="card" href="/produits/certidocs-ct"><strong>CERTIDOCS CT</strong><p>Écosystème pour le contrôle technique sécurisé.</p></a>
+          <div class="card" aria-hidden="true" style="opacity:0.55;border-style:dashed"><strong>Emplacement 2</strong><p>Omis si non publié</p></div>
+          <div class="card" aria-hidden="true" style="opacity:0.45;border-style:dashed"><strong>3–5</strong><p>Jamais DITROS-CT</p></div>
+        </div>
+
+        <div class="section-head" style="margin-top:2rem">
+          <h2>Expertises</h2>
+          <p>Titre seul si résumé vide (H-03)</p>
+        </div>
+        <div class="grid-expertise">
+          <div class="card card-expertise"><strong>Recherche et développement</strong></div>
+          <div class="card card-expertise"><strong>Support technique</strong></div>
+          <div class="card card-expertise"><strong>Analyse de données et reporting</strong></div>
+          <div class="card card-expertise"><strong>Sécurité documentaire</strong></div>
+          <div class="card card-expertise"><strong>Sécurité et prévention routière</strong></div>
+        </div>
+        <p class="meta-quiet">Pas de compteurs UTILISATEURS / RÉGIONS. Pas de blocs stats / équipe / partenaires (H-07).</p>
+      </main>
+      <footer class="site-footer"><p class="footer-note">Pied = HF01</p></footer>
+    </div>
+  </article>
+
+  <!-- HF02b -->
+  <article class="board" id="hf02b">
+    <h2>HF02b — Homepage, aucun produit publié</h2>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-row">
+          <a class="logo" href="/"><span class="logo-word">PROOFTAG-CATIS</span></a>
+        </div>
+      </header>
+      <main>
+        <section class="hero">
+          <p class="hero-brand">PROOFTAG-CATIS</p>
+          <h1>Technologie pour le transport et la sécurité routière au Cameroun</h1>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/controle-technique">Contrôle technique</a>
+            <a class="btn btn-ghost" href="/contact">Contact</a>
+          </div>
+        </section>
+        <div class="empty">Aucune solution n’est encore publiée. La grille produits n’affiche pas de cartes fantômes (H-04).</div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF03 -->
+  <article class="board" id="hf03">
+    <h2>HF03 — Product detail (pattern ×5) · CERTIDOCS CT</h2>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-row">
+          <a class="logo" href="/"><span class="logo-word">PROOFTAG-CATIS</span></a>
+          <div class="lang"><a href="/" aria-current="true">FR</a><a href="/en/products/certidocs-ct">EN</a></div>
+        </div>
+        <nav class="nav-primary"><a href="/produits" aria-current="page">Produits &amp; Solutions</a></nav>
+      </header>
+      <main>
+        <p class="crumb"><a href="/produits">Produits</a> / CERTIDOCS CT</p>
+        <h1 class="page-title">CERTIDOCS CT</h1>
+        <p class="lede">Écosystème logiciel et matériel pour le contrôle technique sécurisé. Nom de marque, non traduit.</p>
+        <div class="media-slot">Média CMS · alt FR/EN</div>
+        <div class="prose">
+          <p>Thèmes 015, réécriture requise : le serveur de centre reçoit les données des bancs de tests et produit un PV et une décision sécurisés lorsque le processus l’exige. CATIS accompagne la qualité de processus ; elle ne remplace pas l’autorité du MINT.</p>
+          <p>Pas de bouton « ouvrir l’application métier » tant que <code>external_url</code> est vide (CT-VERIF / DOSER : VER-11).</p>
+        </div>
+        <div class="band-secondary">
+          <h2>Liens connexes</h2>
+          <div class="grid-2">
+            <div class="panel"><h3>Expertises liées</h3><p>Sécurité documentaire</p></div>
+            <div class="panel"><h3>Ressources liées</h3><p>Documents publiés uniquement</p></div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <ul class="notes"><li>Bande secondaire sous le corps (H-06). Même gabarit pour les cinq produits.</li></ul>
+  </article>
+
+  <!-- HF04 -->
+  <article class="board" id="hf04">
+    <h2>HF04 — Contrôle technique + 12 points</h2>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-row"><a class="logo" href="/"><span class="logo-word">PROOFTAG-CATIS</span></a></div>
+        <nav class="nav-primary"><a href="/controle-technique" aria-current="page">Contrôle technique</a></nav>
+      </header>
+      <main>
+        <h1 class="page-title">Contrôle technique</h1>
+        <p class="lede">Page CMS, pas un produit. Pas de marque DITROS-CT.</p>
+        <div class="accordion" style="margin-top:1.25rem">
+          <details open>
+            <summary><span class="n">1</span><span>Vérification des informations de la carte grise sur la base du MINT</span></summary>
+            <div class="body">Corps lisible, pas en capitales. Copie à réécrire (AUD-001) — structure seule. Titre sur plusieurs lignes (H-02).</div>
+          </details>
+          <details>
+            <summary><span class="n">2</span><span>Mise à jour des données dans les bases centrales du MINT</span></summary>
+            <div class="body">Panneau fermé : titre seul.</div>
+          </details>
+          <details>
+            <summary><span class="n">3</span><span>Collecte automatique des données des bancs de tests par GIEGLAN</span></summary>
+          </details>
+          <details>
+            <summary><span class="n">10</span><span>Sécurisation de la vignette avec le scellé à bulles et le QR code</span></summary>
+          </details>
+        </div>
+        <p class="meta-quiet">4–9, 11–12 : même accordéon numéroté.</p>
+        <div class="band-secondary">
+          <h2>Équipements</h2>
+          <div class="panel"><h3>Parc current / legacy</h3><p>Teaser + lien vers /controle-technique/equipements — bande secondaire (H-06).</p></div>
+        </div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF05 -->
+  <article class="board" id="hf05">
+    <h2>HF05 — Centre directory</h2>
+    <div class="page">
+      <header class="site-header"><a class="logo" href="/"><span class="logo-word">PROOFTAG-CATIS</span></a></header>
+      <main>
+        <h1 class="page-title">Centres de contrôle</h1>
+        <form class="filters" style="margin-top:1.15rem">
+          <div>
+            <label for="centre-q">Rechercher</label>
+            <input id="centre-q" type="search">
+          </div>
+          <div>
+            <label for="region">Région</label>
+            <select id="region">
+              <option>Toutes</option>
+              <option>Littoral</option>
+              <option>Centre</option>
+            </select>
+          </div>
+        </form>
+        <div class="directory">
+          <div class="list-stack">
+            <a class="list-item" href="/centres-de-controle/cadcia-sarl-douala"><strong>CADCIA SARL</strong><span>Douala · Littoral</span></a>
+            <a class="list-item" href="/centres-de-controle/hydrac-douala-bassa"><strong>HYDRAC</strong><span>Douala Bassa · Littoral</span></a>
+            <a class="list-item" href="/centres-de-controle/auto-vision-yaounde"><strong>AUTO VISION</strong><span>Yaoundé · Centre</span></a>
+            <p class="meta-quiet">SATELLITE NGONO (Unverified) absent. Liste = source accessible (H-09).</p>
+            <nav class="pagination" aria-label="Pagination"><span aria-current="page">1</span></nav>
+          </div>
+          <div class="map-slot">Carte (si coordonnées).<br>Seed : aucune pin.<br>Liste utilisable sans JavaScript.</div>
+        </div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF05b -->
+  <article class="board" id="hf05b">
+    <h2>HF05b — Centre detail</h2>
+    <div class="page">
+      <main>
+        <p class="crumb"><a href="/centres-de-controle">Centres</a> / CADCIA SARL</p>
+        <h1 class="page-title">CADCIA SARL</h1>
+        <p class="lede">Douala · Littoral</p>
+        <p class="meta-quiet">Téléphone : non renseigné · E-mail : non renseigné · Carte : pas de pin sans coordonnées.</p>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF05c -->
+  <article class="board" id="hf05c">
+    <h2>HF05c — Directory, no matches</h2>
+    <div class="page">
+      <main>
+        <h1 class="page-title">Centres de contrôle</h1>
+        <div class="empty" style="margin-top:1.25rem">Aucun centre ne correspond à cette recherche. Ce n’est pas une erreur 404.</div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF06 -->
+  <article class="board" id="hf06">
+    <h2>HF06 — Resource library</h2>
+    <div class="page">
+      <main>
+        <h1 class="page-title">Ressources</h1>
+        <div style="margin-top:1.15rem">
+          <div class="resource-row"><strong>Titre du document</strong><span class="badge">current</span></div>
+          <div class="resource-row"><strong>Document historique</strong><span class="badge badge-historical">historical · pas de téléchargement sans PDF</span></div>
+          <div class="resource-row"><span class="meta-quiet">archive = libellé public, pas une suppression</span><span class="badge badge-historical">archive</span></div>
+        </div>
+        <nav class="pagination" aria-label="Pagination"><span aria-current="page">1</span></nav>
+      </main>
+    </div>
+    <ul class="notes"><li>Statut en texte, pas seulement une couleur.</li></ul>
+  </article>
+
+  <!-- HF07 -->
+  <article class="board" id="hf07">
+    <h2>HF07 — News listing</h2>
+    <div class="page">
+      <main>
+        <h1 class="page-title">Actualités &amp; Articles</h1>
+        <div class="news-row" style="margin-top:1.15rem">
+          <div>
+            <a href="/actualites/exemple-publie">Titre FR publié</a>
+            <p class="meta-quiet">Contrôle technique · Actualité</p>
+          </div>
+        </div>
+      </main>
+    </div>
+    <ul class="notes"><li>Les brouillons 110 ne figurent pas ici.</li></ul>
+  </article>
+
+  <!-- HF07b -->
+  <article class="board" id="hf07b">
+    <h2>HF07b — Article · EN manquant</h2>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand-row">
+          <a class="logo" href="/"><span class="logo-word">PROOFTAG-CATIS</span></a>
+          <div class="lang" aria-label="Langue">
+            <a href="/" aria-current="true">FR</a>
+            <a href="/en" title="Pas de traduction EN pour cette page">EN</a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <p class="crumb"><a href="/actualites">Actualités</a> / article</p>
+        <h1 class="page-title">Titre de l’article</h1>
+        <p class="meta-quiet">EN absent : le sélecteur mène à /en, pas à une URL fantôme (H-10).</p>
+        <div class="prose" style="margin-top:1.15rem">
+          <p>Corps {html} en Source Serif 4, mesure de lecture ~42rem. Un seul h1.</p>
+        </div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF07c -->
+  <article class="board" id="hf07c">
+    <h2>HF07c — News empty</h2>
+    <div class="page">
+      <main>
+        <h1 class="page-title">Actualités &amp; Articles</h1>
+        <div class="empty" style="margin-top:1.25rem">Aucune publication pour le moment.</div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF08 -->
+  <article class="board" id="hf08">
+    <h2>HF08 — Contact</h2>
+    <div class="page">
+      <main>
+        <div class="contact-grid">
+          <div class="surface-paper">
+            <h1 class="page-title">Contact</h1>
+            <p class="lede" style="max-width:none">PROOFTAG-CATIS S.A.<br>Immeuble Résidence Le Carat, Hôtel de l'Air, Bonapriso<br>BP 4601 Douala, Cameroun<br>Tél. : +237 699 19 29 19<br>info@prooftagcatis.com</p>
+          </div>
+          <form class="form">
+            <div>
+              <label for="name">Nom</label>
+              <input id="name" name="name" required>
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+            <div>
+              <label for="phone">Téléphone (facultatif)</label>
+              <input id="phone" name="phone">
+            </div>
+            <div>
+              <label for="subject">Objet</label>
+              <input id="subject" name="subject" required>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <input type="text" name="website" hidden tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-royal" type="button">Envoyer</button>
+          </form>
+        </div>
+      </main>
+    </div>
+    <ul class="notes"><li>Honeypot non visible. Labels visibles, pas des placeholders.</li></ul>
+  </article>
+
+  <!-- HF08b -->
+  <article class="board" id="hf08b">
+    <h2>HF08b — Contact error and success</h2>
+    <div class="page">
+      <main class="form-grid">
+        <form class="form">
+          <div>
+            <label for="email2">E-mail</label>
+            <input id="email2" aria-invalid="true" aria-describedby="err-email">
+            <p class="error" id="err-email">Indiquez une adresse e-mail valide.</p>
+          </div>
+        </form>
+        <p class="ok">Message envoyé. Nous répondons via info@prooftagcatis.com.</p>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF09 -->
+  <article class="board" id="hf09">
+    <h2>HF09 — Legal</h2>
+    <div class="page">
+      <main>
+        <h1 class="page-title">Mentions légales</h1>
+        <div class="prose" style="margin-top:1.15rem">
+          <p>Colonne de lecture longue (~42rem), Source Serif 4. Blocs CMS. PROOFTAG-CATIS avec trait d’union. Privacy réutilise la même mesure (H-05).</p>
+          <p>Les textes réglementaires s’étendent sans grille concurrente ni cartes décoratives.</p>
+        </div>
+      </main>
+    </div>
+  </article>
+
+  <!-- HF10 -->
+  <article class="board" id="hf10">
+    <h2>HF10 — System pages</h2>
+    <div class="system-grid">
+      <div class="system-card">
+        <h1>Page introuvable</h1>
+        <p>404. Lien vers l’accueil (logo) et Contact.</p>
+        <a class="btn btn-royal" href="/">PROOFTAG-CATIS</a>
+      </div>
+      <div class="system-card">
+        <h1>Erreur serveur</h1>
+        <p>500. Pas de détail technique public.</p>
+      </div>
+      <div class="system-card">
+        <h1>Maintenance</h1>
+        <p>Fenêtre de déploiement. Marque seule.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- HF11 -->
+  <article class="board" id="hf11">
+    <h2>HF11 — Careers empty (P-11)</h2>
+    <div class="page">
+      <main>
+        <p class="crumb"><a href="/a-propos">À propos</a> / Carrières</p>
+        <h1 class="page-title">Carrières</h1>
+        <div class="empty" style="margin-top:1.25rem">Aucune offre pour le moment. Ce module reste en ligne.</div>
+      </main>
+    </div>
+    <ul class="notes">
+      <li>Équipe et partenaires : même état vide tant que VER-02 / VER-09 sont ouverts.</li>
+    </ul>
+  </article>
+</body>
+</html>

@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Queries\HomePageQuery;
 use Illuminate\View\View;
 
 final class HomeController extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(HomePageQuery $home): View
     {
-        return view('home');
+        $payload = $home->forLocale(app()->getLocale());
+
+        return view('home', $payload);
     }
 }

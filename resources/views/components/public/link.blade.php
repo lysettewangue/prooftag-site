@@ -14,6 +14,7 @@
 >
     {{ $slot }}
     @if ($external)
+        <x-public.icon name="external-link" :size="16" class="ml-1 inline" />
         <span class="sr-only"> {{ __('ui.components.external_link') }}</span>
     @endif
 </a>

@@ -62,6 +62,14 @@ class Product extends Model implements HasMedia, PublishableContract, Translatab
         return $this->belongsToMany(Expertise::class, 'product_expertise');
     }
 
+    /**
+     * @return BelongsToMany<Resource, $this>
+     */
+    public function resources(): BelongsToMany
+    {
+        return $this->belongsToMany(Resource::class, 'resource_product');
+    }
+
     public function mayEnterPublished(): bool
     {
         return ProductPublishRules::mayEnterPublished($this->code, $this->external_url);

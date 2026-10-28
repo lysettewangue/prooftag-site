@@ -43,7 +43,7 @@ php artisan test
 | Item | Step |
 |------|------|
 | SEO and redirect admin | 102 |
-| Public contact form | 126 / 148 |
+| Public contact form | 144 → [public-contact.md](public-contact.md) |
 
 ## 5. Verification (2026-10-22)
 

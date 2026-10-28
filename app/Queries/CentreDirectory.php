@@ -8,7 +8,6 @@ use App\Models\InspectionCentre;
 use App\Support\ContentCache;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Cache;
 
 final class CentreDirectory
 {
@@ -17,22 +16,27 @@ final class CentreDirectory
      */
     public function listedForLocale(string $locale): Collection
     {
-        /** @var Collection<int, InspectionCentre> $centres */
-        $centres = Cache::remember(
+        $ids = ContentCache::rememberIds(
             ContentCache::centres($locale),
-            (int) config('cms.cache_ttl', 3600),
-            function () use ($locale): Collection {
-                return InspectionCentre::query()
-                    ->publiclyListed()
-                    ->forLocale($locale)
-                    ->with(['translations' => fn ($query) => $query->where('locale', $locale), 'region'])
-                    ->orderBy('sort_order')
-                    ->orderBy('city')
-                    ->get();
-            },
+            fn (): array => InspectionCentre::query()
+                ->publiclyListed()
+                ->forLocale($locale)
+                ->orderBy('sort_order')
+                ->orderBy('city')
+                ->pluck('id')
+                ->all(),
         );
 
-        return $centres;
+        if ($ids === []) {
+            return new Collection;
+        }
+
+        return InspectionCentre::query()
+            ->whereIn('id', $ids)
+            ->with(['translations' => fn ($query) => $query->where('locale', $locale), 'region'])
+            ->orderBy('sort_order')
+            ->orderBy('city')
+            ->get();
     }
 
     /**

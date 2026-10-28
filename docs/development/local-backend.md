@@ -56,7 +56,7 @@ php artisan test
 |------|------|
 | Filament resources and settings admin | 088+ |
 | Public Blade templates | 123+ |
-| HTTP download / search / sitemap routes | 123+ |
+| HTTP download / search / sitemap routes | Search → [public-search.md](public-search.md) (146) · Sitemap/robots → [public-sitemap-robots.md](public-sitemap-robots.md) (149) |
 
 ## 7. Verification (2026-10-21)
 

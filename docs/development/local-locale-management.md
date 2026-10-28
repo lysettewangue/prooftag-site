@@ -42,7 +42,7 @@ php artisan test
 | Item | Step |
 |------|------|
 | Model vs representative data | 112 |
-| Public language switch on CMS templates | 125+ |
+| Public language switch on CMS templates | 147 → [public-language-switch.md](public-language-switch.md) |
 | Missing-translation dashboard widget | later admin polish |
 
 ## 5. Acceptance

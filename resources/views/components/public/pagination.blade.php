@@ -11,9 +11,15 @@
         <ul class="flex flex-wrap items-center justify-center gap-2">
             <li>
                 @if ($paginator->onFirstPage())
-                    <span aria-disabled="true" class="inline-flex min-h-11 items-center rounded-control border border-line bg-status-disabled-soft px-4 text-status-disabled">{{ __('ui.components.previous') }}</span>
+                    <span aria-disabled="true" class="inline-flex min-h-11 items-center gap-1.5 rounded-control border border-line bg-status-disabled-soft px-4 text-status-disabled">
+                        <x-public.icon name="chevron-left" :size="16" />
+                        {{ __('ui.components.previous') }}
+                    </span>
                 @else
-                    <a rel="prev" class="inline-flex min-h-11 items-center rounded-control border border-line bg-white px-4 font-semibold text-brand-azure-700 hover:border-brand-azure-600 hover:bg-surface-subtle" href="{{ $paginator->previousPageUrl() }}">{{ __('ui.components.previous') }}</a>
+                    <a rel="prev" class="inline-flex min-h-11 items-center gap-1.5 rounded-control border border-line bg-white px-4 font-semibold text-brand-azure-700 hover:border-brand-azure-600 hover:bg-surface-subtle" href="{{ $paginator->previousPageUrl() }}">
+                        <x-public.icon name="chevron-left" :size="16" />
+                        {{ __('ui.components.previous') }}
+                    </a>
                 @endif
             </li>
 
@@ -29,9 +35,15 @@
 
             <li>
                 @if ($paginator->hasMorePages())
-                    <a rel="next" class="inline-flex min-h-11 items-center rounded-control border border-line bg-white px-4 font-semibold text-brand-azure-700 hover:border-brand-azure-600 hover:bg-surface-subtle" href="{{ $paginator->nextPageUrl() }}">{{ __('ui.components.next') }}</a>
+                    <a rel="next" class="inline-flex min-h-11 items-center gap-1.5 rounded-control border border-line bg-white px-4 font-semibold text-brand-azure-700 hover:border-brand-azure-600 hover:bg-surface-subtle" href="{{ $paginator->nextPageUrl() }}">
+                        {{ __('ui.components.next') }}
+                        <x-public.icon name="chevron-right" :size="16" />
+                    </a>
                 @else
-                    <span aria-disabled="true" class="inline-flex min-h-11 items-center rounded-control border border-line bg-status-disabled-soft px-4 text-status-disabled">{{ __('ui.components.next') }}</span>
+                    <span aria-disabled="true" class="inline-flex min-h-11 items-center gap-1.5 rounded-control border border-line bg-status-disabled-soft px-4 text-status-disabled">
+                        {{ __('ui.components.next') }}
+                        <x-public.icon name="chevron-right" :size="16" />
+                    </span>
                 @endif
             </li>
         </ul>

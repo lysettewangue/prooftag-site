@@ -52,7 +52,7 @@ php artisan test
 |------|------|
 | Careers admin | 099 |
 | Media library admin | 100 |
-| Public resource listing / download | 139+ |
+| Public resource listing / download | 140 → [public-resource-library.md](public-resource-library.md) |
 | Close VER-08 / migrate 2020 docs | 157 / 151+ |
 
 ## 5. Verification (2026-10-22)

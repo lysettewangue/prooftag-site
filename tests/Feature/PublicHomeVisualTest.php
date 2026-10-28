@@ -4,10 +4,21 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use Database\Seeders\SiteSettingSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class PublicHomeVisualTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->seed(SiteSettingSeeder::class);
+    }
+
     public function test_the_french_home_has_the_complete_visual_narrative(): void
     {
         $response = $this->get('/');
@@ -20,6 +31,7 @@ class PublicHomeVisualTest extends TestCase
             ->assertSee('Avançons vers une mobilité mieux sécurisée.')
             ->assertSee('public-network-panel', false)
             ->assertSee('Découvrir nos solutions')
+            ->assertSee('data-home-products-empty', false)
             ->assertDontSee('Le français est la langue par défaut');
 
         $this->assertSame(3, substr_count($response->getContent(), 'group overflow-hidden'));

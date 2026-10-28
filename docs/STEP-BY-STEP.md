@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 128 — Integrate Lucide — **NOT STARTED**
+**Active step:** 151 — Migrate corporate content — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -160,35 +160,35 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 | 125 | Implement navigation | [No Home item; logo opens the current language](development/public-navigation.md) | COMPLETED |
 | 126 | Implement the footer | [Values from global settings](development/public-footer.md) | COMPLETED |
 | 127 | Implement shared components | [Buttons, cards, forms, navigation pieces](development/public-components.md) | COMPLETED |
-| 128 | Integrate Lucide | Public icon set | NOT STARTED |
-| 129 | Implement the JavaScript foundation | Vanilla JS, then Alpine | LOCKED |
-| 130 | Implement the homepage | Bound to CMS data | LOCKED |
-| 131 | Implement About Us | About templates | LOCKED |
-| 132 | Implement the solutions index | Solutions listing | LOCKED |
-| 133 | Implement the product detail template | Checked against all five products | LOCKED |
-| 134 | Implement expertise | Index and detail | LOCKED |
-| 135 | Implement technical inspection | Inspection section | LOCKED |
-| 136 | Implement the 12 security points | Public presentation | LOCKED |
-| 137 | Implement equipment | Equipment presentation | LOCKED |
-| 138 | Implement the centre directory | Search, filters, pagination | LOCKED |
-| 139 | Implement the centre detail page | Centre page | LOCKED |
-| 140 | Implement the resource library | Resources | LOCKED |
-| 141 | Implement the news listing | Listing | LOCKED |
-| 142 | Implement the article page | Article detail | LOCKED |
-| 143 | Implement careers | Careers | LOCKED |
-| 144 | Implement contact | Contact page | LOCKED |
-| 145 | Implement legal pages | Legal templates | LOCKED |
-| 146 | Implement public search | Search | LOCKED |
-| 147 | Implement language switching | Equivalent translated content | LOCKED |
-| 148 | Implement SEO output | Title, canonical, hreflang, Open Graph | LOCKED |
-| 149 | Implement sitemap and robots | Sitemap and robots | LOCKED |
-| 150 | Review the public frontend | **Gate.** Templates work on CMS data | LOCKED |
+| 128 | Integrate Lucide | [Public icon set](development/public-lucide.md) | COMPLETED |
+| 129 | Implement the JavaScript foundation | [Vanilla JS, then Alpine](development/public-javascript.md) | COMPLETED |
+| 130 | Implement the homepage | [CMS-bound home](development/public-homepage.md) | COMPLETED |
+| 131 | Implement About Us | [About templates](development/public-about.md) | COMPLETED |
+| 132 | Implement the solutions index | [Solutions listing](development/public-products-index.md) | COMPLETED |
+| 133 | Implement the product detail template | [Shared product detail](development/public-product-detail.md) | COMPLETED |
+| 134 | Implement expertise | [Index and detail](development/public-expertise.md) | COMPLETED |
+| 135 | Implement technical inspection | [CT hub](development/public-technical-inspection.md) | COMPLETED |
+| 136 | Implement the 12 security points | [Public presentation](development/public-security-points.md) | COMPLETED |
+| 137 | Implement equipment | [Index and detail](development/public-equipment.md) | COMPLETED |
+| 138 | Implement the centre directory | [Search, filters, pagination](development/public-centre-directory.md) | COMPLETED |
+| 139 | Implement the centre detail page | [Centre detail](development/public-centre-detail.md) | COMPLETED |
+| 140 | Implement the resource library | [Public library](development/public-resource-library.md) | COMPLETED |
+| 141 | Implement the news listing | [News listing](development/public-news-listing.md) | COMPLETED |
+| 142 | Implement the article page | [Article page](development/public-article.md) | COMPLETED |
+| 143 | Implement careers | [Public careers](development/public-careers.md) | COMPLETED |
+| 144 | Implement contact | [Public contact](development/public-contact.md) | COMPLETED |
+| 145 | Implement legal pages | [Legal pages](development/public-legal.md) | COMPLETED |
+| 146 | Implement public search | [Public search](development/public-search.md) | COMPLETED |
+| 147 | Implement language switching | [Language switch](development/public-language-switch.md) | COMPLETED |
+| 148 | Implement SEO output | [Public SEO](development/public-seo.md) | COMPLETED |
+| 149 | Implement sitemap and robots | [Sitemap & robots](development/public-sitemap-robots.md) | COMPLETED |
+| 150 | Review the public frontend | [**Gate passed.** Public frontend](development/public-frontend-gate.md) | COMPLETED |
 
 ## 151–186 — Migration, quality, release candidate
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 151 | Migrate corporate content | Approved About content | LOCKED |
+| 151 | Migrate corporate content | Approved About content | NOT STARTED |
 | 152 | Migrate product content | Five products | LOCKED |
 | 153 | Migrate expertise content | Expertise | LOCKED |
 | 154 | Migrate technical inspection content | Inspection knowledge | LOCKED |

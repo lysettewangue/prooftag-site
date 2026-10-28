@@ -30,4 +30,18 @@ final class SubmitContactRequest extends FormRequest
             'website' => ['nullable', 'string', 'max:191'],
         ];
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'name' => (string) __('ui.contact.name'),
+            'email' => (string) __('ui.contact.email'),
+            'phone' => (string) __('ui.contact.phone'),
+            'subject' => (string) __('ui.contact.subject'),
+            'message' => (string) __('ui.contact.message'),
+        ];
+    }
 }

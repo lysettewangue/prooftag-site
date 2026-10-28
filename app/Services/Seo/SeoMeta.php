@@ -14,5 +14,7 @@ final readonly class SeoMeta
         public ?string $description,
         public string $canonical,
         public array $hreflang,
+        public ?string $image = null,
+        public string $type = 'website',
     ) {}
 }
