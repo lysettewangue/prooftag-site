@@ -31,7 +31,10 @@ final class ProductCatalog
 
         return Product::query()
             ->whereIn('id', $ids)
-            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
             ->orderBy('sort_order')
             ->get();
     }
@@ -41,7 +44,10 @@ final class ProductCatalog
         return Product::query()
             ->publiclyVisible(now())
             ->withLocaleSlug($locale, $slug)
-            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
             ->firstOrFail();
     }
 }

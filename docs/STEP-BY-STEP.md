@@ -1,6 +1,6 @@
 # Step tracker
 
-**Active step:** 151 — Migrate corporate content — **NOT STARTED**
+**Active step:** 175 — Run format checks — **NOT STARTED**
 
 Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **COMPLETED** only when its deliverable and criteria are met. The next row then moves from **LOCKED** to **NOT STARTED**.
 
@@ -188,31 +188,31 @@ Rules and bands: [engineering-roadmap.md](engineering-roadmap.md). Mark a row **
 
 | Step | Work | Deliverable | Status |
 |-----:|------|-------------|--------|
-| 151 | Migrate corporate content | Approved About content | NOT STARTED |
-| 152 | Migrate product content | Five products | LOCKED |
-| 153 | Migrate expertise content | Expertise | LOCKED |
-| 154 | Migrate technical inspection content | Inspection knowledge | LOCKED |
-| 155 | Migrate equipment content | Equipment | LOCKED |
-| 156 | Migrate the centre directory | Verification status preserved | LOCKED |
-| 157 | Migrate resource documents | Current and historical separated | LOCKED |
-| 158 | Migrate retained news and articles | Selected editorial content | LOCKED |
-| 159 | Migrate media | Optimised, classified files | LOCKED |
-| 160 | Verify migrated content | Compared with the audit | LOCKED |
-| 161 | Complete the French editorial review | French approved | LOCKED |
-| 162 | Complete the English translation | English content | LOCKED |
-| 163 | Review technical English | Terminology checked | LOCKED |
-| 164 | Verify French and English routes | Route check | LOCKED |
-| 165 | Finalise the legacy redirect register | Deliberate URL map | LOCKED |
-| 166 | Decide DITROS-CT URL behaviour | No implied Certidocs relationship | LOCKED |
-| 167 | Implement redirects locally | Redirects working locally | LOCKED |
-| 168 | Create unit tests | Isolated business rules | LOCKED |
-| 169 | Create feature tests | Routes, publishing, centres, contact | LOCKED |
-| 170 | Create authorization tests | Allowed and denied | LOCKED |
-| 171 | Create database integration tests | Constraints and relations | LOCKED |
-| 172 | Create email and filesystem tests | Mail and files | LOCKED |
-| 173 | Create browser tests | Critical journeys | LOCKED |
-| 174 | Run static analysis | Significant issues resolved | LOCKED |
-| 175 | Run format checks | Pint clean | LOCKED |
+| 151 | Migrate corporate content | [Corporate migration](development/migrate-corporate-content.md) | COMPLETED |
+| 152 | Migrate product content | [Product migration](development/migrate-product-content.md) | COMPLETED |
+| 153 | Migrate expertise content | [Expertise migration](development/migrate-expertise-content.md) | COMPLETED |
+| 154 | Migrate technical inspection content | [CT migration](development/migrate-technical-inspection-content.md) | COMPLETED |
+| 155 | Migrate equipment content | [Equipment migration](development/migrate-equipment-content.md) | COMPLETED |
+| 156 | Migrate the centre directory | [Centre directory migration](development/migrate-centre-directory.md) | COMPLETED |
+| 157 | Migrate resource documents | [Resource documents](development/migrate-resource-documents.md) | COMPLETED |
+| 158 | Migrate retained news and articles | [Editorial migration](development/migrate-editorial-content.md) | COMPLETED |
+| 159 | Migrate media | [Media migration](development/migrate-media.md) | COMPLETED |
+| 160 | Verify migrated content | [Audit verification](development/verify-migrated-content.md) | COMPLETED |
+| 161 | Complete the French editorial review | [French editorial review](development/french-editorial-review.md) | COMPLETED |
+| 162 | Complete the English translation | [English translation](development/english-translation.md) | COMPLETED |
+| 163 | Review technical English | [Technical English review](development/technical-english-review.md) | COMPLETED |
+| 164 | Verify French and English routes | [FR/EN route check](development/verify-fr-en-routes.md) | COMPLETED |
+| 165 | Finalise the legacy redirect register | [Redirect register](legacy/redirect-register.md) | COMPLETED |
+| 166 | Decide DITROS-CT URL behaviour | [DITROS-CT URL](legacy/ditros-ct-url.md) | COMPLETED |
+| 167 | Implement redirects locally | [Implement redirects](development/implement-redirects.md) | COMPLETED |
+| 168 | Create unit tests | [Test suite 168–173](development/test-suite-168-173.md) | COMPLETED |
+| 169 | Create feature tests | [Test suite 168–173](development/test-suite-168-173.md) | COMPLETED |
+| 170 | Create authorization tests | [Test suite 168–173](development/test-suite-168-173.md) | COMPLETED |
+| 171 | Create database integration tests | [Test suite 168–173](development/test-suite-168-173.md) | COMPLETED |
+| 172 | Create email and filesystem tests | [Test suite 168–173](development/test-suite-168-173.md) | COMPLETED |
+| 173 | Create browser tests | [Test suite 168–173](development/test-suite-168-173.md) | COMPLETED |
+| 174 | Run static analysis | [Static analysis](development/static-analysis.md) | COMPLETED |
+| 175 | Run format checks | Pint clean | NOT STARTED |
 | 176 | Configure continuous integration | Dependencies, analysis, tests, production build | LOCKED |
 | 177 | Perform manual functional QA | Functional review | LOCKED |
 | 178 | Perform admin QA | Every role | LOCKED |

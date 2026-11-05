@@ -72,4 +72,33 @@ final class ResourceLibrary
             ])
             ->firstOrFail();
     }
+
+    /**
+     * @return array{total: int, current: int, downloadable: int}
+     */
+    public function publicStats(string $locale, ?ResourceRegulatoryStatus $status = null): array
+    {
+        $base = Resource::query()
+            ->publiclyVisible(now())
+            ->forLocale($locale);
+
+        if ($status !== null) {
+            $base->where('regulatory_status', $status);
+        }
+
+        $total = (int) (clone $base)->count();
+        $current = (int) (clone $base)
+            ->where('regulatory_status', ResourceRegulatoryStatus::Current)
+            ->count();
+
+        $downloadable = (int) (clone $base)
+            ->whereHas('media', fn ($media) => $media->where('collection_name', 'documents'))
+            ->count();
+
+        return [
+            'total' => $total,
+            'current' => $current,
+            'downloadable' => $downloadable,
+        ];
+    }
 }

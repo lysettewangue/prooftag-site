@@ -1,0 +1,51 @@
+wp_id,filename,accuracy_status,destination,rights_note,notes
+26,Logo-Prooftag-CATIS-SA_Redesigne_Ok.png,current,brand_archive,PROOFTAG-CATIS — official logo colour source,AUD-028 archive colour source
+27,Logo_Prooftag_CATIS_SA_Redesigne_Ok-black.png,current,brand_archive,PROOFTAG-CATIS — official logo black,AUD-028
+28,Logo_Prooftag_CATIS_SA_Redesigne_Ok-removebg.png,current,site_settings,PROOFTAG-CATIS — official logo colour on light,AUD-028 attach SiteSetting + public/images/brand/logo.png
+29,Logo_Prooftag_CATIS_SA_Redesigne_Ok-white-e1719944621102.png,current,brand_static,PROOFTAG-CATIS — official logo white on blue,AUD-028 public/images/brand/logo-white.png
+30,cropped-Logo_Prooftag_CATIS_SA_Redesigne_Ok-removebg.png,archive,archive,PROOFTAG-CATIS — cropped duplicate,Prefer full removebg
+66,Favicone.png,current,brand_static,PROOFTAG-CATIS — favicon,public/images/brand/favicon.png
+67,cropped-Favicone.png,archive,archive,PROOFTAG-CATIS — cropped favicon duplicate,Prefer Favicone.png
+95,Home-001.png,archive,archive,,Legacy homepage chrome — not V1 hero
+102,Slider-001.png,archive,archive,,Legacy slider stock
+104,Slider-002.png,archive,archive,,Legacy slider stock
+157,Slider-003.png,archive,archive,,Legacy slider stock
+158,Slider-003.2-scaled.jpg,archive,archive,,Stock photo — Data analysis marketing
+218,6e9d43aa-vector1.png,reject,discard,,Decorative theme vector — not CMS content
+219,8eece8e7-banner-image-1.png,archive,archive,,Legacy banner chrome
+224,2150038844.jpg,archive,archive,,Stock photo
+268,70267.jpg,archive,archive,,Stock photo
+334,CT-VERIF.png,verification,product_ct_verif,PROOFTAG-CATIS — CT-VERIF product mark; public after VER-04,Product page only — not corporate chrome
+395,ditros-ct-caisse.png,reject,discard,Do not use DITROS marks on corporate or CERTIDOCS CT chrome,Drop DITROS-CT branding
+411,DOSER.png,verification,product_doser,PROOFTAG-CATIS — DOSER product mark; public after VER-05,Product page only
+500,515516d9-test-bg-shape.png,reject,discard,,Decorative shape
+506,96ac75cb-object-8our-exprience.png,reject,discard,,Theme decoration
+518,2c7d0160-our-consultant-big-bg.png,verification,hold_ver02,,Team-adjacent stock — VER-02 open
+523,Sup-image-01.png,archive,archive,,Legacy support image
+552,s-tampolla.png,verification,hold_ver02,,Named person likeness — VER-02
+553,team.jpg,verification,hold_ver02,,Team photo — VER-02
+554,team.png,verification,hold_ver02,,Team photo — VER-02
+595,cropped-cropped-ditros-off-05-e1721922684299.png,reject,discard,Do not use DITROS marks,DITROS logo
+596,Image1.png,verification,product_doser,PROOFTAG-CATIS — DOSER mark variant; public after VER-05,Prefer as DOSER product image
+598,cropped-cropped-ditros-off-05-1.png,reject,discard,Do not use DITROS marks,DITROS logo crop
+599,cropped-cropped-ditros-off-05-2-e1721924140589.png,reject,discard,Do not use DITROS marks,DITROS logo crop
+600,CT-verif-logo-e1721923966316.png,verification,product_ct_verif,PROOFTAG-CATIS — CT-VERIF logo; public after VER-04,Preferred CT-VERIF product mark
+634,business-strategy-success-target-goals-scaled.jpg,archive,archive,,Stock Mission & Vision photo
+650,Capture-decran-2024-08-05-114051.png,reject,discard,,Operational UI screenshot
+651,PV.png,archive,archive_optimised,Process pedagogy PV illustration — editorial review before public attach,Oversize; optimise into fixtures only for archive
+659,Capture-decran-2024-08-05-121800.png,reject,discard,,Operational UI screenshot
+671,recherche-et-developpement-scaled.jpg,archive,archive,,Stock R&D photo
+673,analyse-de-donnees-et-reporting.png,archive,archive,,Marketing illustration reporting
+674,Securite-documentaire.png,archive,archive,,Marketing illustration document security
+675,Code-de-la-route-soiree-prevention-routiere-nov2019.jpg,historical,archive,Historical prevention event 2019,Keep as historical only
+680,futuristic-hand-working-laptop.png,archive,archive,,Stock R&D photo
+682,Picture2.png,archive,archive,,Document security illustration
+691,Group-98.png,reject,discard,,Legacy UI chrome
+692,Mask-Group-min.png,reject,discard,,Legacy UI chrome
+693,Group-99-min.png,reject,discard,,Legacy UI chrome
+694,Group-102-min.png,reject,discard,,Legacy UI chrome
+695,Group-1021-min.png,reject,discard,,Legacy UI chrome
+696,Group-1023-min.png,reject,discard,,Legacy UI chrome
+697,Group-1024-min.png,reject,discard,,Legacy UI chrome
+698,Mask-Group1-min.png,reject,discard,,Legacy UI chrome
+699,Rectangle-16-min.png,reject,discard,,Legacy UI chrome

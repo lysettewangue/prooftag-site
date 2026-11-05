@@ -45,7 +45,7 @@ Content edits, seeds, Filament copy, and public Blade (123+) are **not** schema 
 |------|------|
 | UI/UX then public templates | 114–150 |
 | Close VER rows / migrate retained copy | 151–163 |
-| Redirect cutover / DITROS URL | 164–166 |
+| Redirect cutover / DITROS URL | 164–166 ([ditros-ct-url.md](../legacy/ditros-ct-url.md)) |
 | LWS staging and production | 187+ |
 
 ## 4. PHPUnit

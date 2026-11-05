@@ -12,7 +12,7 @@
     :type="$seo->type"
 >
     <section class="border-b border-line bg-white" aria-labelledby="search-title">
-        <div class="mx-auto max-w-site px-gutter-compact py-10 medium:px-gutter-medium medium:py-14">
+        <div class="mx-auto max-w-site public-page-start px-gutter-compact medium:px-gutter-medium">
             <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">
                 {{ $copy['eyebrow'] }}
             </p>
@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="bg-surface-subtle py-12 medium:py-16 wide:py-20" aria-labelledby="search-title">
+    <section class="bg-white py-12 medium:py-16 wide:py-20" aria-labelledby="search-title">
         <div class="mx-auto max-w-site space-y-10 px-gutter-compact medium:px-gutter-medium">
             <form
                 method="get"

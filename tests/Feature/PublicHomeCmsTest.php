@@ -17,11 +17,13 @@ use App\Support\ContentCache;
 use App\Support\PublicPath;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
+use Tests\Support\ResetsPublicationToDraft;
 use Tests\TestCase;
 
 class PublicHomeCmsTest extends TestCase
 {
     use RefreshDatabase;
+    use ResetsPublicationToDraft;
 
     protected function setUp(): void
     {
@@ -33,19 +35,21 @@ class PublicHomeCmsTest extends TestCase
 
     public function test_the_homepage_shows_empty_cms_states_while_seeds_are_draft(): void
     {
+        $this->resetPublicationToDraft();
+
         $this->get('/')
             ->assertOk()
             ->assertSee('data-home-products-empty', false)
-            ->assertSee('Aucune solution n’est encore publiée.')
+            ->assertSee('Les solutions seront bientôt disponibles ici.')
             ->assertSee('data-home-expertises-empty', false)
-            ->assertSee('Aucune expertise n’est encore publiée.')
+            ->assertSee('Les expertises seront bientôt disponibles ici.')
             ->assertDontSee('DITROS-CT')
             ->assertDontSee('opérateur exclusif');
 
         $this->get('/en')
             ->assertOk()
-            ->assertSee('No solutions are published yet.')
-            ->assertSee('No expertise areas are published yet.');
+            ->assertSee('Solutions will be available here soon.')
+            ->assertSee('Expertise areas will be available here soon.');
     }
 
     public function test_published_products_and_expertises_appear_on_the_homepage(): void
@@ -124,6 +128,8 @@ class PublicHomeCmsTest extends TestCase
 
     public function test_expertise_catalog_and_public_paths_are_locale_aware(): void
     {
+        $this->resetPublicationToDraft();
+
         $now = now();
         $expertise = Expertise::query()->where('code', ExpertiseCode::ResearchDevelopment)->firstOrFail();
         $expertise->forceFill([
@@ -140,6 +146,8 @@ class PublicHomeCmsTest extends TestCase
 
     public function test_draft_products_never_render_as_ghost_cards(): void
     {
+        $this->resetPublicationToDraft();
+
         $this->assertSame(0, (new ExpertiseCatalog)->publishedForLocale('fr')->count());
 
         $html = $this->get('/')->assertOk()->getContent();

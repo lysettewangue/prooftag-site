@@ -12,9 +12,11 @@ use App\Models\Concerns\Publishable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * @property CareerKind $kind
+ * @property Carbon|null $closes_at
  * @property string|null $application_url
  */
 class Career extends Model implements PublishableContract, Translatable

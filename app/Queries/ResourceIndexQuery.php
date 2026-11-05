@@ -22,6 +22,7 @@ final class ResourceIndexQuery
      *     resources: LengthAwarePaginator<int, Resource>,
      *     status: ResourceRegulatoryStatus|null,
      *     statuses: list<ResourceRegulatoryStatus>,
+     *     stats: array{total: int, current: int, downloadable: int},
      *     seo: SeoMeta,
      *     index_url: string
      * }
@@ -34,11 +35,13 @@ final class ResourceIndexQuery
 
         $path = $locale === Locale::English->value ? 'resources' : 'ressources';
         $indexUrl = PublicPath::localized($locale, $path);
+        $resources = $this->library->paginatePublic($locale, $filter)->withQueryString();
 
         return [
-            'resources' => $this->library->paginatePublic($locale, $filter)->withQueryString(),
+            'resources' => $resources,
             'status' => $filter,
             'statuses' => ResourceRegulatoryStatus::cases(),
+            'stats' => $this->library->publicStats($locale, $filter),
             'index_url' => $indexUrl,
             'seo' => new SeoMeta(
                 title: (string) __('ui.resources.meta_title', locale: $locale),

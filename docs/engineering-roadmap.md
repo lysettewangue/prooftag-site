@@ -29,7 +29,7 @@ Only one step is normally active. `LOCKED` is not a failure.
 | Host | LWS Starter. No production Docker, Node server, Redis, Horizon, or Octane |
 | Locales | French default, English secondary |
 
-Products: CERTIDOCS CT, CERTIDOCS CT Reporting Platform, CT-VERIF, DOSER, Video Enforcement. DITROS-CT is not a product. Its old URL is decided at step 166.
+Products: CERTIDOCS CT, CERTIDOCS CT Reporting Platform, CT-VERIF, DOSER, Video Enforcement. DITROS-CT is not a product. Legacy URL → `/controle-technique` ([ditros-ct-url.md](legacy/ditros-ct-url.md)).
 
 ## Sequence
 
@@ -47,8 +47,8 @@ Products: CERTIDOCS CT, CERTIDOCS CT Reporting Platform, CT-VERIF, DOSER, Video 
 | 107–113 | Representative content, then freeze the V1 data model | [database/v1-model-freeze.md](database/v1-model-freeze.md) |
 | 114–122 | Wireframes, then visual design. No frontend code before 122 | [design/design-brief.md](design/design-brief.md) |
 | 123–150 | Public templates on CMS data | |
-| 151–167 | Migration, FR/EN, redirects, DITROS decision | |
-| 168–185 | Tests, CI, QA, security, performance | [qa/acceptance-checklist.md](qa/acceptance-checklist.md) |
+| 151–167 | Migration, FR/EN, redirects, DITROS decision | Done locally |
+| 168–185 | Tests, CI, QA, security, performance | [test-suite-168-173.md](development/test-suite-168-173.md) · [qa/acceptance-checklist.md](qa/acceptance-checklist.md) |
 | 186 | Local release candidate. No LWS work before this | |
 | 187–205 | LWS account, staging, acceptance | [deploy/lws-hosting-notes.md](deploy/lws-hosting-notes.md) |
 | 206–233 | Production freeze, deploy, cutover, smoke tests | [deploy/rollback-outline.md](deploy/rollback-outline.md) |

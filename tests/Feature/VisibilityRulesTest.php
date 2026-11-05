@@ -13,11 +13,13 @@ use App\Models\Product;
 use App\Models\Region;
 use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\ResetsPublicationToDraft;
 use Tests\TestCase;
 
 class VisibilityRulesTest extends TestCase
 {
     use RefreshDatabase;
+    use ResetsPublicationToDraft;
 
     protected function setUp(): void
     {
@@ -28,6 +30,8 @@ class VisibilityRulesTest extends TestCase
 
     public function test_draft_seeded_products_are_not_publicly_visible(): void
     {
+        $this->resetPublicationToDraft();
+
         $now = new DateTimeImmutable('2026-10-21 12:00:00');
 
         $this->assertSame(0, Product::query()->publiclyVisible($now)->count());

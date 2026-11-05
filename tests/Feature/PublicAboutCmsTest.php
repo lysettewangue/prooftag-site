@@ -12,11 +12,13 @@ use App\Models\TeamMember;
 use App\Support\ContentCache;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
+use Tests\Support\ResetsPublicationToDraft;
 use Tests\TestCase;
 
 class PublicAboutCmsTest extends TestCase
 {
     use RefreshDatabase;
+    use ResetsPublicationToDraft;
 
     protected function setUp(): void
     {
@@ -28,6 +30,8 @@ class PublicAboutCmsTest extends TestCase
 
     public function test_draft_about_pages_return_not_found(): void
     {
+        $this->resetPublicationToDraft();
+
         $this->get('/a-propos')->assertNotFound();
         $this->get('/a-propos/organisation')->assertNotFound();
         $this->get('/a-propos/historique')->assertNotFound();
@@ -60,6 +64,11 @@ class PublicAboutCmsTest extends TestCase
             ->assertOk()
             ->assertSee('<title>À propos — PROOFTAG-CATIS</title>', false)
             ->assertSee('Récit institutionnel vérifié pour les tests.')
+            ->assertSee('id="organisation"', false)
+            ->assertSee('id="history"', false)
+            ->assertSee('id="team"', false)
+            ->assertSee('id="partners"', false)
+            ->assertSee('id="careers"', false)
             ->assertDontSee('opérateur exclusif')
             ->assertSee('aria-current="page"', false)
             ->assertSee('href="/a-propos"', false);
@@ -70,39 +79,21 @@ class PublicAboutCmsTest extends TestCase
             ->assertDontSee('Récit institutionnel vérifié pour les tests.');
     }
 
-    public function test_child_about_pages_show_breadcrumbs_when_published(): void
+    public function test_child_about_routes_redirect_to_hub_anchors(): void
     {
         $this->publishPage(PageCode::About);
-        $this->publishPage(PageCode::Organisation, [
-            'fr' => [
-                'blocks' => [
-                    ['type' => 'rich_text', 'content' => 'Organisation publiée pour les tests.'],
-                ],
-            ],
-        ]);
+        $this->publishPage(PageCode::Organisation);
 
         $this->get('/a-propos/organisation')
-            ->assertOk()
-            ->assertSee('Organisation publiée pour les tests.')
-            ->assertSee('À propos')
-            ->assertSee('href="/a-propos"', false)
-            ->assertSee('Organisation');
+            ->assertRedirect('/a-propos#organisation');
+
+        $this->get('/en/about/organisation')
+            ->assertRedirect('/en/about#organisation');
     }
 
-    public function test_team_and_partners_pages_use_empty_states_until_members_are_published(): void
+    public function test_about_hub_lists_published_team_and_partners(): void
     {
-        $this->publishPage(PageCode::Team);
-        $this->publishPage(PageCode::Partners);
-
-        $this->get('/a-propos/equipe')
-            ->assertOk()
-            ->assertSee('data-about-team-empty', false)
-            ->assertSee('Aucun membre d’équipe n’est encore publié.');
-
-        $this->get('/a-propos/partenaires')
-            ->assertOk()
-            ->assertSee('data-about-partners-empty', false)
-            ->assertSee('Aucun partenaire n’est encore publié.');
+        $this->publishPage(PageCode::About);
 
         $member = TeamMember::query()->create([
             'full_name' => 'Ada Test',
@@ -132,42 +123,13 @@ class PublicAboutCmsTest extends TestCase
 
         ContentCache::flush();
 
-        $this->get('/a-propos/equipe')
+        $this->get('/a-propos')
             ->assertOk()
             ->assertSee('data-about-team', false)
             ->assertSee('Ada Test')
             ->assertSee('Direction')
-            ->assertDontSee('data-about-team-empty', false);
-
-        $this->get('/a-propos/partenaires')
-            ->assertOk()
             ->assertSee('data-about-partners', false)
-            ->assertSee('Partner Test')
-            ->assertDontSee('data-about-partners-empty', false);
-    }
-
-    public function test_section_nav_lists_only_published_siblings(): void
-    {
-        $this->publishPage(PageCode::About);
-        $this->publishPage(PageCode::History, [
-            'fr' => [
-                'blocks' => [
-                    ['type' => 'timeline', 'items' => [
-                        ['year' => '2020', 'text' => 'Point d’historique vérifié.'],
-                    ]],
-                ],
-            ],
-        ]);
-
-        $this->get('/a-propos')
-            ->assertOk()
-            ->assertSee('Dans cette section')
-            ->assertSee('href="/a-propos/historique"', false)
-            ->assertDontSee('href="/a-propos/organisation"', false);
-
-        $this->get('/a-propos/historique')
-            ->assertOk()
-            ->assertSee('Point d’historique vérifié.');
+            ->assertSee('Partner Test');
     }
 
     /**

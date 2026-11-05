@@ -24,7 +24,7 @@ final class CentreShowQuery
      *     name: string,
      *     place: string,
      *     seo: SeoMeta,
-     *     breadcrumbs: list<array{label: string, url: string|null}>,
+     *     index_url: string,
      *     markers: list<array{name: string, city: string, lat: float, lng: float, url: string|null}>,
      *     missing_notes: list<string>
      * }
@@ -67,16 +67,7 @@ final class CentreShowQuery
             'name' => $name,
             'place' => $place,
             'seo' => $this->seo->forModel($centre, $locale),
-            'breadcrumbs' => [
-                [
-                    'label' => (string) __('ui.navigation.items.centres', locale: $locale),
-                    'url' => PublicPath::localized($locale, $indexPath),
-                ],
-                [
-                    'label' => $name,
-                    'url' => null,
-                ],
-            ],
+            'index_url' => PublicPath::localized($locale, $indexPath),
             'markers' => $markers,
             'missing_notes' => $this->missingNotes($centre, $locale, $markers === []),
         ];

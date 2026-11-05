@@ -33,7 +33,7 @@ php artisan test --filter=DatabaseStructureTest
 
 | Item | Step |
 |------|------|
-| Close VER-03 / import the full list | Later editorial work |
+| Close VER-03 / import the full list | Capture import at [156](migrate-centre-directory.md); VER-03 still Open for ~35 / contacts |
 | Sample news | 110 (done — [local-sample-news.md](local-sample-news.md)) |
 
 ## 3. Acceptance

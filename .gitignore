@@ -74,3 +74,8 @@ Desktop.ini
 *.sqlite3
 *.bak
 *.tmp
+
+# Pest browser artefacts
+/tests/Browser/Screenshots
+/tests/Browser/Traces
+/tests/Browser/Videos

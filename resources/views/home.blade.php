@@ -4,8 +4,24 @@
     $productsUrl = $navigation['products']['url'];
     $expertiseUrl = $navigation['expertise']['url'];
     $inspectionUrl = $navigation['technical_inspection']['url'];
+    $centresUrl = $navigation['centres']['url'];
     $contactUrl = $navigation['contact']['url'];
+    $aboutUrl = \App\Support\PublicPath::localized(app()->getLocale(), app()->getLocale() === 'en' ? 'about' : 'a-propos');
     $locale = app()->getLocale();
+    $paths = [
+        ['icon' => 'cpu', 'copy' => $home['paths']['solutions'], 'url' => $productsUrl],
+        ['icon' => 'clipboard-check', 'copy' => $home['paths']['inspection'], 'url' => $inspectionUrl],
+        ['icon' => 'building-2', 'copy' => $home['paths']['centres'], 'url' => $centresUrl],
+        ['icon' => 'mail', 'copy' => $home['paths']['contact'], 'url' => $contactUrl],
+    ];
+    $expertiseIcons = [
+        'DOCUMENT_SECURITY' => 'fingerprint',
+        'ROAD_SAFETY_PREVENTION' => 'car-front',
+        'DATA_ANALYSIS_REPORTING' => 'database',
+        'RESEARCH_DEVELOPMENT' => 'cpu',
+        'TECHNICAL_SUPPORT' => 'gauge',
+    ];
+    $heroVisual = asset('images/content/home/hero/visual.jpg');
 @endphp
 
 <x-layouts.public
@@ -16,78 +32,90 @@
     :image="$seo->image"
     :type="$seo->type"
 >
-    <section class="public-hero-mesh overflow-hidden border-b border-line" aria-labelledby="home-hero-title">
-        <div class="mx-auto grid max-w-site gap-12 px-gutter-compact py-14 medium:px-gutter-medium medium:py-20 wide:grid-cols-[1.02fr_0.98fr] wide:items-center wide:gap-16 wide:py-24">
-            <div class="relative z-10 max-w-2xl">
-                <p class="inline-flex rounded-pill border border-brand-cyan-500/50 bg-white/80 px-4 py-2 text-label font-bold tracking-label text-brand-azure-700 uppercase shadow-soft">
+    {{-- Hero: fidèle maquette — texte gauche + illustration pleine droite + cartes --}}
+    <section class="public-home-hero" aria-labelledby="home-hero-title">
+        <div class="public-home-hero-visual" aria-hidden="true">
+            <img
+                src="{{ $heroVisual }}"
+                alt=""
+                width="1600"
+                height="1000"
+                decoding="async"
+                fetchpriority="high"
+            >
+            <div class="public-home-hero-visual-fade"></div>
+        </div>
+
+        <div class="public-home-hero-inner public-page-start mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
+            <div class="public-home-hero-copy">
+                <p class="public-reveal text-xs font-bold tracking-[0.18em] text-brand-azure-700 uppercase medium:text-sm">
                     {{ $home['eyebrow'] }}
                 </p>
-                <h1 id="home-hero-title" class="mt-6 text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1 wide:text-display-xl">
+                <h1 id="home-hero-title" class="public-reveal public-reveal-delay-1 mt-4 text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1">
                     {{ __('ui.home_heading') }}
                 </h1>
-                <p class="mt-6 max-w-xl text-body-lg-compact text-muted medium:text-body-lg">
+                <p class="public-reveal public-reveal-delay-2 mt-5 text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
                     {{ __('ui.home_body') }}
                 </p>
-                <div class="mt-8 flex flex-col gap-3 medium:flex-row medium:flex-wrap">
+                <div class="public-reveal public-reveal-delay-3 mt-8 flex flex-col gap-3 medium:flex-row medium:flex-wrap">
                     <x-public.button :href="$productsUrl" class="w-full medium:w-auto">
                         {{ $home['primary_action'] }}
+                        <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-2" />
                     </x-public.button>
-                    <x-public.button :href="$inspectionUrl" variant="outline" class="w-full medium:w-auto">
+                    <x-public.button :href="$aboutUrl" variant="outline" class="w-full medium:w-auto">
                         {{ $home['secondary_action'] }}
                     </x-public.button>
                 </div>
-
-                <ul class="mt-10 grid gap-3 border-t border-line pt-6 text-sm font-semibold text-ink medium:grid-cols-3">
-                    @foreach ($home['signals'] as $signal)
-                        <li class="flex items-start gap-3">
-                            <span class="mt-1.5 size-2 shrink-0 rounded-pill bg-brand-cyan-500" aria-hidden="true"></span>
-                            <span>{{ $signal }}</span>
-                        </li>
-                    @endforeach
-                </ul>
             </div>
 
-            <div class="public-network-panel relative min-h-[28rem] overflow-hidden rounded-[2rem] p-6 text-white shadow-hero medium:min-h-[34rem] medium:p-9">
-                <div class="public-network-grid absolute inset-0" aria-hidden="true"></div>
-                <div class="absolute -top-24 -right-20 size-72 rounded-full border-[3rem] border-brand-cyan-500/20" aria-hidden="true"></div>
-                <div class="absolute -bottom-32 -left-24 size-80 rounded-full border-[3.5rem] border-white/10" aria-hidden="true"></div>
-
-                <svg class="absolute inset-0 h-full w-full" viewBox="0 0 620 560" fill="none" aria-hidden="true">
-                    <path d="M-30 430C96 394 123 273 242 270C373 267 372 133 526 104C575 95 612 75 654 34" stroke="rgba(255,255,255,.72)" stroke-width="18" stroke-linecap="round"/>
-                    <path d="M-30 430C96 394 123 273 242 270C373 267 372 133 526 104C575 95 612 75 654 34" stroke="#00aefe" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 14"/>
-                    <path d="M155 590C188 450 294 424 322 340C352 251 305 192 346 108C374 51 431 15 482 -34" stroke="rgba(230,246,252,.45)" stroke-width="9" stroke-linecap="round"/>
-                    <circle cx="242" cy="270" r="12" fill="#00aefe" stroke="white" stroke-width="5"/>
-                    <circle cx="526" cy="104" r="9" fill="white" stroke="#00aefe" stroke-width="4"/>
-                    <circle cx="322" cy="340" r="8" fill="white" stroke="#00aefe" stroke-width="4"/>
-                </svg>
-
-                <div class="relative flex h-full flex-col justify-between">
-                    <span class="w-fit rounded-pill border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold tracking-label uppercase backdrop-blur-sm">
-                        {{ $home['panel_label'] }}
-                    </span>
-
-                    <div class="max-w-md rounded-card border border-white/25 bg-white/12 p-6 backdrop-blur-md medium:p-8">
-                        <p class="text-heading-3-compact font-bold leading-tight medium:text-heading-3">{{ $home['panel_title'] }}</p>
-                        <div class="mt-6 h-1 w-16 rounded-pill bg-brand-cyan-500" aria-hidden="true"></div>
-                    </div>
-                </div>
-            </div>
+            <ul class="public-home-pillars" aria-label="{{ $home['pillars_label'] }}">
+                @foreach ($home['pillars'] as $pillar)
+                    <li class="public-home-pillar">
+                        <span class="public-home-pillar-icon" aria-hidden="true">
+                            <x-public.icon :name="$pillar['icon']" :size="24" stroke-width="1.75" />
+                        </span>
+                        <div class="min-w-0">
+                            <h2 class="text-sm font-bold leading-snug text-ink">{{ $pillar['title'] }}</h2>
+                            <p class="mt-1 text-[0.8125rem] leading-relaxed text-muted">{{ $pillar['body'] }}</p>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </section>
 
-    <section class="bg-white py-16 medium:py-20 wide:py-24" aria-labelledby="home-products-title">
+    {{-- Produits & Solutions (2e bloc — maquette) --}}
+    <section class="public-home-products border-b border-line bg-white py-16 medium:py-20 wide:py-24" aria-labelledby="home-products-title">
         <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="grid gap-6 wide:grid-cols-[0.78fr_1.22fr] wide:items-end wide:gap-16">
-                <div>
-                    <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['products_eyebrow'] }}</p>
-                    <h2 id="home-products-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                        {{ $home['products_title'] }}
+            <div class="flex flex-col gap-4 medium:flex-row medium:items-start medium:justify-between medium:gap-8">
+                <div class="min-w-0 max-w-3xl">
+                    <h2 id="home-products-title" class="text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
+                        @php
+                            $productsTitle = $home['products_title'];
+                            $productsAccent = $home['products_title_accent'];
+                            $productsTitleRest = str_starts_with($productsTitle, $productsAccent)
+                                ? substr($productsTitle, strlen($productsAccent))
+                                : null;
+                        @endphp
+                        @if ($productsTitleRest !== null)
+                            <span class="public-home-products-title-accent">{{ $productsAccent }}</span>{{ $productsTitleRest }}
+                        @else
+                            {{ $productsTitle }}
+                        @endif
                     </h2>
+                    <p class="mt-4 max-w-2xl text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
+                        {{ $home['products_body'] }}
+                    </p>
                 </div>
+
+                <x-public.link :href="$productsUrl" standalone class="shrink-0 pt-1 font-bold text-brand-azure-700">
+                    {{ $home['products_all'] }}
+                    <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1" />
+                </x-public.link>
             </div>
 
             @if ($products->isEmpty())
-                <div class="mt-10 rounded-card border border-dashed border-line bg-surface-subtle px-6 py-10 medium:px-10" data-home-products-empty>
+                <div class="mt-10 rounded-2xl border border-dashed border-line bg-surface-subtle px-6 py-10 medium:px-10" data-home-products-empty>
                     <p class="text-body-lg-compact font-semibold text-ink medium:text-body-lg">{{ $home['products_empty'] }}</p>
                     <p class="mt-2 text-body text-muted">{{ $home['products_empty_hint'] }}</p>
                     <div class="mt-6 flex flex-col gap-3 medium:flex-row">
@@ -96,131 +124,209 @@
                     </div>
                 </div>
             @else
-                <div class="mt-10 grid gap-5 medium:grid-cols-2 wide:grid-cols-3" data-home-products>
+                <ul class="public-home-products-grid mt-10 grid gap-5 medium:grid-cols-2 wide:grid-cols-5" data-home-products>
                     @foreach ($products as $product)
                         @php
                             $translation = $product->translationFor($locale);
                             $href = \App\Support\PublicPath::for($product, $locale);
+                            $image = $product->getFirstMediaUrl('images');
+                            $summary = $translation?->summary;
+                            if (filled($summary) && (str_contains((string) $summary, 'VER-') || str_contains((string) $summary, 'publication après'))) {
+                                $summary = null;
+                            }
                         @endphp
-                        <x-public.card
-                            :title="$product->public_name"
-                            :href="$href"
-                            :eyebrow="$home['products_eyebrow']"
-                        >
-                            @if (filled($translation?->summary))
-                                <p>{{ $translation->summary }}</p>
-                            @endif
-                            <x-slot:footer>
-                                <span class="inline-flex items-center">
-                                    {{ $home['products_action'] }}
-                                    <x-public.icon name="arrow-right" :size="16" class="ml-1" />
-                                </span>
-                            </x-slot:footer>
-                        </x-public.card>
+                        <li>
+                            <article class="public-home-product-card group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
+                                <div class="public-home-product-card-media aspect-[4/3] overflow-hidden bg-surface-subtle">
+                                    @if ($image)
+                                        <img
+                                            src="{{ $image }}"
+                                            alt=""
+                                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                                            loading="lazy"
+                                        >
+                                    @else
+                                        <div class="flex h-full items-center justify-center">
+                                            <span class="public-icon-well public-icon-well--solid size-14">
+                                                <x-public.icon name="layers" :size="26" stroke-width="1.75" />
+                                            </span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="flex grow flex-col px-5 pb-5 pt-4">
+                                    <h3 class="text-base font-bold leading-snug text-ink">
+                                        @if ($href)
+                                            <a href="{{ $href }}" class="after:absolute after:inset-0">{{ $product->public_name }}</a>
+                                        @else
+                                            {{ $product->public_name }}
+                                        @endif
+                                    </h3>
+                                    @if (filled($summary))
+                                        <p class="mt-2 grow text-sm leading-relaxed text-muted">{{ $summary }}</p>
+                                    @endif
+                                    <p class="relative mt-4 inline-flex items-center text-sm font-bold text-brand-azure-700">
+                                        {{ $home['products_action'] }}
+                                        <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1 transition-transform group-hover:translate-x-0.5" />
+                                    </p>
+                                </div>
+                            </article>
+                        </li>
                     @endforeach
-                </div>
+                </ul>
             @endif
         </div>
     </section>
 
-    <section class="bg-surface-subtle py-16 medium:py-20 wide:py-24" aria-labelledby="home-domains-title">
+    {{-- Parcours --}}
+    <section class="bg-surface-subtle py-16 medium:py-20" aria-labelledby="home-paths-title">
         <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="grid gap-6 wide:grid-cols-[0.78fr_1.22fr] wide:items-end wide:gap-16">
-                <div>
-                    <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['domains_eyebrow'] }}</p>
-                    <h2 id="home-domains-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                        {{ $home['domains_title'] }}
-                    </h2>
-                </div>
-                <p class="max-w-2xl text-body-lg-compact text-muted medium:text-body-lg">{{ $home['domains_body'] }}</p>
+            <div class="max-w-2xl">
+                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['paths_eyebrow'] }}</p>
+                <h2 id="home-paths-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
+                    {{ $home['paths_title'] }}
+                </h2>
             </div>
 
-            <div class="mt-10 grid gap-5 medium:grid-cols-2 wide:grid-cols-3">
-                @foreach ([
-                    ['content' => $home['domains']['solutions'], 'url' => $productsUrl, 'number' => '01'],
-                    ['content' => $home['domains']['expertise'], 'url' => $expertiseUrl, 'number' => '02'],
-                    ['content' => $home['domains']['inspection'], 'url' => $inspectionUrl, 'number' => '03'],
-                ] as $domain)
-                    <x-public.card :title="$domain['content']['title']" :eyebrow="$domain['content']['eyebrow']" class="group overflow-hidden">
-                        <span class="absolute top-5 right-6 text-5xl font-bold tracking-heading text-surface-subtle transition-colors group-hover:text-brand-cyan-100" aria-hidden="true">{{ $domain['number'] }}</span>
-                        <p>{{ $domain['content']['body'] }}</p>
-                        <x-slot:footer>
-                            <x-public.link :href="$domain['url']" standalone>{{ $domain['content']['action'] }} <x-public.icon name="arrow-right" :size="16" class="ml-1" /></x-public.link>
-                        </x-slot:footer>
-                    </x-public.card>
+            <ul class="mt-10 grid gap-4 medium:grid-cols-2 wide:grid-cols-4">
+                @foreach ($paths as $index => $path)
+                    <li>
+                        <a
+                            href="{{ $path['url'] }}"
+                            class="group flex h-full flex-col rounded-2xl border border-line bg-white p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand-cyan-500 hover:shadow-card"
+                        >
+                            <span class="public-icon-well public-icon-well--solid size-14">
+                                <x-public.icon :name="$path['icon']" :size="26" stroke-width="1.75" />
+                            </span>
+                            <p class="mt-5 text-xs font-bold tracking-label text-brand-cyan-500 uppercase">
+                                {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
+                            </p>
+                            <h3 class="mt-2 text-heading-3-compact font-bold text-ink">{{ $path['copy']['title'] }}</h3>
+                            <p class="mt-2 grow text-sm leading-relaxed text-muted">{{ $path['copy']['body'] }}</p>
+                            <span class="mt-5 inline-flex items-center text-sm font-bold text-brand-azure-700">
+                                {{ $path['copy']['action'] }}
+                                <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1 transition-transform group-hover:translate-x-1" />
+                            </span>
+                        </a>
+                    </li>
                 @endforeach
+            </ul>
+        </div>
+    </section>
+
+    {{-- Mission --}}
+    <section class="bg-white py-16 medium:py-20 wide:py-24" aria-labelledby="home-mission-title">
+        <div class="mx-auto grid max-w-site items-center gap-10 px-gutter-compact medium:px-gutter-medium wide:grid-cols-2 wide:gap-14">
+            <div class="overflow-hidden rounded-2xl">
+                <img
+                    src="{{ asset('images/content/home/mission/mission.jpg') }}"
+                    alt=""
+                    class="aspect-[4/3] w-full object-cover"
+                    loading="lazy"
+                >
+            </div>
+
+            <div>
+                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['mission_eyebrow'] }}</p>
+                <h2 id="home-mission-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
+                    {{ $home['mission_title'] }}
+                </h2>
+                <p class="mt-5 text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">{{ $home['mission_body'] }}</p>
+
+                <ul class="mt-8 space-y-3.5">
+                    @foreach ($home['mission_points'] as $point)
+                        <li class="flex items-start gap-3">
+                            <span class="public-icon-well public-icon-well--cyan mt-0.5 size-8 rounded-lg">
+                                <x-public.icon name="badge-check" :size="16" stroke-width="1.75" />
+                            </span>
+                            <span class="text-sm font-semibold leading-relaxed text-ink">{{ $point }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+
+                <div class="mt-8">
+                    <x-public.button :href="$aboutUrl">{{ $home['mission_action'] }}</x-public.button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-16 medium:py-20 wide:py-24" aria-labelledby="home-expertises-title">
+    {{-- Expertises --}}
+    <section class="bg-white py-16 medium:py-20" aria-labelledby="home-expertises-title">
         <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div>
-                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['expertises_eyebrow'] }}</p>
-                <h2 id="home-expertises-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $home['expertises_title'] }}
-                </h2>
+            <div class="flex flex-col gap-5 wide:flex-row wide:items-end wide:justify-between">
+                <div class="max-w-2xl">
+                    <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['expertises_eyebrow'] }}</p>
+                    <h2 id="home-expertises-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
+                        {{ $home['expertises_title'] }}
+                    </h2>
+                </div>
+                <x-public.link :href="$expertiseUrl" standalone class="font-bold">
+                    {{ $home['expertises_action'] }}
+                    <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1" />
+                </x-public.link>
             </div>
 
             @if ($expertises->isEmpty())
                 <p class="mt-10 text-body text-muted" data-home-expertises-empty>{{ $home['expertises_empty'] }}</p>
             @else
-                <div class="mt-10 grid gap-4 medium:grid-cols-2 wide:grid-cols-5" data-home-expertises>
+                <ul class="mt-10 grid gap-4 medium:grid-cols-2 wide:grid-cols-3" data-home-expertises>
                     @foreach ($expertises as $expertise)
                         @php
                             $translation = $expertise->translationFor($locale);
                             $href = \App\Support\PublicPath::for($expertise, $locale);
                             $title = $translation?->title ?? $expertise->code->titles()[$locale] ?? $expertise->code->value;
+                            $icon = $expertiseIcons[$expertise->code->value] ?? 'sparkles';
                         @endphp
-                        <a
-                            href="{{ $href }}"
-                            class="flex min-h-[7.5rem] items-end rounded-card border border-line bg-surface-subtle px-5 py-5 text-heading-3-compact font-bold tracking-heading text-ink transition-colors hover:border-brand-cyan-500 hover:bg-white"
-                        >
-                            {{ $title }}
-                        </a>
+                        <li>
+                            <a
+                                href="{{ $href }}"
+                                class="group flex min-h-[6.5rem] items-center gap-4 rounded-2xl border border-line bg-surface-subtle px-5 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-cyan-500 hover:bg-white hover:shadow-soft"
+                            >
+                                <span class="public-icon-well public-icon-well--solid size-14">
+                                    <x-public.icon :name="$icon" :size="26" stroke-width="1.75" />
+                                </span>
+                                <span class="text-heading-3-compact font-bold tracking-heading text-ink">{{ $title }}</span>
+                            </a>
+                        </li>
                     @endforeach
-                </div>
+                </ul>
             @endif
         </div>
     </section>
 
-    <section class="bg-surface-subtle py-16 medium:py-20 wide:py-24" aria-labelledby="home-approach-title">
-        <div class="mx-auto grid max-w-site gap-10 px-gutter-compact medium:px-gutter-medium wide:grid-cols-[0.8fr_1.2fr] wide:gap-20">
-            <div class="wide:sticky wide:top-36 wide:self-start">
-                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['approach_eyebrow'] }}</p>
-                <h2 id="home-approach-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $home['approach_title'] }}
+    {{-- Centres --}}
+    <section class="border-y border-line bg-white py-16 medium:py-20" aria-labelledby="home-centres-title">
+        <div class="mx-auto flex max-w-site flex-col gap-8 px-gutter-compact medium:px-gutter-medium wide:flex-row wide:items-center wide:justify-between">
+            <div class="max-w-2xl">
+                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['centres_eyebrow'] }}</p>
+                <h2 id="home-centres-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
+                    {{ $home['centres_title'] }}
                 </h2>
-                <p class="mt-5 text-body-lg-compact text-muted medium:text-body-lg">{{ $home['approach_body'] }}</p>
+                <p class="mt-4 text-body-lg-compact text-muted medium:text-body-lg">{{ $home['centres_body'] }}</p>
             </div>
-
-            <ol class="divide-y divide-line rounded-card border border-line bg-white px-6 shadow-soft medium:px-8">
-                @foreach ($home['approach_items'] as $item)
-                    <li class="grid gap-3 py-7 medium:grid-cols-[3.5rem_1fr] medium:gap-5 medium:py-8">
-                        <span class="text-sm font-bold text-brand-azure-700">{{ $item['number'] }}</span>
-                        <div>
-                            <h3 class="text-heading-3-compact font-bold text-ink">{{ $item['title'] }}</h3>
-                            <p class="mt-2 text-body text-muted">{{ $item['body'] }}</p>
-                        </div>
-                    </li>
-                @endforeach
-            </ol>
+            <x-public.button :href="$centresUrl" class="shrink-0">
+                {{ $home['centres_action'] }}
+                <x-public.icon name="map" :size="18" stroke-width="1.75" class="ml-2" />
+            </x-public.button>
         </div>
     </section>
 
-    <section class="bg-white py-16 medium:py-20" aria-labelledby="home-cta-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="relative overflow-hidden rounded-hero border border-line bg-surface-subtle px-6 py-10 shadow-card medium:px-10 medium:py-12 wide:flex wide:items-center wide:justify-between wide:gap-12 wide:px-14">
-                <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-royal via-brand-cyan-500 to-transparent" aria-hidden="true"></div>
-                <div class="relative max-w-2xl">
-                    <p class="text-label font-bold tracking-label text-brand-royal uppercase">{{ $home['cta_eyebrow'] }}</p>
-                    <h2 id="home-cta-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">{{ $home['cta_title'] }}</h2>
-                    <p class="mt-4 text-body-lg-compact text-muted medium:text-body-lg">{{ $home['cta_body'] }}</p>
-                </div>
-                <div class="relative mt-8 flex shrink-0 flex-col gap-3 medium:flex-row wide:mt-0">
-                    <x-public.button :href="$contactUrl">{{ $home['cta_primary'] }}</x-public.button>
-                    <x-public.button :href="$expertiseUrl" variant="outline">{{ $home['cta_secondary'] }}</x-public.button>
-                </div>
+    {{-- Bande CTA : invitation finale contact / solutions (boutons lisibles) --}}
+    <section class="relative overflow-hidden bg-brand-azure-700 py-14 text-white medium:py-16" aria-labelledby="home-cta-title">
+        <div class="pointer-events-none absolute -right-16 -top-20 size-72 rounded-full bg-brand-cyan-500/20" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -bottom-24 -left-10 size-80 rounded-full bg-white/5" aria-hidden="true"></div>
+        <div class="relative mx-auto flex max-w-site flex-col gap-8 px-gutter-compact medium:px-gutter-medium wide:flex-row wide:items-center wide:justify-between">
+            <div class="max-w-2xl">
+                <h2 id="home-cta-title" class="text-heading-2-compact font-bold tracking-heading medium:text-heading-2">{{ $home['cta_title'] }}</h2>
+                <p class="mt-4 text-body-lg-compact text-white/85 medium:text-body-lg">{{ $home['cta_body'] }}</p>
+            </div>
+            <div class="flex shrink-0 flex-col gap-3 medium:flex-row">
+                <x-public.button :href="$contactUrl" variant="inverse">
+                    {{ $home['cta_primary'] }}
+                </x-public.button>
+                <x-public.button :href="$productsUrl" variant="ghost">
+                    {{ $home['cta_secondary'] }}
+                </x-public.button>
             </div>
         </div>
     </section>

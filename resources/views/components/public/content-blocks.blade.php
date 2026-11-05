@@ -21,14 +21,31 @@
             @endphp
 
             @if ($type === ContentBlockType::RichText && filled($block['content'] ?? null))
-                <div class="max-w-reading text-body text-muted whitespace-pre-line">{{ $block['content'] }}</div>
+                <div class="max-w-reading space-y-4 text-body leading-relaxed text-muted whitespace-pre-line">{{ $block['content'] }}</div>
 
             @elseif ($type === ContentBlockType::TextAndMedia && filled($block['content'] ?? null))
-                <div class="max-w-reading text-body text-muted whitespace-pre-line">{{ $block['content'] }}</div>
+                <div class="grid gap-6 medium:grid-cols-[minmax(0,1.55fr)_minmax(10rem,0.55fr)] medium:items-start medium:gap-8">
+                    <div class="max-w-reading text-body leading-relaxed text-muted whitespace-pre-line">
+                        {{ $block['content'] }}
+                    </div>
+                    @if (filled($block['image_url'] ?? null))
+                        <figure class="overflow-hidden rounded-xl border border-line bg-surface-subtle">
+                            <img
+                                src="{{ $block['image_url'] }}"
+                                alt="{{ $block['image_alt'] ?? '' }}"
+                                class="aspect-[4/3] w-full object-cover"
+                                loading="lazy"
+                            >
+                        </figure>
+                    @endif
+                </div>
 
             @elseif ($type === ContentBlockType::Gallery && filled($block['caption'] ?? null))
-                <figure class="max-w-reading">
-                    <figcaption class="text-body text-muted">{{ $block['caption'] }}</figcaption>
+                <figure class="max-w-reading overflow-hidden rounded-card border border-line bg-white shadow-soft">
+                    @if (filled($block['image_url'] ?? null))
+                        <img src="{{ $block['image_url'] }}" alt="{{ $block['image_alt'] ?? '' }}" class="aspect-[16/10] w-full object-cover" loading="lazy">
+                    @endif
+                    <figcaption class="px-6 py-4 text-body text-muted">{{ $block['caption'] }}</figcaption>
                 </figure>
 
             @elseif ($type === ContentBlockType::Timeline && is_array($block['items'] ?? null) && count($block['items']) > 0)
@@ -110,14 +127,8 @@
             @elseif ($type === ContentBlockType::Team && filled($block['intro'] ?? null))
                 <p class="max-w-reading text-body text-muted whitespace-pre-line">{{ $block['intro'] }}</p>
 
-            @elseif ($type === ContentBlockType::CallToAction && filled($block['label'] ?? null) && filled($block['url'] ?? null))
-                @php
-                    $path = (string) $block['url'];
-                    $href = str_starts_with($path, 'http') ? $path : PublicPath::localized($locale, $path);
-                @endphp
-                <div>
-                    <x-public.button :href="$href">{{ $block['label'] }}</x-public.button>
-                </div>
+            @elseif ($type === ContentBlockType::CallToAction)
+                {{-- Intentionally omitted on public templates: Contact lives in the site header. --}}
             @endif
         @endforeach
     </div>

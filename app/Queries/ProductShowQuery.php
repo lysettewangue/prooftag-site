@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Resource;
 use App\Services\Seo\SeoMeta;
 use App\Services\Seo\SeoMetaResolver;
+use App\Support\PublicEditorialCopy;
 use App\Support\PublicPath;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -29,7 +30,11 @@ final class ProductShowQuery
      *     expertises: Collection<int, Expertise>,
      *     resources: Collection<int, Resource>,
      *     media_url: string|null,
-     *     media_alt: string|null
+     *     media_alt: string|null,
+     *     summary: string|null,
+     *     paragraphs: list<string>,
+     *     highlights: list<string>,
+     *     siblings: Collection<int, Product>
      * }
      */
     public function forSlug(string $locale, string $slug): array
@@ -62,11 +67,29 @@ final class ProductShowQuery
         $indexPath = $locale === Locale::English->value ? 'products' : 'produits';
         $indexLabel = (string) __('ui.navigation.items.products', locale: $locale);
         $media = $product->getFirstMedia('images');
+        $rawBody = $this->bodyHtml($translation->body);
+        $bodyHtml = PublicEditorialCopy::html($rawBody);
+        $paragraphs = PublicEditorialCopy::paragraphs($bodyHtml);
+        $highlights = PublicEditorialCopy::listItems($bodyHtml);
+        $summary = PublicEditorialCopy::summary(
+            is_string($translation->summary) ? $translation->summary : null
+        ) ?? ($paragraphs[0] ?? null);
+
+        $siblings = Product::query()
+            ->publiclyVisible(now())
+            ->forLocale($locale)
+            ->whereKeyNot($product->getKey())
+            ->orderBy('sort_order')
+            ->with(['translations' => fn ($query) => $query->where('locale', $locale), 'media'])
+            ->get();
 
         return [
             'product' => $product,
             'translation' => $translation,
-            'body_html' => $this->bodyHtml($translation->body),
+            'body_html' => $bodyHtml,
+            'summary' => $summary,
+            'paragraphs' => $paragraphs,
+            'highlights' => $highlights,
             'seo' => $this->seo->forModel($product, $locale),
             'breadcrumbs' => [
                 [
@@ -80,6 +103,7 @@ final class ProductShowQuery
             ],
             'expertises' => $product->expertises,
             'resources' => $product->resources,
+            'siblings' => $siblings,
             'media_url' => $media?->getUrl(),
             'media_alt' => $this->mediaAlt($media?->getCustomProperty('alt'), $locale, $product->public_name),
         ];

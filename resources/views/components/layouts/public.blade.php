@@ -86,7 +86,7 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-full bg-surface-canvas font-sans text-ink antialiased" data-public-shell="true">
+    <body class="min-h-full bg-white font-sans text-ink antialiased" data-public-shell="true">
         <a
             href="#main-content"
             class="fixed top-4 left-4 z-50 -translate-y-24 rounded-control bg-brand-royal px-4 py-3 font-bold text-white shadow-card transition-transform duration-[var(--motion-fast)] focus:translate-y-0"

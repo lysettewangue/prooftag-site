@@ -12,9 +12,7 @@
     :type="$seo->type"
 >
     <section class="border-b border-line bg-white" aria-labelledby="contact-title">
-        <div class="mx-auto max-w-site px-gutter-compact py-10 medium:px-gutter-medium medium:py-14">
-            <x-public.breadcrumb :items="$breadcrumbs" class="mb-6" />
-
+        <div class="mx-auto max-w-site public-page-start px-gutter-compact medium:px-gutter-medium">
             <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">
                 {{ $copy['eyebrow'] }}
             </p>
@@ -24,7 +22,7 @@
         </div>
     </section>
 
-    <section class="bg-surface-subtle py-12 medium:py-16 wide:py-20">
+    <section class="bg-white py-12 medium:py-16 wide:py-20">
         <div class="mx-auto grid max-w-site gap-12 px-gutter-compact medium:px-gutter-medium wide:grid-cols-2 wide:gap-16">
             <div class="min-w-0 space-y-8">
                 <x-public.content-blocks :blocks="$blocks" :related-products="collect()" />

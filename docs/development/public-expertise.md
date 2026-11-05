@@ -24,9 +24,11 @@ EN uses the singular prefix `expertise` (sitemap / `cms.path_prefixes`).
 
 | Surface | Rule |
 |---------|------|
-| Index | Published expertises in `sort_order`; title-first cards; summary optional (H-03) |
-| Empty index | Empty state + CTA solutions / contact |
-| Detail | Breadcrumb → H1 title → summary → body HTML → related **published** products |
+| Index | Mesh hero (lede + snapshot + hub visual), then featured + grid cards with domain images |
+| Empty index | Empty state + CTA solutions |
+| Detail | Two-column first block: copy + overview left; compact media + numbered highlights right; related products; sibling domains |
+| Visuals | Static assets via `App\Support\ExpertiseVisual` (`public/images/content/expertise/` + `icons/`) |
+| Copy | Sanitized via `PublicEditorialCopy`; aligned to site.prooftagcatis.com/expertise/ |
 | Draft / missing locale | **404** |
 
 ## 3. Manual verification

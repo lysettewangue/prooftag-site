@@ -11,7 +11,7 @@
 | Brand | [charter/brand-and-navigation.md](charter/brand-and-navigation.md) |
 | Scope | [charter/scope-and-exclusions.md](charter/scope-and-exclusions.md) |
 | Legacy sources | [legacy/source-register.md](legacy/source-register.md) |
-| Legacy URLs | [legacy/legacy-url-register.csv](legacy/legacy-url-register.csv) |
+| Legacy URLs | [legacy/legacy-url-register.csv](legacy/legacy-url-register.csv) · [legacy/redirect-register.md](legacy/redirect-register.md) · [legacy/ditros-ct-url.md](legacy/ditros-ct-url.md) |
 | Legacy archive | [legacy/archive/2026-10-20/README.md](legacy/archive/2026-10-20/README.md) |
 | Content audit | [content/content-audit.csv](content/content-audit.csv) |
 | Reconciliation | [content/reconciliation.md](content/reconciliation.md) |

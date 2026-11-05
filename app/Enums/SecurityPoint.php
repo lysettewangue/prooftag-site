@@ -59,7 +59,7 @@ enum SecurityPoint: int
             ],
             self::ReportGeneration => [
                 'fr' => 'Génération automatique du PV et rapport de test',
-                'en' => 'Automatic generation of the inspection report and test report',
+                'en' => 'Automatic generation of the inspection report (PV) and test report',
             ],
             self::DecisionGeneration => [
                 'fr' => 'Génération automatique de la décision',
@@ -71,7 +71,7 @@ enum SecurityPoint: int
             ],
             self::VignetteSeal => [
                 'fr' => 'Sécurisation de la vignette avec le scellé à bulles et le QR code',
-                'en' => 'Securing the vignette with the bubble seal and QR code',
+                'en' => 'Securing the vignette (inspection certificate sticker) with the bubble seal and QR code',
             ],
             self::MintCentralisation => [
                 'fr' => 'Centralisation des données dans le serveur du MINT',
@@ -79,7 +79,7 @@ enum SecurityPoint: int
             ],
             self::FieldControl => [
                 'fr' => 'Contrôle formel et/ou informel sur le terrain',
-                'en' => 'Formal and/or informal field control',
+                'en' => 'Formal and/or informal field checks',
             ],
         };
     }

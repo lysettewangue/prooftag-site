@@ -28,7 +28,7 @@ class RedirectsAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_empty_redirect_list_is_valid(): void
+    public function test_redirect_list_loads_the_legacy_register(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -36,7 +36,7 @@ class RedirectsAdminTest extends TestCase
             ->get(RedirectResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(0, Redirect::query()->count());
+        $this->assertSame(23, Redirect::query()->where('is_active', true)->count());
         $this->assertTrue(RedirectResource::canCreate());
         $this->assertFalse(RedirectResource::canDeleteAny());
     }

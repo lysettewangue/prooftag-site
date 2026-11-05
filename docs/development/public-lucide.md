@@ -18,8 +18,9 @@ Admin Filament continues to use Heroicons. The public site uses **Lucide only**.
 | `lucide-static` (devDependency) | Upstream SVG source |
 | `npm run icons:sync` | Copies the curated allowlist into the repo |
 | `resources/svg/lucide/*.svg` | Committed icons used at runtime (no `node_modules` on LWS) |
-| `App\Support\LucideIcon` | Safe loader: kebab-case names only, stroke 1.75 |
+| `App\Support\LucideIcon` | Safe loader: kebab-case names only, default stroke **2.25** |
 | `<x-public.icon name="…" />` | Blade tag for templates |
+| `.public-icon-well` | Azure/cyan gradient square wells for stronger public icons |
 
 Icons are inlined as SVG with `currentColor`, so they inherit text colour from the parent control.
 
@@ -50,7 +51,8 @@ Decorative icons are `aria-hidden="true"` by default. Icon-only buttons must kee
 | Alert | `info`, `circle-check`, `triangle-alert`, `circle-alert` |
 | Empty state | `inbox` |
 | Pagination | `chevron-left`, `chevron-right` |
-| Homepage domain links | `arrow-right` |
+| Homepage / About | curated set incl. `layers`, `clipboard-check`, `cpu`, `database`, `fingerprint`, `gauge`, `car-front`, `sparkles`, `badge-check`, … |
+| Link / chrome | `arrow-right`, `phone`, `search`, `menu`, `x`, … |
 
 Adding a glyph: append the Lucide name to `scripts/sync-lucide-icons.mjs`, run `npm run icons:sync`, then use `<x-public.icon>`.
 
@@ -64,7 +66,7 @@ Adding a glyph: append the Lucide name to `scripts/sync-lucide-icons.mjs`, run `
 
 ## 5. Verification
 
-- `npm run icons:sync` — 19 curated SVGs + manifest
+- `npm run icons:sync` — curated SVGs + manifest (see `scripts/sync-lucide-icons.mjs`)
 - `php artisan test --filter=PublicLucideTest`
 - `php artisan test --filter=PublicComponentsTest`
 - `php artisan test --filter=PublicNavigationTest`

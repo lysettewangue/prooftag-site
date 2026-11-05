@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Schema;
 
 final class PublicFooter
 {
+    private static ?bool $siteSettingsTableExists = null;
+
     /**
      * @return array{
      *     legal_name: string,
@@ -21,16 +23,16 @@ final class PublicFooter
      *     telephone: string|null,
      *     telephone_uri: string|null,
      *     email: string|null,
-     *     explorer_links: list<array{label: string, url: string}>,
-     *     information_links: list<array{label: string, url: string}>,
-     *     social_links: list<array{label: string, url: string}>
+     *     useful_links: list<array{label: string, url: string}>,
+     *     legal_links: list<array{label: string, url: string}>,
+     *     social_links: list<array{label: string, url: string, icon: string}>
      * }
      */
     public function forLocale(string $locale): array
     {
         $locale = $locale === Locale::English->value ? Locale::English->value : Locale::French->value;
-        $settings = Schema::hasTable('site_settings')
-            ? SiteSetting::query()->with('translations')->find(1)
+        $settings = $this->siteSettingsTableExists()
+            ? SiteSetting::query()->with(['translations', 'media'])->find(1)
             : null;
         $translation = $settings?->translationFor($locale);
         $navigation = PublicNavigation::items($locale);
@@ -44,15 +46,13 @@ final class PublicFooter
             'telephone' => $settings?->telephone,
             'telephone_uri' => $settings instanceof SiteSetting ? $this->telephoneUri((string) $settings->telephone) : null,
             'email' => $settings?->email,
-            'explorer_links' => $this->linksForKeys($navigation, [
-                'products',
-                'expertise',
+            'useful_links' => $this->linksForKeys($navigation, [
+                'about',
                 'technical_inspection',
                 'centres',
-                'resources',
-                'news',
+                'contact',
             ]),
-            'information_links' => $this->informationLinks($locale, $navigation),
+            'legal_links' => $this->legalLinks($locale),
             'social_links' => $settings instanceof SiteSetting ? $this->socialLinks($settings) : [],
         ];
     }
@@ -79,6 +79,11 @@ final class PublicFooter
         return is_string($uri) && $uri !== '' ? 'tel:'.$uri : null;
     }
 
+    private function siteSettingsTableExists(): bool
+    {
+        return self::$siteSettingsTableExists ??= Schema::hasTable('site_settings');
+    }
+
     /**
      * @param  list<array{key: string, label: string, url: string, active: bool}>  $navigation
      * @param  list<string>  $keys
@@ -86,11 +91,17 @@ final class PublicFooter
      */
     private function linksForKeys(array $navigation, array $keys): array
     {
-        $links = [];
+        $byKey = [];
 
         foreach ($navigation as $item) {
-            if (in_array($item['key'], $keys, true)) {
-                $links[] = ['label' => $item['label'], 'url' => $item['url']];
+            $byKey[$item['key']] = ['label' => $item['label'], 'url' => $item['url']];
+        }
+
+        $links = [];
+
+        foreach ($keys as $key) {
+            if (isset($byKey[$key])) {
+                $links[] = $byKey[$key];
             }
         }
 
@@ -98,43 +109,40 @@ final class PublicFooter
     }
 
     /**
-     * @param  list<array{key: string, label: string, url: string, active: bool}>  $navigation
      * @return list<array{label: string, url: string}>
      */
-    private function informationLinks(string $locale, array $navigation): array
+    private function legalLinks(string $locale): array
     {
-        $links = $this->linksForKeys($navigation, ['about', 'contact']);
         $legalSlugs = PageCode::LegalNotice->slugs();
         $privacySlugs = PageCode::Privacy->slugs();
 
-        $links[] = [
-            'label' => trans('ui.footer.legal_notice'),
-            'url' => PublicPath::localized($locale, $legalSlugs[$locale]),
+        return [
+            [
+                'label' => trans('ui.footer.legal_notice'),
+                'url' => PublicPath::localized($locale, $legalSlugs[$locale]),
+            ],
+            [
+                'label' => trans('ui.footer.privacy'),
+                'url' => PublicPath::localized($locale, $privacySlugs[$locale]),
+            ],
         ];
-        $links[] = [
-            'label' => trans('ui.footer.privacy'),
-            'url' => PublicPath::localized($locale, $privacySlugs[$locale]),
-        ];
-
-        return $links;
     }
 
     /**
-     * @return list<array{label: string, url: string}>
+     * @return list<array{label: string, url: string, icon: string}>
      */
     private function socialLinks(SiteSetting $settings): array
     {
         $links = [];
 
         foreach ([
-            'social_linkedin' => 'LinkedIn',
-            'social_facebook' => 'Facebook',
-            'social_x' => 'X',
-            'social_youtube' => 'YouTube',
-            'social_instagram' => 'Instagram',
-        ] as $field => $label) {
+            'social_linkedin' => ['label' => 'LinkedIn', 'icon' => 'linkedin'],
+            'social_facebook' => ['label' => 'Facebook', 'icon' => 'facebook'],
+            'social_x' => ['label' => 'X', 'icon' => 'x'],
+            'social_youtube' => ['label' => 'YouTube', 'icon' => 'youtube'],
+            'social_instagram' => ['label' => 'Instagram', 'icon' => 'instagram'],
+        ] as $field => $meta) {
             $url = $settings->{$field};
-
             $scheme = is_string($url) ? parse_url($url, PHP_URL_SCHEME) : null;
 
             if (
@@ -142,7 +150,11 @@ final class PublicFooter
                 && filter_var($url, FILTER_VALIDATE_URL) !== false
                 && in_array($scheme, ['http', 'https'], true)
             ) {
-                $links[] = ['label' => $label, 'url' => $url];
+                $links[] = [
+                    'label' => $meta['label'],
+                    'url' => $url,
+                    'icon' => $meta['icon'],
+                ];
             }
         }
 

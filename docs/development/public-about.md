@@ -9,7 +9,9 @@
 | **Date** | 2026-10-27 |
 | **Status** | CMS-bound About section · careers → [public-careers.md](public-careers.md) (COMPLETED) |
 
-Five frozen About templates reuse the public shell, page hero, breadcrumbs, and content-block renderer. Careers index/detail landed in step **143**.
+The **About hub** (`/a-propos`) is the single institutional page: identity intro, sticky in-page anchors, purpose / mission / vision, then **Organisation**, **Historique**, **Équipe**, **Partenaires**, and **Carrières** as animated sections on the same page, followed by commitment + values. Contact stays in the site header.
+
+Child routes (`/a-propos/organisation`, historique, equipe, partenaires, carrieres and EN equivalents) **302 redirect** to `/a-propos#{code}` so old links still work. Team and partners are loaded on the hub via `TeamCatalog` / `PartnerCatalog` (with media). Careers detail remains step **143**.
 
 ## 1. Routes
 
@@ -30,17 +32,17 @@ Unpublished (draft) pages return **404**. Seeds remain Draft by design. Careers 
 |--------|-------|------|
 | `Page` by code | `CorporatePageQuery` → cached `pages.{code}.{locale}` (id only) | Must be publicly visible in the active locale |
 | Blocks | `PageTranslation.blocks` | Rendered by `<x-public.content-blocks>`; empty slots omitted (H-07) |
-| Team members | `TeamCatalog` | Team page only; empty → W11-style empty state (VER-02) |
-| Partners | `PartnerCatalog` | Partners page only; empty → same pattern (VER-09) |
-| Careers | `CareerCatalog` | Careers page only; empty → W11 / P-11 + contact CTA |
+| Team members | `TeamCatalog` | Hub `#team` (+ legacy team route redirect) |
+| Partners | `PartnerCatalog` | Hub `#partners` (+ legacy partners route redirect) |
+| Careers | `CareerCatalog` | Hub `#careers`; empty → calm prepared state (no Contact pressure) |
 
 `team` / `partners` / careers **blocks** are intro copy only. Listings come from the collections.
 
 ## 3. SEO & chrome
 
 - Document meta via `SeoMetaResolver::forModel`
-- Breadcrumbs: hub alone; children = About → current
-- Section aside lists **published** siblings (organisation, history, team, partners, careers)
+- Hub: no breadcrumb; sticky in-page nav to `#organisation` `#history` `#team` `#partners` `#careers`
+- Child About URLs redirect to hub anchors
 - Primary nav keeps `about` active on all `/a-propos/*` and `/en/about/*` paths
 
 ## 4. VER gates
@@ -48,7 +50,7 @@ Unpublished (draft) pages return **404**. Seeds remain Draft by design. Careers 
 | Item | Behaviour |
 |------|-----------|
 | VER-12 / VER-13 | Do not invent About / organisation launch copy in seeds |
-| VER-02 / VER-09 | Empty team / partners listings until verified rows are Published |
+| VER-02 / VER-09 | Preview publishes the confirmed site leadership list + partner marks; admin remains source of truth |
 | Statistics block | Omitted when `items` empty — no live counters |
 
 ## 5. Verification

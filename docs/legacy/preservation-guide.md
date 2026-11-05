@@ -5,7 +5,7 @@
 | **Steps** | 007–010 |
 | **Archive** | [archive/2026-10-20/](archive/2026-10-20/) |
 | **Sources** | [source-register.md](source-register.md) |
-| **URLs** | [legacy-url-register.csv](legacy-url-register.csv) |
+| **URLs** | [legacy-url-register.csv](legacy-url-register.csv) · final [redirect-register.md](redirect-register.md) (165) · [ditros-ct-url.md](ditros-ct-url.md) (166) |
 
 ## What is done (2026-10-20)
 
@@ -18,7 +18,7 @@
 
 - HTTrack or host-panel dump of remaining www URLs (galerie, lois, industries, actualité) if they still serve content
 - WordPress file + database backup, DNS/MX/SSL export — **step 211**
-- Full media binary pull from `site-media-p1.json` at step 159
+- Full media binary pull from `site-media-p1.json` at step 159 — **done** (`archive/2026-10-20/media/binaries/`, classified in [media-classification.csv](../content/media-classification.csv))
 
 ## Methods (repeatable)
 

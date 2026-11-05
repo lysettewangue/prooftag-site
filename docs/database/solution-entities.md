@@ -107,7 +107,7 @@ Related-solutions blocks on Pages read this same collection.
 
 | Item | Why |
 |------|-----|
-| `DITROS_CT` / DITROS-CT page | Not a product. Legacy URL is step **166**. Factual CT text may be rewritten into `CERTIDOCS_CT` and the CT hub. |
+| `DITROS_CT` / DITROS-CT page | Not a product. Legacy URL **166**: 301 → `/controle-technique` ([ditros-ct-url.md](../legacy/ditros-ct-url.md)). Factual CT text may be rewritten into `CERTIDOCS_CT` and the CT hub; HTTP must not imply Certidocs synonymy. |
 | Sixth product / “Video Ticketing” row | Alternate label in copy only. |
 | ProductCapability child table | Capabilities live in translation body after VER. |
 | Hardcoded Blade URLs | `external_url` only. |

@@ -91,7 +91,7 @@ final class SeoMetaResolver
         return $default;
     }
 
-    private function imageForModel(Model $model): ?string
+    private function imageForModel(Model $model): string
     {
         if ($model instanceof HasMedia) {
             $media = $model->getFirstMedia('images');
@@ -104,7 +104,7 @@ final class SeoMetaResolver
         return $this->defaultImageUrl();
     }
 
-    private function defaultImageUrl(): ?string
+    private function defaultImageUrl(): string
     {
         return OpenGraph::fallbackImageUrl();
     }

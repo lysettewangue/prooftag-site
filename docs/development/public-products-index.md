@@ -29,9 +29,10 @@ Empty published set → W02b-style empty state with Contrôle technique CTA + Co
 
 ## 3. Chrome
 
-- Page hero: eyebrow, H1, lede from `lang/*/ui.php` (`ui.products`)
-- Cards: `public_name`, optional summary, link to product path
-- Primary nav marks **products** active on the index (and later on detail paths under the same prefix)
+- G3-style mesh intro (`.public-page-start`): cyan eyebrow, H1, lede, then 3 snapshot cards
+- Catalogue: featured solution is **copy-first** (text left, modest media aside on desktop); remaining items are numbered text cards with icon wells (no thumbnail strip)
+- Summaries sanitized via `PublicEditorialCopy` (VER / draft notes omitted)
+- Primary nav marks **products** active on the index and detail paths under the same prefix
 
 ## 4. Out of this step
 

@@ -12,23 +12,47 @@ const targetDir = join(root, 'resources', 'svg', 'lucide');
  */
 const icons = [
     'arrow-right',
+    'badge-check',
+    'building-2',
+    'camera',
+    'car-front',
     'chevron-down',
     'chevron-left',
     'chevron-right',
     'circle-alert',
     'circle-check',
     'circle-x',
+    'clipboard-check',
+    'cpu',
+    'database',
     'download',
     'external-link',
+    'file-search',
+    'file-text',
+    'fingerprint',
+    'gauge',
     'inbox',
     'info',
     'languages',
+    'layers',
     'mail',
+    'map',
     'map-pin',
     'menu',
+    'newspaper',
     'phone',
+    'printer',
+    'qr-code',
+    'refresh-cw',
+    'route',
     'search',
+    'server',
+    'shield-check',
+    'smartphone',
+    'sparkles',
+    'tablet',
     'triangle-alert',
+    'users',
     'x',
 ];
 
@@ -52,7 +76,7 @@ for (const name of icons) {
 
     const svg = readFileSync(from, 'utf8')
         .replace(/<!--[\s\S]*?-->\s*/g, '')
-        .replace(/\sstroke-width="2"/, ' stroke-width="1.75"')
+        .replace(/\sstroke-width="2"/, ' stroke-width="2"')
         .trim()
         .concat('\n');
 

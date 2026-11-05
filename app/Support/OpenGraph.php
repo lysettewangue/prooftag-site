@@ -10,15 +10,17 @@ use Illuminate\Support\Facades\Schema;
 
 final class OpenGraph
 {
+    private static ?bool $siteSettingsTableExists = null;
+
     public static function localeTag(string $locale): string
     {
         return $locale === Locale::English->value ? 'en_GB' : 'fr_FR';
     }
 
-    public static function fallbackImageUrl(): ?string
+    public static function fallbackImageUrl(): string
     {
-        if (Schema::hasTable('site_settings')) {
-            $settings = SiteSetting::query()->find(1);
+        if (self::$siteSettingsTableExists ??= Schema::hasTable('site_settings')) {
+            $settings = SiteSetting::query()->with('media')->find(1);
             $logo = $settings?->getFirstMedia('images');
 
             if ($logo !== null) {

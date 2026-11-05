@@ -12,11 +12,13 @@ use App\Models\Product;
 use App\Support\ContentCache;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
+use Tests\Support\ResetsPublicationToDraft;
 use Tests\TestCase;
 
 class PublicProductShowTest extends TestCase
 {
     use RefreshDatabase;
+    use ResetsPublicationToDraft;
 
     protected function setUp(): void
     {
@@ -28,6 +30,8 @@ class PublicProductShowTest extends TestCase
 
     public function test_draft_product_details_return_not_found(): void
     {
+        $this->resetPublicationToDraft();
+
         foreach (ProductCode::cases() as $code) {
             $this->get('/produits/'.$code->slugFragment())->assertNotFound();
             $this->get('/en/products/'.$code->slugFragment())->assertNotFound();

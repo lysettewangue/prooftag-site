@@ -12,9 +12,9 @@ Use consistent translations. **Product names** stay as branded unless English ma
 | CERTIDOCS CT | CERTIDOCS CT | Do not translate |
 | CT-VERIF | CT-VERIF | Do not translate |
 | DOSER | DOSER | Do not translate |
-| Code à Bulles | Bubble seal / Code à Bulles | Explain on first use EN |
-| Procès-verbal (PV) | Inspection report | Secured PV → secured inspection report |
-| Vignette | Inspection certificate sticker | |
+| Code à Bulles | Bubble seal / Code à Bulles | First EN use: **bubble seal (Code à Bulles)**; then either form |
+| Procès-verbal (PV) | Inspection report | First EN use: **inspection report (PV)**; then **PV** allowed. Secured → secured inspection report |
+| Vignette | Inspection certificate sticker | First EN use: **vignette (inspection certificate sticker)** or reverse; then **vignette** allowed |
 | Sécurité routière | Road safety | |
 | Ministère des Transports | Ministry of Transport | Cameroon context |
 | Actualités | News | |

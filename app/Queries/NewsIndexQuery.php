@@ -26,6 +26,7 @@ final class NewsIndexQuery
      *     kinds: list<PostKind>,
      *     category_id: int|null,
      *     categories: Collection<int, Category>,
+     *     stats: array{total: int, news: int, articles: int},
      *     show_filters: bool,
      *     index_url: string,
      *     seo: SeoMeta
@@ -61,6 +62,7 @@ final class NewsIndexQuery
             'kinds' => PostKind::cases(),
             'category_id' => $categoryId,
             'categories' => $categories,
+            'stats' => $this->posts->publicStats($locale, $kindFilter, $categoryId),
             'show_filters' => $paginator->total() > 0 || $hasFilters,
             'index_url' => $indexUrl,
             'seo' => new SeoMeta(

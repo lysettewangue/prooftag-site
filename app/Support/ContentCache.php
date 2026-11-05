@@ -95,10 +95,7 @@ final class ContentCache
             Cache::forget($key);
         }
 
-        $ids = array_values(array_map(
-            static fn (mixed $id): int => (int) $id,
-            $resolver(),
-        ));
+        $ids = $resolver();
 
         Cache::put($key, $ids, (int) config('cms.cache_ttl', 3600));
 
@@ -106,7 +103,7 @@ final class ContentCache
     }
 
     /**
-     * @param  callable(): int|null  $resolver
+     * @param  callable(): (?int)  $resolver
      */
     public static function rememberNullableId(string $key, callable $resolver): ?int
     {

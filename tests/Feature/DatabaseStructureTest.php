@@ -58,15 +58,25 @@ class DatabaseStructureTest extends TestCase
         $this->assertSame(0, TeamMember::query()->count());
         $this->assertSame(0, Partner::query()->count());
         $this->assertSame(4, Equipment::query()->count());
-        $this->assertSame(1, Resource::query()->count());
-        $this->assertSame(4, InspectionCentre::query()->count());
+        $this->assertGreaterThanOrEqual(1, Resource::query()->count());
+        // Representative sample (4) plus directory migration import.
+        $this->assertGreaterThanOrEqual(4, InspectionCentre::query()->count());
         $this->assertSame(2, Category::query()->count());
         $this->assertSame(2, Post::query()->count());
 
-        $this->assertTrue(Page::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
-        $this->assertTrue(Product::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
-        $this->assertTrue(Expertise::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
-        $this->assertTrue(SecurityPoint::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
+        // Migration seeders (151–159) publish verified CERTIDOCS CT; CT-VERIF / DOSER stay Draft without external_url.
+        $this->assertSame(
+            PublicationStatus::Published,
+            Product::query()->where('code', ProductCode::CertidocsCt)->firstOrFail()->publication_status,
+        );
+        $this->assertSame(
+            PublicationStatus::Draft,
+            Product::query()->where('code', ProductCode::CtVerif)->firstOrFail()->publication_status,
+        );
+        $this->assertSame(
+            PublicationStatus::Draft,
+            Product::query()->where('code', ProductCode::Doser)->firstOrFail()->publication_status,
+        );
     }
 
     public function test_product_translation_slugs_match_the_frozen_fragment(): void

@@ -21,7 +21,7 @@ Canonical host: `https://www.prooftagcatis.com`. French has **no** `/fr` prefix.
 | net.prooftagcatis.com | 301 to www (retire host) |
 | Apex prooftagcatis.com | 301 to www |
 
-Exact path map: [legacy-url-register.csv](../legacy/legacy-url-register.csv) (step 008); applied at steps 165–167.
+Exact path map: [legacy-url-register.csv](../legacy/legacy-url-register.csv) (008) · [redirect-register.csv](../legacy/redirect-register.csv) (165) · [ditros-ct-url.md](../legacy/ditros-ct-url.md) (166) · loaded locally [implement-redirects.md](../development/implement-redirects.md) (167).
 
 ## 2. French tree
 

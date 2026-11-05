@@ -9,16 +9,18 @@
 
 This step **identifies** conflicts. Closing a row is later editorial work (migration 151–163). Until then, do not publish the item as a current fact.
 
+Step **151** published safe corporate pages without closing VER rows: see [migrate-corporate-content.md](../development/migrate-corporate-content.md).
+
 | ID | Topic | Question | Owner | Status | Blocks |
 |----|-------|----------|-------|--------|--------|
 | VER-01 | Positioning | Is “opérateur exclusif de sécurisation des vignettes” still accurate on the homepage? | Direction / Legal | Open | Homepage hero |
 | VER-02 | Team | Names, titles, order, photos: TCHANGA, NGAE, NJIEMELI, TAMPOLLA vs www organigramme | RH | Open | `/a-propos/equipe` |
-| VER-03 | Centres | ~35 centres: open/closed, duplicates (AUTO VISION etc.), phones, emails | Operations | Open | Public directory |
+| VER-03 | Centres | ~35 centres: open/closed, duplicates (AUTO VISION etc.), phones, emails | Operations | Open | Public directory — capture rows imported Unverified at [156](../development/migrate-centre-directory.md); Active subset preserved |
 | VER-04 | CT-VERIF | Official description + live URL | Product | Open | Product page public |
 | VER-05 | DOSER | Official description + live URL | Product | Open | Product page public |
 | VER-06 | Reporting | Public capability list | Product | Open | Product page public |
 | VER-07 | Video Enforcement | Any public mention; ANPR/ticketing scope | Product / Legal | Open | Product page public |
-| VER-08 | Regulations | 2020 reform docs: current vs historical | Legal / Technical | Open | Resources labels |
+| VER-08 | Regulations | 2020 reform docs: current vs historical | Legal / Technical | Open | Resources labels — 2020 reform row labelled **historical** at [157](../development/migrate-resource-documents.md); official PDFs still TBD |
 | VER-09 | Partners | MINT, Prooftag SAS, others — logos and URLs | Communications | Open | Partners module |
 | VER-10 | Social | LinkedIn, Facebook, X, YouTube, Instagram | Communications | Open | Footer icons |
 | VER-11 | External URLs | Production URLs for CT-VERIF, DOSER, reporting | IT | Open | Product `external_url` |

@@ -19,7 +19,14 @@ trait HasTranslations
     public function translationFor(string $locale): mixed
     {
         if ($this->relationLoaded('translations')) {
-            return $this->getRelation('translations')->firstWhere('locale', $locale);
+            $loaded = $this->getRelation('translations')->firstWhere('locale', $locale);
+
+            if ($loaded !== null) {
+                return $loaded;
+            }
+
+            // Locale-scoped eager loads (current locale only) must not hide other locales
+            // needed for hreflang / PublicPath alternate URLs.
         }
 
         return $this->translations()->where('locale', $locale)->first();

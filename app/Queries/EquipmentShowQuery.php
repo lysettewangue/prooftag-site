@@ -10,6 +10,7 @@ use App\Models\Equipment;
 use App\Services\Seo\SeoMeta;
 use App\Services\Seo\SeoMetaResolver;
 use App\Support\PublicPath;
+use App\Support\TechnicalInspectionVisual;
 
 final class EquipmentShowQuery
 {
@@ -75,7 +76,7 @@ final class EquipmentShowQuery
                     'url' => null,
                 ],
             ],
-            'media_url' => $media?->getUrl(),
+            'media_url' => $media?->getUrl() ?? TechnicalInspectionVisual::equipmentImageFor($item),
             'media_alt' => $this->mediaAlt($media?->getCustomProperty('alt'), $locale, $title),
         ];
     }

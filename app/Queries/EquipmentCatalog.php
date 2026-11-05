@@ -33,7 +33,10 @@ final class EquipmentCatalog
 
         return Equipment::query()
             ->whereIn('id', $ids)
-            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
             ->orderByRaw("CASE WHEN lifecycle = ? THEN 0 ELSE 1 END", [EquipmentLifecycle::Current->value])
             ->orderBy('sort_order')
             ->get();

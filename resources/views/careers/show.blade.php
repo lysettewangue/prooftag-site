@@ -11,9 +11,7 @@
     :type="$seo->type"
 >
     <section class="border-b border-line bg-white" aria-labelledby="career-title">
-        <div class="mx-auto max-w-site px-gutter-compact py-10 medium:px-gutter-medium medium:py-14">
-            <x-public.breadcrumb :items="$breadcrumbs" class="mb-6" />
-
+        <div class="mx-auto max-w-site public-page-start px-gutter-compact medium:px-gutter-medium">
             <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">
                 {{ $copy['eyebrow'] }}
             </p>
@@ -50,7 +48,7 @@
         </div>
     </section>
 
-    <section class="bg-surface-subtle py-12 medium:py-16 wide:py-20">
+    <section class="bg-white py-12 medium:py-16 wide:py-20">
         <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
             @if (filled($body_html))
                 <div class="prose-public max-w-reading text-body text-muted [&_a]:font-semibold [&_a]:text-brand-azure-700 [&_p]:mt-4 [&_p:first-child]:mt-0 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-5">

@@ -78,13 +78,13 @@ final class CorporatePageQuery
             'seo' => $this->seo->forModel($page, $locale),
             'breadcrumbs' => $this->breadcrumbs($code, $locale, $title),
             'section_links' => $this->sectionLinks($locale, $code),
-            'members' => $code === PageCode::Team
+            'members' => in_array($code, [PageCode::About, PageCode::Team], true)
                 ? $this->team->publishedForLocale($locale)
                 : new Collection,
-            'partners' => $code === PageCode::Partners
+            'partners' => in_array($code, [PageCode::About, PageCode::Partners], true)
                 ? $this->partners->publishedForLocale($locale)
                 : new Collection,
-            'careers' => $code === PageCode::Careers
+            'careers' => in_array($code, [PageCode::About, PageCode::Careers], true)
                 ? $this->careers->publishedForLocale($locale)
                 : new Collection,
             'related_products' => $this->products->publishedForLocale($locale),

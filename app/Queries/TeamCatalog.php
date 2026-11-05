@@ -31,7 +31,10 @@ final class TeamCatalog
 
         return TeamMember::query()
             ->whereIn('id', $ids)
-            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
             ->orderBy('sort_order')
             ->get();
     }

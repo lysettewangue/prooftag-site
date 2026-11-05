@@ -16,6 +16,7 @@ use App\Models\Resource;
 use App\Support\ContentCache;
 use App\Support\PublicPath;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 
 final class SitemapQuery
@@ -127,9 +128,13 @@ final class SitemapQuery
 
         $loc = PublicPath::canonical($path);
         $updated = $model->getAttribute('updated_at');
-        $lastmod = is_object($updated) && method_exists($updated, 'toAtomString')
-            ? $updated->toAtomString()
-            : null;
+        $lastmod = null;
+
+        if ($updated instanceof \DateTimeInterface) {
+            $lastmod = $updated instanceof Carbon
+                ? $updated->toAtomString()
+                : $updated->format(\DateTimeInterface::ATOM);
+        }
 
         $byLoc[$loc] = [
             'loc' => $loc,

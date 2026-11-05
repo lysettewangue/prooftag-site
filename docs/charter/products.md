@@ -83,7 +83,7 @@ No sixth product row. No `DITROS_CT` code.
 
 | Name | Rule |
 |------|------|
-| DITROS-CT | Not a product. No CMS record, slug, or nav item. Legacy URL decided at step 166 |
+| DITROS-CT | Not a product. No CMS record, slug, or nav item. Legacy URL → `/controle-technique` ([ditros-ct-url.md](../legacy/ditros-ct-url.md)) |
 | Contrôle technique | Knowledge hub, not a product |
 | Twelve security points, equipment, Code à Bulles, secured PV | CT content, not products |
 | Expertise domains (five) | Related content types; names must not copy product names |

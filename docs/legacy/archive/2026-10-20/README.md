@@ -17,6 +17,7 @@ www REST returned **401**. Remaining www menu URLs not in [legacy-url-register.c
 | File | Source |
 |------|--------|
 | `site-media-p1.json` | WP REST media (50 items — full set; page 2 empty) |
-| `media/` | Downloaded logos and product marks (not the full 50 binaries) |
+| `media/` | Official logos and product marks (AUD-028 seed set) |
+| `media/binaries/` | Full 50 binaries pulled at step 159 from `source_url` |
 
-Binaries still on origin at the `source_url` values in `site-media-p1.json`. Prefer those originals at migration (step 159). Do not use DITROS marks on the new corporate chrome.
+Classification: [media-classification.csv](../../content/media-classification.csv). CMS attach: [migrate-media.md](../../development/migrate-media.md). Do not use DITROS marks on the new corporate chrome.

@@ -24,16 +24,12 @@ Slugs are the frozen fragments (`certidocs-ct`, `certidocs-ct-reporting`, `ct-ve
 
 | Zone | Source |
 |------|--------|
-| Breadcrumb | Index → `public_name` |
-| H1 | Branded `public_name` (not translated) |
-| Summary | Translation `summary` |
-| Optional media | First item in Spatie `images` collection |
-| Body | Translation `body.html` (CMS HTML) |
-| Outbound CTA | `external_url` + `external_label` (or default chrome). Omitted when URL empty — no fake “open app” button |
-| Related expertises | Published linked `Expertise` rows only |
-| Related resources | Published linked `Resource` rows only |
+| Back + eyebrow | Compact return link, then cyan “Solution · domaine” |
+| Two-column first block | Left: H1, lede, domain/access, CTA, overview paragraphs + related links |
+| | Right: compact product media + numbered highlights panel (fills the former empty column) |
+| Other solutions | Numbered sibling cards below |
 
-SEO via `SeoMetaResolver::forModel`. Primary nav keeps **products** active under the `/produits` · `/en/products` prefix.
+`ProductShowQuery` exposes `paragraphs` + `highlights` via `PublicEditorialCopy`. Empty body → prepared state. SEO via `SeoMetaResolver::forModel`. Spacing: `.public-page-start`.
 
 ## 3. VER / safety
 

@@ -89,7 +89,7 @@ final class LucideIcon
         /** @var array{icons?: list<string>} $payload */
         $payload = json_decode((string) File::get($manifest), true, 512, JSON_THROW_ON_ERROR);
 
-        return array_values($payload['icons'] ?? []);
+        return $payload['icons'] ?? [];
     }
 
     private static function assertName(string $name): string

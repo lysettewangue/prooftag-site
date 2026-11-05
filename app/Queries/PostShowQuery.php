@@ -27,7 +27,7 @@ final class PostShowQuery
      *     title: string,
      *     body_html: string|null,
      *     seo: SeoMeta,
-     *     breadcrumbs: list<array{label: string, url: string|null}>,
+     *     index_url: string,
      *     meta_parts: list<string>,
      *     products: Collection<int, Product>,
      *     expertises: Collection<int, Expertise>,
@@ -73,16 +73,7 @@ final class PostShowQuery
             'title' => $title,
             'body_html' => $this->bodyHtml($translation->body),
             'seo' => $this->seo->forModel($post, $locale),
-            'breadcrumbs' => [
-                [
-                    'label' => (string) __('ui.navigation.items.news', locale: $locale),
-                    'url' => PublicPath::localized($locale, $indexPath),
-                ],
-                [
-                    'label' => $title,
-                    'url' => null,
-                ],
-            ],
+            'index_url' => PublicPath::localized($locale, $indexPath),
             'meta_parts' => $metaParts,
             'products' => $post->products,
             'expertises' => $post->expertises,

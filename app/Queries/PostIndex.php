@@ -70,6 +70,7 @@ final class PostIndex
             ->forLocale($locale)
             ->with([
                 'translations' => fn ($q) => $q->where('locale', $locale),
+                'media',
                 'categories' => fn ($q) => $q->publiclyVisible(now())->forLocale($locale),
                 'categories.translations' => fn ($q) => $q->where('locale', $locale),
             ]);
@@ -110,5 +111,32 @@ final class PostIndex
                     ->with(['translations' => fn ($translations) => $translations->where('locale', $locale)]),
             ])
             ->firstOrFail();
+    }
+
+    /**
+     * @return array{total: int, news: int, articles: int}
+     */
+    public function publicStats(string $locale, ?PostKind $kind = null, ?int $categoryId = null): array
+    {
+        $base = Post::query()
+            ->publiclyVisible(now())
+            ->forLocale($locale);
+
+        if ($kind !== null) {
+            $base->where('kind', $kind);
+        }
+
+        if ($categoryId !== null) {
+            $base->whereHas(
+                'categories',
+                fn ($q) => $q->whereKey($categoryId)->publiclyVisible(now())->forLocale($locale),
+            );
+        }
+
+        return [
+            'total' => (int) (clone $base)->count(),
+            'news' => (int) (clone $base)->where('kind', PostKind::News)->count(),
+            'articles' => (int) (clone $base)->where('kind', PostKind::Article)->count(),
+        ];
     }
 }

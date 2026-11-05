@@ -24,27 +24,49 @@ class PublicHomeVisualTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk()
-            ->assertSee('public-hero-mesh', false)
-            ->assertSee('Des solutions numériques au service de routes plus sûres.')
-            ->assertSee('Une plateforme claire pour comprendre notre action.')
-            ->assertSee('Une expérience institutionnelle, rendue simple.')
-            ->assertSee('Avançons vers une mobilité mieux sécurisée.')
-            ->assertSee('public-network-panel', false)
+            ->assertSee('public-home-hero-visual', false)
+            ->assertSee('home/hero/visual.jpg', false)
+            ->assertSee('public-home-pillars', false)
+            ->assertSee('public-home-pillar-icon', false)
+            ->assertDontSee('data-home-hero-slideshow')
+            ->assertDontSee('homeHeroSlideshow')
+            ->assertDontSee('home-hero-visual.jpg')
+            ->assertDontSee('public-home-hero-panel-dot')
+            ->assertSee('PROOFTAG-CATIS')
+            ->assertSee('Des solutions numériques pour le transport, le contrôle technique et la sécurité routière')
+            ->assertSee('À propos de nous')
+            ->assertSee('Technologies de transport')
+            ->assertSee('Sécurité documentaire')
+            ->assertSee('Analyse & reporting')
+            ->assertSee('Prévention routière')
+            ->assertSee('Produits & Solutions')
+            ->assertSee('Découvrir tous nos produits')
+            ->assertSee('En savoir plus')
+            ->assertSee('public-home-products', false)
+            ->assertSee('Que souhaitez-vous faire ?')
+            ->assertSee('Technologie au service de la sécurité routière')
+            ->assertSee('Besoin d’échanger avec notre équipe ?')
             ->assertSee('Découvrir nos solutions')
             ->assertSee('data-home-products-empty', false)
             ->assertDontSee('Le français est la langue par défaut');
 
-        $this->assertSame(3, substr_count($response->getContent(), 'group overflow-hidden'));
+        $this->assertGreaterThanOrEqual(4, substr_count($response->getContent(), 'public-home-pillar'));
+        $this->assertStringContainsString('chart-column', $response->getContent());
+        $this->assertStringContainsString('cone', $response->getContent());
     }
 
     public function test_the_english_home_is_fully_localised(): void
     {
         $this->get('/en')
             ->assertOk()
-            ->assertSee('Digital solutions for safer roads.')
-            ->assertSee('A clear platform for understanding what we do.')
-            ->assertSee('An institutional experience, made simple.')
-            ->assertSee('Let us move towards safer mobility.')
-            ->assertDontSee('Une plateforme claire pour comprendre notre action.');
+            ->assertSee('Digital solutions for transport, technical inspection and road safety')
+            ->assertSee('About us')
+            ->assertSee('Transport technologies')
+            ->assertSee('Products & Solutions')
+            ->assertSee('Discover all our products')
+            ->assertSee('What would you like to do?')
+            ->assertSee('Technology in service of road safety')
+            ->assertSee('Need to talk with our team?')
+            ->assertDontSee('Que souhaitez-vous faire ?');
     }
 }

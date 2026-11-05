@@ -30,7 +30,7 @@ Hidden products keep reserved paths but are **omitted** from sitemap and search 
 
 ## 2. Redirect
 
-Independent of content types (022). Loaded from the legacy URL register at 165–167; editable in admin (A-14).
+Independent of content types (022). Loaded from the legacy URL register at 165–167 ([implement-redirects.md](../development/implement-redirects.md)); editable in admin (A-14).
 
 | Attribute | Rule |
 |-----------|------|
@@ -42,7 +42,7 @@ Independent of content types (022). Loaded from the legacy URL register at 165�
 
 Match `(from_host, from_path)` unique. Longest-prefix / exact path resolution is application logic (RedirectResolver), not an extra entity.
 
-DITROS-CT target is **not** decided here (step **166**). A redirect row may exist as Draft/`is_active = false` until then.
+DITROS-CT target is decided at **166**: 301 to `/controle-technique` — not CERTIDOCS ([ditros-ct-url.md](../legacy/ditros-ct-url.md)).
 
 Host policy (006): site → matching www path; net and apex → www.
 

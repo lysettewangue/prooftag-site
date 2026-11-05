@@ -28,6 +28,7 @@ final class CentreIndexQuery
      *     region_id: int|null,
      *     seo: SeoMeta,
      *     markers: list<array{name: string, city: string, lat: float, lng: float, url: string|null}>,
+     *     stats: array{total: int, regions: int, mapped: int},
      *     index_url: string
      * }
      */
@@ -43,6 +44,7 @@ final class CentreIndexQuery
         $path = $locale === Locale::English->value ? 'inspection-centres' : 'centres-de-controle';
         $resolved = $this->seo->forLocalizedIndex($locale, 'centres-de-controle', 'inspection-centres');
         $centres = $this->directory->paginatePublic($locale, $regionId, $search)->withQueryString();
+        $stats = $this->directory->publicStats($locale, $regionId, $search);
 
         return [
             'centres' => $centres,
@@ -61,15 +63,23 @@ final class CentreIndexQuery
                 image: $resolved->image,
                 type: $resolved->type,
             ),
-            'markers' => $this->markers($centres->getCollection(), $locale),
+            'markers' => $this->markers(
+                $this->directory->mappedPublic($locale, $regionId, $search)->all(),
+                $locale,
+            ),
+            'stats' => [
+                'total' => $centres->total(),
+                'regions' => $stats['regions'],
+                'mapped' => $stats['mapped'],
+            ],
         ];
     }
 
     /**
-     * @param  Collection<int, InspectionCentre>  $centres
+     * @param  list<InspectionCentre>|array<int, InspectionCentre>  $centres
      * @return list<array{name: string, city: string, lat: float, lng: float, url: string|null}>
      */
-    private function markers(Collection $centres, string $locale): array
+    private function markers(array $centres, string $locale): array
     {
         $markers = [];
 

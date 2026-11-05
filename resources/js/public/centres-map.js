@@ -53,7 +53,7 @@ export function mountCentresMap(root) {
     root.querySelectorAll('[data-centres-map-fallback]').forEach((node) => node.remove());
 
     const mapNode = document.createElement('div');
-    mapNode.className = 'h-full min-h-[18rem] w-full';
+    mapNode.className = 'h-full min-h-[22rem] w-full medium:min-h-[28rem] wide:min-h-[32rem]';
     root.appendChild(mapNode);
 
     const map = L.map(mapNode, {

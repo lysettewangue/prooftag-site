@@ -61,7 +61,7 @@ Eight roles are in scope ([roles.md](../admin/roles.md)): Super Administrator, A
 
 - Publish only **verified** facts. Unverified items stay in CMS as draft / unverified.
 - Product copy gaps (Reporting Platform, Video Enforcement) may have CMS records; their public URLs stay hidden until verification closes.
-- DITROS-CT is not a product name anywhere in V1. Factual CT text from that legacy page may be rewritten into CERTIDOCS CT and Contrôle technique. The URL decision is step 166.
+- DITROS-CT is not a product name anywhere in V1. Factual CT text from that legacy page may be rewritten into CERTIDOCS CT and Contrôle technique. Legacy URL → `/controle-technique` ([ditros-ct-url.md](../legacy/ditros-ct-url.md)); not CERTIDOCS.
 - Regulatory documents distinguish **current**, **historical**, and **archive**.
 - French editorial review and English translation are in V1 (steps 161–163). Shipping French-only with a broken EN switch is out of scope.
 

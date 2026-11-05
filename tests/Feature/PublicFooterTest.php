@@ -31,7 +31,15 @@ class PublicFooterTest extends TestCase
             ->assertSee('href="mailto:info@prooftagcatis.com"', false)
             ->assertSee('Mentions légales')
             ->assertSee('Politique de confidentialité')
-            ->assertDontSee('data-footer-social="true"', false);
+            ->assertSee('data-footer-social="true"', false)
+            ->assertSee('LinkedIn')
+            ->assertSee('Facebook')
+            ->assertSee('À propos')
+            ->assertSee('Contrôle technique')
+            ->assertSee('Centres de contrôle')
+            ->assertSee('images/brand/logo-white.png', false)
+            ->assertDontSee('>Explorer<', false)
+            ->assertDontSee('>Informations<', false);
     }
 
     public function test_the_english_footer_localises_the_frozen_display_lines(): void
@@ -40,10 +48,12 @@ class PublicFooterTest extends TestCase
             ->assertOk()
             ->assertSee('Cameroon Technology Information Services')
             ->assertSee('P.O. Box 4601 Douala, Cameroon')
-            ->assertSee('Tel.: +237 699 19 29 19')
+            ->assertSee('+237 699 19 29 19')
             ->assertSee('Legal notice')
             ->assertSee('Privacy policy')
-            ->assertSee('All rights reserved.');
+            ->assertSee('All rights reserved.')
+            ->assertSee('About')
+            ->assertSee('Technical inspection');
     }
 
     public function test_only_verified_non_empty_social_urls_are_rendered(): void
@@ -52,6 +62,8 @@ class PublicFooterTest extends TestCase
             'social_linkedin' => 'https://www.linkedin.com/company/prooftag-catis',
             'social_facebook' => null,
             'social_x' => 'not-a-url',
+            'social_youtube' => null,
+            'social_instagram' => null,
         ])->save();
 
         $this->get('/')

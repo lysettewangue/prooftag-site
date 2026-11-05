@@ -31,7 +31,10 @@ final class PartnerCatalog
 
         return Partner::query()
             ->whereIn('id', $ids)
-            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->with([
+                'translations' => fn ($query) => $query->where('locale', $locale),
+                'media',
+            ])
             ->orderBy('sort_order')
             ->get();
     }

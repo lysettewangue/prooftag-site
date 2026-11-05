@@ -23,7 +23,7 @@ final class ResourceShowQuery
      *     translation: object,
      *     title: string,
      *     seo: SeoMeta,
-     *     breadcrumbs: list<array{label: string, url: string|null}>,
+     *     index_url: string,
      *     has_document: bool,
      *     download_url: string|null
      * }
@@ -49,16 +49,7 @@ final class ResourceShowQuery
             'translation' => $translation,
             'title' => $title,
             'seo' => $this->seo->forModel($resource, $locale),
-            'breadcrumbs' => [
-                [
-                    'label' => (string) __('ui.navigation.items.resources', locale: $locale),
-                    'url' => PublicPath::localized($locale, $indexPath),
-                ],
-                [
-                    'label' => $title,
-                    'url' => null,
-                ],
-            ],
+            'index_url' => PublicPath::localized($locale, $indexPath),
             'has_document' => $hasDocument,
             'download_url' => $hasDocument
                 ? route($locale === Locale::English->value ? 'en.resources.download' : 'fr.resources.download', ['slug' => $slug])

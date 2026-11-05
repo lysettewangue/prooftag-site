@@ -11,9 +11,7 @@
     :type="$seo->type"
 >
     <section class="border-b border-line bg-white" aria-labelledby="equipment-title">
-        <div class="mx-auto max-w-site px-gutter-compact py-10 medium:px-gutter-medium medium:py-14">
-            <x-public.breadcrumb :items="$breadcrumbs" class="mb-6" />
-
+        <div class="mx-auto max-w-site public-page-start px-gutter-compact medium:px-gutter-medium">
             <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">
                 {{ $lifecycle_label }}
             </p>
@@ -26,11 +24,11 @@
         </div>
     </section>
 
-    <section class="bg-surface-subtle py-12 medium:py-16 wide:py-20">
+    <section class="bg-white py-12 medium:py-16 wide:py-20">
         <div class="mx-auto grid max-w-site gap-12 px-gutter-compact medium:px-gutter-medium wide:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] wide:gap-16">
             <div class="min-w-0 space-y-8">
                 @if (filled($body_html))
-                    <div class="prose-public max-w-reading text-body text-muted [&_a]:font-semibold [&_a]:text-brand-azure-700 [&_p]:mt-4 [&_p:first-child]:mt-0 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-5">
+                    <div class="prose-public max-w-reading text-body text-muted [&_a]:font-semibold [&_a]:text-brand-azure-700 [&_li]:font-bold [&_li]:text-ink [&_p]:mt-4 [&_p:first-child]:mt-0 [&_strong]:font-bold [&_strong]:text-ink [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-5">
                         {!! $body_html !!}
                     </div>
                 @else

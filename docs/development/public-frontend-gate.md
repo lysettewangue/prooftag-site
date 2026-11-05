@@ -4,7 +4,7 @@
 |--|--|
 | **Step** | 150 — Review the public frontend |
 | **Parent** | [149 — Sitemap & robots](public-sitemap-robots.md) · [122 — UI/UX approval](../design/ui-ux-approval.md) |
-| **Next** | 151 — Migrate corporate content |
+| **Next** | 151 — Migrate corporate content → [migrate-corporate-content.md](migrate-corporate-content.md) (COMPLETED) · 152 products |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
 | **Date** | 2026-10-28 |
 | **Status** | **Gate passed.** Templates bind to CMS data; drafts stay private |

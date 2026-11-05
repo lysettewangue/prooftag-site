@@ -9,6 +9,8 @@ use App\Models\Expertise;
 use App\Models\Product;
 use App\Services\Seo\SeoMeta;
 use App\Services\Seo\SeoMetaResolver;
+use App\Support\ExpertiseVisual;
+use App\Support\PublicEditorialCopy;
 use App\Support\PublicPath;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -24,9 +26,15 @@ final class ExpertiseShowQuery
      *     translation: object,
      *     title: string,
      *     body_html: string|null,
+     *     summary: string|null,
+     *     paragraphs: list<string>,
+     *     highlights: list<string>,
+     *     media_url: string,
+     *     media_icon: string,
      *     seo: SeoMeta,
      *     breadcrumbs: list<array{label: string, url: string|null}>,
-     *     products: Collection<int, Product>
+     *     products: Collection<int, Product>,
+     *     siblings: Collection<int, Expertise>
      * }
      */
     public function forSlug(string $locale, string $slug): array
@@ -54,14 +62,35 @@ final class ExpertiseShowQuery
             ? (string) $translation->title
             : $expertise->code->titles()[$locale];
 
+        $rawBody = $this->bodyHtml($translation->body);
+        $bodyHtml = PublicEditorialCopy::html($rawBody);
+        $paragraphs = PublicEditorialCopy::paragraphs($bodyHtml);
+        $highlights = PublicEditorialCopy::listItems($bodyHtml);
+        $summary = PublicEditorialCopy::summary(
+            is_string($translation->summary) ? $translation->summary : null
+        ) ?? ($paragraphs[0] ?? null);
+
         $indexPath = $locale === Locale::English->value ? 'expertise' : 'expertises';
         $indexLabel = (string) __('ui.navigation.items.expertise', locale: $locale);
+
+        $siblings = Expertise::query()
+            ->publiclyVisible(now())
+            ->forLocale($locale)
+            ->whereKeyNot($expertise->getKey())
+            ->orderBy('sort_order')
+            ->with(['translations' => fn ($query) => $query->where('locale', $locale)])
+            ->get();
 
         return [
             'expertise' => $expertise,
             'translation' => $translation,
             'title' => $title,
-            'body_html' => $this->bodyHtml($translation->body),
+            'body_html' => $bodyHtml,
+            'summary' => $summary,
+            'paragraphs' => $paragraphs,
+            'highlights' => $highlights,
+            'media_url' => ExpertiseVisual::imageFor($expertise),
+            'media_icon' => ExpertiseVisual::iconFor($expertise),
             'seo' => $this->seo->forModel($expertise, $locale),
             'breadcrumbs' => [
                 [
@@ -74,6 +103,7 @@ final class ExpertiseShowQuery
                 ],
             ],
             'products' => $expertise->products,
+            'siblings' => $siblings,
         ];
     }
 

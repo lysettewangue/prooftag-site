@@ -12,6 +12,8 @@
         'primary' => 'border-brand-royal bg-brand-royal text-white hover:border-brand-azure-600 hover:bg-brand-azure-600',
         'secondary' => 'border-brand-azure-600 bg-brand-azure-600 text-white hover:border-brand-royal hover:bg-brand-royal',
         'outline' => 'border-brand-royal bg-white text-brand-royal hover:bg-surface-subtle',
+        'inverse' => 'border-white bg-white text-brand-azure-700 hover:border-brand-cyan-100 hover:bg-brand-cyan-100',
+        'ghost' => 'border-white/50 bg-transparent text-white hover:border-white hover:bg-white/10',
         'danger' => 'border-status-danger bg-status-danger text-white hover:border-status-warning hover:bg-status-warning',
     ];
     $isDisabled = (bool) $disabled || (bool) $loading;

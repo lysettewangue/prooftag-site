@@ -10,7 +10,7 @@
 | **Date** | 2026-10-22 |
 | **Status** | Redirect table editable; meta stays on settings and records |
 
-Filament module at `/admin/redirects`, under **Corporate**. SEO **metadata is not a standalone type**: defaults live on Settings, per-record meta on translations. This module edits **Redirect** rows only. Staff **may create**. Staff **must not** hard-delete: set `is_active` false. An empty list is valid until the legacy register is loaded (165–167). Canonical host remains `https://www.prooftagcatis.com`. DITROS-CT is not decided here (166).
+Filament module at `/admin/redirects`, under **Corporate**. SEO **metadata is not a standalone type**: defaults live on Settings, per-record meta on translations. This module edits **Redirect** rows only. Staff **may create**. Staff **must not** hard-delete: set `is_active` false. An empty list is valid until the legacy register is loaded (165–167). Canonical host remains `https://www.prooftagcatis.com`. DITROS-CT → `/controle-technique` ([ditros-ct-url.md](../legacy/ditros-ct-url.md)).
 
 The resource is thin: `UpsertRedirect`. Resolution stays `RedirectResolver`.
 
@@ -43,8 +43,8 @@ php artisan test
 | Item | Step |
 |------|------|
 | Admin user management | 103 |
-| Load legacy URL register | 165–167 |
-| DITROS-CT target | 166 |
+| Load legacy URL register | 165–167 → [implement-redirects.md](implement-redirects.md) |
+| DITROS-CT target | 166 → [ditros-ct-url.md](../legacy/ditros-ct-url.md) (`/controle-technique`) |
 
 ## 5. Verification (2026-10-22)
 

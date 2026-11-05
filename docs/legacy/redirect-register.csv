@@ -1,0 +1,24 @@
+from_host,from_path,to_path,status_code,is_active,notes
+site.prooftagcatis.com,/,/,301,1,Host retirement — site homepage → www home
+site.prooftagcatis.com,/catis,/a-propos,301,1,AUD-002 corporate narrative
+site.prooftagcatis.com,/catis/carriere,/a-propos/carrieres,301,1,AUD-021 careers index
+site.prooftagcatis.com,/expertise,/expertises,301,1,AUD-026 expertise index
+site.prooftagcatis.com,/expertise/recherche-et-developpement,/expertises/recherche-et-developpement,301,1,AUD-015
+site.prooftagcatis.com,/expertise/support-technique,/expertises/support-technique,301,1,AUD-016
+site.prooftagcatis.com,/expertise/data-analysis-reporting,/expertises/analyse-donnees-reporting,301,1,AUD-017
+site.prooftagcatis.com,/expertise/securite-documentaire,/expertises/securite-documentaire,301,1,AUD-010
+site.prooftagcatis.com,/expertise/securite-prevention-routiere,/expertises/securite-prevention-routiere,301,1,AUD-018
+site.prooftagcatis.com,/solutions,/produits,301,1,AUD-025 solutions index — no DITROS card
+site.prooftagcatis.com,/solutions/ditros-ct,/controle-technique,301,1,166 — 301 to CT hub; not CERTIDOCS (no implied Certidocs relationship)
+site.prooftagcatis.com,/solutions/ct-verif,/produits/ct-verif,301,1,Reserved path — public 404 until VER-04/11
+site.prooftagcatis.com,/solutions/doser,/produits/doser,301,1,Reserved path — public 404 until VER-05/11
+site.prooftagcatis.com,/contact,/contact,301,1,AUD-023
+site.prooftagcatis.com,/partenaires,/a-propos/partenaires,301,1,AUD-022 VER-09 empty listing OK
+site.prooftagcatis.com,/blog,/actualites,301,1,AUD-027 zero legacy posts
+site.prooftagcatis.com,/en,/en,301,1,AUD-014 — path only; do not migrate legacy EN body (REC-10)
+www.prooftagcatis.com,/organisation,/a-propos/organisation,301,1,AUD-019 reserved — public 404 until VER-13
+www.prooftagcatis.com,/solutions/controle-technique,/controle-technique,301,1,AUD-006 CT hub
+www.prooftagcatis.com,/partenaires/centres-de-controle,/centres-de-controle,301,1,AUD-007 directory
+www.prooftagcatis.com,/services,/produits/certidocs-ct,301,1,AUD-020 thin services → CERTIDOCS CT
+net.prooftagcatis.com,/,/,301,1,AUD-024 retire host — homepage only in register; other net paths → ops/server catch-all at 167+
+prooftagcatis.com,/,/,301,1,Apex → www home (host policy 006)

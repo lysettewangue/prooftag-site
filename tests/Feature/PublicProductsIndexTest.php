@@ -10,11 +10,13 @@ use App\Models\Product;
 use App\Support\ContentCache;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
+use Tests\Support\ResetsPublicationToDraft;
 use Tests\TestCase;
 
 class PublicProductsIndexTest extends TestCase
 {
     use RefreshDatabase;
+    use ResetsPublicationToDraft;
 
     protected function setUp(): void
     {
@@ -26,11 +28,13 @@ class PublicProductsIndexTest extends TestCase
 
     public function test_the_solutions_index_shows_an_empty_state_while_products_are_draft(): void
     {
+        $this->resetPublicationToDraft();
+
         $this->get('/produits')
             ->assertOk()
             ->assertSee('<title>Produits &amp; Solutions — PROOFTAG-CATIS</title>', false)
             ->assertSee('data-products-index-empty', false)
-            ->assertSee('Aucune solution publiée')
+            ->assertSee('Solutions à venir')
             ->assertDontSee('CERTIDOCS CT')
             ->assertDontSee('DITROS-CT')
             ->assertSee('aria-current="page"', false)
@@ -38,9 +42,9 @@ class PublicProductsIndexTest extends TestCase
 
         $this->get('/en/products')
             ->assertOk()
-            ->assertSee('No published solutions')
+            ->assertSee('Solutions coming soon')
             ->assertSee('<title>Products &amp; Solutions — PROOFTAG-CATIS</title>', false)
-            ->assertDontSee('Aucune solution publiée');
+            ->assertDontSee('Solutions à venir');
     }
 
     public function test_published_products_appear_in_sort_order_without_drafts(): void

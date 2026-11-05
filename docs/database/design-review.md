@@ -54,7 +54,7 @@ This is the step 055 deliverable. It approves the conceptual and logical model (
 | Reference + CMS migrations | 056–069 |
 | Eloquent models / actions | 070+ |
 | Filament modules | 088+ |
-| DITROS-CT URL | 166 |
+| DITROS-CT URL | 166 → [ditros-ct-url.md](../legacy/ditros-ct-url.md) |
 
 Changing an approved table after this gate needs a new version of the affected spec **and** a recorded design change before migrate.
 

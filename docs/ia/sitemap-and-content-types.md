@@ -79,7 +79,7 @@ erDiagram
 | www Industries | Audience blocks on products/expertise |
 | www Galerie | Media gallery under About or Resources |
 | www Lois et règlements | Resources (`regulatory_status`) |
-| site DITROS-CT | CERTIDOCS CT + CT hub |
+| site DITROS-CT | Content → CERTIDOCS CT + CT hub; HTTP 301 → `/controle-technique` only ([ditros-ct-url.md](../legacy/ditros-ct-url.md)) |
 | net host | 301 to www |
 
 ## Gate

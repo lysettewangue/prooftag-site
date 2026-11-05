@@ -32,7 +32,7 @@ class EquipmentAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_representative_equipment_drafts_are_seeded(): void
+    public function test_representative_equipment_catalogue_is_seeded(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -40,10 +40,9 @@ class EquipmentAdminTest extends TestCase
             ->get(EquipmentResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(4, Equipment::query()->count());
-        $this->assertSame(3, Equipment::query()->where('lifecycle', EquipmentLifecycle::Current)->count());
-        $this->assertSame(1, Equipment::query()->where('lifecycle', EquipmentLifecycle::Legacy)->count());
-        $this->assertTrue(Equipment::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
+        $this->assertSame(4, Equipment::query()->where('lifecycle', EquipmentLifecycle::Current)->where('publication_status', PublicationStatus::Published)->count());
+        $this->assertTrue(Equipment::query()->whereHas('translations', fn ($q) => $q->where('locale', 'fr')->where('slug', 'douchette'))->exists());
+        $this->assertTrue(Equipment::query()->whereHas('translations', fn ($q) => $q->whereIn('slug', ['workflow-legacy-2020', 'legacy-2020-workflow']))->where('publication_status', PublicationStatus::Published)->doesntExist());
         $this->assertTrue(EquipmentResource::canCreate());
         $this->assertFalse(EquipmentResource::canDeleteAny());
     }

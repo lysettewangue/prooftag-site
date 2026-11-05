@@ -6,10 +6,10 @@
 | **Parent** | [134 — Expertise](public-expertise.md) · [technical-inspection-entities.md](../database/technical-inspection-entities.md) · W04 |
 | **Next** | 136 — [Security points](public-security-points.md) (COMPLETED) · 137 Equipment |
 | **Tracker** | [STEP-BY-STEP.md](../STEP-BY-STEP.md) |
-| **Date** | 2026-10-27 |
-| **Status** | Hub page (not a product). No DITROS-CT |
+| **Date** | 2026-10-30 |
+| **Status** | Single premium hub page (not a product). No DITROS-CT |
 
-`/controle-technique` · `/en/technical-inspection` render Page `technical_inspection` when Published. The hub also shows published security-point accordions and an equipment preview. Dedicated points / equipment indexes land in steps **136** / **137** (links already reserved).
+`/controle-technique` · `/en/technical-inspection` render Page `technical_inspection` when Published. The hub carries the full journey on **one page**: process, modernised schema, twelve points with icons, and equipment with images + copy. Dedicated points / equipment indexes remain available for deep links.
 
 ## 1. Routes
 
@@ -20,15 +20,17 @@
 
 Draft page → **404**.
 
-## 2. Content
+## 2. Content (single page)
 
 | Zone | Source |
 |------|--------|
 | Title / SEO | Page translation + `SeoMetaResolver::forModel` |
-| Overview | Page `blocks` (admin CT overview → `rich_text`) via `<x-public.content-blocks>` |
-| 12 points | `SecurityPointCatalog` — numbered accordion, readable titles (not all-caps) |
-| Equipment teaser | Up to 4 published `Equipment` rows (current first) |
-| Teaser links | Points index (**136**) · equipment index (**137**) — both done |
+| Hero | Title + lede + hub visual + in-page anchors |
+| Process | Official www 3-step flow (centre → MINT → field) + role sentence; matching images only |
+| Schema | Modernised 12-step diagram (`schema-12-points.jpg`) from the official www process chart |
+| 12 points | All published `SecurityPoint` rows + Lucide icon per function (`TechnicalInspectionVisual::pointIcon`) |
+| Equipment | All published equipment with image (CMS media or static fallback) + full body HTML |
+| Visuals | `public/images/content/technical-inspection/` (`hub`, `process/`, `equipment/`, `icons/`) |
 
 ## 3. Out of this step
 

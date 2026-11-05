@@ -46,8 +46,8 @@ class EquipmentSeeder extends Seeder
      */
     private function items(): array
     {
-        $rewriteFr = '<p>Mentionné dans le workflow CT (AUD-006). Brouillon. Ne pas publier comme parc 2020 à jour.</p>';
-        $rewriteEn = '<p>Mentioned in the CT workflow (AUD-006). Draft. Do not publish as a current 2020 fleet.</p>';
+        $rewriteFr = '<p>Équipement du processus de contrôle technique. Brouillon — à compléter avant publication.</p>';
+        $rewriteEn = '<p>Technical inspection process equipment. Draft — complete before publishing.</p>';
 
         return [
             [
@@ -73,13 +73,10 @@ class EquipmentSeeder extends Seeder
             ],
             [
                 'sort_order' => 4,
-                'lifecycle' => EquipmentLifecycle::Legacy,
-                'slugs' => ['fr' => 'workflow-legacy-2020', 'en' => 'legacy-2020-workflow'],
-                'titles' => ['fr' => 'Workflow documenté en 2020 (historique)', 'en' => 'Workflow documented in 2020 (historical)'],
-                'bodies' => [
-                    'fr' => '<p>Copie www 2020 (AUD-006). Cycle de vie legacy. Ne pas présenter comme équipement actuel.</p>',
-                    'en' => '<p>2020 www copy (AUD-006). Legacy lifecycle. Do not present as current equipment.</p>',
-                ],
+                'lifecycle' => EquipmentLifecycle::Current,
+                'slugs' => ['fr' => 'douchette', 'en' => 'barcode-scanner'],
+                'titles' => ['fr' => 'Douchette', 'en' => 'Barcode scanner'],
+                'bodies' => ['fr' => $rewriteFr, 'en' => $rewriteEn],
             ],
         ];
     }

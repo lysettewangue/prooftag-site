@@ -1,6 +1,6 @@
 # Start here
 
-1. [STEP-BY-STEP.md](STEP-BY-STEP.md) — steps 001–250. Steps **001–150 COMPLETED** (public frontend gate passed). Step **151** is unlocked — migrate corporate content.
+1. [STEP-BY-STEP.md](STEP-BY-STEP.md) — steps 001–250. Steps **001–174 COMPLETED**. Step **175** is unlocked — run format checks.
 2. [charter/project-charter.md](charter/project-charter.md) — V1 engineering baseline.  
 3. [engineering-roadmap.md](engineering-roadmap.md) — status rules and gates.
 

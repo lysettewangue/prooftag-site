@@ -26,7 +26,8 @@ No Inertia, Vue, React, or public SPA router.
 
 1. `bootstrap.js` — Axios + CSRF token from `<meta name="csrf-token">`
 2. `public/boot.js` — vanilla enhancements; sets `document.documentElement.dataset.publicJs = "ready"`
-3. `public/alpine.js` — `window.Alpine = Alpine` then `Alpine.start()`
+3. `public/home-hero.js` — registers Alpine `homeHeroSlideshow` (homepage carousel)
+4. `public/alpine.js` — `window.Alpine = Alpine` then `Alpine.start()`
 
 Register `Alpine.data(...)` in a page module **before** `startAlpine()` if a later step needs a named component. For Blade-only Alpine snippets, `x-data` on the markup is enough after start.
 

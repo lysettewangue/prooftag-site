@@ -71,7 +71,7 @@ Already frozen at 022. Cardinalities and join tables are step **051**.
 
 | Item | Why |
 |------|-----|
-| DITROS-CT | Not a product. URL decision is 166. |
+| DITROS-CT | Not a product. URL → `/controle-technique` ([ditros-ct-url.md](../legacy/ditros-ct-url.md)). |
 | Locale | `fr` / `en` in routing and translation rows, not a locale table. |
 | PublicationState | Shared fields on the base record (045 / 050), not a CMS type. |
 | Operational systems | CERTIDOCS, CT-VERIF, DOSER, Video Enforcement, MINT — outbound URLs on Product only. |

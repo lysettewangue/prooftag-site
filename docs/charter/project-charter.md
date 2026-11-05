@@ -90,7 +90,7 @@ The corporate website is **not**:
 - WordPress on the new platform
 - Native mobile applications
 
-**DITROS-CT** is not a product. Do not create a CMS record or navigation item under that name. The legacy URL is decided at step 166.
+**DITROS-CT** is not a product. Do not create a CMS record or navigation item under that name. Legacy URL: 301 → `/controle-technique` ([ditros-ct-url.md](../legacy/ditros-ct-url.md)).
 
 VPS, Redis, queues, and institutional API integrations wait on a documented requirement change (step 248).
 

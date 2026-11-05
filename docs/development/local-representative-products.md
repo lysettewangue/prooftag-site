@@ -23,7 +23,7 @@ php artisan test --filter=DatabaseStructureTest
 
 | Item | Step |
 |------|------|
-| Publish any solution | After the matching VER row closes |
+| Publish any solution | After the matching VER row closes · CERTIDOCS CT published at [152](migrate-product-content.md) |
 | Sample news | 110 |
 
 ## 3. Acceptance

@@ -24,14 +24,26 @@ class DatabaseSeeder extends Seeder
             ControlledStatusSeeder::class,
             SiteSettingSeeder::class,
             PageSeeder::class,
+            CorporateContentMigrationSeeder::class,
             ProductSeeder::class,
+            ProductContentMigrationSeeder::class,
             ExpertiseSeeder::class,
+            ExpertiseContentMigrationSeeder::class,
             SecurityPointSeeder::class,
+            TechnicalInspectionContentMigrationSeeder::class,
             EquipmentSeeder::class,
+            EquipmentContentMigrationSeeder::class,
             LibraryDocumentSeeder::class,
+            ResourceContentMigrationSeeder::class,
             RepresentativeCentreSeeder::class,
+            CentreDirectoryMigrationSeeder::class,
             RepresentativeEditorialSeeder::class,
+            EditorialContentMigrationSeeder::class,
+            MediaContentMigrationSeeder::class,
+            LegacyRedirectSeeder::class,
         ]);
+        // PreviewPresentationSeeder is local-design only:
+        // php artisan db:seed --class=PreviewPresentationSeeder
 
         $email = config('app.filament_admin_email');
 

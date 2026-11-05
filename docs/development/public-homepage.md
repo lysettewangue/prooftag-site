@@ -9,7 +9,7 @@
 | **Date** | 2026-10-27 |
 | **Status** | Bound to published CMS rows |
 
-The homepage keeps the visual narrative from the [visual refresh](../design/visual-refresh.md). CMS binding adds published product cards (0–5), published expertise title cards, and `SeoMeta` from the `home` page when that page is publicly visible.
+The homepage keeps the visual narrative from the [visual refresh](../design/visual-refresh.md), with a **hero slideshow** (Alpine `homeHeroSlideshow`), quick-access paths, product cards with media, mission split, expertises, centres teaser, and a final CTA band. CMS binding adds published product cards (0–5), published expertise title cards, and `SeoMeta` from the `home` page when that page is publicly visible.
 
 ## 1. Data
 
@@ -44,16 +44,31 @@ Draft seeds leave both product and expertise bands empty by design.
 
 No exclusive-operator claim (VER-01 Open). No live counters.
 
-## 5. Verification
+## 5. Hero slideshow
+
+| Piece | Role |
+|-------|------|
+| `resources/js/public/home-hero.js` | Alpine `homeHeroSlideshow` — auto-advance + dots |
+| `public/images/content/home/hero/visual.jpg` | Hero illustration (right visual) |
+| `public/images/content/home/mission/mission.jpg` | Mission block photo |
+| `public/images/content/home/icons/*.svg` | Page Lucide icons (hardlinked to `resources/svg/lucide`) |
+| `public/images/content/home/archive/` | Previous hero/slide variants |
+| `data-home-hero-slideshow` | Markup hook on the hero `<section>` |
+
+Respects `prefers-reduced-motion` (stays on the first slide). Interval default: 6s.
+
+## 6. Verification
 
 ```powershell
 php artisan test --filter=PublicHomeCmsTest
 php artisan test --filter=PublicHomeVisualTest
+php artisan test --filter=PublicJavaScriptTest
 ```
 
-## 6. Acceptance
+## 7. Acceptance
 
 - [x] Homepage FR/EN loads with shell + visual narrative
+- [x] Hero slideshow with progressive enhancement
 - [x] Published products appear; drafts do not
 - [x] Published expertises appear as title cards; empty state when none
 - [x] SEO meta from published `home` page when present
