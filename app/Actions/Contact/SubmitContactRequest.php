@@ -28,6 +28,7 @@ final class SubmitContactRequest
 
         $contact = ContactRequest::query()->create([
             'name' => (string) $data['name'],
+            'organization' => $data['organization'] ?? null,
             'email' => (string) $data['email'],
             'phone' => $data['phone'] ?? null,
             'subject' => (string) $data['subject'],
@@ -50,6 +51,7 @@ final class SubmitContactRequest
     {
         return ContactRequest::query()->create([
             'name' => (string) ($data['name'] ?? 'honeypot'),
+            'organization' => $data['organization'] ?? null,
             'email' => (string) ($data['email'] ?? 'spam@invalid.local'),
             'phone' => $data['phone'] ?? null,
             'subject' => (string) ($data['subject'] ?? 'spam'),

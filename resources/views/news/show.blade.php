@@ -2,7 +2,6 @@
     $copy = __('ui.article');
     $newsCopy = __('ui.news');
     $locale = app()->getLocale();
-    $hasAside = $products->isNotEmpty() || $expertises->isNotEmpty();
 @endphp
 
 <x-layouts.public
@@ -13,94 +12,120 @@
     :image="$seo->image"
     :type="$seo->type"
 >
-    <section class="public-hero-mesh border-b border-line" aria-labelledby="article-title">
-        <div class="public-page-start mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div
-                @class([
-                    'grid items-start gap-8',
-                    'medium:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] medium:gap-10' => filled($media_url),
-                ])
-            >
-                <div class="min-w-0">
-                    <p class="text-label font-bold tracking-[0.18em] text-brand-cyan-500 uppercase">
-                        {{ $copy['eyebrow'] }}
-                    </p>
-                    <h1 id="article-title" class="mt-3 max-w-3xl text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1">
-                        {{ $title }}
-                    </h1>
+    <article class="article-hub">
+        <header class="article-hub-hero" aria-labelledby="article-title">
+            <div class="article-hub-shell">
+                <nav class="article-hub-breadcrumb" aria-label="{{ $locale === 'fr' ? 'Fil d’Ariane' : 'Breadcrumb' }}">
+                    <a href="{{ $index_url }}">
+                        <x-public.icon name="arrow-left" :size="15" stroke-width="1.9" />
+                        {{ $newsCopy['back_to_list'] }}
+                    </a>
+                </nav>
 
-                    @if (filled($translation->summary))
-                        <p class="mt-5 max-w-reading text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
-                            {{ $translation->summary }}
-                        </p>
-                    @endif
-                </div>
+                <div class="article-hub-hero__grid">
+                    <div class="article-hub-hero__content public-scroll-reveal" data-public-reveal>
+                        <p class="article-hub-kicker">{{ $copy['eyebrow'] }}</p>
+                        <h1 id="article-title">{{ $title }}</h1>
+                        <span class="article-hub-title-rule" aria-hidden="true"></span>
 
-                @if (filled($media_url))
-                    <figure class="public-media-zoom overflow-hidden rounded-2xl border border-line bg-white shadow-soft">
+                        @if (filled($translation->summary))
+                            <p class="article-hub-hero__summary">{{ $translation->summary }}</p>
+                        @endif
+
+                        @if ($meta_parts !== [])
+                            <ul class="article-hub-meta" aria-label="{{ $copy['publication_details'] }}">
+                                @foreach ($meta_parts as $index => $part)
+                                    <li>
+                                        <x-public.icon :name="$index === count($meta_parts) - 1 ? 'calendar-days' : ($index === 0 ? 'layers' : 'newspaper')" :size="15" stroke-width="1.85" />
+                                        {{ $part }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+
+                    <figure
+                        @class([
+                            'article-hub-cover public-scroll-reveal public-scroll-reveal-delay-1',
+                            'article-hub-cover--default' => ! $has_custom_media,
+                        ])
+                        data-public-reveal
+                    >
                         <img
                             src="{{ $media_url }}"
                             alt="{{ $media_alt }}"
-                            class="aspect-[16/10] w-full object-cover medium:aspect-[4/3] medium:min-h-[18rem]"
-                            width="1200"
+                            width="1600"
                             height="900"
                             fetchpriority="high"
                         >
                     </figure>
-                @endif
+                </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section class="bg-white py-10 medium:py-14">
-        <div
-            @class([
-                'mx-auto max-w-site gap-10 px-gutter-compact medium:px-gutter-medium medium:gap-12',
-                'grid medium:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]' => $hasAside,
-            ])
-        >
-            <div class="min-w-0 space-y-8">
-                @if (filled($body_html))
-                    <div class="prose-public max-w-reading text-body leading-relaxed text-muted [&_a]:font-semibold [&_a]:text-brand-azure-700 [&_p]:mt-4 [&_p:first-child]:mt-0 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-5 [&_h2]:mt-8 [&_h2]:text-heading-3-compact [&_h2]:font-bold [&_h2]:text-ink">
-                        {!! $body_html !!}
-                    </div>
-                @else
-                    <x-public.empty-state
-                        :title="$copy['body_empty_title']"
-                        data-article-body-empty
-                    >
-                        {{ $copy['body_empty_body'] }}
-                    </x-public.empty-state>
-                @endif
+        <section class="article-hub-body">
+            <div class="article-hub-shell article-hub-body__grid">
+                <div class="article-hub-content public-scroll-reveal" data-public-reveal>
+                    <header class="article-hub-content__heading">
+                        <p class="article-hub-kicker">{{ $copy['content_eyebrow'] }}</p>
+                        <h2>{{ $copy['content_title'] }}</h2>
+                        <span class="article-hub-title-rule" aria-hidden="true"></span>
+                    </header>
 
-                <p class="pt-2">
-                    <a href="{{ $index_url }}" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-azure-700 hover:text-brand-cyan-500">
-                        <x-public.icon name="arrow-left" :size="16" stroke-width="1.75" />
-                        {{ $newsCopy['back_to_list'] }}
-                    </a>
-                </p>
-            </div>
+                    @if (filled($body_html))
+                        <div class="article-hub-prose">
+                            {!! $body_html !!}
+                        </div>
+                    @else
+                        <div class="article-hub-empty" data-article-body-empty>
+                            <span aria-hidden="true"><x-public.icon name="newspaper" :size="30" stroke-width="1.75" /></span>
+                            <div>
+                                <h3>{{ $copy['body_empty_title'] }}</h3>
+                                <p>{{ $copy['body_empty_body'] }}</p>
+                            </div>
+                        </div>
+                    @endif
 
-            @if ($hasAside)
-                <aside class="min-w-0 space-y-6 medium:sticky medium:top-36 medium:self-start">
+                    <footer class="article-hub-content__footer">
+                        <a href="{{ $index_url }}">
+                            <x-public.icon name="arrow-left" :size="16" stroke-width="1.9" />
+                            {{ $copy['back_action'] }}
+                        </a>
+                    </footer>
+                </div>
+
+                <aside class="article-hub-aside">
+                    <section class="article-hub-aside__card public-scroll-reveal public-scroll-reveal-delay-1" aria-labelledby="article-details-title" data-public-reveal>
+                        <span class="article-hub-aside__icon" aria-hidden="true">
+                            <x-public.icon name="info" :size="23" stroke-width="1.85" />
+                        </span>
+                        <h2 id="article-details-title">{{ $copy['publication_details'] }}</h2>
+                        @if ($meta_parts !== [])
+                            <ul>
+                                @foreach ($meta_parts as $part)
+                                    <li><x-public.icon name="circle-check" :size="15" stroke-width="1.85" /> {{ $part }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </section>
+
                     @if ($products->isNotEmpty())
-                        <section aria-labelledby="article-products-title">
-                            <h2 id="article-products-title" class="text-heading-3-compact font-bold text-ink">
-                                {{ $copy['related_products'] }}
-                            </h2>
-                            <ul class="mt-4 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
+                        <section class="article-hub-aside__card public-scroll-reveal public-scroll-reveal-delay-2" aria-labelledby="article-products-title" data-public-reveal>
+                            <span class="article-hub-aside__icon" aria-hidden="true">
+                                <x-public.icon name="layers" :size="23" stroke-width="1.85" />
+                            </span>
+                            <h2 id="article-products-title">{{ $copy['related_products'] }}</h2>
+                            <ul class="article-hub-related">
                                 @foreach ($products as $product)
-                                    @php
-                                        $productUrl = \App\Support\PublicPath::for($product, $locale);
-                                    @endphp
+                                    @php($productUrl = \App\Support\PublicPath::for($product, $locale))
                                     <li>
                                         @if ($productUrl)
-                                            <a href="{{ $productUrl }}" class="group flex items-center justify-between gap-3 px-5 py-4 text-sm font-bold text-ink transition-colors hover:bg-brand-cyan-100/35 hover:text-brand-azure-700">
+                                            <a href="{{ $productUrl }}">
                                                 <span>{{ $product->public_name }}</span>
-                                                <x-public.icon name="arrow-right" :size="14" stroke-width="1.75" class="shrink-0 transition-transform group-hover:translate-x-1" />
+                                                <x-public.icon name="arrow-right" :size="15" stroke-width="1.85" />
                                             </a>
                                         @else
-                                            <span class="block px-5 py-4 text-sm font-bold text-ink">{{ $product->public_name }}</span>
+                                            <span>{{ $product->public_name }}</span>
                                         @endif
                                     </li>
                                 @endforeach
@@ -109,11 +134,12 @@
                     @endif
 
                     @if ($expertises->isNotEmpty())
-                        <section aria-labelledby="article-expertises-title">
-                            <h2 id="article-expertises-title" class="text-heading-3-compact font-bold text-ink">
-                                {{ $copy['related_expertises'] }}
-                            </h2>
-                            <ul class="mt-4 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
+                        <section class="article-hub-aside__card public-scroll-reveal public-scroll-reveal-delay-3" aria-labelledby="article-expertises-title" data-public-reveal>
+                            <span class="article-hub-aside__icon" aria-hidden="true">
+                                <x-public.icon name="badge-check" :size="23" stroke-width="1.85" />
+                            </span>
+                            <h2 id="article-expertises-title">{{ $copy['related_expertises'] }}</h2>
+                            <ul class="article-hub-related">
                                 @foreach ($expertises as $expertise)
                                     @php
                                         $expertiseTitle = $expertise->translationFor($locale)?->title
@@ -123,12 +149,12 @@
                                     @endphp
                                     <li>
                                         @if ($expertiseUrl)
-                                            <a href="{{ $expertiseUrl }}" class="group flex items-center justify-between gap-3 px-5 py-4 text-sm font-bold text-ink transition-colors hover:bg-brand-cyan-100/35 hover:text-brand-azure-700">
+                                            <a href="{{ $expertiseUrl }}">
                                                 <span>{{ $expertiseTitle }}</span>
-                                                <x-public.icon name="arrow-right" :size="14" stroke-width="1.75" class="shrink-0 transition-transform group-hover:translate-x-1" />
+                                                <x-public.icon name="arrow-right" :size="15" stroke-width="1.85" />
                                             </a>
                                         @else
-                                            <span class="block px-5 py-4 text-sm font-bold text-ink">{{ $expertiseTitle }}</span>
+                                            <span>{{ $expertiseTitle }}</span>
                                         @endif
                                     </li>
                                 @endforeach
@@ -136,7 +162,7 @@
                         </section>
                     @endif
                 </aside>
-            @endif
-        </div>
-    </section>
+            </div>
+        </section>
+    </article>
 </x-layouts.public>

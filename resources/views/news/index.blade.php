@@ -3,14 +3,8 @@
     $locale = app()->getLocale();
     $kindLabels = $copy['kinds'];
     $hasFilters = $kind !== null || $category_id !== null;
-    $featured = $posts->isEmpty() ? null : $posts->getCollection()->first();
-    $rest = $posts->isEmpty() ? collect() : $posts->getCollection()->slice(1)->values();
     $showFilterBar = $show_filters && ($hasFilters || $posts->total() > 1);
-    $featuredTranslation = $featured?->translationFor($locale);
-    $featuredTitle = $featuredTranslation?->title ?: $copy['fallback_title'];
-    $featuredSummary = $featuredTranslation?->summary;
-    $featuredHref = $featured ? \App\Support\PublicPath::for($featured, $locale) : null;
-    $featuredImage = $featured?->getFirstMediaUrl('images');
+    $entries = $posts->getCollection();
 @endphp
 
 <x-layouts.public
@@ -21,221 +15,179 @@
     :image="$seo->image"
     :type="$seo->type"
 >
-    <section class="public-hero-mesh border-b border-line" aria-labelledby="news-index-title">
-        <div class="public-page-start mx-auto grid max-w-site items-start gap-8 px-gutter-compact medium:grid-cols-2 medium:gap-10 medium:px-gutter-medium">
-            <div class="min-w-0">
-                <p class="text-label font-bold tracking-[0.18em] text-brand-cyan-500 uppercase">
-                    {{ $copy['eyebrow'] }}
-                </p>
-                <h1 id="news-index-title" class="mt-3 text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1">
-                    {{ $copy['title'] }}
-                </h1>
-                <p class="mt-4 max-w-xl text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
-                    {{ $copy['lede'] }}
-                </p>
-
-                @if ($featured)
-                    <div class="mt-8 max-w-xl border-t border-line pt-6">
-                        <p class="text-xs font-bold tracking-label text-brand-azure-700 uppercase">{{ $copy['featured_label'] }}</p>
-                        <h2 class="mt-2 text-heading-2-compact font-bold tracking-heading text-ink">
-                            @if ($featuredHref)
-                                <a href="{{ $featuredHref }}" class="hover:text-brand-azure-700">{{ $featuredTitle }}</a>
-                            @else
-                                {{ $featuredTitle }}
-                            @endif
-                        </h2>
-                        @if (filled($featuredSummary))
-                            <p class="mt-3 text-body leading-relaxed text-muted">{{ $featuredSummary }}</p>
-                        @endif
-                        @if ($featuredHref)
-                            <p class="mt-6">
-                                <x-public.button :href="$featuredHref">
-                                    {{ $copy['featured_action'] }}
-                                    <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1.5" />
-                                </x-public.button>
-                            </p>
-                        @endif
-                    </div>
-                @endif
+    <section class="news-hub-hero" aria-labelledby="news-index-title">
+        <div class="news-hub-shell news-hub-hero__inner">
+            <div class="news-hub-hero__content public-scroll-reveal" data-public-reveal>
+                <p class="news-hub-kicker">{{ $copy['eyebrow'] }}</p>
+                <h1 id="news-index-title">{{ $copy['title'] }}</h1>
+                <span class="news-hub-title-rule" aria-hidden="true"></span>
+                <p>{{ $copy['lede'] }}</p>
             </div>
 
-            <figure class="public-media-zoom overflow-hidden rounded-2xl border border-line bg-white shadow-soft">
-                @if ($featuredImage)
-                    @if ($featuredHref)
-                        <a href="{{ $featuredHref }}" class="block" aria-label="{{ $featuredTitle }}">
-                            <img
-                                src="{{ $featuredImage }}"
-                                alt=""
-                                class="aspect-[16/10] w-full object-cover object-center medium:aspect-[4/3] medium:min-h-[22rem]"
-                                width="1200"
-                                height="900"
-                                fetchpriority="high"
-                            >
-                        </a>
-                    @else
-                        <img
-                            src="{{ $featuredImage }}"
-                            alt=""
-                            class="aspect-[16/10] w-full object-cover object-center medium:aspect-[4/3] medium:min-h-[22rem]"
-                            width="1200"
-                            height="900"
-                            fetchpriority="high"
-                        >
-                    @endif
-                @else
-                    <div class="flex aspect-[16/10] items-center justify-center bg-brand-azure-700/8 text-brand-azure-700 medium:aspect-[4/3] medium:min-h-[22rem]">
-                        <x-public.icon name="newspaper" :size="48" stroke-width="1.75" />
-                    </div>
-                @endif
+            <figure class="news-hub-hero__media public-scroll-reveal public-scroll-reveal-delay-1" data-public-reveal>
+                <img
+                    src="{{ asset('images/content/technical-inspection/control-centre-ecosystem.webp') }}"
+                    alt="{{ $copy['hero_alt'] }}"
+                    width="1920"
+                    height="960"
+                    fetchpriority="high"
+                >
             </figure>
         </div>
+    </section>
 
-        @if ($showFilterBar)
-            <div class="mx-auto max-w-site px-gutter-compact pb-8 medium:px-gutter-medium medium:pb-10">
-                <form
-                    method="get"
-                    action="{{ $index_url }}"
-                    class="overflow-hidden rounded-2xl border border-line bg-white shadow-soft"
-                    role="search"
-                    data-news-filters
-                >
-                    <div
-                        @class([
-                            'grid',
-                            'medium:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]' => $categories->isNotEmpty(),
-                            'medium:grid-cols-[minmax(0,1fr)_auto]' => $categories->isEmpty(),
-                        ])
-                    >
-                        <div class="relative border-b border-line medium:border-b-0 medium:border-e">
-                            <label for="news-kind" class="sr-only">{{ $copy['kind_label'] }}</label>
-                            <select
-                                id="news-kind"
-                                name="kind"
-                                class="w-full appearance-none bg-transparent px-4 py-3.5 text-body text-ink outline-none"
-                            >
-                                <option value="">{{ $copy['kind_all'] }}</option>
-                                @foreach ($kinds as $case)
-                                    <option value="{{ $case->value }}" @selected($kind === $case)>
-                                        {{ $kindLabels[$case->value] ?? $case->value }}
+    <section class="news-hub-topics" aria-labelledby="news-topics-title">
+        <div class="news-hub-shell">
+            <header class="news-hub-section-heading public-scroll-reveal" data-public-reveal>
+                <div>
+                    <p class="news-hub-kicker">{{ $copy['topics_eyebrow'] }}</p>
+                    <h2 id="news-topics-title">{{ $copy['topics_title'] }}</h2>
+                    <span class="news-hub-title-rule" aria-hidden="true"></span>
+                </div>
+                <p>{{ $copy['topics_body'] }}</p>
+            </header>
+
+            <ul class="news-hub-topics__grid">
+                @foreach ($copy['topics'] as $index => $topic)
+                    <li class="public-scroll-reveal public-scroll-reveal-delay-{{ $index % 4 }}" data-public-reveal>
+                        <span aria-hidden="true">
+                            <x-public.icon :name="$topic['icon']" :size="31" stroke-width="1.85" />
+                        </span>
+                        <h3>{{ $topic['title'] }}</h3>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
+
+    <section
+        @class([
+            'news-hub-feed',
+            'news-hub-feed--empty' => $posts->total() === 0 && ! $hasFilters,
+        ])
+        aria-labelledby="{{ $posts->total() > 0 || $hasFilters ? 'news-list-title' : 'news-upcoming-title' }}"
+    >
+        <div class="news-hub-shell">
+            @if ($posts->total() > 0 || $hasFilters)
+            <header class="news-hub-section-heading news-hub-feed__heading public-scroll-reveal" data-public-reveal>
+                <div>
+                    <p class="news-hub-kicker">{{ $copy['list_eyebrow'] }}</p>
+                    <h2 id="news-list-title">{{ $copy['list_title'] }}</h2>
+                    <span class="news-hub-title-rule" aria-hidden="true"></span>
+                </div>
+                <p>{{ $copy['list_body'] }}</p>
+            </header>
+
+            @if ($showFilterBar)
+                <form method="get" action="{{ $index_url }}" class="news-hub-filter" role="search" data-news-filters>
+                    <div class="news-hub-filter__field">
+                        <label for="news-kind">{{ $copy['kind_label'] }}</label>
+                        <select id="news-kind" name="kind">
+                            <option value="">{{ $copy['kind_all'] }}</option>
+                            @foreach ($kinds as $case)
+                                <option value="{{ $case->value }}" @selected($kind === $case)>
+                                    {{ $kindLabels[$case->value] ?? $case->value }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    @if ($categories->isNotEmpty())
+                        <div class="news-hub-filter__field">
+                            <label for="news-category">{{ $copy['category_label'] }}</label>
+                            <select id="news-category" name="category">
+                                <option value="">{{ $copy['category_all'] }}</option>
+                                @foreach ($categories as $category)
+                                    @php
+                                        $categoryName = $category->translationFor($locale)?->name ?? $copy['category_fallback'];
+                                    @endphp
+                                    <option value="{{ $category->id }}" @selected($category_id === $category->id)>
+                                        {{ $categoryName }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
+                    @endif
 
-                        @if ($categories->isNotEmpty())
-                            <div class="relative border-b border-line medium:border-b-0 medium:border-e">
-                                <label for="news-category" class="sr-only">{{ $copy['category_label'] }}</label>
-                                <select
-                                    id="news-category"
-                                    name="category"
-                                    class="w-full appearance-none bg-transparent px-4 py-3.5 text-body text-ink outline-none"
-                                >
-                                    <option value="">{{ $copy['category_all'] }}</option>
-                                    @foreach ($categories as $category)
-                                        @php
-                                            $categoryName = $category->translationFor($locale)?->name ?? $copy['category_fallback'];
-                                        @endphp
-                                        <option value="{{ $category->id }}" @selected($category_id === $category->id)>
-                                            {{ $categoryName }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        @endif
+                    <button type="submit" class="news-hub-filter__submit">
+                        {{ $copy['submit'] }}
+                        <x-public.icon name="arrow-right" :size="16" stroke-width="1.9" />
+                    </button>
 
-                        <div class="flex flex-wrap items-center gap-3 p-2">
-                            <x-public.button type="submit" class="w-full medium:w-auto">{{ $copy['submit'] }}</x-public.button>
-                            @if ($hasFilters)
-                                <a href="{{ $index_url }}" class="inline-flex min-h-control items-center px-3 text-sm font-bold text-brand-azure-700 hover:text-brand-cyan-500 hover:underline">
-                                    {{ $copy['reset'] }}
-                                </a>
-                            @endif
-                        </div>
-                    </div>
+                    @if ($hasFilters)
+                        <a href="{{ $index_url }}" class="news-hub-filter__reset">{{ $copy['reset'] }}</a>
+                    @endif
                 </form>
-            </div>
-        @endif
-    </section>
+            @endif
 
-    @if ($posts->isEmpty())
-        <section class="bg-white py-10 medium:py-14" aria-labelledby="news-empty-title">
-            <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-                <x-public.empty-state
-                    :title="$copy['empty_title']"
-                    :action-href="$hasFilters ? $index_url : null"
-                    :action-label="$hasFilters ? $copy['reset'] : null"
-                    data-news-empty
-                >
-                    {{ $hasFilters ? $copy['empty_filtered'] : $copy['empty_body'] }}
-                </x-public.empty-state>
-            </div>
-        </section>
-    @elseif ($rest->isNotEmpty())
-        <section class="bg-white py-10 medium:py-14" aria-labelledby="news-list-title">
-            <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-                <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+            @if ($entries->isEmpty())
+                <div class="news-hub-empty" data-news-empty>
+                    <span aria-hidden="true"><x-public.icon name="newspaper" :size="34" stroke-width="1.75" /></span>
                     <div>
-                        <p class="text-xs font-bold tracking-label text-brand-azure-700 uppercase">{{ $copy['list_eyebrow'] }}</p>
-                        <h2 id="news-list-title" class="mt-1 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                            {{ $copy['list_title'] }}
-                        </h2>
+                        <h3>{{ $copy['empty_title'] }}</h3>
+                        <p>{{ $hasFilters ? $copy['empty_filtered'] : $copy['empty_body'] }}</p>
                     </div>
-                    <p class="text-sm font-semibold text-muted" data-news-count>
-                        {{ trans_choice('ui.news.results', $posts->total(), ['count' => $posts->total()]) }}
-                    </p>
+                    @if ($hasFilters)
+                        <a href="{{ $index_url }}">{{ $copy['reset'] }}</a>
+                    @endif
                 </div>
-
-                <ul class="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white shadow-soft" data-news-list>
-                    @foreach ($rest as $post)
+            @else
+                <ul class="news-hub-grid" data-news-list>
+                    @foreach ($entries as $index => $post)
                         @php
                             $translation = $post->translationFor($locale);
                             $title = $translation?->title ?: $copy['fallback_title'];
                             $summary = $translation?->summary;
                             $href = \App\Support\PublicPath::for($post, $locale);
-                            $image = $post->getFirstMediaUrl('images');
+                            $image = $post->getFirstMediaUrl('images') ?: asset('images/content/news/default-cover.svg');
+                            $category = $post->categories->first()?->translationFor($locale)?->name;
+                            $kindLabel = $kindLabels[$post->kind->value] ?? $post->kind->value;
+                            $badge = $category ?: $kindLabel;
+                            $publishedOn = $post->published_at?->locale($locale)->translatedFormat('d M Y');
                         @endphp
-                        <li data-news-row>
-                            <a
-                                href="{{ $href ?: '#' }}"
-                                @class([
-                                    'group flex items-start gap-4 px-4 py-5 transition-colors hover:bg-brand-cyan-100/35 medium:items-center medium:gap-5 medium:px-6',
-                                    'pointer-events-none' => ! $href,
-                                ])
-                            >
-                                @if ($image)
-                                    <span class="public-media-zoom hidden size-16 shrink-0 overflow-hidden rounded-xl border border-line medium:block">
-                                        <img src="{{ $image }}" alt="" class="h-full w-full object-cover" loading="lazy">
-                                    </span>
-                                @else
-                                    <span class="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-azure-700/10 text-brand-azure-700 medium:mt-0">
-                                        <x-public.icon name="newspaper" :size="18" stroke-width="1.75" />
-                                    </span>
-                                @endif
+                        <li class="public-scroll-reveal public-scroll-reveal-delay-{{ $index % 3 }}" data-news-row data-public-reveal>
+                            <article class="news-hub-card">
+                                <a href="{{ $href }}" class="news-hub-card__media" aria-label="{{ $title }}">
+                                    <img src="{{ $image }}" alt="" width="800" height="480" loading="lazy">
+                                    <strong>{{ $badge }}</strong>
+                                </a>
 
-                                <span class="min-w-0 flex-1">
-                                    <span class="block text-heading-3-compact font-bold tracking-heading text-ink group-hover:text-brand-azure-700">
-                                        {{ $title }}
-                                    </span>
+                                <div class="news-hub-card__content">
+                                    <h3><a href="{{ $href }}">{{ $title }}</a></h3>
+                                    <div class="news-hub-card__meta">
+                                        <span><x-public.icon name="newspaper" :size="14" stroke-width="1.8" /> {{ $kindLabel }}</span>
+                                        @if ($publishedOn)
+                                            <span><x-public.icon name="calendar-days" :size="14" stroke-width="1.8" /> {{ $publishedOn }}</span>
+                                        @endif
+                                    </div>
                                     @if (filled($summary))
-                                        <span class="mt-2 block max-w-2xl text-sm leading-relaxed text-muted">{{ $summary }}</span>
+                                        <p>{{ $summary }}</p>
                                     @endif
-                                </span>
-
-                                <span class="mt-1 hidden shrink-0 items-center gap-1 text-sm font-bold text-brand-azure-700 medium:mt-0 medium:inline-flex">
-                                    {{ $copy['card_action'] }}
-                                    <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="transition-transform group-hover:translate-x-1" />
-                                </span>
-                            </a>
+                                    <a href="{{ $href }}" class="news-hub-card__action">
+                                        {{ $copy['card_action'] }}
+                                        <x-public.icon name="arrow-right" :size="16" stroke-width="1.9" />
+                                    </a>
+                                </div>
+                            </article>
                         </li>
                     @endforeach
                 </ul>
 
-                <x-public.pagination :paginator="$posts" class="pt-8" />
-            </div>
-        </section>
-    @else
-        <div class="sr-only" data-news-list data-news-count>
-            {{ trans_choice('ui.news.results', $posts->total(), ['count' => $posts->total()]) }}
+                <div class="news-hub-pagination">
+                    <span data-news-count>{{ trans_choice('ui.news.results', $posts->total(), ['count' => $posts->total()]) }}</span>
+                    <x-public.pagination :paginator="$posts" />
+                </div>
+            @endif
+            @endif
+
+            <aside class="news-hub-upcoming public-scroll-reveal" data-public-reveal>
+                <span aria-hidden="true"><x-public.icon name="info" :size="27" stroke-width="1.85" /></span>
+                <div>
+                    <h2 id="news-upcoming-title">{{ $copy['upcoming_title'] }}</h2>
+                    <p>{{ $copy['upcoming_body'] }}</p>
+                </div>
+                <span class="news-hub-upcoming__mark" aria-hidden="true"><x-public.icon name="newspaper" :size="56" stroke-width="1.45" /></span>
+            </aside>
         </div>
-    @endif
+    </section>
 </x-layouts.public>

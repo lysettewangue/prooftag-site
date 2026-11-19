@@ -70,6 +70,7 @@ final class ContactRequestResource extends Resource
                 ->schema([
                     TextInput::make('status')->disabled()->label('Statut'),
                     TextInput::make('name')->disabled()->label('Nom'),
+                    TextInput::make('organization')->disabled()->label('Organisation / Entreprise'),
                     TextInput::make('email')->disabled()->label('E-mail'),
                     TextInput::make('phone')->disabled()->label('Téléphone'),
                     TextInput::make('subject')->disabled()->label('Objet'),
@@ -88,6 +89,7 @@ final class ContactRequestResource extends Resource
             ->columns([
                 TextColumn::make('created_at')->dateTime()->label('Reçue')->sortable(),
                 TextColumn::make('name')->label('Nom')->searchable(),
+                TextColumn::make('organization')->label('Organisation')->toggleable(),
                 TextColumn::make('email')->label('E-mail')->searchable(),
                 TextColumn::make('subject')->label('Objet')->limit(40),
                 TextColumn::make('status')

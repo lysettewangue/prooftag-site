@@ -55,6 +55,6 @@ enum ProductCode: string
 
     public function requiresExternalUrlBeforePublish(): bool
     {
-        return $this === self::CtVerif || $this === self::Doser;
+        return $this === self::CtVerif;
     }
 }

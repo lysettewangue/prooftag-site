@@ -42,16 +42,16 @@ class RepresentativeTechnicalContentTest extends TestCase
         $this->assertTrue(Equipment::query()->where('publication_status', '!=', PublicationStatus::Draft)->doesntExist());
     }
 
-    public function test_historical_resource_has_no_pdf_and_cannot_be_published(): void
+    public function test_official_resources_have_real_pdfs_and_are_published(): void
     {
-        $resource = Resource::query()->firstOrFail();
+        $resources = Resource::query()->with(['translations', 'media'])->get();
 
-        $this->assertSame(1, Resource::query()->count());
-        $this->assertSame(ResourceRegulatoryStatus::Historical, $resource->regulatory_status);
-        $this->assertSame(PublicationStatus::Draft, $resource->publication_status);
-        $this->assertTrue($resource->relates_to_ct);
-        $this->assertNull($resource->getFirstMedia('documents'));
-        $this->assertFalse($resource->mayEnterPublished());
-        $this->assertSame('reforme-vignettes-2020', $resource->translationFor('fr')?->slug);
+        $this->assertCount(3, $resources);
+        $this->assertTrue($resources->every(fn (Resource $resource) => $resource->publication_status === PublicationStatus::Published));
+        $this->assertTrue($resources->every(fn (Resource $resource) => $resource->relates_to_ct));
+        $this->assertTrue($resources->every(fn (Resource $resource) => $resource->mayEnterPublished()));
+        $this->assertTrue($resources->every(fn (Resource $resource) => $resource->getFirstMedia('documents')?->size > 1024));
+        $this->assertTrue($resources->contains(fn (Resource $resource) => $resource->regulatory_status === ResourceRegulatoryStatus::Historical));
+        $this->assertTrue($resources->contains(fn (Resource $resource) => $resource->translationFor('fr')?->slug === 'loi-2022-007-protection-patrimoine-routier'));
     }
 }

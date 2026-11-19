@@ -25,7 +25,7 @@ class SiteSettingSeeder extends Seeder
             'social_linkedin' => 'https://www.linkedin.com/company/prooftag-catis-sa',
             'social_facebook' => 'https://www.facebook.com/prooftag-catis-100322071669817',
             'social_x' => 'https://x.com/ProoftagCatis',
-            'social_youtube' => null,
+            'social_youtube' => 'https://www.youtube.com/',
             'social_instagram' => null,
             'geo_latitude' => null,
             'geo_longitude' => null,

@@ -34,7 +34,7 @@ final class TransitionPublication
         $this->authorize($model, $to, $actor);
 
         if ($to === PublicationStatus::Published && $model instanceof Product && ! $model->mayEnterPublished()) {
-            throw new DomainRuleViolation('CT-VERIF and DOSER require an external URL before publish.');
+            throw new DomainRuleViolation('CT-VERIF requires an external URL before publish.');
         }
 
         if ($to === PublicationStatus::Published && $model instanceof Resource && ! $model->mayEnterPublished()) {

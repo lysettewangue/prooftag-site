@@ -10,6 +10,7 @@ use App\Enums\Locale;
 use App\Models\InspectionCentre;
 use App\Models\Region;
 use App\Models\User;
+use App\Support\CameroonCityCoordinates;
 use App\Support\ContentCache;
 use Illuminate\Support\Facades\Gate;
 
@@ -34,14 +35,20 @@ final class ImportCentre
             throw new DomainRuleViolation('Operator name and city are required.');
         }
 
+        $cityCoordinates = CameroonCityCoordinates::forCity($city);
+        $latitude = $this->nullableString($data['latitude'] ?? null)
+            ?? (isset($cityCoordinates['latitude']) ? (string) $cityCoordinates['latitude'] : null);
+        $longitude = $this->nullableString($data['longitude'] ?? null)
+            ?? (isset($cityCoordinates['longitude']) ? (string) $cityCoordinates['longitude'] : null);
+
         $centre = InspectionCentre::query()->create([
             'region_id' => $regionId,
             'operator_name' => $operator,
             'city' => $city,
             'phone' => $this->nullableString($data['phone'] ?? null),
             'email' => $this->nullableString($data['email'] ?? null),
-            'latitude' => $this->nullableString($data['latitude'] ?? null),
-            'longitude' => $this->nullableString($data['longitude'] ?? null),
+            'latitude' => $latitude,
+            'longitude' => $longitude,
             'sort_order' => isset($data['sort_order']) ? (int) $data['sort_order'] : null,
             'verification_status' => CentreVerificationStatus::Unverified,
         ]);

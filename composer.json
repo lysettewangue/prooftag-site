@@ -53,6 +53,14 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],
+        "serve:fast": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -d zend_extension=opcache -d opcache.enable=1 -d opcache.enable_cli=1 -d opcache.memory_consumption=192 -d opcache.max_accelerated_files=20000 artisan serve --host=127.0.0.1 --port=8000"
+        ],
+        "images:optimize": [
+            "@php scripts/optimize-public-images.php",
+            "@php scripts/update-optimized-image-references.php"
+        ],
         "test": [
             "@php artisan config:clear --ansi",
             "@php -d memory_limit=512M artisan test"

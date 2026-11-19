@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
         foreach (ProductCode::cases() as $code) {
             $copy = $this->copy($code);
 
-            $product = Product::query()->updateOrCreate(
+            $product = Product::query()->firstOrCreate(
                 ['code' => $code->value],
                 [
                     'public_name' => $code->publicName(),
@@ -26,6 +26,12 @@ class ProductSeeder extends Seeder
                     'publication_status' => PublicationStatus::Draft,
                 ],
             );
+
+            $product->forceFill([
+                'public_name' => $code->publicName(),
+                'sort_order' => $code->sortOrder(),
+                'slug_fragment' => $code->slugFragment(),
+            ])->save();
 
             foreach (['fr', 'en'] as $locale) {
                 $product->translations()->updateOrCreate(

@@ -14,17 +14,17 @@ final class TechnicalInspectionVisual
 {
     public static function hub(): string
     {
-        return asset('images/content/technical-inspection/hub.jpg');
+        return asset('images/content/technical-inspection/hub.webp');
     }
 
     public static function process(): string
     {
-        return asset('images/content/technical-inspection/process/pv-vignette.jpg');
+        return asset('images/content/technical-inspection/process/pv-vignette.webp');
     }
 
     public static function fieldCheck(): string
     {
-        return asset('images/content/technical-inspection/process/field.jpg');
+        return asset('images/content/technical-inspection/process/field.webp');
     }
 
     public static function equipment(): string
@@ -49,9 +49,9 @@ final class TechnicalInspectionVisual
     public static function processStep(int $index): string
     {
         return match ($index) {
-            0 => asset('images/content/technical-inspection/process/pv-vignette.jpg'),
-            1 => asset('images/content/technical-inspection/equipment/server.jpg'),
-            2 => asset('images/content/technical-inspection/process/field.jpg'),
+            0 => asset('images/content/technical-inspection/process/pv-vignette.webp'),
+            1 => asset('images/content/technical-inspection/equipment/server.webp'),
+            2 => asset('images/content/technical-inspection/process/field.webp'),
             default => self::hub(),
         };
     }
@@ -67,9 +67,9 @@ final class TechnicalInspectionVisual
         return match ($item->sort_order) {
             1 => asset('images/content/technical-inspection/equipment/test-bench.jpg'),
             2 => asset('images/content/technical-inspection/equipment/tablet.jpg'),
-            3 => asset('images/content/technical-inspection/equipment/server.jpg'),
+            3 => asset('images/content/technical-inspection/equipment/server.webp'),
             4 => asset('images/content/technical-inspection/equipment/douchette.jpg'),
-            5 => asset('images/content/technical-inspection/equipment/legacy.jpg'),
+            5 => asset('images/content/technical-inspection/equipment/legacy.webp'),
             default => self::equipment(),
         };
     }

@@ -43,7 +43,7 @@ final class CentreIndexQuery
 
         $path = $locale === Locale::English->value ? 'inspection-centres' : 'centres-de-controle';
         $resolved = $this->seo->forLocalizedIndex($locale, 'centres-de-controle', 'inspection-centres');
-        $centres = $this->directory->paginatePublic($locale, $regionId, $search)->withQueryString();
+        $centres = $this->directory->paginatePublic($locale, $regionId, $search, 60)->withQueryString();
         $stats = $this->directory->publicStats($locale, $regionId, $search);
 
         return [

@@ -1,27 +1,161 @@
 @php
     $home = __('ui.home');
-    $navigation = collect(\App\Support\PublicNavigation::items(app()->getLocale()))->keyBy('key');
+    $locale = app()->getLocale();
+    $navigation = collect(\App\Support\PublicNavigation::items($locale))->keyBy('key');
     $productsUrl = $navigation['products']['url'];
     $expertiseUrl = $navigation['expertise']['url'];
     $inspectionUrl = $navigation['technical_inspection']['url'];
     $centresUrl = $navigation['centres']['url'];
+    $newsUrl = $navigation['news']['url'];
     $contactUrl = $navigation['contact']['url'];
-    $aboutUrl = \App\Support\PublicPath::localized(app()->getLocale(), app()->getLocale() === 'en' ? 'about' : 'a-propos');
-    $locale = app()->getLocale();
-    $paths = [
-        ['icon' => 'cpu', 'copy' => $home['paths']['solutions'], 'url' => $productsUrl],
-        ['icon' => 'clipboard-check', 'copy' => $home['paths']['inspection'], 'url' => $inspectionUrl],
-        ['icon' => 'building-2', 'copy' => $home['paths']['centres'], 'url' => $centresUrl],
-        ['icon' => 'mail', 'copy' => $home['paths']['contact'], 'url' => $contactUrl],
-    ];
+    $aboutUrl = \App\Support\PublicPath::localized($locale, $locale === 'en' ? 'about' : 'a-propos');
+    $expertiseTitle = $locale === 'en' ? 'Our expertise' : 'Nos expertises';
+    $processTitle = $locale === 'en' ? 'Technical inspection ecosystem' : 'Écosystème du contrôle technique';
+    $centresTitle = $locale === 'en' ? 'Inspection centres' : 'Centres de contrôle';
+    $centresSubtitle = $locale === 'en'
+        ? 'Find our partner technical inspection centres and easily locate the one nearest to you.'
+        : 'Retrouvez nos centres de contrôle technique partenaires et recherchez facilement le plus proche de vous.';
+    $centresAllLabel = $locale === 'en' ? 'View all centres' : 'Voir tous les centres';
+    $centresSearchPlaceholder = $locale === 'en' ? 'Search for a centre (city, district, name, etc.)' : 'Rechercher un centre (ville, quartier, nom, etc.)';
+    $centresOpenLabel = $locale === 'en' ? 'View centre' : 'Voir le centre';
+    $centresSuggestionsLabel = $locale === 'en' ? 'Suggested centres' : 'Centres suggérés';
+    $centresNoSuggestion = $locale === 'en' ? 'No centre matches this search.' : 'Aucun centre ne correspond à cette recherche.';
+    $centresActiveLabel = $locale === 'en' ? 'Active partner centre' : 'Centre partenaire actif';
+    $homeCentreItems = $centres->map(function ($centre) use ($locale) {
+        $translation = $centre->translationFor($locale);
+        $regionName = $centre->region?->code?->names()[$locale] ?? null;
+        $fallbackCoordinates = \App\Support\CameroonCityCoordinates::forCity($centre->city);
+
+        return [
+            'id' => $centre->id,
+            'name' => $translation?->name ?: $centre->operator_name,
+            'city' => $centre->city,
+            'region' => $regionName,
+            'address' => $translation?->address_line,
+            'href' => \App\Support\PublicPath::for($centre, $locale),
+            'latitude' => $centre->latitude !== null ? (float) $centre->latitude : ($fallbackCoordinates['latitude'] ?? null),
+            'longitude' => $centre->longitude !== null ? (float) $centre->longitude : ($fallbackCoordinates['longitude'] ?? null),
+        ];
+    });
+    $placedPins = [];
+    $homeMappedCentres = $homeCentreItems
+        ->filter(fn (array $centre) => $centre['latitude'] !== null && $centre['longitude'] !== null)
+        ->map(function (array $centre) use (&$placedPins) {
+            $longitudeRatio = max(0, min(1, ($centre['longitude'] - 8.3) / (16.2 - 8.3)));
+            $latitudeRatio = max(0, min(1, ($centre['latitude'] - 1.6) / (13.1 - 1.6)));
+            $baseLeft = 25.4 + ($longitudeRatio * 44.2);
+            $baseTop = 5.0 + ((1 - $latitudeRatio) * 88.0);
+            $left = $baseLeft;
+            $top = $baseTop;
+            $attempt = 0;
+
+            while (collect($placedPins)->contains(fn (array $pin) => abs($pin['left'] - $left) < 3.6 && abs($pin['top'] - $top) < 6.0) && $attempt < 32) {
+                $ring = floor($attempt / 8) + 1;
+                $angle = deg2rad(($attempt % 8) * 45);
+                $left = $baseLeft + (cos($angle) * 4.0 * $ring);
+                $top = $baseTop + (sin($angle) * 6.2 * $ring);
+                $attempt++;
+            }
+
+            $left = max(22.5, min(74.5, $left));
+            $top = max(5.5, min(94.0, $top));
+            $placedPins[] = ['left' => $left, 'top' => $top];
+
+            return [
+                ...$centre,
+                // Projection calibrated against the illustrated Cameroon outline.
+                'left' => $left,
+                'top' => $top,
+            ];
+        })
+        ->values();
+    $newsTitle = $navigation['news']['label'];
+    $newsSubtitle = $locale === 'en'
+        ? 'Follow our news, innovations, and analysis on technical inspection, road safety, and transport technologies.'
+        : 'Suivez nos actualités, nos innovations et nos analyses sur le contrôle technique, la sécurité routière et les technologies du transport.';
+    $newsAllLabel = $locale === 'en' ? 'View all news' : 'Voir toutes les actualités';
+    $newsReadLabel = $locale === 'en' ? 'Read the article' : 'Lire l’article';
     $expertiseIcons = [
-        'DOCUMENT_SECURITY' => 'fingerprint',
-        'ROAD_SAFETY_PREVENTION' => 'car-front',
-        'DATA_ANALYSIS_REPORTING' => 'database',
-        'RESEARCH_DEVELOPMENT' => 'cpu',
-        'TECHNICAL_SUPPORT' => 'gauge',
+        'RESEARCH_DEVELOPMENT' => 'microscope',
+        'TECHNICAL_SUPPORT' => 'headset',
+        'DATA_ANALYSIS_REPORTING' => 'chart-column',
+        'DOCUMENT_SECURITY' => 'layers',
+        'ROAD_SAFETY_PREVENTION' => 'shield-check',
     ];
-    $heroVisual = asset('images/content/home/hero/visual.jpg');
+    $expertiseSubtitle = $locale === 'en'
+        ? 'A set of technological skills serving safer, more compliant and smarter transport.'
+        : 'Un ensemble de compétences technologiques au service d’un transport plus sûr, plus conforme et plus intelligent.';
+    $expertiseDisplayCopy = $locale === 'en'
+        ? [
+            'RESEARCH_DEVELOPMENT' => ['title' => 'Research & Development', 'summary' => 'Design and development of innovative solutions adapted to the challenges of transport and road safety.'],
+            'TECHNICAL_SUPPORT' => ['title' => 'Technical support', 'summary' => 'Assistance, maintenance and user support to ensure availability, performance and service continuity.'],
+            'DATA_ANALYSIS_REPORTING' => ['title' => 'Data analysis & Reporting', 'summary' => 'Collection, processing and enhancement of data for reliable analyses, relevant reports and better management.'],
+            'DOCUMENT_SECURITY' => ['title' => 'Document security', 'summary' => 'Design of secure, authenticated and tamper-proof documents in accordance with international standards.'],
+            'ROAD_SAFETY_PREVENTION' => ['title' => 'Road safety & Prevention', 'summary' => 'Implementation of control, monitoring and awareness solutions to reduce risks, improve compliance and save lives.'],
+        ]
+        : [
+            'RESEARCH_DEVELOPMENT' => ['title' => 'Recherche & Développement', 'summary' => 'Conception et développement de solutions innovantes adaptées aux enjeux du transport et de la sécurité routière.'],
+            'TECHNICAL_SUPPORT' => ['title' => 'Support technique', 'summary' => 'Assistance, maintenance et accompagnement des utilisateurs pour garantir la disponibilité, la performance et la continuité de service.'],
+            'DATA_ANALYSIS_REPORTING' => ['title' => 'Analyse de données & Reporting', 'summary' => 'Collecte, traitement et valorisation des données pour des analyses fiables, des rapports pertinents et un meilleur pilotage.'],
+            'DOCUMENT_SECURITY' => ['title' => 'Sécurité documentaire', 'summary' => 'Conception de documents sécurisés, authentifiés et infalsifiables, selon les standards internationaux.'],
+            'ROAD_SAFETY_PREVENTION' => ['title' => 'Sécurité & Prévention routière', 'summary' => 'Mise en place de solutions de contrôle, de suivi et de sensibilisation pour réduire les risques, améliorer la conformité et sauver des vies.'],
+        ];
+    $processIcons = ['car-front', 'file-text', 'circle-check', 'calendar-days', 'qr-code', 'settings', 'wrench', 'shield-check', 'file-text', 'chart-column', 'database', 'monitor-check'];
+    $processSubtitle = $locale === 'en'
+        ? 'A digital, fluid and traceable process covering the entire technical inspection value chain in 12 key steps.'
+        : 'Un processus digitalisé, fluide et traçable, qui couvre l’ensemble de la chaîne de valeur du contrôle technique en 12 étapes clés.';
+    $processSteps = $locale === 'en'
+        ? [
+            'Vehicle registration', 'Document verification', 'File acceptance', 'Appointment scheduling',
+            'Vehicle identification', 'Technical inspection', 'Equipment control', 'Regulatory compliance',
+            'Certificate issuance', 'Risk assessment', 'Data centralisation', 'Traceability and reporting',
+        ]
+        : [
+            'Enregistrement du véhicule', 'Vérification des documents', 'Acceptation du dossier', 'Prise de rendez-vous',
+            'Identification du véhicule', 'Inspection technique', 'Contrôle des équipements', 'Conformité réglementaire',
+            'Émission du certificat', 'Évaluation des risques', 'Centralisation des données', 'Traçabilité et reporting',
+        ];
+    $productFallbacks = [
+        'CERTIDOCS_CT' => 'images/content/products/certidocs-ct-card.webp',
+        'CERTIDOCS_CT_REPORTING' => 'images/content/products/certidocs-reporting-card.webp',
+        'CT_VERIF' => 'images/content/products/ct-verif-card.webp',
+        'DOSER' => 'images/content/products/doser-card.webp',
+        'VIDEO_ENFORCEMENT' => 'images/content/products/video-enforcement-card.webp',
+    ];
+    $publishedProductsByCode = $products->keyBy(fn ($product) => $product->code->value);
+    $homeProductDefinitions = $locale === 'en'
+        ? [
+            ['code' => 'CERTIDOCS_CT', 'title' => 'CERTIDOCS CT', 'summary' => 'Complete technical inspection management solution: registration, inspection, certificate issuance and regulatory monitoring.'],
+            ['code' => 'CERTIDOCS_CT_REPORTING', 'title' => 'CERTIDOCS CT Reporting Platform', 'summary' => 'Reporting and inspection analysis platform for monitoring centre performance and regulatory compliance.'],
+            ['code' => 'CT_VERIF', 'title' => 'CT-VERIF', 'summary' => 'Fast and secure verification of the authenticity of technical inspection documents using QR codes, status and validity checks.'],
+            ['code' => 'DOSER', 'title' => 'DOSER', 'summary' => 'Online platform for managing technical inspection files and documents with centralisation, traceability and security.'],
+            ['code' => 'VIDEO_ENFORCEMENT', 'title' => 'Video Enforcement', 'summary' => 'Automated traffic control and violation management solution: video detection, recording, processing and sanction monitoring.'],
+        ]
+        : [
+            ['code' => 'CERTIDOCS_CT', 'title' => 'CERTIDOCS CT', 'summary' => 'Solution complète de gestion du contrôle technique : enregistrement, inspection, émission de certificats et suivi réglementaire.'],
+            ['code' => 'CERTIDOCS_CT_REPORTING', 'title' => 'CERTIDOCS CT Reporting Platform', 'summary' => 'Plateforme de reporting et d’analyse des inspections, des performances des centres et de la conformité réglementaire.'],
+            ['code' => 'CT_VERIF', 'title' => 'CT-VERIF', 'summary' => 'Solution de vérification rapide et sécurisée de l’authenticité des certificats de contrôle technique par QR Code, statut et validité.'],
+            ['code' => 'DOSER', 'title' => 'DOSER', 'summary' => 'Plateforme de gestion en ligne des dossiers et des documents de contrôle technique : centralisation, traçabilité et sécurité.'],
+            ['code' => 'VIDEO_ENFORCEMENT', 'title' => 'Video Enforcement', 'summary' => 'Solution de contrôle automatisé du trafic et de gestion des infractions vidéo : détection, enregistrement, traitement et suivi des sanctions.'],
+        ];
+    $homeProductCards = collect($homeProductDefinitions)->map(function (array $definition) use ($publishedProductsByCode, $productFallbacks, $productsUrl, $locale) {
+        $product = $publishedProductsByCode->get($definition['code']);
+
+        return [
+            ...$definition,
+            'image' => asset($productFallbacks[$definition['code']]),
+            'href' => $product ? \App\Support\PublicPath::for($product, $locale) : $productsUrl,
+        ];
+    });
+    $heroPillarIcons = ['car-front', 'shield-check', 'chart-column', 'traffic-cone'];
+    $heroSlides = [
+        'images/content/home/hero/certidocs-login-hero.webp',
+        'images/content/home/hero/slide-zabbix-dashboard.webp',
+        'images/content/home/hero/slide-glpi-dashboard.webp',
+        'images/content/home/hero/slide-monitoring-room.webp',
+        'images/content/home/hero/slide-platform-presentation.webp',
+        'images/content/home/hero/slide-mint-security-labels.webp',
+    ];
 @endphp
 
 <x-layouts.public
@@ -32,142 +166,281 @@
     :image="$seo->image"
     :type="$seo->type"
 >
-    {{-- Hero: fidèle maquette — texte gauche + illustration pleine droite + cartes --}}
-    <section class="public-home-hero" aria-labelledby="home-hero-title">
-        <div class="public-home-hero-visual" aria-hidden="true">
-            <img
-                src="{{ $heroVisual }}"
-                alt=""
-                width="1600"
-                height="1000"
-                decoding="async"
-                fetchpriority="high"
-            >
-            <div class="public-home-hero-visual-fade"></div>
+    <section
+        class="home-showcase"
+        aria-labelledby="home-hero-title"
+        x-data="homeHeroSlideshow({ count: {{ count($heroSlides) }}, interval: 3000 })"
+        x-on:mouseenter="stop()"
+        x-on:mouseleave="start()"
+    >
+        <div class="home-showcase__slides" aria-hidden="true">
+            @foreach ($heroSlides as $index => $slide)
+                <img
+                    class="home-showcase__visual-image"
+                    src="{{ asset($slide) }}"
+                    alt=""
+                    width="1674"
+                    height="941"
+                    @if ($index === 0) fetchpriority="high" @else loading="lazy" style="display: none" @endif
+                    x-show="index === {{ $index }}"
+                    x-transition.opacity.duration.300ms
+                >
+            @endforeach
         </div>
+        <div class="home-showcase__wash" aria-hidden="true"></div>
 
-        <div class="public-home-hero-inner public-page-start mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="public-home-hero-copy">
-                <p class="public-reveal text-xs font-bold tracking-[0.18em] text-brand-azure-700 uppercase medium:text-sm">
-                    {{ $home['eyebrow'] }}
-                </p>
-                <h1 id="home-hero-title" class="public-reveal public-reveal-delay-1 mt-4 text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1">
-                    {{ __('ui.home_heading') }}
-                </h1>
-                <p class="public-reveal public-reveal-delay-2 mt-5 text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
-                    {{ __('ui.home_body') }}
-                </p>
-                <div class="public-reveal public-reveal-delay-3 mt-8 flex flex-col gap-3 medium:flex-row medium:flex-wrap">
-                    <x-public.button :href="$productsUrl" class="w-full medium:w-auto">
+        <div class="home-showcase__content">
+            <div class="home-showcase__copy">
+                <p class="home-kicker">{{ $home['eyebrow'] }}</p>
+                <h1 id="home-hero-title">{{ __('ui.home_heading') }}</h1>
+                <p class="home-showcase__lede">{{ __('ui.home_body') }}</p>
+                <div class="home-showcase__actions">
+                    <x-public.button :href="$productsUrl">
                         {{ $home['primary_action'] }}
-                        <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-2" />
+                        <x-public.icon name="arrow-right" :size="16" class="ml-2" />
                     </x-public.button>
-                    <x-public.button :href="$aboutUrl" variant="outline" class="w-full medium:w-auto">
-                        {{ $home['secondary_action'] }}
-                    </x-public.button>
+                    <x-public.button :href="$aboutUrl" variant="outline">{{ $home['secondary_action'] }}</x-public.button>
                 </div>
             </div>
 
-            <ul class="public-home-pillars" aria-label="{{ $home['pillars_label'] }}">
-                @foreach ($home['pillars'] as $pillar)
-                    <li class="public-home-pillar">
-                        <span class="public-home-pillar-icon" aria-hidden="true">
-                            <x-public.icon :name="$pillar['icon']" :size="24" stroke-width="1.75" />
+            <ul class="home-pillars" aria-label="{{ $home['pillars_label'] }}">
+                @foreach ($home['pillars'] as $index => $pillar)
+                    <li>
+                        <span class="home-pillars__icon" aria-hidden="true">
+                            <x-public.icon :name="$heroPillarIcons[$index] ?? $pillar['icon']" :size="40" stroke-width="1.8" />
                         </span>
-                        <div class="min-w-0">
-                            <h2 class="text-sm font-bold leading-snug text-ink">{{ $pillar['title'] }}</h2>
-                            <p class="mt-1 text-[0.8125rem] leading-relaxed text-muted">{{ $pillar['body'] }}</p>
-                        </div>
+                        <span>
+                            <strong>{{ $pillar['title'] }}</strong>
+                            <small>{{ $pillar['body'] }}</small>
+                        </span>
                     </li>
                 @endforeach
             </ul>
         </div>
     </section>
 
-    {{-- Produits & Solutions (2e bloc — maquette) --}}
-    <section class="public-home-products border-b border-line bg-white py-16 medium:py-20 wide:py-24" aria-labelledby="home-products-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="flex flex-col gap-4 medium:flex-row medium:items-start medium:justify-between medium:gap-8">
-                <div class="min-w-0 max-w-3xl">
-                    <h2 id="home-products-title" class="text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                        @php
-                            $productsTitle = $home['products_title'];
-                            $productsAccent = $home['products_title_accent'];
-                            $productsTitleRest = str_starts_with($productsTitle, $productsAccent)
-                                ? substr($productsTitle, strlen($productsAccent))
-                                : null;
-                        @endphp
-                        @if ($productsTitleRest !== null)
-                            <span class="public-home-products-title-accent">{{ $productsAccent }}</span>{{ $productsTitleRest }}
-                        @else
-                            {{ $productsTitle }}
-                        @endif
-                    </h2>
-                    <p class="mt-4 max-w-2xl text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
-                        {{ $home['products_body'] }}
-                    </p>
+    <section class="home-section home-products" aria-labelledby="home-products-title">
+        <div class="home-products__inner mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
+            <div class="home-section__heading">
+                <div>
+                    <h2 id="home-products-title">{{ $home['products_title'] }}</h2>
+                    <p>{{ $home['products_body'] }}</p>
                 </div>
-
-                <x-public.link :href="$productsUrl" standalone class="shrink-0 pt-1 font-bold text-brand-azure-700">
-                    {{ $home['products_all'] }}
-                    <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1" />
-                </x-public.link>
+                <a href="{{ $productsUrl }}">{{ $home['products_all'] }} <x-public.icon name="arrow-right" :size="15" /></a>
             </div>
 
-            @if ($products->isEmpty())
-                <div class="mt-10 rounded-2xl border border-dashed border-line bg-surface-subtle px-6 py-10 medium:px-10" data-home-products-empty>
-                    <p class="text-body-lg-compact font-semibold text-ink medium:text-body-lg">{{ $home['products_empty'] }}</p>
-                    <p class="mt-2 text-body text-muted">{{ $home['products_empty_hint'] }}</p>
-                    <div class="mt-6 flex flex-col gap-3 medium:flex-row">
-                        <x-public.button :href="$inspectionUrl">{{ $home['secondary_action'] }}</x-public.button>
-                        <x-public.button :href="$contactUrl" variant="outline">{{ $home['cta_primary'] }}</x-public.button>
-                    </div>
+            <ul class="home-products__grid" data-home-products>
+                    @foreach ($homeProductCards as $productCard)
+                        <li>
+                            <article class="home-product-card">
+                                <a href="{{ $productCard['href'] }}" class="home-product-card__media" aria-label="{{ $productCard['title'] }}">
+                                    <img src="{{ $productCard['image'] }}" alt="" loading="lazy">
+                                </a>
+                                <div class="home-product-card__body">
+                                    <h3><a href="{{ $productCard['href'] }}">{{ $productCard['title'] }}</a></h3>
+                                    <p>{{ $productCard['summary'] }}</p>
+                                    <a class="home-card-link" href="{{ $productCard['href'] }}">{{ $home['products_action'] }} <x-public.icon name="arrow-right" :size="14" /></a>
+                                </div>
+                            </article>
+                        </li>
+                    @endforeach
+            </ul>
+        </div>
+    </section>
+
+    <section class="home-section home-expertise" aria-labelledby="home-expertises-title">
+        <div class="home-expertise__inner mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
+            <div class="home-section__heading home-section__heading--compact">
+                <div>
+                    <h2 id="home-expertises-title">{{ $expertiseTitle }}</h2>
+                    <p>{{ $expertiseSubtitle }}</p>
                 </div>
+            </div>
+
+            @if ($expertises->isEmpty())
+                <div class="home-empty" data-home-expertises-empty>{{ $home['expertises_empty'] }}</div>
             @else
-                <ul class="public-home-products-grid mt-10 grid gap-5 medium:grid-cols-2 wide:grid-cols-5" data-home-products>
-                    @foreach ($products as $product)
+                <ul class="home-expertise__grid" data-home-expertises>
+                    @foreach ($expertises->take(5) as $expertise)
                         @php
-                            $translation = $product->translationFor($locale);
-                            $href = \App\Support\PublicPath::for($product, $locale);
-                            $image = $product->getFirstMediaUrl('images');
-                            $summary = $translation?->summary;
-                            if (filled($summary) && (str_contains((string) $summary, 'VER-') || str_contains((string) $summary, 'publication après'))) {
-                                $summary = null;
-                            }
+                            $translation = $expertise->translationFor($locale);
+                            $href = \App\Support\PublicPath::for($expertise, $locale);
+                            $displayCopy = $expertiseDisplayCopy[$expertise->code->value] ?? null;
+                            $title = $displayCopy['title'] ?? $translation?->title ?? $expertise->code->titles()[$locale] ?? $expertise->code->value;
+                            $body = $displayCopy['summary'] ?? $translation?->summary;
                         @endphp
                         <li>
-                            <article class="public-home-product-card group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
-                                <div class="public-home-product-card-media aspect-[4/3] overflow-hidden bg-surface-subtle">
+                            <a href="{{ $href }}" class="home-expertise-card">
+                                <span class="home-expertise-card__icon"><x-public.icon :name="$expertiseIcons[$expertise->code->value] ?? 'sparkles'" :size="42" /></span>
+                                <strong>{{ $title }}</strong>
+                                @if (filled($body))<small>{{ $body }}</small>@endif
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+    </section>
+
+    <section class="home-section home-process" aria-labelledby="home-process-title">
+        <div class="home-process__inner mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
+            <div class="home-section__heading home-section__heading--compact">
+                <div>
+                    <h2 id="home-process-title">{{ $processTitle }}</h2>
+                    <p>{{ $processSubtitle }}</p>
+                </div>
+            </div>
+
+            <div class="home-process__layout">
+                <a href="{{ $inspectionUrl }}" class="home-process__image">
+                    <img src="{{ asset('images/content/technical-inspection/control-centre-ecosystem.webp') }}" alt="{{ $locale === 'en' ? 'Modern technical inspection centre' : 'Centre de contrôle technique moderne' }}" loading="lazy">
+                    <span><strong>12</strong>{{ $locale === 'en' ? 'integrated steps' : 'étapes intégrées' }}</span>
+                </a>
+
+                <ol class="home-process__steps">
+                    @foreach ($processSteps as $index => $step)
+                        <li>
+                            <span class="home-process__step-icon"><x-public.icon :name="$processIcons[$index] ?? 'circle-check'" :size="31" /></span>
+                            <span class="home-process__step-copy"><strong>{{ $index + 1 }}.</strong><span>{{ $step }}</span></span>
+                        </li>
+                    @endforeach
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section home-centres" aria-labelledby="home-centres-title">
+        <div class="home-centres__inner mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
+            <div class="home-section__heading home-section__heading--compact">
+                <div>
+                    <h2 id="home-centres-title">{{ $centresTitle }}</h2>
+                    <p>{{ $centresSubtitle }}</p>
+                </div>
+                <a href="{{ $centresUrl }}">{{ $centresAllLabel }} <x-public.icon name="arrow-right" :size="16" /></a>
+            </div>
+
+            <div class="home-centres__layout" data-home-centres>
+                <div class="home-centres__map" aria-label="{{ $centresAllLabel }}">
+                    <img class="home-centres__map-image" src="{{ asset('images/content/centres/cameroon-directory-map-v2.webp') }}" alt="" loading="lazy">
+                    @foreach ($homeMappedCentres as $pin)
+                        <a
+                            href="{{ $pin['href'] }}"
+                            class="home-centres__pin"
+                            style="top: {{ number_format($pin['top'], 3, '.', '') }}%; left: {{ number_format($pin['left'], 3, '.', '') }}%"
+                            aria-label="{{ $pin['name'] }} — {{ $pin['city'] }}"
+                            data-centre-pin="{{ $pin['id'] }}"
+                        >
+                            <x-public.icon name="map-pin" :size="19" />
+                            <span class="home-centres__pin-label">
+                                <strong>{{ $pin['name'] }}</strong>
+                                <small>{{ $pin['city'] }}@if ($pin['region']), {{ $pin['region'] }}@endif</small>
+                            </span>
+                        </a>
+                    @endforeach
+                    @if ($homeMappedCentres->isEmpty())
+                        <a class="home-centres__map-empty" href="{{ $centresUrl }}">{{ $centresAllLabel }}</a>
+                    @endif
+                </div>
+
+                <div class="home-centres__directory">
+                    <form action="{{ $centresUrl }}" method="get" class="home-centres__search" role="search" data-centres-search-form>
+                        <label for="home-centre-search" class="sr-only">{{ __('ui.centres.search_label') }}</label>
+                        <div class="home-centres__search-box">
+                            <span class="home-centres__search-field">
+                                <span><x-public.icon name="search" :size="20" /></span>
+                                <input
+                                    id="home-centre-search"
+                                    type="search"
+                                    name="q"
+                                    placeholder="{{ $centresSearchPlaceholder }}"
+                                    autocomplete="off"
+                                    aria-autocomplete="list"
+                                    aria-controls="home-centres-suggestions"
+                                    aria-expanded="false"
+                                    data-centres-search-input
+                                >
+                            </span>
+                            <ul id="home-centres-suggestions" class="home-centres__suggestions" role="listbox" aria-label="{{ $centresSuggestionsLabel }}" hidden data-centres-suggestions>
+                                @foreach ($homeCentreItems as $centre)
+                                    <li role="option" data-centre-suggestion data-search-value="{{ $centre['name'] }} {{ $centre['city'] }} {{ $centre['region'] }} {{ $centre['address'] }}">
+                                        <a href="{{ $centre['href'] }}">
+                                            <span><strong>{{ $centre['name'] }}</strong><small>{{ $centre['city'] }}@if ($centre['region']), {{ $centre['region'] }}@endif</small></span>
+                                            <x-public.icon name="arrow-right" :size="16" />
+                                        </a>
+                                    </li>
+                                @endforeach
+                                <li class="home-centres__suggestions-empty" data-centres-no-results hidden>{{ $centresNoSuggestion }}</li>
+                            </ul>
+                        </div>
+                        <button type="submit">{{ __('ui.centres.submit') }}</button>
+                    </form>
+
+                    @if ($centres->isEmpty())
+                        <div class="home-empty">{{ __('ui.centres.empty_body') }}</div>
+                    @else
+                        <ul class="home-centres__list">
+                            @foreach ($centres->take(3) as $centre)
+                                @php
+                                    $translation = $centre->translationFor($locale);
+                                    $href = \App\Support\PublicPath::for($centre, $locale);
+                                    $name = $translation?->name ?: $centre->operator_name;
+                                    $regionName = $centre->region?->code?->names()[$locale] ?? null;
+                                @endphp
+                                <li data-centre-card="{{ $centre->id }}">
+                                    <span class="home-centres__thumb"><img src="{{ asset('images/content/technical-inspection/control-centre-ecosystem.webp') }}" alt="" loading="lazy"></span>
+                                    <span class="home-centres__info">
+                                        <strong>{{ $name }}</strong>
+                                        <small><x-public.icon name="map-pin" :size="15" /> {{ $centre->city }}@if ($regionName), {{ $regionName }}@endif</small>
+                                        <span class="home-centres__status"><x-public.icon name="circle-check" :size="14" /> {{ $centresActiveLabel }}</span>
+                                    </span>
+                                    <a href="{{ $href }}">{{ $centresOpenLabel }} <x-public.icon name="arrow-right" :size="15" /></a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section home-news" aria-labelledby="home-news-title">
+        <div class="home-news__inner mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
+            <div class="home-section__heading home-section__heading--compact">
+                <div>
+                    <h2 id="home-news-title">{{ $newsTitle }}</h2>
+                    <p>{{ $newsSubtitle }}</p>
+                </div>
+                <a href="{{ $newsUrl }}">{{ $newsAllLabel }} <x-public.icon name="arrow-right" :size="16" /></a>
+            </div>
+
+            @if ($posts->isEmpty())
+                <div class="home-empty">{{ __('ui.news.empty_body') }}</div>
+            @else
+                <ul class="home-news__grid">
+                    @foreach ($posts as $post)
+                        @php
+                            $translation = $post->translationFor($locale);
+                            $href = \App\Support\PublicPath::for($post, $locale);
+                            $image = $post->getFirstMediaUrl('images');
+                            $category = $post->categories->first()?->translationFor($locale)?->name;
+                            $badge = $category ?: ($post->kind->value === 'article' ? __('ui.news.kinds.article') : __('ui.news.kinds.news'));
+                        @endphp
+                        <li>
+                            <article class="home-news-card">
+                                <a href="{{ $href }}" class="home-news-card__media">
                                     @if ($image)
-                                        <img
-                                            src="{{ $image }}"
-                                            alt=""
-                                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                                            loading="lazy"
-                                        >
+                                        <img src="{{ $image }}" alt="" loading="lazy">
                                     @else
-                                        <div class="flex h-full items-center justify-center">
-                                            <span class="public-icon-well public-icon-well--solid size-14">
-                                                <x-public.icon name="layers" :size="26" stroke-width="1.75" />
-                                            </span>
-                                        </div>
+                                        <span><x-public.icon name="newspaper" :size="38" /></span>
                                     @endif
-                                </div>
-                                <div class="flex grow flex-col px-5 pb-5 pt-4">
-                                    <h3 class="text-base font-bold leading-snug text-ink">
-                                        @if ($href)
-                                            <a href="{{ $href }}" class="after:absolute after:inset-0">{{ $product->public_name }}</a>
-                                        @else
-                                            {{ $product->public_name }}
-                                        @endif
-                                    </h3>
-                                    @if (filled($summary))
-                                        <p class="mt-2 grow text-sm leading-relaxed text-muted">{{ $summary }}</p>
-                                    @endif
-                                    <p class="relative mt-4 inline-flex items-center text-sm font-bold text-brand-azure-700">
-                                        {{ $home['products_action'] }}
-                                        <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1 transition-transform group-hover:translate-x-0.5" />
-                                    </p>
+                                    <span class="home-news-card__badge">{{ $badge }}</span>
+                                </a>
+                                <div class="home-news-card__content">
+                                    <h3><a href="{{ $href }}">{{ $translation?->title ?? __('ui.news.fallback_title') }}</a></h3>
+                                    <div class="home-news-card__footer">
+                                        <p><x-public.icon name="calendar-days" :size="15" /> {{ optional($post->published_at)->translatedFormat('d F Y') }}</p>
+                                        <a href="{{ $href }}">{{ $newsReadLabel }} <x-public.icon name="arrow-right" :size="15" /></a>
+                                    </div>
                                 </div>
                             </article>
                         </li>
@@ -177,157 +450,4 @@
         </div>
     </section>
 
-    {{-- Parcours --}}
-    <section class="bg-surface-subtle py-16 medium:py-20" aria-labelledby="home-paths-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="max-w-2xl">
-                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['paths_eyebrow'] }}</p>
-                <h2 id="home-paths-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $home['paths_title'] }}
-                </h2>
-            </div>
-
-            <ul class="mt-10 grid gap-4 medium:grid-cols-2 wide:grid-cols-4">
-                @foreach ($paths as $index => $path)
-                    <li>
-                        <a
-                            href="{{ $path['url'] }}"
-                            class="group flex h-full flex-col rounded-2xl border border-line bg-white p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand-cyan-500 hover:shadow-card"
-                        >
-                            <span class="public-icon-well public-icon-well--solid size-14">
-                                <x-public.icon :name="$path['icon']" :size="26" stroke-width="1.75" />
-                            </span>
-                            <p class="mt-5 text-xs font-bold tracking-label text-brand-cyan-500 uppercase">
-                                {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
-                            </p>
-                            <h3 class="mt-2 text-heading-3-compact font-bold text-ink">{{ $path['copy']['title'] }}</h3>
-                            <p class="mt-2 grow text-sm leading-relaxed text-muted">{{ $path['copy']['body'] }}</p>
-                            <span class="mt-5 inline-flex items-center text-sm font-bold text-brand-azure-700">
-                                {{ $path['copy']['action'] }}
-                                <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1 transition-transform group-hover:translate-x-1" />
-                            </span>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </section>
-
-    {{-- Mission --}}
-    <section class="bg-white py-16 medium:py-20 wide:py-24" aria-labelledby="home-mission-title">
-        <div class="mx-auto grid max-w-site items-center gap-10 px-gutter-compact medium:px-gutter-medium wide:grid-cols-2 wide:gap-14">
-            <div class="overflow-hidden rounded-2xl">
-                <img
-                    src="{{ asset('images/content/home/mission/mission.jpg') }}"
-                    alt=""
-                    class="aspect-[4/3] w-full object-cover"
-                    loading="lazy"
-                >
-            </div>
-
-            <div>
-                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['mission_eyebrow'] }}</p>
-                <h2 id="home-mission-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $home['mission_title'] }}
-                </h2>
-                <p class="mt-5 text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">{{ $home['mission_body'] }}</p>
-
-                <ul class="mt-8 space-y-3.5">
-                    @foreach ($home['mission_points'] as $point)
-                        <li class="flex items-start gap-3">
-                            <span class="public-icon-well public-icon-well--cyan mt-0.5 size-8 rounded-lg">
-                                <x-public.icon name="badge-check" :size="16" stroke-width="1.75" />
-                            </span>
-                            <span class="text-sm font-semibold leading-relaxed text-ink">{{ $point }}</span>
-                        </li>
-                    @endforeach
-                </ul>
-
-                <div class="mt-8">
-                    <x-public.button :href="$aboutUrl">{{ $home['mission_action'] }}</x-public.button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Expertises --}}
-    <section class="bg-white py-16 medium:py-20" aria-labelledby="home-expertises-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="flex flex-col gap-5 wide:flex-row wide:items-end wide:justify-between">
-                <div class="max-w-2xl">
-                    <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['expertises_eyebrow'] }}</p>
-                    <h2 id="home-expertises-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                        {{ $home['expertises_title'] }}
-                    </h2>
-                </div>
-                <x-public.link :href="$expertiseUrl" standalone class="font-bold">
-                    {{ $home['expertises_action'] }}
-                    <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="ml-1" />
-                </x-public.link>
-            </div>
-
-            @if ($expertises->isEmpty())
-                <p class="mt-10 text-body text-muted" data-home-expertises-empty>{{ $home['expertises_empty'] }}</p>
-            @else
-                <ul class="mt-10 grid gap-4 medium:grid-cols-2 wide:grid-cols-3" data-home-expertises>
-                    @foreach ($expertises as $expertise)
-                        @php
-                            $translation = $expertise->translationFor($locale);
-                            $href = \App\Support\PublicPath::for($expertise, $locale);
-                            $title = $translation?->title ?? $expertise->code->titles()[$locale] ?? $expertise->code->value;
-                            $icon = $expertiseIcons[$expertise->code->value] ?? 'sparkles';
-                        @endphp
-                        <li>
-                            <a
-                                href="{{ $href }}"
-                                class="group flex min-h-[6.5rem] items-center gap-4 rounded-2xl border border-line bg-surface-subtle px-5 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-cyan-500 hover:bg-white hover:shadow-soft"
-                            >
-                                <span class="public-icon-well public-icon-well--solid size-14">
-                                    <x-public.icon :name="$icon" :size="26" stroke-width="1.75" />
-                                </span>
-                                <span class="text-heading-3-compact font-bold tracking-heading text-ink">{{ $title }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
-    </section>
-
-    {{-- Centres --}}
-    <section class="border-y border-line bg-white py-16 medium:py-20" aria-labelledby="home-centres-title">
-        <div class="mx-auto flex max-w-site flex-col gap-8 px-gutter-compact medium:px-gutter-medium wide:flex-row wide:items-center wide:justify-between">
-            <div class="max-w-2xl">
-                <p class="text-label font-bold tracking-label text-brand-azure-700 uppercase">{{ $home['centres_eyebrow'] }}</p>
-                <h2 id="home-centres-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $home['centres_title'] }}
-                </h2>
-                <p class="mt-4 text-body-lg-compact text-muted medium:text-body-lg">{{ $home['centres_body'] }}</p>
-            </div>
-            <x-public.button :href="$centresUrl" class="shrink-0">
-                {{ $home['centres_action'] }}
-                <x-public.icon name="map" :size="18" stroke-width="1.75" class="ml-2" />
-            </x-public.button>
-        </div>
-    </section>
-
-    {{-- Bande CTA : invitation finale contact / solutions (boutons lisibles) --}}
-    <section class="relative overflow-hidden bg-brand-azure-700 py-14 text-white medium:py-16" aria-labelledby="home-cta-title">
-        <div class="pointer-events-none absolute -right-16 -top-20 size-72 rounded-full bg-brand-cyan-500/20" aria-hidden="true"></div>
-        <div class="pointer-events-none absolute -bottom-24 -left-10 size-80 rounded-full bg-white/5" aria-hidden="true"></div>
-        <div class="relative mx-auto flex max-w-site flex-col gap-8 px-gutter-compact medium:px-gutter-medium wide:flex-row wide:items-center wide:justify-between">
-            <div class="max-w-2xl">
-                <h2 id="home-cta-title" class="text-heading-2-compact font-bold tracking-heading medium:text-heading-2">{{ $home['cta_title'] }}</h2>
-                <p class="mt-4 text-body-lg-compact text-white/85 medium:text-body-lg">{{ $home['cta_body'] }}</p>
-            </div>
-            <div class="flex shrink-0 flex-col gap-3 medium:flex-row">
-                <x-public.button :href="$contactUrl" variant="inverse">
-                    {{ $home['cta_primary'] }}
-                </x-public.button>
-                <x-public.button :href="$productsUrl" variant="ghost">
-                    {{ $home['cta_secondary'] }}
-                </x-public.button>
-            </div>
-        </div>
-    </section>
 </x-layouts.public>

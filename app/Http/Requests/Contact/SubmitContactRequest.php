@@ -22,6 +22,7 @@ final class SubmitContactRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:191'],
+            'organization' => ['nullable', 'string', 'max:191'],
             'email' => ['required', 'email', 'max:191'],
             'phone' => ['nullable', 'string', 'max:64'],
             'subject' => ['required', 'string', 'max:191'],
@@ -38,6 +39,7 @@ final class SubmitContactRequest extends FormRequest
     {
         return [
             'name' => (string) __('ui.contact.name'),
+            'organization' => (string) __('ui.contact.organization'),
             'email' => (string) __('ui.contact.email'),
             'phone' => (string) __('ui.contact.phone'),
             'subject' => (string) __('ui.contact.subject'),

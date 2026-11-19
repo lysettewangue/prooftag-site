@@ -28,6 +28,7 @@ class PublicContactFormTest extends TestCase
 
         $this->from('/contact')->post('/contact', [
             'name' => 'Claire Test',
+            'organization' => 'Claire Conseil',
             'email' => 'claire@example.test',
             'phone' => '+237 600 00 00 00',
             'subject' => 'Demande d’information',
@@ -37,6 +38,7 @@ class PublicContactFormTest extends TestCase
 
         $this->assertDatabaseHas('contact_requests', [
             'email' => 'claire@example.test',
+            'organization' => 'Claire Conseil',
             'status' => 'new',
         ]);
 

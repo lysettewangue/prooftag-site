@@ -94,8 +94,20 @@ final class InspectionCentreResource extends Resource
                     TextInput::make('city')->required()->label('Ville'),
                     TextInput::make('phone')->label('Téléphone'),
                     TextInput::make('email')->email()->label('E-mail'),
-                    TextInput::make('latitude')->numeric()->label('Latitude'),
-                    TextInput::make('longitude')->numeric()->label('Longitude'),
+                    TextInput::make('latitude')
+                        ->numeric()
+                        ->minValue(1.5)
+                        ->maxValue(13.2)
+                        ->step(0.0000001)
+                        ->label('Latitude')
+                        ->helperText('Facultatif : si le champ est vide, une coordonnée centrale est proposée automatiquement pour les villes reconnues.'),
+                    TextInput::make('longitude')
+                        ->numeric()
+                        ->minValue(8.3)
+                        ->maxValue(16.3)
+                        ->step(0.0000001)
+                        ->label('Longitude')
+                        ->helperText('Pour un repère exact, renseignez les coordonnées GPS précises du centre.'),
                     TextInput::make('sort_order')->numeric()->label('Ordre'),
                     TextInput::make('verification_status')->disabled()->visibleOn('edit')->label('Vérification'),
                     TextInput::make('last_verified_at')->disabled()->visibleOn('edit')->label('Dernière vérification'),

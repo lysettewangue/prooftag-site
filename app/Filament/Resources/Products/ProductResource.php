@@ -42,7 +42,7 @@ final class ProductResource extends Resource
     {
         return $schema->components([
             Section::make('Identité')
-                ->description('Cinq solutions figées. CT-VERIF et DOSER exigent une URL externe avant publication.')
+                ->description('Cinq solutions figées. Seul CT-VERIF exige une URL externe avant publication.')
                 ->schema([
                     TextInput::make('code')->disabled(),
                     TextInput::make('public_name')->disabled(),

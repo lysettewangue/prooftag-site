@@ -24,6 +24,11 @@ export function registerHomeHeroSlideshow() {
 
         start() {
             this.stop();
+
+            if (this.count < 2 || this.reducedMotion) {
+                return;
+            }
+
             this.timer = window.setInterval(() => this.next(), this.intervalMs);
         },
 

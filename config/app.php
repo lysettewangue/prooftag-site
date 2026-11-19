@@ -87,6 +87,7 @@ return [
     'available_locales' => ['fr', 'en'],
 
     'filament_admin_email' => env('FILAMENT_ADMIN_EMAIL'),
+    'filament_admin_password' => env('FILAMENT_ADMIN_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

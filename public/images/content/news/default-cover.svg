@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">PROOFTAG-CATIS</title>
+  <desc id="desc">Couverture éditoriale générique PROOFTAG-CATIS</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061b49"/>
+      <stop offset="0.58" stop-color="#0757c7"/>
+      <stop offset="1" stop-color="#12b9ee"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#e8f6ff" stop-opacity="0.94"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#031331" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#background)"/>
+  <circle cx="1420" cy="-40" r="420" fill="#ffffff" opacity="0.07"/>
+  <circle cx="90" cy="870" r="360" fill="#27d0f7" opacity="0.12"/>
+  <path d="M0 675C240 525 410 545 620 655s390 160 600 34 265-92 380-31v242H0Z" fill="#ffffff" opacity="0.07"/>
+
+  <g opacity="0.16" stroke="#ffffff" stroke-width="2" fill="none">
+    <path d="M70 130h420M70 180h280M70 230h360"/>
+    <path d="M1180 660h310M1240 710h250M1130 760h360"/>
+    <circle cx="112" cy="130" r="6" fill="#ffffff" stroke="none"/>
+    <circle cx="1490" cy="760" r="6" fill="#ffffff" stroke="none"/>
+  </g>
+
+  <g transform="translate(125 142)">
+    <g transform="translate(0 6)">
+      <path d="M0 52 42 0h124l-42 52Z" fill="#17c6f3"/>
+      <path d="M61 52 103 0h124l-42 52Z" fill="#ffffff" opacity="0.94"/>
+      <path d="M122 52 164 0h124l-42 52Z" fill="#69dfff" opacity="0.88"/>
+    </g>
+    <text x="0" y="136" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" letter-spacing="1.5">PROOFTAG-CATIS</text>
+    <text x="0" y="183" fill="#bfeeff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="5">INFORMATION • EXPERTISE • INNOVATION</text>
+  </g>
+
+  <g transform="translate(760 138)" filter="url(#shadow)">
+    <rect width="630" height="570" rx="42" fill="url(#panel)"/>
+    <rect x="52" y="54" width="290" height="24" rx="12" fill="#0a66e8" opacity="0.16"/>
+    <rect x="52" y="96" width="450" height="18" rx="9" fill="#173d71" opacity="0.12"/>
+    <rect x="52" y="128" width="370" height="18" rx="9" fill="#173d71" opacity="0.09"/>
+
+    <g transform="translate(52 190)">
+      <rect width="232" height="164" rx="24" fill="#dff2ff"/>
+      <path d="M48 118 92 78l34 30 40-54 26 64Z" fill="#0d78ee" opacity="0.82"/>
+      <circle cx="72" cy="56" r="18" fill="#19c4ef"/>
+    </g>
+
+    <g transform="translate(314 190)">
+      <rect width="264" height="164" rx="24" fill="#edf7ff"/>
+      <rect x="32" y="34" width="144" height="17" rx="8.5" fill="#0b63d8" opacity="0.18"/>
+      <rect x="32" y="70" width="196" height="13" rx="6.5" fill="#163d70" opacity="0.12"/>
+      <rect x="32" y="98" width="174" height="13" rx="6.5" fill="#163d70" opacity="0.1"/>
+      <rect x="32" y="126" width="112" height="13" rx="6.5" fill="#163d70" opacity="0.08"/>
+    </g>
+
+    <rect x="52" y="392" width="526" height="20" rx="10" fill="#0c66dc" opacity="0.13"/>
+    <rect x="52" y="430" width="456" height="16" rx="8" fill="#173d71" opacity="0.1"/>
+    <rect x="52" y="462" width="490" height="16" rx="8" fill="#173d71" opacity="0.08"/>
+    <rect x="52" y="502" width="174" height="28" rx="14" fill="#0873ef" opacity="0.9"/>
+  </g>
+</svg>

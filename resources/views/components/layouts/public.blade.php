@@ -36,6 +36,10 @@
         <meta name="theme-color" content="#0E6697">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <link rel="icon" type="image/png" sizes="354x354" href="{{ asset('images/brand/favicon.png') }}?v=prooftag-catis-1">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/brand/favicon.png') }}?v=prooftag-catis-1">
+        <link rel="apple-touch-icon" href="{{ asset('images/brand/favicon.png') }}?v=prooftag-catis-1">
+
         <title>{{ $title }}</title>
 
         @if (filled($description))

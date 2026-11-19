@@ -3,6 +3,7 @@
     $locale = app()->getLocale();
     $statusLabels = $copy['status'];
     $hasFilter = $status !== null;
+    $homeUrl = route($locale.'.home');
 @endphp
 
 <x-layouts.public
@@ -13,51 +14,93 @@
     :image="$seo->image"
     :type="$seo->type"
 >
-    <section class="public-hero-mesh border-b border-line" aria-labelledby="resources-index-title">
-        <div class="public-page-start mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="grid items-end gap-8 medium:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] medium:gap-10">
-                <div class="min-w-0">
-                    <p class="text-label font-bold tracking-[0.18em] text-brand-cyan-500 uppercase">
-                        {{ $copy['eyebrow'] }}
-                    </p>
-                    <h1 id="resources-index-title" class="mt-3 max-w-2xl text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1">
-                        {{ $copy['title'] }}
-                    </h1>
-                    <p class="mt-4 max-w-xl text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
-                        {{ $copy['lede'] }}
-                    </p>
+    <section class="resources-hub-hero" aria-labelledby="resources-index-title">
+        <div class="resources-hub-shell resources-hub-hero__inner">
+            <nav class="resources-hub-breadcrumb public-reveal" aria-label="{{ $copy['breadcrumb_label'] }}">
+                <a href="{{ $homeUrl }}" aria-label="{{ $copy['breadcrumb_home'] }}">
+                    <x-public.icon name="home" :size="16" stroke-width="1.9" />
+                </a>
+                <x-public.icon name="chevron-right" :size="15" stroke-width="2" />
+                <span aria-current="page">{{ $copy['title'] }}</span>
+            </nav>
+
+            <div class="resources-hub-hero__grid">
+                <div class="resources-hub-hero__content public-reveal">
+                    <p class="resources-hub-eyebrow">{{ $copy['eyebrow'] }}</p>
+                    <h1 id="resources-index-title">{{ $copy['title'] }}</h1>
+                    <span class="public-title-rule" aria-hidden="true"></span>
+                    <p class="resources-hub-hero__lede">{{ $copy['lede'] }}</p>
+
+                    <ul class="resources-hub-hero__points" aria-label="{{ $copy['visual_title'] }}">
+                        @foreach ($copy['hero_points'] as $point)
+                            <li>
+                                <x-public.icon :name="$point['icon']" :size="17" stroke-width="2" />
+                                {{ $point['label'] }}
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
 
-                <dl class="grid grid-cols-3 gap-3" data-resources-stats>
-                    <div class="rounded-2xl border border-line bg-white px-3 py-3 shadow-soft">
-                        <dt class="text-[0.65rem] font-bold tracking-label text-brand-azure-700 uppercase">{{ $copy['snapshot_total'] }}</dt>
-                        <dd class="mt-1 text-heading-3-compact font-bold tabular-nums text-ink medium:text-heading-2-compact">{{ $stats['total'] }}</dd>
+                <div class="resources-hub-visual public-reveal" aria-label="{{ $copy['visual_title'] }}">
+                    <div class="resources-hub-visual__bar" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                        <strong>{{ $copy['visual_eyebrow'] }}</strong>
                     </div>
-                    <div class="rounded-2xl border border-line bg-white px-3 py-3 shadow-soft">
-                        <dt class="text-[0.65rem] font-bold tracking-label text-brand-azure-700 uppercase">{{ $copy['snapshot_current'] }}</dt>
-                        <dd class="mt-1 text-heading-3-compact font-bold tabular-nums text-ink medium:text-heading-2-compact">{{ $stats['current'] }}</dd>
+                    <div class="resources-hub-visual__body">
+                        <span class="resources-hub-visual__icon" aria-hidden="true">
+                            <x-public.icon name="file-lock-2" :size="42" stroke-width="1.65" />
+                        </span>
+                        <div>
+                            <p>{{ $copy['visual_eyebrow'] }}</p>
+                            <h2>{{ $copy['visual_title'] }}</h2>
+                            <span>{{ $copy['visual_body'] }}</span>
+                        </div>
                     </div>
-                    <div class="rounded-2xl border border-line bg-white px-3 py-3 shadow-soft">
-                        <dt class="text-[0.65rem] font-bold tracking-label text-brand-azure-700 uppercase">{{ $copy['snapshot_downloadable'] }}</dt>
-                        <dd class="mt-1 text-heading-3-compact font-bold tabular-nums text-ink medium:text-heading-2-compact">{{ $stats['downloadable'] }}</dd>
-                    </div>
-                </dl>
-            </div>
 
-            <form
-                method="get"
-                action="{{ $index_url }}"
-                class="mt-8 overflow-hidden rounded-2xl border border-line bg-white shadow-soft"
-                role="search"
-            >
-                <div class="grid medium:grid-cols-[minmax(0,1fr)_auto]">
-                    <div class="relative border-b border-line medium:border-b-0 medium:border-e">
-                        <label for="resource-status" class="sr-only">{{ $copy['status_label'] }}</label>
-                        <select
-                            id="resource-status"
-                            name="status"
-                            class="w-full appearance-none bg-transparent px-4 py-3.5 text-body text-ink outline-none"
-                        >
+                    <dl class="resources-hub-stats" data-resources-stats>
+                        <div>
+                            <dt>{{ $copy['snapshot_total'] }}</dt>
+                            <dd>{{ $stats['total'] }}</dd>
+                        </div>
+                        <div>
+                            <dt>{{ $copy['snapshot_current'] }}</dt>
+                            <dd>{{ $stats['current'] }}</dd>
+                        </div>
+                        <div>
+                            <dt>{{ $copy['snapshot_downloadable'] }}</dt>
+                            <dd>{{ $stats['downloadable'] }}</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-hub-catalogue" aria-labelledby="resources-list-title">
+        <div class="resources-hub-shell">
+            <header class="resources-hub-catalogue__heading public-scroll-reveal" data-public-reveal>
+                <div>
+                    <p class="resources-hub-eyebrow">{{ $copy['list_eyebrow'] }}</p>
+                    <h2 id="resources-list-title">{{ $copy['list_title'] }}</h2>
+                    <span class="public-title-rule" aria-hidden="true"></span>
+                    <p>{{ $copy['list_body'] }}</p>
+                </div>
+                <strong data-resources-count>
+                    {{ trans_choice('ui.resources.results', $resources->total(), ['count' => $resources->total()]) }}
+                </strong>
+            </header>
+
+            <form method="get" action="{{ $index_url }}" class="resources-hub-filter public-scroll-reveal" role="search" data-public-reveal>
+                <label for="resource-status">
+                    <span aria-hidden="true"><x-public.icon name="settings" :size="20" stroke-width="1.9" /></span>
+                    <span>
+                        <strong>{{ $copy['status_label'] }}</strong>
+                        <small>{{ $copy['status_all'] }}</small>
+                    </span>
+                </label>
+                <div class="resources-hub-filter__controls">
+                    <div class="resources-hub-filter__select">
+                        <select id="resource-status" name="status">
                             <option value="">{{ $copy['status_all'] }}</option>
                             @foreach ($statuses as $case)
                                 <option value="{{ $case->value }}" @selected($status === $case)>
@@ -65,34 +108,17 @@
                                 </option>
                             @endforeach
                         </select>
+                        <x-public.icon name="chevron-down" :size="17" stroke-width="2" />
                     </div>
-
-                    <div class="flex flex-wrap items-center gap-3 p-2">
-                        <x-public.button type="submit" class="w-full medium:w-auto">{{ $copy['submit'] }}</x-public.button>
-                        @if ($hasFilter)
-                            <a href="{{ $index_url }}" class="inline-flex min-h-control items-center px-3 text-sm font-bold text-brand-azure-700 hover:text-brand-cyan-500 hover:underline">
-                                {{ $copy['reset'] }}
-                            </a>
-                        @endif
-                    </div>
+                    <button type="submit" class="resources-hub-button">
+                        {{ $copy['submit'] }}
+                        <x-public.icon name="arrow-right" :size="17" stroke-width="2" />
+                    </button>
+                    @if ($hasFilter)
+                        <a href="{{ $index_url }}" class="resources-hub-filter__reset">{{ $copy['reset'] }}</a>
+                    @endif
                 </div>
             </form>
-        </div>
-    </section>
-
-    <section class="bg-white py-10 medium:py-14" aria-labelledby="resources-list-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
-                <div>
-                    <p class="text-xs font-bold tracking-label text-brand-azure-700 uppercase">{{ $copy['list_eyebrow'] }}</p>
-                    <h2 id="resources-list-title" class="mt-1 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                        {{ $copy['list_title'] }}
-                    </h2>
-                </div>
-                <p class="text-sm font-semibold text-muted" data-resources-count>
-                    {{ trans_choice('ui.resources.results', $resources->total(), ['count' => $resources->total()]) }}
-                </p>
-            </div>
 
             @if ($resources->isEmpty())
                 <x-public.empty-state
@@ -104,86 +130,118 @@
                     {{ $hasFilter ? $copy['empty_filtered'] : $copy['empty_body'] }}
                 </x-public.empty-state>
             @else
-                <ul class="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white shadow-soft" data-resources-list>
+                <ul class="resources-hub-grid" data-resources-list>
                     @foreach ($resources as $index => $resource)
                         @php
                             $translation = $resource->translationFor($locale);
                             $title = $translation?->title ?: $copy['fallback_title'];
                             $summary = $translation?->summary;
-                            $href = \App\Support\PublicPath::for($resource, $locale);
                             $statusKey = $resource->regulatory_status->value;
                             $statusText = $statusLabels[$statusKey] ?? $statusKey;
-                            $hasDocument = $resource->getFirstMedia('documents') !== null;
+                            $document = $resource->getFirstMedia('documents');
+                            $hasDocument = $document !== null;
+                            $sourceUrl = $document?->getCustomProperty('source_url');
+                            $sourceLabel = $document?->getCustomProperty('source_label.'.$locale) ?: $copy['official_source'];
                             $downloadUrl = $hasDocument && $translation !== null && filled($translation->slug)
                                 ? route($locale === 'en' ? 'en.resources.download' : 'fr.resources.download', ['slug' => $translation->slug])
                                 : null;
                             $number = str_pad((string) (($resources->firstItem() ?? 1) + $index), 2, '0', STR_PAD_LEFT);
-                            $statusClass = match ($statusKey) {
-                                'current' => 'text-brand-azure-700',
-                                'historical' => 'text-muted',
-                                default => 'text-muted',
-                            };
                         @endphp
-                        <li data-resource-row>
-                            <div class="flex flex-col gap-4 px-4 py-5 medium:flex-row medium:items-center medium:gap-5 medium:px-6">
-                                <a
-                                    href="{{ $href ?: '#' }}"
-                                    @class([
-                                        'group flex min-w-0 flex-1 items-start gap-3 medium:items-center medium:gap-5',
-                                        'pointer-events-none' => ! $href,
-                                    ])
-                                >
-                                    <span class="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-azure-700 text-xs font-bold tabular-nums text-white medium:mt-0">
-                                        {{ $number }}
-                                    </span>
-
-                                    <span class="min-w-0 flex-1">
-                                        <span class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                                            <span class="{{ $statusClass }} text-xs font-bold tracking-label uppercase" data-resource-status>
-                                                {{ $statusText }}
+                        <li class="public-scroll-reveal public-scroll-reveal-delay-{{ $index % 4 }}" data-public-reveal data-resource-row>
+                            <article class="resources-hub-card">
+                                <header class="resources-hub-card__topline">
+                                    <span class="resources-hub-card__number">{{ $number }}</span>
+                                    <div>
+                                        <span class="resources-hub-status resources-hub-status--{{ $statusKey }}" data-resource-status>
+                                            <x-public.icon :name="$statusKey === 'current' ? 'circle-check' : ($statusKey === 'historical' ? 'clock' : 'inbox')" :size="14" stroke-width="2" />
+                                            {{ $statusText }}
+                                        </span>
+                                        @if ($hasDocument)
+                                            <span class="resources-hub-card__format">
+                                                <x-public.icon name="file-text" :size="14" stroke-width="1.9" /> PDF
                                             </span>
-                                            @if ($hasDocument)
-                                                <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-cyan-500">
-                                                    <x-public.icon name="file-text" :size="13" stroke-width="1.75" />
-                                                    PDF
-                                                </span>
-                                            @endif
-                                        </span>
-                                        <span class="mt-1.5 block text-heading-3-compact font-bold tracking-heading text-ink group-hover:text-brand-azure-700">
-                                            {{ $title }}
-                                        </span>
-                                        @if (filled($summary))
-                                            <span class="mt-2 block max-w-2xl text-sm leading-relaxed text-muted">{{ $summary }}</span>
                                         @endif
+                                    </div>
+                                </header>
+
+                                <div class="resources-hub-card__content">
+                                    <span class="resources-hub-card__icon" aria-hidden="true">
+                                        <x-public.icon name="file-text" :size="31" stroke-width="1.7" />
                                     </span>
-
-                                    @if ($href)
-                                        <span class="mt-1 hidden shrink-0 items-center gap-1 text-sm font-bold text-brand-azure-700 medium:mt-0 medium:inline-flex">
-                                            {{ $copy['open'] }}
-                                            <x-public.icon name="arrow-right" :size="16" stroke-width="1.75" class="transition-transform group-hover:translate-x-1" />
-                                        </span>
-                                    @endif
-                                </a>
-
-                                <div class="shrink-0 ps-13 medium:ps-0">
-                                    @if ($downloadUrl)
-                                        <x-public.button :href="$downloadUrl" variant="outline" class="w-full medium:w-auto">
-                                            {{ $copy['download'] }}
-                                            <x-public.icon name="download" :size="16" class="ml-1.5" />
-                                        </x-public.button>
-                                    @else
-                                        <p class="text-sm font-semibold text-muted" data-resource-no-file>
-                                            {{ $copy['no_file'] }}
-                                        </p>
+                                    <h3>{{ $title }}</h3>
+                                    @if (filled($summary))
+                                        <p>{{ $summary }}</p>
                                     @endif
                                 </div>
-                            </div>
+
+                                @if (filled($resource->authority) || $resource->issued_on)
+                                    <dl class="resources-hub-card__meta">
+                                        @if (filled($resource->authority))
+                                            <div>
+                                                <dt>{{ $copy['authority'] }}</dt>
+                                                <dd>{{ $resource->authority }}</dd>
+                                            </div>
+                                        @endif
+                                        @if ($resource->issued_on)
+                                            <div>
+                                                <dt>{{ $copy['issued_on'] }}</dt>
+                                                <dd>{{ $resource->issued_on->format('d/m/Y') }}</dd>
+                                            </div>
+                                        @endif
+                                    </dl>
+                                @endif
+
+                                <footer class="resources-hub-card__actions">
+                                    @if (is_string($sourceUrl) && $sourceUrl !== '')
+                                        <a href="{{ $sourceUrl }}" class="resources-hub-card__source" target="_blank" rel="noopener noreferrer">
+                                            {{ $sourceLabel }}
+                                            <x-public.icon name="external-link" :size="15" stroke-width="2" />
+                                        </a>
+                                    @endif
+                                    @if ($downloadUrl)
+                                        <a href="{{ $downloadUrl }}" class="resources-hub-card__download">
+                                            <x-public.icon name="download" :size="16" stroke-width="2" />
+                                            {{ $copy['download'] }}
+                                        </a>
+                                    @else
+                                        <span class="resources-hub-card__unavailable" data-resource-no-file>{{ $copy['no_file'] }}</span>
+                                    @endif
+                                </footer>
+                            </article>
                         </li>
                     @endforeach
                 </ul>
 
                 <x-public.pagination :paginator="$resources" class="pt-8" />
             @endif
+        </div>
+    </section>
+
+    <section id="resources-guide" class="resources-hub-guide" aria-label="{{ $copy['benefits_title'] }}">
+        <div class="resources-hub-shell resources-hub-guide__groups">
+            @foreach ([
+                ['id' => 'resources-benefits-title', 'title' => $copy['benefits_title'], 'items' => $copy['benefits']],
+                ['id' => 'resources-audiences-title', 'title' => $copy['audiences_title'], 'items' => $copy['audiences']],
+            ] as $groupIndex => $group)
+                <div class="resources-hub-guide__group" aria-labelledby="{{ $group['id'] }}">
+                    <header class="resources-hub-guide__heading public-scroll-reveal" data-public-reveal>
+                        <h2 id="{{ $group['id'] }}">{{ $group['title'] }}</h2>
+                        <span class="public-title-rule" aria-hidden="true"></span>
+                    </header>
+
+                    <ul class="resources-hub-guide__cards">
+                        @foreach ($group['items'] as $index => $item)
+                            <li class="public-scroll-reveal public-scroll-reveal-delay-{{ $index }}" data-public-reveal>
+                                <span aria-hidden="true"><x-public.icon :name="$item['icon']" :size="29" stroke-width="1.9" /></span>
+                                <div>
+                                    <h3>{{ $item['title'] }}</h3>
+                                    <p>{{ $item['body'] }}</p>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
         </div>
     </section>
 </x-layouts.public>

@@ -39,7 +39,7 @@ class ResourceLibraryAdminTest extends TestCase
         Filament::setCurrentPanel(Filament::getPanel('admin'));
     }
 
-    public function test_representative_historical_resource_is_seeded_without_pdf(): void
+    public function test_official_resources_are_seeded_with_real_pdfs(): void
     {
         $admin = User::factory()->staff(StaffRole::Admin)->create();
 
@@ -47,11 +47,11 @@ class ResourceLibraryAdminTest extends TestCase
             ->get(LibraryDocumentResource::getUrl('index'))
             ->assertOk();
 
-        $this->assertSame(1, Resource::query()->count());
-        $resource = Resource::query()->firstOrFail();
-        $this->assertSame(ResourceRegulatoryStatus::Historical, $resource->regulatory_status);
-        $this->assertSame(PublicationStatus::Draft, $resource->publication_status);
-        $this->assertFalse($resource->mayEnterPublished());
+        $this->assertSame(3, Resource::query()->count());
+        $this->assertTrue(Resource::query()->get()->every(
+            fn (Resource $resource) => $resource->publication_status === PublicationStatus::Published
+                && $resource->mayEnterPublished(),
+        ));
         $this->assertTrue(LibraryDocumentResource::canCreate());
         $this->assertFalse(LibraryDocumentResource::canDeleteAny());
     }

@@ -12,7 +12,6 @@ use App\Models\InspectionCentre;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Product;
-use App\Models\Resource;
 use App\Support\ContentCache;
 use App\Support\PublicPath;
 use Illuminate\Database\Eloquent\Model;
@@ -74,10 +73,6 @@ final class SitemapQuery
 
             foreach (Post::query()->publiclyVisible($now)->forLocale($locale)->with('translations')->get() as $post) {
                 $this->pushModel($byLoc, $post, $locale);
-            }
-
-            foreach (Resource::query()->publiclyVisible($now)->forLocale($locale)->with('translations')->get() as $resource) {
-                $this->pushModel($byLoc, $resource, $locale);
             }
 
             foreach (Career::query()->publiclyVisible($now)->forLocale($locale)->with('translations')->get() as $career) {

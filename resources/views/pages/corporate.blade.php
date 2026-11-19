@@ -6,8 +6,6 @@
     $careerCopy = __('ui.career');
     $productsUrl = collect(\App\Support\PublicNavigation::items($locale))->firstWhere('key', 'products')['url']
         ?? \App\Support\PublicPath::localized($locale, $locale === 'en' ? 'products' : 'produits');
-    $orgCopy = $copy['pages']['organisation'];
-    $historyCopy = $copy['pages']['history'];
     $teamCopy = $copy['pages']['team'];
     $partnersCopy = $copy['pages']['partners'];
     $careersCopy = $copy['pages']['careers'];
@@ -26,132 +24,189 @@
     :type="$seo->type"
 >
     {{-- Identité --}}
-    <section class="border-b border-line bg-white" aria-labelledby="corporate-page-title">
-        <div class="public-page-start mx-auto grid max-w-site items-start gap-8 px-gutter-compact medium:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] medium:gap-10 medium:px-gutter-medium wide:gap-14">
-            <div>
-                <h1 id="corporate-page-title" class="public-reveal max-w-3xl text-heading-1-compact font-bold tracking-heading text-ink medium:text-heading-1">
-                    {{ $copy['heading'] }}
-                </h1>
-                <div class="public-reveal public-reveal-delay-1 mt-6 space-y-4 max-w-2xl">
-                    <p class="text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">
-                        {{ $copy['lede'] }}
-                    </p>
-                    <p class="text-body leading-relaxed text-muted">
-                        {{ $copy['lede_secondary'] }}
-                    </p>
-                </div>
-            </div>
+    <section class="about-hero about-hero--headquarters" aria-labelledby="corporate-page-title">
+        <img
+            class="about-hero__image"
+            src="{{ asset('images/content/about/headquarters-hero.webp') }}"
+            alt=""
+            width="2172"
+            height="724"
+            fetchpriority="high"
+        >
+        <div class="about-hero__wash" aria-hidden="true"></div>
 
-            <div class="public-media-zoom public-reveal public-reveal-delay-2 overflow-hidden rounded-2xl shadow-soft">
-                <img
-                    src="{{ asset('images/content/about/identity.jpg') }}"
-                    alt=""
-                    class="aspect-[5/4] w-full object-cover object-[center_20%]"
-                    width="1200"
-                    height="960"
-                    fetchpriority="high"
-                >
-            </div>
-        </div>
-    </section>
-
-    {{-- Nav ancrée sticky --}}
-    <nav class="public-about-nav sticky top-[4.25rem] z-30 border-b border-line" aria-label="{{ $copy['explore_title'] }}">
-        <div class="mx-auto flex max-w-site gap-2 overflow-x-auto px-gutter-compact py-3 medium:px-gutter-medium">
-            @foreach ($copy['hub_nav'] as $item)
-                <a
-                    href="#{{ $item['id'] }}"
-                    class="shrink-0 rounded-full border border-line bg-white px-4 py-2 text-xs font-bold tracking-wide text-brand-azure-700 uppercase transition hover:border-brand-azure-700 hover:bg-brand-azure-700 hover:text-white"
-                >
-                    {{ $item['label'] }}
+        <div class="about-hero__inner">
+            <nav class="about-hero__breadcrumb public-reveal" aria-label="{{ $copy['eyebrow'] }}">
+                <a href="{{ locale_route('home') }}" aria-label="{{ __('ui.brand_home') }}">
+                    <x-public.icon name="building-2" :size="17" stroke-width="2" />
                 </a>
-            @endforeach
-        </div>
-    </nav>
+                <x-public.icon name="chevron-right" :size="15" stroke-width="2" />
+                <span aria-current="page">{{ $copy['eyebrow'] }}</span>
+            </nav>
 
-    {{-- Mission trio --}}
-    <section class="border-b border-line bg-white py-12 medium:py-16" aria-label="{{ $copy['purpose']['title'] }}">
-        <div class="mx-auto grid max-w-site gap-5 px-gutter-compact medium:grid-cols-3 medium:px-gutter-medium medium:gap-6">
-            @foreach (['purpose' => 'badge-check', 'mission' => 'clipboard-check', 'vision' => 'sparkles'] as $key => $icon)
-                <article data-public-reveal class="public-scroll-reveal public-lift-card flex h-full flex-col rounded-2xl border border-line bg-white p-7 medium:p-8">
-                    <span class="public-icon-well size-14">
-                        <x-public.icon :name="$icon" :size="26" stroke-width="1.75" />
+            <div class="about-hero__copy">
+                <h1 id="corporate-page-title" class="public-reveal">{{ $copy['heading'] }}</h1>
+                <p class="public-reveal public-reveal-delay-1">{{ $copy['lede'] }}</p>
+            </div>
+        </div>
+    </section>
+
+    {{-- Présentation de l'entreprise --}}
+    <section class="about-company" aria-labelledby="about-company-title">
+        <div class="about-company__inner">
+            <div class="about-company__copy" data-public-reveal>
+                <h2 id="about-company-title">{{ $copy['company_title'] }}</h2>
+                <p>{{ $copy['company_body_1'] }}</p>
+                <p>{{ $copy['company_body_2'] }}</p>
+                <a href="{{ $productsUrl }}" class="about-company__action">
+                    {{ $copy['company_action'] }}
+                    <x-public.icon name="arrow-right" :size="17" stroke-width="2" />
+                </a>
+            </div>
+
+            <figure class="about-company__media public-media-zoom" data-public-reveal>
+                <img
+                    src="{{ asset('images/content/about/company-operations-room.webp') }}"
+                    alt="{{ $copy['company_image_alt'] }}"
+                    width="1674"
+                    height="941"
+                    loading="lazy"
+                >
+            </figure>
+        </div>
+    </section>
+
+    {{-- Mission, vision et valeurs --}}
+    <section class="about-purpose" aria-label="{{ $copy['identity_trio']['label'] }}">
+        <div class="about-purpose__inner">
+            <div class="about-purpose__panel">
+                <article class="about-purpose__item public-scroll-reveal public-lift-card" data-public-reveal>
+                    <span class="about-purpose__icon" aria-hidden="true">
+                        <x-public.icon name="target" :size="41" stroke-width="1.8" />
                     </span>
-                    <h2 class="mt-6 text-heading-3-compact font-bold tracking-heading text-ink">
-                        {{ $copy[$key]['title'] }}
-                    </h2>
-                    <p class="mt-2 text-sm font-bold text-brand-cyan-500">
-                        {{ $copy[$key]['subtitle'] }}
-                    </p>
-                    <p class="mt-4 grow text-sm leading-relaxed text-muted medium:text-body">
-                        {{ $copy[$key]['body'] }}
-                    </p>
+                    <div>
+                        <h2>{{ $copy['identity_trio']['mission_title'] }}</h2>
+                        <p>{{ $copy['identity_trio']['mission_body'] }}</p>
+                    </div>
                 </article>
-            @endforeach
+
+                <article class="about-purpose__item public-scroll-reveal public-scroll-reveal-delay-1 public-lift-card" data-public-reveal>
+                    <span class="about-purpose__icon" aria-hidden="true">
+                        <x-public.icon name="eye" :size="43" stroke-width="1.8" />
+                    </span>
+                    <div>
+                        <h2>{{ $copy['identity_trio']['vision_title'] }}</h2>
+                        <p>{{ $copy['identity_trio']['vision_body'] }}</p>
+                    </div>
+                </article>
+
+                <article class="about-purpose__item about-purpose__item--values public-scroll-reveal public-scroll-reveal-delay-2 public-lift-card" data-public-reveal>
+                    <span class="about-purpose__icon" aria-hidden="true">
+                        <x-public.icon name="gem" :size="42" stroke-width="1.8" />
+                    </span>
+                    <div>
+                        <h2>{{ $copy['identity_trio']['values_title'] }}</h2>
+                        <ul>
+                            @foreach ($copy['identity_trio']['values'] as $value)
+                                <li>
+                                    <x-public.icon name="check" :size="18" stroke-width="2.8" />
+                                    <span>{{ $value }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
-    {{-- Organisation --}}
-    <section id="organisation" class="scroll-mt-28 border-b border-line bg-white py-14 medium:py-16 wide:py-20" aria-labelledby="about-organisation-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div data-public-reveal class="public-scroll-reveal max-w-3xl">
-                <p class="text-label font-bold tracking-label text-brand-cyan-500 uppercase">{{ $orgCopy['eyebrow'] }}</p>
-                <h2 id="about-organisation-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $locale === 'en' ? 'How we are organised.' : 'Comment nous sommes organisés.' }}
-                </h2>
-                <p class="mt-4 text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">{{ $orgCopy['lede'] }}</p>
+    {{-- Notre expertise --}}
+    <section id="organisation" class="about-expertise scroll-mt-28" aria-labelledby="about-expertise-title">
+        <div class="about-expertise__inner">
+            <div class="about-expertise__copy public-scroll-reveal" data-public-reveal>
+                <p class="about-expertise__eyebrow">{{ $copy['expertise_block']['eyebrow'] }}</p>
+                <h2 id="about-expertise-title">{{ $copy['expertise_block']['title'] }}</h2>
+
+                <ul class="about-expertise__pillars" aria-label="{{ $copy['expertise_block']['eyebrow'] }}">
+                    @foreach ($copy['expertise_block']['pillars'] as $index => $pillar)
+                        <li class="about-expertise__pillar public-scroll-reveal public-scroll-reveal-delay-{{ min($index + 1, 3) }}" data-public-reveal>
+                            <span class="about-expertise__icon" aria-hidden="true">
+                                <x-public.icon :name="$pillar['icon']" :size="36" stroke-width="1.8" />
+                            </span>
+                            <h3>{{ $pillar['title'] }}</h3>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
 
-            <ul class="mt-10 grid gap-4 medium:grid-cols-2 wide:grid-cols-4">
-                @foreach ($orgCopy['pillars'] as $index => $pillar)
-                    <li data-public-reveal class="public-scroll-reveal public-scroll-reveal-delay-{{ min($index + 1, 3) }} public-lift-card rounded-2xl border border-line bg-surface-subtle p-5 medium:p-6">
-                        <span class="public-icon-well size-11 rounded-xl">
-                            <x-public.icon :name="$pillar['icon']" :size="20" stroke-width="1.75" />
-                        </span>
-                        <p class="mt-4 text-xs font-bold tracking-label text-brand-cyan-500 uppercase">
-                            {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
-                        </p>
-                        <h3 class="mt-1 text-heading-3-compact font-bold text-ink">{{ $pillar['title'] }}</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-muted">{{ $pillar['body'] }}</p>
-                    </li>
-                @endforeach
-            </ul>
+            <figure class="about-expertise__media public-scroll-reveal public-scroll-reveal-delay-1 public-media-zoom" data-public-reveal>
+                <img
+                    src="{{ asset('images/content/about/road-ecosystem.webp') }}"
+                    alt="{{ $copy['expertise_block']['image_alt'] }}"
+                    width="1774"
+                    height="887"
+                    loading="lazy"
+                >
+            </figure>
         </div>
     </section>
 
-    {{-- Historique --}}
-    <section id="history" class="scroll-mt-28 border-b border-line bg-white py-14 medium:py-16 wide:py-20" aria-labelledby="about-history-title">
-        <div class="mx-auto max-w-site px-gutter-compact medium:px-gutter-medium">
-            <div data-public-reveal class="public-scroll-reveal max-w-3xl">
-                <p class="text-label font-bold tracking-label text-brand-cyan-500 uppercase">{{ $historyCopy['eyebrow'] }}</p>
-                <h2 id="about-history-title" class="mt-3 text-heading-2-compact font-bold tracking-heading text-ink medium:text-heading-2">
-                    {{ $locale === 'en' ? 'Our journey.' : 'Notre parcours.' }}
-                </h2>
-                <p class="mt-4 text-body-lg-compact leading-relaxed text-muted medium:text-body-lg">{{ $historyCopy['lede'] }}</p>
-            </div>
+    {{-- Notre histoire --}}
+    <section id="history" class="about-history scroll-mt-28" aria-labelledby="about-history-title">
+        <div class="about-history__inner">
+            <header class="about-history__intro public-scroll-reveal" data-public-reveal>
+                <h2 id="about-history-title">{{ $copy['history_block']['title'] }}</h2>
+                <p>{{ $copy['history_block']['body'] }}</p>
+            </header>
 
-            <ul class="mt-10 grid gap-4 medium:grid-cols-3">
-                @foreach ($historyCopy['pillars'] as $index => $pillar)
-                    <li data-public-reveal class="public-scroll-reveal public-lift-card rounded-2xl border border-line bg-white p-6">
-                        <span class="public-icon-well size-11 rounded-xl">
-                            <x-public.icon :name="$pillar['icon']" :size="20" stroke-width="1.75" />
+            <ol class="about-history__timeline" aria-label="{{ $copy['history_block']['timeline_label'] }}">
+                @foreach ($copy['history_block']['milestones'] as $index => $milestone)
+                    <li class="about-history__milestone public-scroll-reveal public-scroll-reveal-delay-{{ min($index, 3) }}" data-public-reveal>
+                        <span class="about-history__icon" aria-hidden="true">
+                            <x-public.icon :name="$milestone['icon']" :size="32" stroke-width="1.85" />
                         </span>
-                        <h3 class="mt-5 text-heading-3-compact font-bold text-ink">{{ $pillar['title'] }}</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-muted">{{ $pillar['body'] }}</p>
-                    </li>
-                @endforeach
-            </ul>
-
-            <ol class="mt-10 max-w-3xl divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
-                @foreach ($copy['history_timeline'] as $item)
-                    <li data-public-reveal class="public-scroll-reveal grid gap-3 px-6 py-6 medium:grid-cols-[7rem_1fr] medium:gap-6">
-                        <span class="text-sm font-bold text-brand-azure-700">{{ $item['year'] }}</span>
-                        <p class="text-body text-muted">{{ $item['text'] }}</p>
+                        <span class="about-history__dot" aria-hidden="true"></span>
+                        <div class="about-history__details">
+                            <time class="about-history__period">{{ $milestone['period'] }}</time>
+                            <p>{{ $milestone['text'] }}</p>
+                        </div>
                     </li>
                 @endforeach
             </ol>
         </div>
     </section>
+
+    {{-- PROOFTAG-CATIS en chiffres --}}
+    <section class="about-stats" aria-labelledby="about-stats-title">
+        <div class="about-stats__inner">
+            <header class="about-stats__heading public-scroll-reveal" data-public-reveal>
+                <span aria-hidden="true"></span>
+                <h2 id="about-stats-title">{{ $copy['stats_block']['title'] }}</h2>
+            </header>
+
+            <ul class="about-stats__grid">
+                @foreach ($copy['stats_block']['items'] as $index => $stat)
+                    <li class="about-stats__item public-scroll-reveal public-scroll-reveal-delay-{{ min($index, 3) }}" data-public-reveal>
+                        <span class="about-stats__icon" aria-hidden="true">
+                            <x-public.icon :name="$stat['icon']" :size="38" stroke-width="1.8" />
+                        </span>
+                        <div class="about-stats__content">
+                            <strong>
+                                @if (($stat['source'] ?? null) === 'active_centres')
+                                    {{ number_format($active_centres_count, 0, ',', ' ') }}
+                                @else
+                                    {{ $stat['value'] }}
+                                @endif
+                            </strong>
+                            <p>{{ $stat['label'] }}</p>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
+
+    @if ($code !== PageCode::About)
 
     {{-- Équipe --}}
     <section id="team" class="scroll-mt-28 border-b border-line bg-white py-14 medium:py-16 wide:py-20" aria-labelledby="about-team-title">
@@ -412,5 +467,6 @@
                 <x-public.content-blocks :blocks="$hubBlocks" :related-products="$related_products" />
             </div>
         </section>
+    @endif
     @endif
 </x-layouts.public>

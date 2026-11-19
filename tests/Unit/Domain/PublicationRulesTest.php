@@ -65,13 +65,13 @@ class PublicationRulesTest extends TestCase
         $this->assertFalse(CentreVerificationStatus::Archived->canTransitionTo(CentreVerificationStatus::Active));
     }
 
-    public function test_ct_verif_and_doser_require_an_external_url_before_publish(): void
+    public function test_only_ct_verif_requires_an_external_url_before_publish(): void
     {
         $this->assertTrue(ProductPublishRules::mayEnterPublished(ProductCode::CertidocsCt, null));
         $this->assertFalse(ProductPublishRules::mayEnterPublished(ProductCode::CtVerif, null));
-        $this->assertFalse(ProductPublishRules::mayEnterPublished(ProductCode::Doser, ''));
-        $this->assertTrue(ProductPublishRules::mayEnterPublished(ProductCode::Doser, 'https://doser.example'));
+        $this->assertTrue(ProductPublishRules::mayEnterPublished(ProductCode::Doser, null));
         $this->assertTrue(ProductCode::CtVerif->requiresExternalUrlBeforePublish());
+        $this->assertFalse(ProductCode::Doser->requiresExternalUrlBeforePublish());
         $this->assertFalse(ProductCode::VideoEnforcement->requiresExternalUrlBeforePublish());
     }
 

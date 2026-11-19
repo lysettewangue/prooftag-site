@@ -6,6 +6,7 @@ namespace App\Queries;
 
 use App\Enums\PageCode;
 use App\Models\Career;
+use App\Models\InspectionCentre;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Product;
@@ -50,7 +51,8 @@ final class CorporatePageQuery
      *     members: Collection<int, TeamMember>,
      *     partners: Collection<int, Partner>,
      *     careers: Collection<int, Career>,
-     *     related_products: Collection<int, Product>
+     *     related_products: Collection<int, Product>,
+     *     active_centres_count: int
      * }
      */
     public function forCode(PageCode $code, string $locale): array
@@ -88,6 +90,10 @@ final class CorporatePageQuery
                 ? $this->careers->publishedForLocale($locale)
                 : new Collection,
             'related_products' => $this->products->publishedForLocale($locale),
+            'active_centres_count' => InspectionCentre::query()
+                ->publiclyListed()
+                ->forLocale($locale)
+                ->count(),
         ];
     }
 

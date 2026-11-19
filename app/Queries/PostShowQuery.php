@@ -31,8 +31,9 @@ final class PostShowQuery
      *     meta_parts: list<string>,
      *     products: Collection<int, Product>,
      *     expertises: Collection<int, Expertise>,
-     *     media_url: string|null,
-     *     media_alt: string|null
+     *     media_url: string,
+     *     media_alt: string,
+     *     has_custom_media: bool
      * }
      */
     public function forSlug(string $locale, string $slug): array
@@ -66,19 +67,34 @@ final class PostShowQuery
         ])->filter()->values()->all();
 
         $media = $post->getFirstMedia('images');
+        $hasCustomMedia = $media !== null;
+        $mediaUrl = $media?->getUrl() ?: asset('images/content/news/default-cover.svg');
+        $mediaAlt = $hasCustomMedia
+            ? $this->mediaAlt($media?->getCustomProperty('alt'), $locale, $title)
+            : (string) __('ui.article.default_cover_alt', locale: $locale);
+        $resolvedSeo = $this->seo->forModel($post, $locale);
+        $seo = new SeoMeta(
+            title: $resolvedSeo->title,
+            description: $resolvedSeo->description,
+            canonical: $resolvedSeo->canonical,
+            hreflang: $resolvedSeo->hreflang,
+            image: $mediaUrl,
+            type: $resolvedSeo->type,
+        );
 
         return [
             'post' => $post,
             'translation' => $translation,
             'title' => $title,
             'body_html' => $this->bodyHtml($translation->body),
-            'seo' => $this->seo->forModel($post, $locale),
+            'seo' => $seo,
             'index_url' => PublicPath::localized($locale, $indexPath),
             'meta_parts' => $metaParts,
             'products' => $post->products,
             'expertises' => $post->expertises,
-            'media_url' => $media?->getUrl(),
-            'media_alt' => $this->mediaAlt($media?->getCustomProperty('alt'), $locale, $title),
+            'media_url' => $mediaUrl,
+            'media_alt' => $mediaAlt,
+            'has_custom_media' => $hasCustomMedia,
         ];
     }
 

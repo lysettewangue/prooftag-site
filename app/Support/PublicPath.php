@@ -66,7 +66,10 @@ final class PublicPath
         }
 
         if ($model instanceof InspectionCentre) {
-            return self::prefixed($locale, 'centre', $slug);
+            return self::localized(
+                $locale,
+                $locale === Locale::English->value ? 'inspection-centres' : 'centres-de-controle',
+            );
         }
 
         if ($model instanceof Post) {
@@ -74,7 +77,12 @@ final class PublicPath
         }
 
         if ($model instanceof Resource) {
-            return self::prefixed($locale, 'resource', $slug);
+            return self::localized(
+                $locale,
+                $locale === Locale::English->value
+                    ? 'resources/'.$slug.'/download'
+                    : 'ressources/'.$slug.'/telecharger',
+            );
         }
 
         if ($model instanceof Career) {

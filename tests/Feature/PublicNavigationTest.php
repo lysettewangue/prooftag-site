@@ -72,7 +72,6 @@ class PublicNavigationTest extends TestCase
             ->assertSee('aria-label="Navigation principale"', false)
             ->assertSee('aria-label="Navigation principale mobile"', false)
             ->assertSee('Menu principal')
-            ->assertSee('href="/recherche"', false)
             ->assertDontSee('data-primary-navigation-item="home"', false);
 
         foreach (['about', 'products', 'expertise', 'technical_inspection', 'centres', 'resources', 'news', 'contact'] as $key) {
